@@ -1,0 +1,1 @@
+export { default as Hiquestion2 } from './Hiquestion2';

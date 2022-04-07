@@ -1,0 +1,1 @@
+export { default as Gettingstarted3 } from './Gettingstarted3';
