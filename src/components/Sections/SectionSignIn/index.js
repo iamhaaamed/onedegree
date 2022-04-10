@@ -41,6 +41,7 @@ import {
     MSlider,
 } from 'components/common';
 import { SectionRowSocialCenter } from 'components/Sections';
+import { navigate } from 'navigation/methods';
 const SectionSignIn = (props, navigation) => {
     const { style } = props;
     const {
@@ -81,7 +82,9 @@ const SectionSignIn = (props, navigation) => {
                 backgroundColor={COLORS.Color963}
                 height={verticalScale(48)}
             />
-            <MText textStyle={COMMON.TxtSectionSignIn34}>
+            <MText
+                textStyle={COMMON.TxtSectionSignIn34}
+                onPress={() => navigate('Forgetpassword')}>
                 Forgot password{' '}
             </MText>
             <MButton
@@ -117,7 +120,9 @@ const SectionSignIn = (props, navigation) => {
                 </View>
             </View>
             <SectionRowSocialCenter style={COMMON.EleSectionSignIn42} />
-            <TouchableOpacity style={styles.signInBtn} onPress={() => null}>
+            <TouchableOpacity
+                style={styles.signInBtn}
+                onPress={() => navigate('Signup')}>
                 <MText textStyle={{ fontSize: scale(12), marginTop: -1 }}>
                     Not a member?{' '}
                 </MText>

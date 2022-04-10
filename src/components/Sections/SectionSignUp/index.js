@@ -41,6 +41,7 @@ import {
     MSlider,
 } from 'components/common';
 import { SectionRowSocialCenter } from 'components/Sections';
+import { navigate } from 'navigation/methods';
 const SectionSignUp = (props) => {
     const { style } = props;
     const {
@@ -84,7 +85,7 @@ const SectionSignUp = (props) => {
                 height={verticalScale(48)}
             />
             <MButton
-                onPress={onPress}
+                onPress={() => navigate('Hiquestion2')}
                 style={COMMON.ButtonRect10}
                 containerStyle={COMMON.Button9}
                 text="Sign up "
@@ -116,7 +117,9 @@ const SectionSignUp = (props) => {
                 </View>
             </View>
             <SectionRowSocialCenter style={COMMON.EleSectionSignUp22} />
-            <TouchableOpacity style={styles.signInBtn} onPress={() => null}>
+            <TouchableOpacity
+                style={styles.signInBtn}
+                onPress={() => navigate('Signin')}>
                 <MText textStyle={{ fontSize: scale(12), marginTop: -1 }}>
                     Not a member?{' '}
                 </MText>

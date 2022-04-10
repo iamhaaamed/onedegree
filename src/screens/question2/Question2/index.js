@@ -42,6 +42,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
+import { navigate } from 'navigation/methods';
 const question2 = createScreen(
     () => {
         const {
@@ -159,7 +160,7 @@ const question2 = createScreen(
                         </MCheckBox>
                     </View>
                     <MButton
-                        onPress={onPress}
+                        onPress={() => navigate('Question7')}
                         style={COMMON.ButtonRect80}
                         containerStyle={COMMON.Button79}
                         text="Next"

@@ -40,6 +40,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
+import { navigate } from 'navigation/methods';
 const SectionForgetPass = (props) => {
     const { style } = props;
     const {
@@ -72,7 +73,7 @@ const SectionForgetPass = (props) => {
                 height={verticalScale(48)}
             />
             <MButton
-                onPress={onPress}
+                onPress={() => navigate('Forgetpassword1')}
                 style={COMMON.ButtonRect51}
                 containerStyle={COMMON.Button50}
                 text="Next"
@@ -90,14 +91,16 @@ const SectionForgetPass = (props) => {
                     end: { x: 1.014054298400879, y: 0.17686034739017487 },
                 }}
             />
-            <View style={styles.signUpBtn}>
+            <TouchableOpacity
+                style={styles.signUpBtn}
+                onPress={() => navigate('Signup')}>
                 <MText textStyle={{ fontSize: scale(12), marginTop: -1 }}>
                     Not a member?{' '}
                 </MText>
                 <MText textStyle={COMMON.TxtSectionForgetPass53}>
                     Sign up{' '}
                 </MText>
-            </View>
+            </TouchableOpacity>
         </View>
     );
 };

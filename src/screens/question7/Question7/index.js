@@ -43,6 +43,7 @@ import {
     MSlider,
 } from 'components/common';
 import { SectionRowCenter } from 'components/Sections';
+import { goBack, navigate } from 'navigation/methods';
 const question7 = createScreen(
     () => {
         const {
@@ -123,7 +124,10 @@ const question7 = createScreen(
                             </MText>
                         </MCheckBox>
                     </View>
-                    <SectionRowCenter />
+                    <SectionRowCenter
+                        backPress={() => goBack()}
+                        nextPress={() => navigate('Question6')}
+                    />
                 </ScrollView>
             </View>
         );

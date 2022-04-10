@@ -12,6 +12,7 @@ import {
     DrawerContentFour,
     DrawerContentFive,
 } from 'screens/home/MDrawerShowcase/drawer.showcase';
+import AppNavigator from 'navigation/AppNavigator';
 import { DrawerContent, drawerStyle } from 'components/Screen/Menu';
 import { LogBox } from 'react-native';
 import FlashMessage from 'react-native-flash-message';
@@ -27,60 +28,61 @@ const App = () => {
 
     const drawerIndex = 1;
     return (
-        <NavbarContext.Provider value={value}>
-            <ThemeContext.Provider value={value}>
-                <NavigationContainer>
-                    <Drawer.Navigator
-                        initialRouteName="HomeScreen"
-                        screenOptions={{
-                            swipeEnabled: false,
-                            drawerStyle: drawerStyle,
-                            // drawerType: drawerIndex == 4 ? 'slide' : 'front',
-                            // drawerStyle:
-                            //     drawerIndex == 2
-                            //         ? {
-                            //               backgroundColor: 'transparent',
-                            //           }
-                            //         : drawerIndex == 3
-                            //         ? {
-                            //               backgroundColor: 'transparent',
-                            //           }
-                            //         : drawerIndex == 4
-                            //         ? { width: 85, backgroundColor: '#2f2c46' }
-                            //         : drawerIndex == 5
-                            //         ? {
-                            //               backgroundColor: 'transparent',
-                            //               width: '100%',
-                            //               height: '50%',
-                            //           }
-                            //         : {},
-                        }}
-                        drawerContent={(props) => (
-                            <MDrawer>
-                                <DrawerContent />
-                                {/* {drawerIndex == 1 ? (
-                                    <DrawerContentOne {...props} />
-                                ) : drawerIndex == 2 ? (
-                                    <DrawerContentTwo {...props} />
-                                ) : drawerIndex == 3 ? (
-                                    <DrawerContentThree {...props} />
-                                ) : drawerIndex == 4 ? (
-                                    <DrawerContentFour {...props} />
-                                ) : (
-                                    <DrawerContentFive {...props} />
-                                )} */}
-                            </MDrawer>
-                        )}>
-                        <Drawer.Screen
-                            name="HomeScreen"
-                            component={RootNavigator}
-                            options={{ headerShown: false }}
-                        />
-                    </Drawer.Navigator>
-                </NavigationContainer>
-                <FlashMessage />
-            </ThemeContext.Provider>
-        </NavbarContext.Provider>
+        <AppNavigator />
+        // <NavbarContext.Provider value={value}>
+        //     <ThemeContext.Provider value={value}>
+        //         <NavigationContainer>
+        //             <Drawer.Navigator
+        //                 initialRouteName="HomeScreen"
+        //                 screenOptions={{
+        //                     swipeEnabled: false,
+        //                     drawerStyle: drawerStyle,
+        //                     // drawerType: drawerIndex == 4 ? 'slide' : 'front',
+        //                     // drawerStyle:
+        //                     //     drawerIndex == 2
+        //                     //         ? {
+        //                     //               backgroundColor: 'transparent',
+        //                     //           }
+        //                     //         : drawerIndex == 3
+        //                     //         ? {
+        //                     //               backgroundColor: 'transparent',
+        //                     //           }
+        //                     //         : drawerIndex == 4
+        //                     //         ? { width: 85, backgroundColor: '#2f2c46' }
+        //                     //         : drawerIndex == 5
+        //                     //         ? {
+        //                     //               backgroundColor: 'transparent',
+        //                     //               width: '100%',
+        //                     //               height: '50%',
+        //                     //           }
+        //                     //         : {},
+        //                 }}
+        //                 drawerContent={(props) => (
+        //                     <MDrawer>
+        //                         <DrawerContent />
+        //                         {/* {drawerIndex == 1 ? (
+        //                             <DrawerContentOne {...props} />
+        //                         ) : drawerIndex == 2 ? (
+        //                             <DrawerContentTwo {...props} />
+        //                         ) : drawerIndex == 3 ? (
+        //                             <DrawerContentThree {...props} />
+        //                         ) : drawerIndex == 4 ? (
+        //                             <DrawerContentFour {...props} />
+        //                         ) : (
+        //                             <DrawerContentFive {...props} />
+        //                         )} */}
+        //                     </MDrawer>
+        //                 )}>
+        //                 <Drawer.Screen
+        //                     name="HomeScreen"
+        //                     component={RootNavigator}
+        //                     options={{ headerShown: false }}
+        //                 />
+        //             </Drawer.Navigator>
+        //         </NavigationContainer>
+        //         <FlashMessage />
+        //     </ThemeContext.Provider>
+        // </NavbarContext.Provider>
     );
 };
 

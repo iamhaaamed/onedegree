@@ -40,6 +40,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
+import { navigate } from 'navigation/methods';
 const SectionVerify = (props) => {
     const { style } = props;
     const {
@@ -64,7 +65,7 @@ const SectionVerify = (props) => {
                 back in.{' '}
             </MText>
             <MButton
-                onPress={onPress}
+                onPress={() => navigate('Signin')}
                 style={COMMON.ButtonRect137}
                 containerStyle={COMMON.Button136}
                 text="Sign in "

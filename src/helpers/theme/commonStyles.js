@@ -882,8 +882,8 @@ export default function ({ COLORS }) {
         SectionPaddingquestion7117: {
             paddingBottom: verticalScale(-2),
             paddingTop: verticalScale(-6),
-            paddingRight: scale(120),
-            paddingLeft: scale(120),
+            justifyContent: 'center',
+            alignItems: 'center',
         },
         Txtquestion7118: {
             fontSize: verticalScale(16),

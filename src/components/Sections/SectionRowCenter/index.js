@@ -41,7 +41,7 @@ import {
     MSlider,
 } from 'components/common';
 const SectionRowCenter = (props) => {
-    const { style } = props;
+    const { style, nextPress, backPress } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -60,7 +60,7 @@ const SectionRowCenter = (props) => {
     return (
         <View style={[styles.SectionRowCenter, style]}>
             <MButton
-                onPress={onPress}
+                onPress={backPress}
                 style={COMMON.ButtonRect114}
                 containerStyle={COMMON.Button113}
                 text="Back"
@@ -68,7 +68,7 @@ const SectionRowCenter = (props) => {
                 color={COLORS.Color963}
             />
             <MButton
-                onPress={onPress}
+                onPress={nextPress}
                 style={COMMON.ButtonRect111}
                 containerStyle={COMMON.Button110}
                 text="next"

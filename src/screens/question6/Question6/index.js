@@ -11,6 +11,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { scale, verticalScale, height } from 'utils';
 import LinearGradient from 'react-native-linear-gradient';
 import { DateTimePickerMod } from 'components/common/MDateTimePicker';
+import { goBack, navigate } from 'navigation/methods';
 import {
     DrawerItem,
     DrawerItemList,
@@ -93,7 +94,10 @@ const question6 = createScreen(
                             programs{' '}
                         </MText>
                     </View>
-                    <SectionRowCenter />
+                    <SectionRowCenter
+                        backPress={() => goBack()}
+                        nextPress={() => navigate('Gettingstarted3')}
+                    />
                 </ScrollView>
             </View>
         );

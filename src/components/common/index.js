@@ -1,4 +1,5 @@
 export { default as MText } from './MText';
+export { default as ArrowBackButton } from './ArrowBackButton';
 export { default as MIcon } from './MIcon';
 export { default as MTouchable } from './MTouchable';
 export { default as MButton } from './MButton';
