@@ -152,7 +152,7 @@ export default function ({ COLORS }) {
         },
         Button9: {
             marginBottom: verticalScale(29),
-            width: scale(326),
+            width: '100%',
             height: verticalScale(52),
         },
         RowItemSectionSignUp12: {
@@ -344,7 +344,7 @@ export default function ({ COLORS }) {
         },
         Button35: {
             marginBottom: verticalScale(29),
-            width: scale(326),
+            width: '100%',
             height: verticalScale(52),
         },
         RowItemSectionSignIn38: {
@@ -448,7 +448,7 @@ export default function ({ COLORS }) {
         },
         Button50: {
             marginBottom: verticalScale(23),
-            width: scale(326),
+            width: '100%',
             height: verticalScale(51),
         },
         TxtSectionForgetPass53: {
@@ -597,8 +597,9 @@ export default function ({ COLORS }) {
             alignSelf: 'center',
         },
         Button79: {
-            width: scale(326),
+            width: '90%',
             height: verticalScale(52),
+            alignSelf: 'center',
         },
         image82: {
             marginBottom: verticalScale(32),
@@ -674,7 +675,7 @@ export default function ({ COLORS }) {
         },
         Button88: {
             marginBottom: verticalScale(21),
-            width: scale(325),
+            width: '100%',
             height: verticalScale(51),
         },
         TextsButton93: {
@@ -701,7 +702,7 @@ export default function ({ COLORS }) {
             borderBottomLeftRadius: 12,
         },
         Button91: {
-            width: scale(326),
+            width: '100%',
             height: verticalScale(51),
         },
         image94: {
@@ -747,7 +748,7 @@ export default function ({ COLORS }) {
             borderBottomLeftRadius: 12,
         },
         Button97: {
-            width: scale(326),
+            width: '100%',
             height: verticalScale(51),
         },
         EleHiquestion2100: {
@@ -758,7 +759,7 @@ export default function ({ COLORS }) {
             textAlign: 'center',
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            // lineHeight: 42,
             color: COLORS.Color209,
         },
         Image102: {
@@ -1036,7 +1037,7 @@ export default function ({ COLORS }) {
         },
         Button136: {
             marginBottom: verticalScale(24),
-            width: scale(327),
+            width: '100%',
             height: verticalScale(51),
         },
         TxtSectionVerify139: {
@@ -1109,7 +1110,7 @@ export default function ({ COLORS }) {
             borderBottomLeftRadius: 12,
         },
         Button145: {
-            width: scale(326),
+            width: '100%',
             height: verticalScale(51),
         },
         EleGettingstarted3148: {

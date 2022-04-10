@@ -42,7 +42,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { SectionRowCenter } from 'components/Sections';
+import { SectionRowCenter, SectionTop } from 'components/Sections';
 import { goBack, navigate } from 'navigation/methods';
 const question7 = createScreen(
     () => {
@@ -66,13 +66,14 @@ const question7 = createScreen(
         return (
             <View style={styles.question7}>
                 <ScrollView>
-                    <View style={COMMON.SectionPaddingquestion7116}>
+                    <SectionTop />
+                    {/* <View style={COMMON.SectionPaddingquestion7116}>
                         <View style={COMMON.SectionPaddingquestion7117}>
                             <MText textStyle={COMMON.Txtquestion7118}>
                                 Getting started{' '}
                             </MText>
                         </View>
-                    </View>
+                    </View> */}
                     <MImage
                         imageSource={IMAGES.image6696}
                         style={COMMON.Image119}

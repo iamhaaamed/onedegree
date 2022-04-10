@@ -43,6 +43,7 @@ import {
     MSlider,
 } from 'components/common';
 import { navigate } from 'navigation/methods';
+import { SectionTop } from 'components/Sections';
 const question2 = createScreen(
     () => {
         const {
@@ -65,13 +66,14 @@ const question2 = createScreen(
         return (
             <View style={styles.question2}>
                 <ScrollView>
-                    <View style={COMMON.SectionPaddingquestion254}>
-                        <View style={{ alignItems: 'center' }}>
+                    {/* <View style={COMMON.SectionPaddingquestion254}> */}
+                    <SectionTop />
+                    {/* <View style={{ alignItems: 'center' }}>
                             <MText textStyle={COMMON.Txtquestion256}>
                                 Getting started{' '}
                             </MText>
-                        </View>
-                    </View>
+                        </View> */}
+                    {/* </View> */}
                     <MImage
                         imageSource={IMAGES.image2101}
                         style={COMMON.Image57}

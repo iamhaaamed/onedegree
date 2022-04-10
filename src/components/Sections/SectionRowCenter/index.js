@@ -71,7 +71,7 @@ const SectionRowCenter = (props) => {
                 onPress={nextPress}
                 style={COMMON.ButtonRect111}
                 containerStyle={COMMON.Button110}
-                text="next"
+                text="Next"
                 textStyle={COMMON.TextsButton112}
                 gradient={{
                     colors: [COLORS.Color323, COLORS.Color409],
