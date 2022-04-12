@@ -1116,5 +1116,20 @@ export default function ({ COLORS }) {
         EleGettingstarted3148: {
             marginBottom: verticalScale(32),
         },
+        image320: {
+            marginTop: verticalScale(103),
+            marginBottom: verticalScale(103),
+            width: '100%',
+            height: scale(175),
+        },
+        image221: {
+            width: scale(390),
+            // height: scale(144),
+        },
+        image1190: {
+            marginBottom: verticalScale(103),
+            width: scale(390),
+            height: scale(130),
+        },
     });
 }

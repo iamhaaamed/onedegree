@@ -13,3 +13,5 @@ export * from './question6';
 export * from './question7';
 export * from './verifyEmail';
 export * from './gettingstarted3';
+export * from './OnboardingScreen';
+export * from './SplashScreen';

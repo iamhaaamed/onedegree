@@ -17,6 +17,7 @@ import {
     Question2,
     Hiquestion2,
     Gettingstarted3,
+    SplashScreen,
 } from 'screens';
 
 import { navigate } from './methods';
@@ -38,6 +39,11 @@ export type AuthStackParamList = {
 };
 
 const screens = [
+    {
+        options: { headerShown: false, ...CommonActions },
+        name: 'Splash',
+        component: SplashScreen,
+    },
     {
         options: { headerShown: false, ...CommonActions },
         name: 'Signin',

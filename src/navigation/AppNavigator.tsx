@@ -5,8 +5,8 @@ import React, { useEffect } from 'react';
 // import { useIsFetching, useIsMutating } from 'react-query';
 
 // import {CustomSpinner} from 'components/common';
-// import {OnboardingScreen} from '~/screens';
-// import {authStore} from '~/store';
+import { OnboardingScreen, SplashScreen } from 'screens';
+import { authStore } from '../store';
 
 import AuthStack from './AuthStack';
 // import MainStack from './MainStack';
@@ -22,7 +22,7 @@ export default function AppNavigator() {
     //   (state: {isLoadingSearch: boolean}) => state.isLoadingSearch,
     // );
 
-    // const { isUserLoggedIn, isOnboardingViewed } = authStore((state) => state);
+    const { isUserLoggedIn, isOnboardingViewed } = authStore((state) => state);
 
     // useEffect(() => {
     //   queryClient.cancelQueries();
@@ -37,14 +37,15 @@ export default function AppNavigator() {
         }
       /> */}
             <NavigationContainer ref={navigationRef}>
+                {console.log('5555555555555', isOnboardingViewed)}
                 <Stack.Navigator>
-                    {/* {!isOnboardingViewed && (
-            <Stack.Screen
-              options={{headerShown: false}}
-              name="Onboarding"
-              component={OnboardingScreen}
-            />
-          )} */}
+                    {!isOnboardingViewed && (
+                        <Stack.Screen
+                            options={{ headerShown: false }}
+                            name="Onboarding"
+                            component={OnboardingScreen}
+                        />
+                    )}
 
                     {/* {isUserLoggedIn ? //   name="MainStack" //   options={{headerShown: false}} // <Stack.Screen
                     //   component={MainStack}
