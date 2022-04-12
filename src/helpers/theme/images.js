@@ -12,11 +12,15 @@ export default function () {
         image2754: require('assets/images/image2754.png'),
         image7436: require('assets/images/image7436.png'),
         image5606: require('assets/images/image5606.png'),
-        image5327: require('assets/images/image5327.png'),
         image9641: require('assets/images/image9641.png'),
         image2834: require('assets/images/image2834.png'),
         image6011: require('assets/images/image6011.png'),
         image6462: require('assets/images/image6462.png'),
         image7641: require('assets/images/image7641.png'),
+        imageBack1: require('assets/images/imageBack1.png'),
+        imageBack2: require('assets/images/imageBack2.png'),
+        intro2: require('assets/images/intro2.png'),
+        intro3: require('assets/images/intro3.png'),
+        // intro4: require('assets/images/intro4.png'),
     };
 }

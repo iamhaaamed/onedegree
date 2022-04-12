@@ -1,4 +1,3 @@
-import { CommonActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
@@ -40,67 +39,57 @@ export type AuthStackParamList = {
 
 const screens = [
     {
-        options: { headerShown: false, ...CommonActions },
+        options: { headerShown: false },
         name: 'Splash',
         component: SplashScreen,
     },
     {
-        options: { headerShown: false, ...CommonActions },
+        options: { headerShown: false },
         name: 'Signin',
         component: Signin,
     },
-    // {
-    //     options: {
-    //         title: '',
-    //         headerLeft: () => <ArrowBackButton />,
-    //         headerShadowVisible: false,
-    //         ...CommonActions,
-    //     },
-    //     name: 'Signin',
-    //     component: Signin,
-    // },
     {
-        options: { headerShown: false, ...CommonActions },
+        options: { headerShown: false },
         name: 'Signup',
         component: Signup,
     },
     {
-        options: { headerShown: false, ...CommonActions },
+        options: { headerShown: false },
         name: 'VerifyEmail',
         component: VerifyEmail,
     },
     {
-        options: { headerShown: false, ...CommonActions },
+        options: { headerShown: false },
         name: 'Forgetpassword1',
         component: Forgetpassword1,
     },
     {
-        options: { headerShown: false, ...CommonActions },
+        options: { headerShown: false },
         name: 'Question7',
         component: Question7,
     },
     {
-        options: { headerShown: false, ...CommonActions },
+        options: { headerShown: false },
         name: 'Question6',
         component: Question6,
     },
     {
-        options: { headerShown: false, ...CommonActions },
+        options: { headerShown: false },
         name: 'Question2',
         component: Question2,
     },
     {
-        options: { headerShown: false, ...CommonActions },
+        options: { headerShown: false },
         name: 'Forgetpassword',
         component: Forgetpassword,
     },
     {
-        options: { headerShown: false, ...CommonActions },
+        options: { headerShown: false },
         name: 'Hiquestion2',
         component: Hiquestion2,
     },
     {
-        options: { headerShown: false, ...CommonActions },
+        options: { headerShown: false },
         name: 'Gettingstarted3',
         component: Gettingstarted3,
     },

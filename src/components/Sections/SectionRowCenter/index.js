@@ -41,7 +41,7 @@ import {
     MSlider,
 } from 'components/common';
 const SectionRowCenter = (props) => {
-    const { style, nextPress, backPress } = props;
+    const { style, nextPress, backPress, intro } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -51,33 +51,46 @@ const SectionRowCenter = (props) => {
         CONSTANTS,
     } = useTheme();
 
-    const clickCounter = useRef(0);
-    const onPress = () => {
-        console.log(`Clicked! ${clickCounter.current}`);
-        clickCounter.current = clickCounter.current + 1;
-    };
-
     return (
         <View style={[styles.SectionRowCenter, style]}>
             <MButton
                 onPress={backPress}
-                style={COMMON.ButtonRect114}
+                style={intro ? COMMON.ButtonRect1142 : COMMON.ButtonRect114}
                 containerStyle={COMMON.Button113}
                 text="Back"
-                textStyle={COMMON.TextsButton115}
+                textStyle={[
+                    COMMON.TextsButton115,
+                    intro && { color: COLORS.white },
+                ]}
                 color={COLORS.Color963}
             />
             <MButton
                 onPress={nextPress}
-                style={COMMON.ButtonRect111}
+                style={[
+                    COMMON.ButtonRect111,
+                    intro && { backgroundColor: COLORS.white },
+                ]}
                 containerStyle={COMMON.Button110}
                 text="Next"
-                textStyle={COMMON.TextsButton112}
-                gradient={{
-                    colors: [COLORS.Color323, COLORS.Color409],
-                    start: { x: -0.15500132739543915, y: 0.6157848834991455 },
-                    end: { x: 1.014054298400879, y: 0.17686034739017487 },
-                }}
+                textStyle={[
+                    COMMON.TextsButton112,
+                    intro && { color: COLORS.textOnSecondary },
+                ]}
+                gradient={
+                    intro
+                        ? false
+                        : {
+                              colors: [COLORS.Color323, COLORS.Color409],
+                              start: {
+                                  x: -0.15500132739543915,
+                                  y: 0.6157848834991455,
+                              },
+                              end: {
+                                  x: 1.014054298400879,
+                                  y: 0.17686034739017487,
+                              },
+                          }
+                }
             />
         </View>
     );

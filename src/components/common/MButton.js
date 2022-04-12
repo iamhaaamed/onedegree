@@ -48,6 +48,7 @@ const MButton = (props) => {
         backgroundImage,
         containerStyle,
         gradient,
+        iconSide,
     } = props;
     const { COLORS, GUTTERS, TYPOGRAPHY } = useTheme();
     const selectedType =
@@ -129,7 +130,11 @@ const MButton = (props) => {
                             style={[styles.iconLeft, iconLeft.style]}
                         />
                     )}
-                    <View style={styles.centerWrapper}>
+                    <View
+                        style={[
+                            styles.centerWrapper,
+                            iconSide && { flexDirection: 'row-reverse' },
+                        ]}>
                         {iconTop && iconTop.name && (
                             <MIcon
                                 name={iconTop.name}
@@ -139,6 +144,7 @@ const MButton = (props) => {
                                 style={[styles.iconTop, iconTop.style]}
                             />
                         )}
+
                         {text && (
                             <MText
                                 textStyle={[

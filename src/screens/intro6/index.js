@@ -1,1 +1,0 @@
-export { default as Intro6 } from './Intro6';
