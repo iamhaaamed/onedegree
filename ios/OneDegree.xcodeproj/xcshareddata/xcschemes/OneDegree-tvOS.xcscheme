@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "onedegree-tvOS.app"
-               BlueprintName = "onedegree-tvOS"
-               ReferencedContainer = "container:onedegree.xcodeproj">
+               BuildableName = "OneDegree-tvOS.app"
+               BlueprintName = "OneDegree-tvOS"
+               ReferencedContainer = "container:OneDegree.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "onedegree-tvOSTests.xctest"
-               BlueprintName = "onedegree-tvOSTests"
-               ReferencedContainer = "container:onedegree.xcodeproj">
+               BuildableName = "OneDegree-tvOSTests.xctest"
+               BlueprintName = "OneDegree-tvOSTests"
+               ReferencedContainer = "container:OneDegree.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "onedegree-tvOS.app"
-            BlueprintName = "onedegree-tvOS"
-            ReferencedContainer = "container:onedegree.xcodeproj">
+            BuildableName = "OneDegree-tvOS.app"
+            BlueprintName = "OneDegree-tvOS"
+            ReferencedContainer = "container:OneDegree.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "onedegree-tvOS.app"
-            BlueprintName = "onedegree-tvOS"
-            ReferencedContainer = "container:onedegree.xcodeproj">
+            BuildableName = "OneDegree-tvOS.app"
+            BlueprintName = "OneDegree-tvOS"
+            ReferencedContainer = "container:OneDegree.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
