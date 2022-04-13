@@ -42,7 +42,7 @@ import {
 } from 'components/common';
 import { goBack } from 'navigation/methods';
 const SectionTop01 = (props) => {
-    const { style, title, rightView } = props;
+    const { style, title, rightView, noIcon } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -61,16 +61,18 @@ const SectionTop01 = (props) => {
     return (
         <View style={[styles.SectionTop01, style]}>
             <View style={{ alignSelf: 'center', width: '10%' }}>
-                <MButton
-                    onPress={() => goBack()}
-                    style={COMMON.ButtonRect10}
-                    color={'transparent'}
-                    iconRight={{
-                        name: 'arrow-back-ios',
-                        color: COLORS.Color424,
-                        Component: MaterialCommunityIcons,
-                    }}
-                />
+                {!noIcon && (
+                    <MButton
+                        onPress={() => goBack()}
+                        style={COMMON.ButtonRect10}
+                        color={'transparent'}
+                        iconRight={{
+                            name: 'arrow-back-ios',
+                            color: COLORS.Color424,
+                            Component: MaterialCommunityIcons,
+                        }}
+                    />
+                )}
             </View>
             <View style={{ width: '80%' }}>
                 <MText textStyle={COMMON.TxtSectionTop0111}>{title}</MText>

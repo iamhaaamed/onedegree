@@ -19,6 +19,7 @@ import {
     SplashScreen,
     Notification1,
     Chat2,
+    Search,
 } from 'screens';
 
 import { navigate } from './methods';
@@ -39,6 +40,7 @@ export type AuthStackParamList = {
     Gettingstarted3: undefined;
     Notification1: undefined;
     Chat2: undefined;
+    Search: undefined;
 };
 
 const screens = [
@@ -106,6 +108,11 @@ const screens = [
         options: { headerShown: false },
         name: 'ChatList',
         component: Chat2,
+    },
+    {
+        options: { headerShown: false },
+        name: 'Search',
+        component: Search,
     },
 ];
 

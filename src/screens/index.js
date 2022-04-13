@@ -17,3 +17,4 @@ export * from './OnboardingScreen';
 export * from './SplashScreen';
 export * from './notification1';
 export * from './chat2';
+export * from './search';
