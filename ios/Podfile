@@ -3,7 +3,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'ModelTemplate' do
+target 'onedegree' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
@@ -24,10 +24,10 @@ target 'ModelTemplate' do
   #end
 end
 
-target 'ModelTemplate-tvOS' do
-  # Pods for ModelTemplate-tvOS
+target 'onedegree-tvOS' do
+  # Pods for onedegree-tvOS
 
-  target 'ModelTemplate-tvOSTests' do
+  target 'onedegree-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
