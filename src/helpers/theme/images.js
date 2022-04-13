@@ -21,6 +21,6 @@ export default function () {
         imageBack2: require('assets/images/imageBack2.png'),
         intro2: require('assets/images/intro2.png'),
         intro3: require('assets/images/intro3.png'),
-        // intro4: require('assets/images/intro4.png'),
+        intro4: require('assets/images/intro4.png'),
     };
 }

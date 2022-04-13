@@ -87,13 +87,13 @@ const intro6 = createScreen(
                     'Our unique support process helps you easily pick a new career path and avoid college debt.',
             },
             {
-                imageUrl: IMAGES.intro2,
+                imageUrl: IMAGES.intro3,
                 imageBack: IMAGES.imageBack1,
                 subtitle:
                     'We connect you to the best training programs in your area so you can confidently pursue your new career.',
             },
             {
-                imageUrl: IMAGES.intro2,
+                imageUrl: IMAGES.intro4,
                 imageBack: IMAGES.imageBack1,
                 subtitle:
                     'We connect you to the best training programs in your area so you can confidently pursue your new career.',
@@ -130,6 +130,7 @@ const intro6 = createScreen(
                                 <MImage
                                     imageSource={imageUrl}
                                     style={COMMON.imagevector1}
+                                    resizeMode={index == 2 ? 'contain' : null}
                                     customWidth={scale(390)}
                                     customHeight={scale(232)}
                                 />

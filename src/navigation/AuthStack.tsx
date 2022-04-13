@@ -17,6 +17,7 @@ import {
     Hiquestion2,
     Gettingstarted3,
     SplashScreen,
+    Notification1,
 } from 'screens';
 
 import { navigate } from './methods';
@@ -35,6 +36,7 @@ export type AuthStackParamList = {
     Question2: undefined;
     Hiquestion2: undefined;
     Gettingstarted3: undefined;
+    Notification1: undefined;
 };
 
 const screens = [
@@ -92,6 +94,11 @@ const screens = [
         options: { headerShown: false },
         name: 'Gettingstarted3',
         component: Gettingstarted3,
+    },
+    {
+        options: { headerShown: false },
+        name: 'Notification',
+        component: Notification1,
     },
 ];
 

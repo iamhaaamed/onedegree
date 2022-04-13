@@ -74,7 +74,7 @@ const SectionRowCenter = (props) => {
                 text="Next"
                 textStyle={[
                     COMMON.TextsButton112,
-                    intro && { color: COLORS.textOnSecondary },
+                    intro && { color: COLORS.Color378 },
                 ]}
                 gradient={
                     intro

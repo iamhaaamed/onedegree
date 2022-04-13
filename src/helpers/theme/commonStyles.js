@@ -235,7 +235,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(14),
             fontFamily: 'Muli',
             lineHeight: 15,
-            color: COLORS.Color718,
+            color: COLORS.Color525,
         },
         image25: {
             width: scale(390),
@@ -379,7 +379,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(14),
             fontFamily: 'Muli',
             lineHeight: 15,
-            color: COLORS.Color718,
+            color: COLORS.Color525,
         },
         image45: {
             marginBottom: verticalScale(32),
@@ -458,7 +458,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(14),
             fontFamily: 'Muli',
             lineHeight: 15,
-            color: COLORS.Color718,
+            color: COLORS.Color525,
         },
         SectionPaddingquestion255: {
             paddingBottom: verticalScale(-2),
@@ -1213,6 +1213,38 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
             color: COLORS.Color378,
+        },
+        TxtSectionTop0111: {
+            alignSelf: 'center',
+            textAlign: 'center',
+            fontSize: verticalScale(17),
+            fontFamily: 'Muli',
+            fontWeight: 'bold',
+            // lineHeight: 42,
+            color: COLORS.Color571,
+        },
+        EleNotification122: {
+            marginBottom: verticalScale(40),
+        },
+        EleNotification128: {
+            marginBottom: verticalScale(32),
+        },
+        SectionPaddingNotification123: {
+            paddingBottom: verticalScale(0),
+            paddingTop: verticalScale(0),
+            paddingRight: scale(32),
+            paddingLeft: scale(32),
+            marginBottom: verticalScale(266),
+        },
+        RowItemSectionEvent24: {
+            marginBottom: verticalScale(16),
+        },
+        TxtSectionEvent25: {
+            fontSize: verticalScale(15),
+            fontFamily: 'Muli',
+            fontWeight: 'bold',
+            lineHeight: 24,
+            color: COLORS.Color786,
         },
     });
 }

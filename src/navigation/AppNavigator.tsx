@@ -39,7 +39,7 @@ export default function AppNavigator() {
             <NavigationContainer ref={navigationRef}>
                 {console.log('5555555555555', isOnboardingViewed)}
                 <Stack.Navigator>
-                    {isOnboardingViewed && (
+                    {!isOnboardingViewed && (
                         <Stack.Screen
                             options={{ headerShown: false }}
                             name="Onboarding"
