@@ -43,8 +43,8 @@ import {
     MSlider,
 } from 'components/common';
 import { SectionTop01 } from 'components/Sections';
-import { SectionEvent } from 'components/Sections';
-const Notification1 = createScreen(
+import { SectionProgram } from 'components/Sections';
+const Chat2 = createScreen(
     () => {
         const {
             LAYOUT,
@@ -62,15 +62,15 @@ const Notification1 = createScreen(
         };
 
         return (
-            <View style={styles.Notification1}>
+            <View style={styles.Chat2}>
                 <ScrollView>
                     <SectionTop01
                         style={COMMON.EleNotification122}
-                        title={'Notification'}
+                        title={'Chat'}
                     />
                     <View style={COMMON.SectionPaddingNotification123}>
-                        <SectionEvent style={COMMON.EleNotification128} />
-                        <SectionEvent />
+                        <SectionProgram style={COMMON.EleChat218} />
+                        <SectionProgram />
                     </View>
                 </ScrollView>
             </View>
@@ -83,9 +83,9 @@ const Notification1 = createScreen(
     },
 );
 const styles = StyleSheet.create({
-    Notification1: {
+    Chat2: {
         backgroundColor: COLORS.Color197,
         height: '100%',
     },
 });
-export default Notification1;
+export default Chat2;

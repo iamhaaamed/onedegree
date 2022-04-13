@@ -40,9 +40,8 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { goBack } from 'navigation/methods';
-const SectionTop01 = (props) => {
-    const { style, title, rightView } = props;
+const SectionProgram = (props) => {
+    const { style } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -59,46 +58,45 @@ const SectionTop01 = (props) => {
     };
 
     return (
-        <View style={[styles.SectionTop01, style]}>
-            <View style={{ alignSelf: 'center', width: '10%' }}>
-                <MButton
-                    onPress={() => goBack()}
-                    style={COMMON.ButtonRect10}
-                    color={'transparent'}
-                    iconRight={{
-                        name: 'arrow-back-ios',
-                        color: COLORS.Color424,
-                        Component: MaterialCommunityIcons,
-                    }}
-                />
+        <View style={[styles.SectionProgram, style]}>
+            <View style={[COMMON.RowItem, COMMON.RowItemSectionProgram14]}>
+                <View style={{ width: '30%' }}>
+                    <MImage
+                        imageSource={IMAGES.image9641}
+                        style={COMMON.imageprogram15}
+                        customWidth={scale(57)}
+                        customHeight={scale(57)}
+                    />
+                </View>
+                <View style={{ width: '70%' }}>
+                    <MText textStyle={COMMON.TxtSectionProgram16}>
+                        Program title{' '}
+                    </MText>
+                    <MText textStyle={COMMON.TxtSectionProgram17}>
+                        Last seen - 11:35 AM{' '}
+                    </MText>
+                </View>
             </View>
-            <View style={{ width: '80%' }}>
-                <MText textStyle={COMMON.TxtSectionTop0111}>{title}</MText>
-            </View>
-            <View style={styles.rightView}>{rightView}</View>
         </View>
     );
 };
 const styles = StyleSheet.create({
-    SectionTop01: {
-        paddingBottom: verticalScale(11),
-        paddingTop: verticalScale(11),
-        paddingRight: scale(12),
-        paddingLeft: scale(5),
-        backgroundColor: COLORS.Color611,
-        shadowColor: 'rgba(140,140,140,0.09)',
+    SectionProgram: {
+        paddingBottom: verticalScale(24),
+        paddingTop: verticalScale(24),
+        paddingRight: scale(16),
+        paddingLeft: scale(16),
+        backgroundColor: COLORS.white,
+        shadowColor: 'rgba(140,140,140,0.06)',
         shadowOffset: { width: 0, height: 15 },
         shadowRadius: 29,
-        elevation: 5,
         opacity: 0.78,
         width: '100%',
-        height: verticalScale(56),
-        // justifyContent: 'space-between',
-        flexDirection: 'row',
-    },
-    rightView: {
-        width: scale(20),
-        height: scale(20),
+        height: verticalScale(105),
+        borderTopLeftRadius: 21,
+        borderTopRightRadius: 21,
+        borderBottomRightRadius: 21,
+        borderBottomLeftRadius: 21,
     },
 });
-export default SectionTop01;
+export default SectionProgram;

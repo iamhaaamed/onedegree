@@ -40,6 +40,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
+import { navigate } from 'navigation/methods';
 const SectionStart = (props) => {
     const { style } = props;
     const {
@@ -51,12 +52,6 @@ const SectionStart = (props) => {
         CONSTANTS,
     } = useTheme();
 
-    const clickCounter = useRef(0);
-    const onPress = () => {
-        console.log(`Clicked! ${clickCounter.current}`);
-        clickCounter.current = clickCounter.current + 1;
-    };
-
     return (
         <View style={[styles.SectionStart, style]}>
             <MText textStyle={COMMON.TxtSectionStart143}>Well done! </MText>
@@ -64,7 +59,7 @@ const SectionStart = (props) => {
                 Time to start looking for your new career.{' '}
             </MText>
             <MButton
-                onPress={onPress}
+                onPress={() => navigate('ChatList')}
                 style={COMMON.ButtonRect146}
                 containerStyle={COMMON.Button145}
                 text="Start Exploring"

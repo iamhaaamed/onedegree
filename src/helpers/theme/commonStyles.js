@@ -1220,6 +1220,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(17),
             fontFamily: 'Muli',
             fontWeight: 'bold',
+            flexWrap: 'wrap',
             // lineHeight: 42,
             color: COLORS.Color571,
         },
@@ -1245,6 +1246,35 @@ export default function ({ COLORS }) {
             fontWeight: 'bold',
             lineHeight: 24,
             color: COLORS.Color786,
+        },
+        EleChat218: {
+            marginBottom: verticalScale(32),
+        },
+        imageprogram15: {
+            borderWidth: 1,
+            borderColor: COLORS.Color182,
+            shadowColor: 'rgba(0,0,0,0.04)',
+            shadowOffset: { width: 0, height: 3 },
+            shadowRadius: 16,
+            width: scale(57),
+            height: scale(57),
+            borderTopLeftRadius: 10,
+            borderTopRightRadius: 10,
+            borderBottomRightRadius: 10,
+            borderBottomLeftRadius: 10,
+        },
+        TxtSectionProgram16: {
+            fontSize: verticalScale(15),
+            fontFamily: 'Muli',
+            fontWeight: 'bold',
+            lineHeight: 24,
+            color: COLORS.Color786,
+        },
+        TxtSectionProgram17: {
+            fontSize: verticalScale(14),
+            fontFamily: 'Muli',
+            lineHeight: 24,
+            color: COLORS.Color745,
         },
     });
 }

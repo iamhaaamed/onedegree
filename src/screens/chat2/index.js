@@ -1,0 +1,1 @@
+export { default as Chat2 } from './Chat2';
