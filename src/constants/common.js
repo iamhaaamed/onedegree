@@ -65,6 +65,9 @@ export const COLORS = {
     Color745: 'rgba(148,148,148,0.87)',
     Color565: '#A6ABB8',
     Color508: '#F34014',
+    Color522: '#AAAAAA',
+    Color375: '#343434',
+    Color700: '#818181',
 };
 
 export const NAVIGATION_COLORS = {

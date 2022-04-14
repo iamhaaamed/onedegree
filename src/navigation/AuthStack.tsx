@@ -20,6 +20,7 @@ import {
     Notification1,
     Chat2,
     Search,
+    Chat3,
 } from 'screens';
 
 import { navigate } from './methods';
@@ -41,6 +42,7 @@ export type AuthStackParamList = {
     Notification1: undefined;
     Chat2: undefined;
     Search: undefined;
+    Chat3: undefined;
 };
 
 const screens = [
@@ -113,6 +115,11 @@ const screens = [
         options: { headerShown: false },
         name: 'Search',
         component: Search,
+    },
+    {
+        options: { headerShown: false },
+        name: 'ChatScreen',
+        component: Chat3,
     },
 ];
 
