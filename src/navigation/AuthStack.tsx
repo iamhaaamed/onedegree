@@ -21,6 +21,7 @@ import {
     Chat2,
     Search,
     Chat3,
+    Home2,
 } from 'screens';
 
 import { navigate } from './methods';
@@ -43,9 +44,15 @@ export type AuthStackParamList = {
     Chat2: undefined;
     Search: undefined;
     Chat3: undefined;
+    Home2: undefined;
 };
 
 const screens = [
+    {
+        options: { headerShown: false },
+        name: 'HomeScreen',
+        component: Home2,
+    },
     {
         options: { headerShown: false },
         name: 'Splash',

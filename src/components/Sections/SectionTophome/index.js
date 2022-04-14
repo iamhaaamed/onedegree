@@ -40,9 +40,8 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { goBack } from 'navigation/methods';
-const SectionTop01 = (props) => {
-    const { style, title, rightView, noIcon } = props;
+const SectionTophome = (props) => {
+    const { style } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -59,35 +58,53 @@ const SectionTop01 = (props) => {
     };
 
     return (
-        <View style={[styles.SectionTop01, style]}>
-            <View style={{ alignSelf: 'center', width: '10%' }}>
-                {!noIcon && (
+        <View style={[styles.SectionTophome, style]}>
+            <View style={COMMON.RowItem}>
+                <View style={{ width: '70%' }}>
+                    <MImage
+                        imageSource={IMAGES.image7436}
+                        style={COMMON.image60}
+                        customWidth={scale(148)}
+                        customHeight={scale(44)}
+                    />
+                </View>
+                <View style={{ width: '15%' }}>
                     <MButton
-                        onPress={() => goBack()}
-                        style={COMMON.ButtonRect10}
-                        color={'transparent'}
+                        onPress={onPress}
+                        style={COMMON.ButtonRect62}
+                        containerStyle={COMMON.Button61}
+                        color={COLORS.white}
                         iconRight={{
-                            name: 'arrow-back-ios',
+                            name: 'bell-outline',
                             color: COLORS.Color424,
                             Component: MaterialCommunityIcons,
                         }}
                     />
-                )}
+                </View>
+                <View style={{ width: '15%' }}>
+                    <MButton
+                        onPress={onPress}
+                        style={COMMON.ButtonRect62}
+                        containerStyle={COMMON.Button61}
+                        color={COLORS.white}
+                        iconLeft={{
+                            name: 'message-outline',
+                            color: COLORS.Color424,
+                            Component: MaterialCommunityIcons,
+                        }}
+                    />
+                </View>
             </View>
-            <View style={{ width: '80%' }}>
-                <MText textStyle={COMMON.TxtSectionTop0111}>{title}</MText>
-            </View>
-            <View style={styles.rightView}>{rightView}</View>
         </View>
     );
 };
 const styles = StyleSheet.create({
-    SectionTop01: {
-        paddingBottom: verticalScale(11),
-        paddingTop: verticalScale(11),
-        paddingRight: scale(12),
-        paddingLeft: scale(5),
-        backgroundColor: COLORS.Color611,
+    SectionTophome: {
+        paddingBottom: verticalScale(6),
+        paddingTop: verticalScale(6),
+        paddingRight: scale(32),
+        paddingLeft: scale(32),
+        backgroundColor: COLORS.white,
         shadowColor: 'rgba(140,140,140,0.09)',
         shadowOffset: { width: 0, height: 15 },
         shadowRadius: 29,
@@ -95,12 +112,6 @@ const styles = StyleSheet.create({
         // opacity: 0.78,
         width: '100%',
         height: verticalScale(56),
-        // justifyContent: 'space-between',
-        flexDirection: 'row',
-    },
-    rightView: {
-        width: scale(20),
-        height: scale(20),
     },
 });
-export default SectionTop01;
+export default SectionTophome;
