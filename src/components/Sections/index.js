@@ -10,7 +10,7 @@ export { default as SectionVerification } from './SectionVerification';
 export { default as SectionQuestion } from './SectionQuestion';
 
 export { default as SectionTop } from './SectionTop';
-
+export { default as SectionRow } from './SectionRow';
 export { default as SectionRowCenter } from './SectionRowCenter';
 export { default as SectionTophome } from './SectionTophome';
 export { default as SectionVerify } from './SectionVerify';

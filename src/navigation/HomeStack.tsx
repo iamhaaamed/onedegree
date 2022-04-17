@@ -3,7 +3,7 @@ import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import React, { useLayoutEffect } from 'react';
 import { View } from 'react-native';
 
-import { HomeScreen, Notification1, Chat2, Chat3, Home2 } from 'screens';
+import { MoreInfo, Notification1, Chat2, Chat3, Home2 } from 'screens';
 
 const Stack = createStackNavigator();
 
@@ -12,6 +12,7 @@ export type HomeStackParamList = {
     Notification1: undefined;
     Chat2: undefined;
     Chat3: undefined;
+    MoreInfo: undefined;
 };
 
 const screens = [
@@ -34,6 +35,11 @@ const screens = [
         options: { headerShown: false },
         name: 'ChatScreen',
         component: Chat3,
+    },
+    {
+        options: { headerShown: false },
+        name: 'MoreInfo',
+        component: MoreInfo,
     },
 ];
 

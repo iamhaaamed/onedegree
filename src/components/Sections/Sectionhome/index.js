@@ -40,6 +40,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
+import { navigate } from 'navigation/methods';
 const Sectionhome = (props) => {
     const { style } = props;
     const {
@@ -142,7 +143,7 @@ const Sectionhome = (props) => {
                 </View>
                 <View style={{ width: '50%' }}>
                     <MButton
-                        onPress={onPress}
+                        onPress={() => navigate('MoreInfo')}
                         style={COMMON.ButtonRect920}
                         containerStyle={[
                             COMMON.Button910,
