@@ -100,9 +100,9 @@ const MainTabs = () => {
             <Tab.Screen
                 name="Home"
                 component={HomeStack}
-                screenOptions={{ headerShown: false }}
                 options={{
                     tabBarLabel: '',
+                    headerShown: false,
                 }}
             />
             <Tab.Screen
@@ -110,6 +110,7 @@ const MainTabs = () => {
                 component={ExploreStack}
                 options={{
                     tabBarLabel: '',
+                    headerShown: false,
                 }}
             />
 
@@ -118,6 +119,7 @@ const MainTabs = () => {
                 component={SearchStack}
                 options={{
                     tabBarLabel: '',
+                    headerShown: false,
                 }}
             />
             <Tab.Screen
@@ -125,6 +127,7 @@ const MainTabs = () => {
                 component={SearchStack}
                 options={{
                     tabBarLabel: '',
+                    headerShown: false,
                 }}
             />
             <Tab.Screen

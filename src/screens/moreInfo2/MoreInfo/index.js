@@ -151,15 +151,39 @@ const MoreInfo = createScreen(
                         </MText>
                     </View>
                     <View style={COMMON.RowItemMoreInfo26}>
-                        <SectionRow />
-                        <SectionRow />
-                        <SectionRow />
-                        <SectionRow />
-                        <SectionRow />
-                        <SectionRow />
-                        <SectionRow />
-                        <SectionRow />
-                        <SectionRow />
+                        <SectionRow
+                            style={{ backgroundColor: COLORS.backMore }}
+                            title="certification cost"
+                            data="$4000"
+                        />
+                        <SectionRow
+                            title="Months To Pay Off"
+                            infoIcon
+                            data="$4000"
+                        />
+                        <SectionRow
+                            style={{ backgroundColor: COLORS.backMore }}
+                            title="Work Hours"
+                            data="$4000"
+                        />
+                        <SectionRow title="100% Remote" data="Yes" />
+                        <SectionRow
+                            style={{ backgroundColor: COLORS.backMore }}
+                            title="Typical Salary"
+                            data="$4000"
+                        />
+                        <SectionRow title="Starting Salary" data="$4000" />
+                        <SectionRow
+                            style={{ backgroundColor: COLORS.backMore }}
+                            title="10-Year Growth"
+                            data="$4000"
+                        />
+                        <SectionRow title="Type Of Work" data="Help Support" />
+                        <SectionRow
+                            style={{ backgroundColor: COLORS.backMore }}
+                            title="Other Perks"
+                            data="Be In And Around Airplanes"
+                        />
                         <View style={COMMON.SectionPaddingMoreInfo218}>
                             <MImage
                                 imageSource={IMAGES.image7104}

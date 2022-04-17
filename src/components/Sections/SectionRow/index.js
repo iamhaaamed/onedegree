@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
     View,
     Text,
@@ -11,7 +11,7 @@ import { scale, verticalScale, height } from 'utils';
 import { useState } from 'react';
 import useTheme from 'hooks/useTheme';
 import { COLORS } from 'constants/common';
-import { useRef } from 'react';
+import ActionSheet from 'react-native-actions-sheet';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -40,8 +40,10 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
+import { navigate } from 'navigation/methods';
+import { SectionModal } from '..';
 const SectionRow = (props) => {
-    const { style } = props;
+    const { style, title, data, infoIcon } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -50,19 +52,30 @@ const SectionRow = (props) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
-
-    const clickCounter = useRef(0);
-    const onPress = () => {
-        console.log(`Clicked! ${clickCounter.current}`);
-        clickCounter.current = clickCounter.current + 1;
+    const refActionSheet = useRef(null);
+    const showActionSheet = () => {
+        if (refActionSheet.current) {
+            refActionSheet.current?.setModalVisible();
+        }
     };
-
     return (
         <View style={[styles.SectionRow, style]}>
-            <MText textStyle={COMMON.TxtSectionRow16}>
-                certification cost{' '}
-            </MText>
-            <MText textStyle={COMMON.TxtSectionRow17}>$250-$25000 </MText>
+            <MText textStyle={COMMON.TxtSectionRow16}>{title}</MText>
+            {infoIcon && (
+                <MIcon
+                    name={'information-outline'}
+                    IconComponent={MaterialCommunityIcons}
+                    color={COLORS.Color756}
+                    onPress={() => showActionSheet()}
+                    style={styles.info}
+                />
+            )}
+            <MText textStyle={COMMON.TxtSectionRow17}>{data} </MText>
+            <ActionSheet ref={refActionSheet} containerStyle={styles.action}>
+                <SectionModal
+                    showModal={() => refActionSheet.current?.setModalVisible()}
+                />
+            </ActionSheet>
         </View>
     );
 };
@@ -77,6 +90,17 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         justifyContent: 'space-between',
         height: verticalScale(63),
+    },
+    info: {
+        marginRight: '25%',
+        marginTop: 1,
+        padding: 5,
+        width: scale(30),
+        height: scale(30),
+    },
+    action: {
+        borderTopLeftRadius: scale(30),
+        borderTopRightRadius: scale(30),
     },
 });
 export default SectionRow;

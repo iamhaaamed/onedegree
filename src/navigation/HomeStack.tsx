@@ -4,7 +4,6 @@ import React, { useLayoutEffect } from 'react';
 import { View } from 'react-native';
 
 import { MoreInfo, Notification1, Chat2, Chat3, Home2 } from 'screens';
-
 const Stack = createStackNavigator();
 
 export type HomeStackParamList = {

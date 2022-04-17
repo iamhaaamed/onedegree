@@ -8,7 +8,7 @@ export { default as SectionForgetPass } from './SectionForgetPass';
 export { default as SectionVerification } from './SectionVerification';
 
 export { default as SectionQuestion } from './SectionQuestion';
-
+export { default as SectionModal } from './SectionModal';
 export { default as SectionTop } from './SectionTop';
 export { default as SectionRow } from './SectionRow';
 export { default as SectionRowCenter } from './SectionRowCenter';
