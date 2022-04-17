@@ -48,11 +48,21 @@ export type AuthStackParamList = {
 };
 
 const screens = [
-    {
-        options: { headerShown: false },
-        name: 'HomeScreen',
-        component: Home2,
-    },
+    // {
+    //     options: { headerShown: false },
+    //     name: 'Notification',
+    //     component: Notification1,
+    // },
+    // {
+    //     options: { headerShown: false },
+    //     name: 'Search',
+    //     component: Search,
+    // },
+    // {
+    //     options: { headerShown: false },
+    //     name: 'HomeScreen',
+    //     component: Home2,
+    // },
     {
         options: { headerShown: false },
         name: 'Splash',
@@ -108,21 +118,13 @@ const screens = [
         name: 'Gettingstarted3',
         component: Gettingstarted3,
     },
-    {
-        options: { headerShown: false },
-        name: 'Notification',
-        component: Notification1,
-    },
+
     {
         options: { headerShown: false },
         name: 'ChatList',
         component: Chat2,
     },
-    {
-        options: { headerShown: false },
-        name: 'Search',
-        component: Search,
-    },
+
     {
         options: { headerShown: false },
         name: 'ChatScreen',

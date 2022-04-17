@@ -88,7 +88,7 @@ const SectionSignIn = (props, navigation) => {
                 Forgot password{' '}
             </MText>
             <MButton
-                onPress={() => navigate('Notification')}
+                onPress={() => navigate('MainStack')}
                 style={COMMON.ButtonRect36}
                 containerStyle={COMMON.Button35}
                 text="Sign in "

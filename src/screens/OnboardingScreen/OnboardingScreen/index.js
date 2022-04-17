@@ -201,6 +201,7 @@ const intro6 = createScreen(
                         style={{
                             flexDirection: 'row',
                             justifyContent: 'center',
+                            paddingVertical: 10,
                         }}>
                         {data.map((_, index: number) => (
                             <View

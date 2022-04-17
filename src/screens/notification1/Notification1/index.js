@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { useRef } from 'react';
 import useTheme from 'hooks/useTheme';
 import { useState } from 'react';
@@ -45,7 +45,7 @@ import {
 import { SectionTop01 } from 'components/Sections';
 import { SectionEvent } from 'components/Sections';
 const Notification1 = createScreen(
-    () => {
+    ({ navigation }) => {
         const {
             LAYOUT,
             GUTTERS,
@@ -55,11 +55,9 @@ const Notification1 = createScreen(
             CONSTANTS,
         } = useTheme();
 
-        const clickCounter = useRef(0);
-        const onPress = () => {
-            console.log(`Clicked! ${clickCounter.current}`);
-            clickCounter.current = clickCounter.current + 1;
-        };
+        useLayoutEffect(() => {
+            navigation.setOptions({ tabBarStyle: { display: 'none' } });
+        }, [navigation]);
 
         return (
             <View style={styles.Notification1}>

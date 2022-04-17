@@ -69,6 +69,7 @@ export const COLORS = {
     Color375: '#343434',
     Color700: '#818181',
     Color134: '#F14318',
+    backMainIcon: '#F4F1EE',
 };
 
 export const NAVIGATION_COLORS = {

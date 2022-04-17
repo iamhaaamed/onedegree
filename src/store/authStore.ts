@@ -23,7 +23,7 @@ export const authStore = create<AuthState>(
         (set) => ({
             token: '',
             userId: 0,
-            isUserLoggedIn: false,
+            isUserLoggedIn: true,
             isOnboardingViewed: false,
             setToken: (token: string) => set({ token }),
             setUserId: (userId: number) => set({ userId }),

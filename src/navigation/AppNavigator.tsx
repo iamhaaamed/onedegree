@@ -9,7 +9,7 @@ import { OnboardingScreen, SplashScreen } from 'screens';
 import { authStore } from '../store';
 
 import AuthStack from './AuthStack';
-// import MainStack from './MainStack';
+import MainStack from './MainStack';
 import { navigationRef } from './methods';
 
 const Stack = createStackNavigator();
@@ -47,16 +47,19 @@ export default function AppNavigator() {
                         />
                     )}
 
-                    {/* {isUserLoggedIn ? //   name="MainStack" //   options={{headerShown: false}} // <Stack.Screen
-                    //   component={MainStack}
-                    // />
-                    null : ( */}
+                    {/* {isUserLoggedIn ? ( */}
                     <Stack.Screen
                         options={{ headerShown: false }}
-                        name="AuthStack"
-                        component={AuthStack}
+                        name="MainStack"
+                        component={MainStack}
                     />
-                    {/* )} */}
+                    {/* // ) : (
+                    //     <Stack.Screen
+                    //         options={{ headerShown: false }}
+                    //         name="AuthStack"
+                    //         component={AuthStack}
+                    //     />
+                    // )} */}
                 </Stack.Navigator>
             </NavigationContainer>
         </>
