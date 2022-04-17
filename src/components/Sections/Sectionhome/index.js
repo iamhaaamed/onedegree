@@ -63,68 +63,68 @@ const Sectionhome = (props) => {
             {/* <View style={COMMON.SectionPaddingSectionhome69}> */}
             <MText textStyle={COMMON.TxtSectionhome70}>Photographer </MText>
             <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
-                <View style={{ width: '60%' }}>
+                <View style={{ width: '55%' }}>
                     <MText textStyle={COMMON.TxtSectionhome72}>
                         Possible Yearly Income{' '}
                     </MText>
                 </View>
-                <View style={{ width: '40%' }}>
+                <View style={{ width: '45%' }}>
                     <MText textStyle={COMMON.TxtSectionhome73}>$3000 </MText>
                 </View>
             </View>
             <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
-                <View style={{ width: '40%' }}>
+                <View style={{ width: '35%' }}>
                     <MText textStyle={COMMON.TxtSectionhome72}>
                         Training Time{' '}
                     </MText>
                 </View>
-                <View style={{ width: '60%' }}>
+                <View style={{ width: '65%' }}>
                     <MText textStyle={COMMON.TxtSectionhome73}>2 months </MText>
                 </View>
             </View>
             <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
-                <View style={{ width: '40%' }}>
+                <View style={{ width: '35%' }}>
                     <MText textStyle={COMMON.TxtSectionhome72}>
                         Social Impact{' '}
                     </MText>
                 </View>
-                <View style={{ width: '60%' }}>
+                <View style={{ width: '65%' }}>
                     <MText textStyle={COMMON.TxtSectionhome73}>
                         Ensure good health{' '}
                     </MText>
                 </View>
             </View>
-            <MText textStyle={COMMON.TxtSectionhome72}>
+            <MText textStyle={COMMON.TxtSectionhome80}>
                 Top Training Programs{' '}
             </MText>
             <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
                 <View style={{ width: '50%' }}>
-                    <MText textStyle={COMMON.TxtSectionhome72}>
+                    <MText textStyle={COMMON.TxtSectionhome82}>
                         school name{' '}
                     </MText>
                 </View>
                 <View style={{ width: '50%' }}>
-                    <MText textStyle={COMMON.TxtSectionhome732}>6 miles </MText>
+                    <MText textStyle={COMMON.TxtSectionhome83}>6 miles </MText>
                 </View>
             </View>
             <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
                 <View style={{ width: '50%' }}>
-                    <MText textStyle={COMMON.TxtSectionhome72}>
+                    <MText textStyle={COMMON.TxtSectionhome82}>
                         school name{' '}
                     </MText>
                 </View>
                 <View style={{ width: '50%' }}>
-                    <MText textStyle={COMMON.TxtSectionhome732}>6 miles </MText>
+                    <MText textStyle={COMMON.TxtSectionhome83}>6 miles </MText>
                 </View>
             </View>
             <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
                 <View style={{ width: '50%' }}>
-                    <MText textStyle={COMMON.TxtSectionhome72}>
+                    <MText textStyle={COMMON.TxtSectionhome82}>
                         school name{' '}
                     </MText>
                 </View>
                 <View style={{ width: '50%' }}>
-                    <MText textStyle={COMMON.TxtSectionhome732}>6 miles </MText>
+                    <MText textStyle={COMMON.TxtSectionhome83}>6 miles </MText>
                 </View>
             </View>
             <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         shadowOffset: { width: 0, height: 15 },
         shadowRadius: 29,
-        elevation: 5,
+        elevation: 1,
         width: '100%',
         // height: verticalScale(378.77),
         borderTopLeftRadius: 0,

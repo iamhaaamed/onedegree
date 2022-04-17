@@ -47,19 +47,19 @@ export default function AppNavigator() {
                         />
                     )}
 
-                    {/* {isUserLoggedIn ? ( */}
-                    <Stack.Screen
-                        options={{ headerShown: false }}
-                        name="MainStack"
-                        component={MainStack}
-                    />
-                    {/* // ) : (
-                    //     <Stack.Screen
-                    //         options={{ headerShown: false }}
-                    //         name="AuthStack"
-                    //         component={AuthStack}
-                    //     />
-                    // )} */}
+                    {isUserLoggedIn ? (
+                        <Stack.Screen
+                            options={{ headerShown: false }}
+                            name="MainStack"
+                            component={MainStack}
+                        />
+                    ) : (
+                        <Stack.Screen
+                            options={{ headerShown: false }}
+                            name="AuthStack"
+                            component={AuthStack}
+                        />
+                    )}
                 </Stack.Navigator>
             </NavigationContainer>
         </>

@@ -15,7 +15,7 @@ import { useRef } from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
     MIcon,
     MText,
@@ -61,7 +61,7 @@ const SectionTophome = (props) => {
     return (
         <View style={[styles.SectionTophome, style]}>
             <View style={COMMON.RowItem}>
-                <View style={{ width: '70%' }}>
+                <View style={{ width: '78%' }}>
                     <MImage
                         imageSource={IMAGES.image7436}
                         style={COMMON.image60}
@@ -69,7 +69,7 @@ const SectionTophome = (props) => {
                         customHeight={scale(44)}
                     />
                 </View>
-                <View style={{ width: '15%' }}>
+                <View style={{ width: '12%' }}>
                     <MButton
                         onPress={() => navigate('Notification')}
                         style={COMMON.ButtonRect62}
@@ -78,20 +78,22 @@ const SectionTophome = (props) => {
                         iconRight={{
                             name: 'bell-outline',
                             color: COLORS.Color424,
+                            size: scale(25),
                             Component: MaterialCommunityIcons,
                         }}
                     />
                 </View>
-                <View style={{ width: '15%' }}>
+                <View style={{ width: '10%' }}>
                     <MButton
                         onPress={() => navigate('ChatList')}
                         style={COMMON.ButtonRect62}
-                        containerStyle={COMMON.Button61}
+                        containerStyle={[COMMON.Button61, { width: scale(45) }]}
                         color={COLORS.white}
                         iconLeft={{
-                            name: 'message-outline',
+                            name: 'chatbubble-outline',
                             color: COLORS.Color424,
-                            Component: MaterialCommunityIcons,
+                            size: scale(23),
+                            Component: Ionicons,
                         }}
                     />
                 </View>
@@ -109,7 +111,7 @@ const styles = StyleSheet.create({
         shadowColor: 'rgba(140,140,140,0.09)',
         shadowOffset: { width: 0, height: 15 },
         shadowRadius: 29,
-        elevation: 5,
+        elevation: 1,
         // opacity: 0.78,
         width: '100%',
         height: verticalScale(56),

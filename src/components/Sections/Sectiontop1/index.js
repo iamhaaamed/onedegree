@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         shadowColor: 'rgba(140,140,140,0.09)',
         shadowOffset: { width: 0, height: 15 },
         shadowRadius: 29,
-        elevation: 5,
+        elevation: 1,
         // opacity: 0.78,
         width: '100%',
         height: verticalScale(56),

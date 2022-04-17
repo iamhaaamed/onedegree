@@ -41,6 +41,7 @@ import {
     MSlider,
 } from 'components/common';
 import { SectionRowSocialCenter } from 'components/Sections';
+import { authStore } from '../../../store';
 import { navigate } from 'navigation/methods';
 const SectionSignIn = (props, navigation) => {
     const { style } = props;
@@ -52,12 +53,7 @@ const SectionSignIn = (props, navigation) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
-
-    const clickCounter = useRef(0);
-    const onPress = () => {
-        console.log(`Clicked! ${clickCounter.current}`);
-        clickCounter.current = clickCounter.current + 1;
-    };
+    const { setIsUserLoggedIn } = authStore((state) => state);
 
     return (
         <View style={[styles.SectionSignIn, style]}>
@@ -88,7 +84,7 @@ const SectionSignIn = (props, navigation) => {
                 Forgot password{' '}
             </MText>
             <MButton
-                onPress={() => navigate('MainStack')}
+                onPress={() => setIsUserLoggedIn(true)}
                 style={COMMON.ButtonRect36}
                 containerStyle={COMMON.Button35}
                 text="Sign in "
