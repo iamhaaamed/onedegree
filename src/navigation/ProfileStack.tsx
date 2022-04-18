@@ -1,13 +1,20 @@
 import { getFocusedRouteNameFromRoute, Route } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 
-import { ProfileScreen, SettingsScreen } from 'screens';
+import {
+    ProfileScreen,
+    SettingsScreen,
+    TermsOfService,
+    PrivacyPolicy,
+} from 'screens';
 
 const Stack = createStackNavigator();
 
 export type ProfileStackParamList = {
     ProfileScreen: undefined;
+    TermsOfService: undefined;
+    PrivacyPolicy: undefined;
 };
 
 const screens = [
@@ -21,6 +28,16 @@ const screens = [
         name: 'Settings',
         component: SettingsScreen,
     },
+    {
+        options: { headerShown: false },
+        name: 'TermsOfService',
+        component: TermsOfService,
+    },
+    {
+        options: { headerShown: false },
+        name: 'PrivacyPolicy',
+        component: PrivacyPolicy,
+    },
 ];
 
 export default function ProfileStack({
@@ -28,29 +45,20 @@ export default function ProfileStack({
     route,
 }: {
     navigation: any;
-    route: Partial<Route<string>>;
+    route: any;
 }) {
-    const tabHiddenRoutes = [
-        'EditCover',
-        'EditProfile',
-        'EditLocation',
-        'ProfileView',
-        'ProfileView',
-        'FollowersAndFollowings',
-        'Settings',
-        'Support',
-        'RouteDetails',
-        'EditRoute',
-        'VehicleList',
-        'AddOrEditVehicle',
-    ];
-
-    if (tabHiddenRoutes.includes(getFocusedRouteNameFromRoute(route))) {
-        console.log(route);
-        navigation.setOptions({ tabBarStyle: { display: 'none' } });
-    } else {
-        navigation.setOptions({ tabBarStyle: { display: 'flex' } });
-    }
+    useLayoutEffect(() => {
+        const tabHiddenRoutes = ['TermsOfService', 'PrivacyPolicy'];
+        navigation.setOptions({
+            tabBarStyle: {
+                display: tabHiddenRoutes.includes(
+                    getFocusedRouteNameFromRoute(route),
+                )
+                    ? 'none'
+                    : 'flex',
+            },
+        });
+    }, [navigation, route]);
 
     return (
         <Stack.Navigator

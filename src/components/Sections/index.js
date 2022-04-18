@@ -2,11 +2,11 @@ export { default as SectionRowSocialCenter } from './SectionRowSocialCenter';
 export { default as SectionSignUp } from './SectionSignUp';
 
 export { default as SectionSignIn } from './SectionSignIn';
-
+export { default as SectionInfo } from './SectionInfo';
 export { default as SectionForgetPass } from './SectionForgetPass';
-
+export { default as SectionModalSignOut } from './SectionModalSignOut';
 export { default as SectionVerification } from './SectionVerification';
-
+export { default as SectionModalRemoveSave } from './SectionModalRemoveSave';
 export { default as SectionQuestion } from './SectionQuestion';
 export { default as SectionModal } from './SectionModal';
 export { default as SectionTop } from './SectionTop';

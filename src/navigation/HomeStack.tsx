@@ -50,7 +50,12 @@ export default function HomeStack({
     route: any;
 }) {
     useLayoutEffect(() => {
-        const tabHiddenRoutes = ['ChatScreen', 'ChatList', 'Notification'];
+        const tabHiddenRoutes = [
+            'ChatScreen',
+            'ChatList',
+            'Notification',
+            'MoreInfo',
+        ];
         navigation.setOptions({
             tabBarStyle: {
                 display: tabHiddenRoutes.includes(

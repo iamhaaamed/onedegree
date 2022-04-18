@@ -6,6 +6,7 @@ import { StyleSheet, ScrollView } from 'react-native';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { createScreen } from 'components/elements';
 import { COLORS } from 'constants/common';
+import ActionSheet from 'react-native-actions-sheet';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { scale, verticalScale, height } from 'utils';
@@ -43,7 +44,7 @@ import {
     MSlider,
 } from 'components/common';
 import { SectionTop01 } from 'components/Sections';
-import { SectionRow } from 'components/Sections';
+import { SectionRow, SectionModalRemoveSave } from 'components/Sections';
 const MoreInfo = createScreen(
     () => {
         const {
@@ -54,7 +55,12 @@ const MoreInfo = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
-
+        const refActionSheet = useRef(null);
+        const showActionSheet = () => {
+            if (refActionSheet.current) {
+                refActionSheet.current?.setModalVisible();
+            }
+        };
         const clickCounter = useRef(0);
         const onPress = () => {
             console.log(`Clicked! ${clickCounter.current}`);
@@ -195,7 +201,7 @@ const MoreInfo = createScreen(
                     </View>
                     <View style={COMMON.SectionPaddingMoreInfo220}>
                         <MButton
-                            onPress={onPress}
+                            onPress={() => showActionSheet()}
                             style={COMMON.ButtonRect22}
                             containerStyle={COMMON.Button21}
                             text="Ask Question"
@@ -220,6 +226,15 @@ const MoreInfo = createScreen(
                             }}
                         />
                     </View>
+                    <ActionSheet
+                        ref={refActionSheet}
+                        containerStyle={styles.action}>
+                        <SectionModalRemoveSave
+                            showModal={() =>
+                                refActionSheet.current?.setModalVisible()
+                            }
+                        />
+                    </ActionSheet>
                 </ScrollView>
             </View>
         );
@@ -234,6 +249,11 @@ const styles = StyleSheet.create({
     MoreInfo2: {
         backgroundColor: COLORS.Color197,
         height: '100%',
+    },
+    action: {
+        borderTopLeftRadius: scale(30),
+        borderTopRightRadius: scale(30),
+        height: scale(200),
     },
 });
 export default MoreInfo;

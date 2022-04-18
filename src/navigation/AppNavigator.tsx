@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 // import {queryClient} from 'App';
 import React, { useEffect } from 'react';
+import { StatusBar } from 'react-native';
 // import { useIsFetching, useIsMutating } from 'react-query';
 
 // import {CustomSpinner} from 'components/common';
@@ -37,6 +38,10 @@ export default function AppNavigator() {
         }
       /> */}
             <NavigationContainer ref={navigationRef}>
+                <StatusBar
+                    barStyle="dark-content"
+                    backgroundColor={'transparent'}
+                />
                 {console.log('5555555555555', isOnboardingViewed)}
                 <Stack.Navigator>
                     {!isOnboardingViewed && (

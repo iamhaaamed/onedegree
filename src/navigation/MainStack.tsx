@@ -64,7 +64,7 @@ const MainTabs = () => {
                             break;
                         case 'Profile':
                             name = 'account-outline';
-                            family = FontAwesome;
+                            family = MaterialCommunityIcons;
                             break;
 
                         default:
@@ -77,6 +77,8 @@ const MainTabs = () => {
                                 name={
                                     name == 'heart-outline'
                                         ? 'cards-heart'
+                                        : name == 'account-outline'
+                                        ? 'account'
                                         : name
                                 }
                                 size={scale(20)}
@@ -95,6 +97,12 @@ const MainTabs = () => {
                             style={{ marginTop: 20 }}
                         />
                     );
+                },
+                sceneContainerStyle: {
+                    backgroundColor: 'red',
+                    borderTopWidth: 1,
+                    borderTopRightRadius: 30,
+                    borderTopLeftRadius: 30,
                 },
             })}>
             <Tab.Screen

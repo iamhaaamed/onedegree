@@ -55,41 +55,39 @@ const SectionModal = (props) => {
         <View style={[styles.SectionModal, style]}>
             <View style={styles.line} />
             <View style={COMMON.SectionPaddingSectionModal51}>
-                <MText textStyle={COMMON.TxtSectionModal52}>
-                    Months to pay off{' '}
-                </MText>
-                <MText textStyle={COMMON.TxtSectionModal53}>
-                    This is the number of months it will take to pay off your
-                    certification if you pay 20% of your take home pay towards
-                    it. Example: If you make $1000 per week and you put $200
-                    towards paying off your certification.{' '}
+                <MText textStyle={COMMON.TxtSectionModal52}>Sign out</MText>
+                <MText textStyle={COMMON.TxtSectionModal532}>
+                    Are you sure you want to sign out?{' '}
                 </MText>
 
-                <MButton
-                    onPress={() => showModal(true)}
-                    style={COMMON.ButtonRect55}
-                    containerStyle={COMMON.Button54}
-                    text="Confirmation"
-                    textStyle={COMMON.TextsButton56}
-                    gradient={{
-                        colors: [
-                            COLORS.Color323,
-                            COLORS.Color148,
-                            COLORS.Color912,
-                            COLORS.Color674,
-                            COLORS.Color455,
-                            COLORS.Color240,
-                        ],
-                        start: {
-                            x: -0.15500132739543915,
-                            y: 0.6157848834991455,
-                        },
-                        end: {
-                            x: 1.014054298400879,
-                            y: 0.17686034739017487,
-                        },
-                    }}
-                />
+                <View style={[styles.SectionRowCenter, style]}>
+                    <MButton
+                        onPress={() => showModal(true)}
+                        style={COMMON.ButtonRect114}
+                        containerStyle={[COMMON.Button113, { elevation: 5 }]}
+                        text="Yes"
+                        textStyle={[COMMON.TextsButton115]}
+                        color={COLORS.Color963}
+                    />
+                    <MButton
+                        onPress={() => showModal(true)}
+                        style={[COMMON.ButtonRect111]}
+                        containerStyle={COMMON.Button110}
+                        text="No"
+                        textStyle={[COMMON.TextsButton112]}
+                        gradient={{
+                            colors: [COLORS.Color323, COLORS.Color409],
+                            start: {
+                                x: -0.15500132739543915,
+                                y: 0.6157848834991455,
+                            },
+                            end: {
+                                x: 1.014054298400879,
+                                y: 0.17686034739017487,
+                            },
+                        }}
+                    />
+                </View>
             </View>
         </View>
     );
@@ -108,13 +106,15 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 0,
         borderBottomLeftRadius: 0,
     },
-    line: {
-        width: '30%',
+    SectionRowCenter: {
+        paddingBottom: verticalScale(27),
+        paddingTop: verticalScale(27),
+        width: '100%',
+        alignItems: 'center',
         alignSelf: 'center',
-        backgroundColor: COLORS.Color321,
-        padding: 2,
-        borderRadius: 5,
-        marginBottom: scale(30),
+        flexDirection: 'row',
+        textAlign: 'center',
+        justifyContent: 'space-between',
     },
 });
 export default SectionModal;

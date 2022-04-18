@@ -15,6 +15,7 @@ import { useRef } from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {
     MIcon,
@@ -40,7 +41,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { goBack } from 'navigation/methods';
+import { goBack, navigate } from 'navigation/methods';
 const SectionTop01 = (props) => {
     const { style, title, rightView, noIcon } = props;
     const {
@@ -74,10 +75,28 @@ const SectionTop01 = (props) => {
                     />
                 )}
             </View>
-            <View style={{ width: '80%' }}>
+            <View
+                style={{
+                    width: '80%',
+                    justifyContent: 'center',
+                }}>
                 <MText textStyle={COMMON.TxtSectionTop0111}>{title}</MText>
             </View>
-            <View style={styles.rightView}>{rightView}</View>
+            <View style={styles.rightView}>
+                {rightView && (
+                    <MButton
+                        onPress={() => navigate('Settings')}
+                        style={COMMON.ButtonRect10}
+                        color={'transparent'}
+                        iconRight={{
+                            name: 'settings-outline',
+                            color: COLORS.Color756,
+                            size: scale(25),
+                            Component: Ionicons,
+                        }}
+                    />
+                )}
+            </View>
         </View>
     );
 };
@@ -99,8 +118,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     rightView: {
-        width: scale(20),
+        width: scale(30),
         height: scale(20),
+        justifyContent: 'center',
+        alignSelf: 'center',
     },
 });
 export default SectionTop01;
