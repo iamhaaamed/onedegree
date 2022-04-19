@@ -23,3 +23,4 @@ export * from './home2';
 export * from './moreInfo2';
 export * from './termsofService';
 export * from './privacyPolicy';
+export * from './profileQuestion5';

@@ -1941,5 +1941,41 @@ export default function ({ COLORS }) {
             lineHeight: 24,
             color: COLORS.Color726,
         },
+        SectionPaddingQuestion539: {
+            paddingBottom: verticalScale(0),
+            paddingTop: verticalScale(0),
+            paddingRight: scale(32),
+            paddingLeft: scale(32),
+            marginBottom: verticalScale(239),
+        },
+        TxtQuestion540: {
+            alignSelf: 'center',
+            textAlign: 'center',
+            fontSize: verticalScale(20),
+            fontFamily: 'Muli',
+            fontWeight: 'bold',
+            lineHeight: 42,
+            color: COLORS.Color718,
+            // marginBottom: '5%',
+        },
+        CheckBox41: {
+            paddingBottom: verticalScale(11),
+            marginTop: verticalScale(60),
+            // paddingRight: scale(178),
+            paddingLeft: scale(8),
+            flexDirection: 'row',
+        },
+        TextsCheckBox42: {
+            fontSize: verticalScale(17),
+            fontFamily: 'Muli',
+            lineHeight: 42,
+            color: COLORS.Color209,
+        },
+        TextsCheckBox44: {
+            fontSize: verticalScale(16),
+            fontFamily: 'Muli',
+            lineHeight: 42,
+            color: COLORS.Color886,
+        },
     });
 }

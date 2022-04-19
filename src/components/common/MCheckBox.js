@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
         padding: 1,
         marginRight: 8,
         aspectRatio: 1,
-        borderRadius: 3,
+        borderRadius: 30,
         borderWidth: 1.5,
     },
     divider: {

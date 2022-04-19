@@ -7,6 +7,7 @@ import {
     SettingsScreen,
     TermsOfService,
     PrivacyPolicy,
+    ProfileQuestion5,
 } from 'screens';
 
 const Stack = createStackNavigator();
@@ -15,9 +16,15 @@ export type ProfileStackParamList = {
     ProfileScreen: undefined;
     TermsOfService: undefined;
     PrivacyPolicy: undefined;
+    ProfileQuestion5: undefined;
 };
 
 const screens = [
+    {
+        options: { headerShown: false },
+        name: 'ProfileQuestion5',
+        component: ProfileQuestion5,
+    },
     {
         options: { headerShown: false },
         name: 'MyProfile',
@@ -48,7 +55,11 @@ export default function ProfileStack({
     route: any;
 }) {
     useLayoutEffect(() => {
-        const tabHiddenRoutes = ['TermsOfService', 'PrivacyPolicy'];
+        const tabHiddenRoutes = [
+            'TermsOfService',
+            'PrivacyPolicy',
+            'ProfileQuestion5',
+        ];
         navigation.setOptions({
             tabBarStyle: {
                 display: tabHiddenRoutes.includes(
