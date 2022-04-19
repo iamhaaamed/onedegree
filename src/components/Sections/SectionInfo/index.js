@@ -41,7 +41,7 @@ import {
     MSlider,
 } from 'components/common';
 const SectionInfo = (props) => {
-    const { style } = props;
+    const { style, title, data } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -55,10 +55,10 @@ const SectionInfo = (props) => {
         <View style={[styles.SectionInfo, style]}>
             <View style={COMMON.RowItem}>
                 <View style={{ width: '50%' }}>
-                    <MText textStyle={COMMON.TxtSectionInfo28}>Location </MText>
+                    <MText textStyle={COMMON.TxtSectionInfo28}>{title}</MText>
                 </View>
                 <View style={{ width: '50%' }}>
-                    <MText textStyle={COMMON.TxtSectionInfo29}>New York </MText>
+                    <MText textStyle={COMMON.TxtSectionInfo29}>{data} </MText>
                 </View>
             </View>
         </View>

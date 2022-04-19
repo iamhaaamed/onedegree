@@ -12,6 +12,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { scale, verticalScale, height } from 'utils';
 import LinearGradient from 'react-native-linear-gradient';
 import { DateTimePickerMod } from 'components/common/MDateTimePicker';
+import { ProfileTab } from 'components/Sections';
 import {
     DrawerItem,
     DrawerItemList,
@@ -66,6 +67,7 @@ const ProfileScreen = createScreen(
             <View style={styles.Profile4}>
                 <ScrollView>
                     <SectionTop01 title="Profile" noIcon rightView />
+                    <ProfileTab page="profilePage" />
                     <View style={COMMON.SectionPaddingProfile421}>
                         <MImage
                             imageSource={IMAGES.image7104}
@@ -83,11 +85,36 @@ const ProfileScreen = createScreen(
                             textStyle={COMMON.TextsButton26}
                             color={COLORS.Color977}
                         />
-                        <SectionInfo style={COMMON.EleProfile430} />
-                        <SectionInfo style={COMMON.EleProfile430} />
-                        <SectionInfo style={COMMON.EleProfile430} />
-                        <SectionInfo style={COMMON.EleProfile430} />
-                        <SectionInfo style={COMMON.EleProfile430} />
+                        <SectionInfo
+                            style={COMMON.EleProfile430}
+                            title="Location"
+                            data="New York"
+                        />
+                        <SectionInfo
+                            style={COMMON.EleProfile430}
+                            title="Age"
+                            data="22"
+                        />
+                        <SectionInfo
+                            style={COMMON.EleProfile430}
+                            title="Ethnicity"
+                            data="White"
+                        />
+                        <SectionInfo
+                            style={COMMON.EleProfile430}
+                            title="Gender"
+                            data="Male"
+                        />
+                        <SectionInfo
+                            style={COMMON.EleProfile430}
+                            title="Education Level "
+                            data="Associate Degree"
+                        />
+                        <SectionInfo
+                            style={COMMON.EleProfile430}
+                            title="Current Income"
+                            data="$120,000"
+                        />
                         <MButton
                             onPress={onPress}
                             style={COMMON.ButtonRect36}
@@ -126,7 +153,7 @@ const ProfileScreen = createScreen(
 );
 const styles = StyleSheet.create({
     Profile4: {
-        backgroundColor: COLORS.white,
+        backgroundColor: COLORS.Color596,
         height: '100%',
     },
 });

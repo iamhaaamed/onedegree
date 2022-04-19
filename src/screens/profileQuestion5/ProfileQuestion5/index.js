@@ -44,6 +44,7 @@ import {
 } from 'components/common';
 import { SectionTop01 } from 'components/Sections';
 import { SectionRowCenter } from 'components/Sections';
+import { goBack } from 'navigation/methods';
 const ProfileQuestion5 = createScreen(
     () => {
         const {
@@ -117,7 +118,7 @@ const ProfileQuestion5 = createScreen(
                             </MText>
                         </MCheckBox>
                     </View>
-                    <SectionRowCenter />
+                    <SectionRowCenter backPress={() => goBack()} />
                 </ScrollView>
             </View>
         );

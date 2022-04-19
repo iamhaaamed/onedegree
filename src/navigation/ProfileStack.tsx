@@ -22,11 +22,6 @@ export type ProfileStackParamList = {
 const screens = [
     {
         options: { headerShown: false },
-        name: 'ProfileQuestion5',
-        component: ProfileQuestion5,
-    },
-    {
-        options: { headerShown: false },
         name: 'MyProfile',
         component: ProfileScreen,
     },
@@ -44,6 +39,11 @@ const screens = [
         options: { headerShown: false },
         name: 'PrivacyPolicy',
         component: PrivacyPolicy,
+    },
+    {
+        options: { headerShown: false },
+        name: 'ProfileQuestion5',
+        component: ProfileQuestion5,
     },
 ];
 

@@ -1,6 +1,6 @@
 export { default as SectionRowSocialCenter } from './SectionRowSocialCenter';
 export { default as SectionSignUp } from './SectionSignUp';
-
+export { default as ProfileTab } from './ProfileTab';
 export { default as SectionSignIn } from './SectionSignIn';
 export { default as SectionInfo } from './SectionInfo';
 export { default as SectionForgetPass } from './SectionForgetPass';
