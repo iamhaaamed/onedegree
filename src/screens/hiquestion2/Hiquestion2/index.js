@@ -54,18 +54,18 @@ const Hiquestion2 = createScreen(
             CONSTANTS,
         } = useTheme();
 
-        const clickCounter = useRef(0);
-        const onPress = () => {
-            console.log(`Clicked! ${clickCounter.current}`);
-            clickCounter.current = clickCounter.current + 1;
-        };
-
         return (
             <View style={styles.Hiquestion2}>
                 <ScrollView>
                     <MImage
                         imageSource={IMAGES.image3013}
                         style={COMMON.image94}
+                        customWidth={scale(390)}
+                        customHeight={scale(494)}
+                    />
+                    <MImage
+                        imageSource={IMAGES.hiBack}
+                        style={COMMON.hiBack}
                         customWidth={scale(390)}
                         customHeight={scale(494)}
                     />

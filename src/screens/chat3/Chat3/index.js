@@ -68,11 +68,9 @@ const Chat3 = createScreen(
                 <ScrollView style={COMMON.SectionPaddingChat331}>
                     <View style={COMMON.SectionPaddingChat332}>
                         <SectionChat style={COMMON.EleChat334} />
-                        <MText textStyle={COMMON.TxtChat335}>11:25 AM </MText>
                     </View>
                     <View style={COMMON.SectionPaddingChat336}>
                         <SectionChat style={COMMON.EleChat337} user />
-                        <MText textStyle={COMMON.TxtChat338}>11:25 AM </MText>
                     </View>
                     {/* <View style={COMMON.SectionPaddingChat339}>
                         <SectionChat style={COMMON.EleChat340} />
@@ -86,12 +84,16 @@ const Chat3 = createScreen(
                 <View
                     style={[
                         COMMON.RowItem,
-                        { justifyContent: 'center', alignItems: 'center' },
+                        {
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            maxHeight: scale(150),
+                        },
                     ]}>
                     <View style={{ width: '80%' }}>
                         <MInput
-                            // style={COMMON.InputRect48}
-                            multiline
+                            // inputStyle={{ borderWidth: 0 }}
+                            multiline={true}
                             containerStyle={COMMON.Input46}
                             placeholder="Lorem Ipsum Dolor Sit"
                             textStyle={COMMON.TextsInput47}

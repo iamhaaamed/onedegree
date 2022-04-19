@@ -23,5 +23,6 @@ export default function () {
         intro3: require('assets/images/intro3.png'),
         intro4: require('assets/images/intro4.png'),
         image7104: require('assets/images/image7104.jpeg'),
+        hiBack: require('assets/images/hiBack.png'),
     };
 }

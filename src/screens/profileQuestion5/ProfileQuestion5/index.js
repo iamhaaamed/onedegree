@@ -61,7 +61,7 @@ const ProfileQuestion5 = createScreen(
         return (
             <View style={styles.Question5}>
                 <ScrollView>
-                    <SectionTop01 title="Questions" noIcon />
+                    <SectionTop01 title="Questions" />
                     <View style={COMMON.SectionPaddingQuestion539}>
                         <MText textStyle={COMMON.TxtQuestion540}>
                             How far are you willing to travel to get certified?{' '}

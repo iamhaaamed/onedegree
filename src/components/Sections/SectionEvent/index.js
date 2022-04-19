@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
         // opacity: 0.78,
         elevation: 1,
         width: '100%',
-        height: verticalScale(144),
+        // height: verticalScale(144),
         borderTopLeftRadius: 21,
         borderTopRightRadius: 21,
         borderBottomRightRadius: 21,

@@ -58,11 +58,24 @@ const SectionChat = (props) => {
     };
 
     return (
-        <View style={[user ? styles.SectionChat2 : styles.SectionChat, style]}>
-            <MText textStyle={COMMON.TxtSectionChat33}>
-                complete your profile{' '}
+        <>
+            <View
+                style={[
+                    user ? styles.SectionChat2 : styles.SectionChat,
+                    style,
+                ]}>
+                <MText textStyle={COMMON.TxtSectionChat33}>
+                    complete your profile{' '}
+                </MText>
+            </View>
+            <MText
+                textStyle={[
+                    COMMON.TxtChat338,
+                    { textAlign: user ? 'right' : 'left' },
+                ]}>
+                11:25 AM{' '}
             </MText>
-        </View>
+        </>
     );
 };
 const styles = StyleSheet.create({
@@ -77,7 +90,7 @@ const styles = StyleSheet.create({
         shadowRadius: 29,
         elevation: 1,
         // opacity: 0.78,
-        width: '100%',
+        width: '90%',
         height: verticalScale(45),
         borderTopLeftRadius: 21,
         borderTopRightRadius: 21,
@@ -95,7 +108,8 @@ const styles = StyleSheet.create({
         shadowRadius: 29,
         elevation: 1,
         // opacity: 0.78,
-        width: '100%',
+        width: '90%',
+        alignSelf: 'flex-end',
         height: verticalScale(45),
         borderTopLeftRadius: 21,
         borderTopRightRadius: 21,

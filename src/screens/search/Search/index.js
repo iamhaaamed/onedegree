@@ -70,7 +70,10 @@ const Search = createScreen(
                     />
                     <View style={COMMON.SectionPaddingSearch5}>
                         <View style={[COMMON.RowItem, COMMON.RowItemSearch6]}>
-                            <View style={{ width: '80%' }}>
+                            <View
+                                style={{
+                                    width: '80%',
+                                }}>
                                 <MInput
                                     containerStyle={COMMON.InputRect9}
                                     placeholder=" Search"
@@ -79,7 +82,8 @@ const Search = createScreen(
                                     height={verticalScale(51)}
                                     iconLeft={{
                                         name: 'magnify',
-                                        color: COLORS.Color424,
+                                        color: COLORS.Color321,
+                                        size: scale(23),
                                         Component: MaterialCommunityIcons,
                                     }}
                                 />
@@ -122,13 +126,14 @@ const Search = createScreen(
                                 </View>
                                 <View
                                     style={{
-                                        width: '20%',
                                         alignItems: 'flex-end',
+                                        marginRight: scale(11),
                                     }}>
                                     <MIcon
                                         IconComponent={MaterialCommunityIcons}
                                         name="heart"
-                                        size={24}
+                                        size={scale(25)}
+                                        style={{ paddingVertical: scale(10) }}
                                         color={COLORS.Color508}
                                     />
                                     <MText textStyle={COMMON.TxtSearch17}>

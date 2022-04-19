@@ -55,12 +55,6 @@ const Gettingstarted3 = createScreen(
             CONSTANTS,
         } = useTheme();
 
-        const clickCounter = useRef(0);
-        const onPress = () => {
-            console.log(`Clicked! ${clickCounter.current}`);
-            clickCounter.current = clickCounter.current + 1;
-        };
-
         return (
             <View style={styles.Gettingstarted3}>
                 <ScrollView>

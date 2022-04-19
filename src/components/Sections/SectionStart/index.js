@@ -41,6 +41,7 @@ import {
     MSlider,
 } from 'components/common';
 import { navigate } from 'navigation/methods';
+import { authStore } from '../../../store';
 const SectionStart = (props) => {
     const { style } = props;
     const {
@@ -51,7 +52,7 @@ const SectionStart = (props) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
-
+    const { setIsUserLoggedIn } = authStore((state) => state);
     return (
         <View style={[styles.SectionStart, style]}>
             <MText textStyle={COMMON.TxtSectionStart143}>Well done! </MText>
@@ -59,7 +60,7 @@ const SectionStart = (props) => {
                 Time to start looking for your new career.{' '}
             </MText>
             <MButton
-                onPress={() => navigate('ChatList')}
+                onPress={() => setIsUserLoggedIn(true)}
                 style={COMMON.ButtonRect146}
                 containerStyle={COMMON.Button145}
                 text="Start Exploring"

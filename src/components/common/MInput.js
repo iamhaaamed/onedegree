@@ -293,8 +293,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         position: 'relative',
         // overflow: 'hidden',
-        borderRadius: 25,
-        borderWidth: 1,
+        // borderRadius: 25,
+        // borderWidth: 1,
         // flex: 1,
         flexDirection: 'row-reverse',
         // backgroundColor: 'red',
@@ -351,8 +351,9 @@ const styles = StyleSheet.create({
     button: {
         zIndex: 2000,
         position: 'absolute',
-        right: 5,
+        right: 0,
         padding: 10,
+        marginLeft: 5,
     },
     icon: {
         marginLeft: 10,

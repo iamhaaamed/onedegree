@@ -60,7 +60,8 @@ const SectionForgetPass = (props) => {
 
     return (
         <View style={[styles.SectionForgetPass, style]}>
-            <MText textStyle={COMMON.TxtSectionForgetPass46}>
+            <MText textStyle={COMMON.TxtSectionSignIn26}>Forget Password</MText>
+            <MText textStyle={COMMON.TxtSectionSignIn27}>
                 Please enter your email{' '}
             </MText>
             <MInput
@@ -73,7 +74,7 @@ const SectionForgetPass = (props) => {
                 height={verticalScale(48)}
             />
             <MButton
-                onPress={() => navigate('Forgetpassword1')}
+                onPress={() => navigate('VerifyEmail')}
                 style={COMMON.ButtonRect51}
                 containerStyle={COMMON.Button50}
                 text="Next"
@@ -111,6 +112,7 @@ const styles = StyleSheet.create({
         paddingRight: scale(32),
         paddingLeft: scale(32),
         width: '100%',
+        marginTop: -50,
     },
     signUpBtn: {
         alignSelf: 'center',

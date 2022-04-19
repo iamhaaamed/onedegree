@@ -43,7 +43,7 @@ export const COLORS = {
     Color240: '#FF9070',
     Color672: '#FDFCFE',
     Color206: '#F0F0F0',
-    Color718: '#1492E6',
+    // Color718: '#1492E6',
     Color525: '#2259DC',
     Color596: '#F9F9F9',
     Color758: '#999999',

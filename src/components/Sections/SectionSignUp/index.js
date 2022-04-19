@@ -53,12 +53,6 @@ const SectionSignUp = (props) => {
         CONSTANTS,
     } = useTheme();
 
-    const clickCounter = useRef(0);
-    const onPress = () => {
-        console.log(`Clicked! ${clickCounter.current}`);
-        clickCounter.current = clickCounter.current + 1;
-    };
-
     return (
         <View style={[styles.SectionSignUp, style]}>
             <MText textStyle={COMMON.TxtSectionSignUp1}>Sign up </MText>
@@ -85,7 +79,7 @@ const SectionSignUp = (props) => {
                 height={verticalScale(48)}
             />
             <MButton
-                onPress={() => navigate('Hiquestion2')}
+                onPress={() => navigate('Forgetpassword1')}
                 style={COMMON.ButtonRect10}
                 containerStyle={COMMON.Button9}
                 text="Sign up "

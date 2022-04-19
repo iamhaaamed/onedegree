@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     View,
     Text,
@@ -8,14 +8,18 @@ import {
     Image,
 } from 'react-native';
 import { scale, verticalScale, height } from 'utils';
-import { useState } from 'react';
 import useTheme from 'hooks/useTheme';
 import { COLORS } from 'constants/common';
 import { useRef } from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import {
+    CodeField,
+    Cursor,
+    useBlurOnFulfill,
+    useClearByFocusCell,
+} from 'react-native-confirmation-code-field';
 import {
     MIcon,
     MText,
@@ -41,6 +45,7 @@ import {
     MSlider,
 } from 'components/common';
 import { goBack, navigate } from 'navigation/methods';
+const CELL_COUNT = 6;
 const SectionVerification = (props) => {
     const { style } = props;
     const {
@@ -51,12 +56,12 @@ const SectionVerification = (props) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
-
-    const clickCounter = useRef(0);
-    const onPress = () => {
-        console.log(`Clicked! ${clickCounter.current}`);
-        clickCounter.current = clickCounter.current + 1;
-    };
+    const [value, setValue] = useState();
+    const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
+    const [prop, getCellOnLayoutHandler] = useClearByFocusCell({
+        value,
+        setValue,
+    });
 
     return (
         <View style={[styles.SectionVerification, style]}>
@@ -66,17 +71,35 @@ const SectionVerification = (props) => {
             <MText textStyle={COMMON.TxtSectionVerification84}>
                 The code was sent to sample@mail.com{' '}
             </MText>
-            <MInput
+            <CodeField
+                ref={ref}
+                {...prop}
+                value={value}
+                onChangeText={(txt) => setValue(txt)}
+                cellCount={CELL_COUNT}
+                rootStyle={styles.codeFieldRoot}
+                keyboardType="number-pad"
+                textContentType="oneTimeCode"
+                renderCell={({ index, symbol, isFocused }) => (
+                    <Text
+                        key={index}
+                        style={[styles.cell, isFocused && styles.focusCell]}
+                        onLayout={getCellOnLayoutHandler(index)}>
+                        {symbol || (isFocused ? <Cursor /> : null)}
+                    </Text>
+                )}
+            />
+            {/* <MInput
                 inputStyle={COMMON.InputRect86}
                 containerStyle={COMMON.Input85}
                 backgroundColor={COLORS.Color963}
                 height={verticalScale(48)}
-            />
+            /> */}
             <MText textStyle={COMMON.TxtSectionVerification87}>
                 Resend code{' '}
             </MText>
             <MButton
-                onPress={() => navigate('VerifyEmail')}
+                onPress={() => navigate('Hiquestion2')}
                 style={COMMON.ButtonRect89}
                 containerStyle={COMMON.Button88}
                 text="Verify"
@@ -112,6 +135,29 @@ const styles = StyleSheet.create({
         paddingRight: scale(32),
         paddingLeft: scale(32),
         width: '100%',
+    },
+    codeFieldRoot: {
+        width: '100%',
+        alignSelf: 'center',
+        marginBottom: scale(20),
+    },
+    cell: {
+        width: scale(40),
+        height: scale(45),
+        lineHeight: scale(40),
+        fontSize: 24,
+        borderWidth: 2,
+        borderColor: COLORS.Color321,
+        textAlign: 'center',
+        borderRadius: scale(10),
+        backgroundColor: COLORS.white,
+        color: COLORS.textOnSecondary,
+        alignSelf: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    focusCell: {
+        borderColor: COLORS.primary,
     },
 });
 export default SectionVerification;
