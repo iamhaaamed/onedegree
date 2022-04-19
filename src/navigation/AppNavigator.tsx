@@ -23,7 +23,9 @@ export default function AppNavigator() {
     //   (state: {isLoadingSearch: boolean}) => state.isLoadingSearch,
     // );
 
-    const { isUserLoggedIn, isOnboardingViewed } = authStore((state) => state);
+    const { isUserLoggedIn, isOnboardingViewed, ShowSplash } = authStore(
+        (state) => state,
+    );
 
     // useEffect(() => {
     //   queryClient.cancelQueries();
@@ -42,8 +44,16 @@ export default function AppNavigator() {
                     barStyle="dark-content"
                     backgroundColor={'transparent'}
                 />
+
                 {console.log('5555555555555', isOnboardingViewed)}
                 <Stack.Navigator>
+                    {/* {ShowSplash && (
+                        <Stack.Screen
+                            options={{ headerShown: false }}
+                            name="Splash"
+                            component={SplashScreen}
+                        />
+                    )} */}
                     {!isOnboardingViewed && (
                         <Stack.Screen
                             options={{ headerShown: false }}
@@ -52,7 +62,7 @@ export default function AppNavigator() {
                         />
                     )}
 
-                    {isUserLoggedIn ? (
+                    {!isUserLoggedIn ? (
                         <Stack.Screen
                             options={{ headerShown: false }}
                             name="MainStack"

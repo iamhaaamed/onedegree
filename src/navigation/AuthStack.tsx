@@ -50,16 +50,6 @@ export type AuthStackParamList = {
 const screens = [
     // {
     //     options: { headerShown: false },
-    //     name: 'Notification',
-    //     component: Notification1,
-    // },
-    // {
-    //     options: { headerShown: false },
-    //     name: 'Search',
-    //     component: Search,
-    // },
-    // {
-    //     options: { headerShown: false },
     //     name: 'HomeScreen',
     //     component: Home2,
     // },

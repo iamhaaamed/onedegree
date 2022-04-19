@@ -7,6 +7,7 @@ export type AuthState = {
     userId: number;
     isUserLoggedIn: boolean;
     isOnboardingViewed: boolean;
+    showSplash: boolean;
     setToken: (token: string) => void;
     setUserId: (userId: number) => void;
     setIsUserLoggedIn: (isUserLoggedIn: boolean) => void;
@@ -25,6 +26,8 @@ export const authStore = create<AuthState>(
             userId: 0,
             isUserLoggedIn: false,
             isOnboardingViewed: false,
+            showSplash: true,
+            setShowSplash: (showSplash: boolean) => set({ showSplash }),
             setToken: (token: string) => set({ token }),
             setUserId: (userId: number) => set({ userId }),
             setIsUserLoggedIn: (isUserLoggedIn: boolean) =>

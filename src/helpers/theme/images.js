@@ -24,5 +24,9 @@ export default function () {
         intro4: require('assets/images/intro4.png'),
         image7104: require('assets/images/image7104.jpeg'),
         hiBack: require('assets/images/hiBack.png'),
+        splash1: require('assets/images/1.png'),
+        splash2: require('assets/images/2.png'),
+        splash3: require('assets/images/3.png'),
+        splash4: require('assets/images/4.png'),
     };
 }
