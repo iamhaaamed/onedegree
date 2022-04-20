@@ -28,5 +28,6 @@ export default function () {
         splash2: require('assets/images/2.png'),
         splash3: require('assets/images/3.png'),
         splash4: require('assets/images/4.png'),
+        google: require('assets/images/google.png'),
     };
 }

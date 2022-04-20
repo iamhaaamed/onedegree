@@ -6,6 +6,7 @@ import {
     TouchableWithoutFeedback,
     StyleSheet,
     Image,
+    ImageBackground,
 } from 'react-native';
 import { scale, verticalScale, height } from 'utils';
 import { useState } from 'react';
@@ -61,23 +62,25 @@ const SectionRowSocialCenter = (props) => {
         <View style={[styles.SectionRowSocialCenter, style]}>
             <MButton
                 onPress={onPress}
-                style={COMMON.ButtonRect17}
+                // style={COMMON.ButtonRect21}
                 containerStyle={styles.centerIcon}
-                color={COLORS.Color148}
+                color={COLORS.transparent}
                 icon={{
-                    name: 'google',
-                    color: COLORS.Color963,
+                    name: 'apple',
+                    color: COLORS.textOnSecondary,
+                    size: scale(30),
                     Component: MaterialCommunityIcons,
                 }}
             />
             <MButton
                 onPress={onPress}
-                style={COMMON.ButtonRect19}
+                // style={COMMON.ButtonRect19}
                 containerStyle={styles.centerIcon}
-                color={COLORS.Color148}
+                color={COLORS.transparent}
                 icon={{
                     name: 'facebook',
-                    color: COLORS.Color963,
+                    color: COLORS.primary,
+                    size: scale(30),
                     Component: MaterialCommunityIcons,
                 }}
             />
@@ -85,12 +88,17 @@ const SectionRowSocialCenter = (props) => {
                 onPress={onPress}
                 style={COMMON.ButtonRect21}
                 containerStyle={styles.centerIcon}
-                color={COLORS.Color148}
-                icon={{
-                    name: 'apple',
-                    color: COLORS.Color963,
-                    Component: MaterialCommunityIcons,
+                color={COLORS.transparent}
+                backgroundImage={{
+                    source: IMAGES.google,
+                    imageStyle: styles.googleIcon,
+                    resizeMode: 'cover',
                 }}
+                // icon={{
+                //     name: 'google',
+                //     color: COLORS.Color963,
+                //     Component: MaterialCommunityIcons,
+                // }}
             />
         </View>
     );
@@ -102,10 +110,19 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         textAlign: 'center',
         justifyContent: 'space-between',
+        right: '3%',
     },
     centerIcon: {
         alignItems: 'center',
         justifyContent: 'center',
+        marginHorizontal: 5,
+    },
+    googleIcon: {
+        width: scale(25),
+        height: scale(25),
+        alignSelf: 'center',
+        marginTop: scale(10),
+        marginLeft: 10,
     },
 });
 export default SectionRowSocialCenter;

@@ -68,6 +68,7 @@ const MInput = ({
     const { COLORS, TYPOGRAPHY } = useTheme();
     const data = useRef({ value: '', multiline: true });
     const [state, setState] = useState(data.current);
+    const [currentBorder, setCurrentBorder] = useState(false);
     // const [showPass, setShowPass] = useState(false);
     const [isTyping, setIsTyping] = useState({
         name: '',
@@ -137,6 +138,7 @@ const MInput = ({
         change({
             multiline: textArea,
         });
+        setCurrentBorder(true);
     };
 
     const _handleBlur = () => {
@@ -161,7 +163,7 @@ const MInput = ({
             style={[
                 styles.containerDefault,
                 {
-                    height,
+                    // height,
                     backgroundColor: backgroundColor ?? COLORS.inputBackground,
                 },
                 containerStyle,
@@ -180,6 +182,7 @@ const MInput = ({
                     },
                     wrapperStyle,
                 ]}>
+                {console.log('multiline', textArea, multiline)}
                 <TextInput
                     multiline={multiline}
                     style={[
@@ -197,9 +200,12 @@ const MInput = ({
                             // borderWidth: 1,
                             borderColor: error
                                 ? COLORS.error
-                                : borderColor ?? 'transparent',
+                                : currentBorder
+                                ? COLORS.Color428
+                                : borderColor ?? COLORS.Color321,
                         },
                         inputStyle,
+                        multiline && { maxHeight: scale(300) },
                     ]}
                     onChangeText={_onChangeText}
                     onFocus={_handleFocus}
@@ -297,6 +303,7 @@ const styles = StyleSheet.create({
         // borderWidth: 1,
         // flex: 1,
         flexDirection: 'row-reverse',
+        // maxHeight: scale(800),
         // backgroundColor: 'red',
         // width: scale(120),
     },
@@ -312,7 +319,8 @@ const styles = StyleSheet.create({
         position: 'relative',
         zIndex: 10,
         paddingHorizontal: 10,
-        height: '100%',
+        // paddingBottom: 5,
+        // maxHeight: scale(800),
     },
     textArea: {
         textAlignVertical: 'top',
@@ -330,7 +338,7 @@ const styles = StyleSheet.create({
     label: {
         position: 'absolute',
         zIndex: -1,
-        height: '100%',
+        // height: '100%',
         paddingHorizontal: 0,
         justifyContent: 'center',
         flexDirection: 'row',

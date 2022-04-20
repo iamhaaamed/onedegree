@@ -104,18 +104,6 @@ const screens = [
         name: 'Gettingstarted3',
         component: Gettingstarted3,
     },
-
-    {
-        options: { headerShown: false },
-        name: 'ChatList',
-        component: Chat2,
-    },
-
-    {
-        options: { headerShown: false },
-        name: 'ChatScreen',
-        component: Chat3,
-    },
 ];
 
 export default function AuthStack() {

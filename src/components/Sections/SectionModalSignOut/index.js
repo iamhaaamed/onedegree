@@ -40,6 +40,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
+import { StackActions, useNavigation } from '@react-navigation/native';
 const SectionModal = (props) => {
     const { style, showModal } = props;
     const {
@@ -50,7 +51,7 @@ const SectionModal = (props) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
-
+    const navigation = useNavigation();
     return (
         <View style={[styles.SectionModal, style]}>
             <View style={styles.line} />
@@ -62,7 +63,11 @@ const SectionModal = (props) => {
 
                 <View style={[styles.SectionRowCenter, style]}>
                     <MButton
-                        onPress={() => showModal(true)}
+                        onPress={() =>
+                            navigation.dispatch(
+                                StackActions.replace('AuthStack'),
+                            )
+                        }
                         style={COMMON.ButtonRect114}
                         containerStyle={[COMMON.Button113, { elevation: 5 }]}
                         text="Yes"

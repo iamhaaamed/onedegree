@@ -63,8 +63,8 @@ const SectionSignIn = (props) => {
             <MText textStyle={COMMON.TxtSectionSignIn26}>Sign in </MText>
             <MText textStyle={COMMON.TxtSectionSignIn27}>Welcome back! </MText>
             <MInput
-                inputStyle={COMMON.InputRect30}
-                containerStyle={COMMON.Input28}
+                inputStyle={COMMON.InputRect86}
+                containerStyle={COMMON.Input85}
                 placeholder="Email Address"
                 placeholderColor={COLORS.Color280}
                 textStyle={COMMON.TextsInput29}
@@ -72,8 +72,8 @@ const SectionSignIn = (props) => {
                 height={verticalScale(48)}
             />
             <MInput
-                inputStyle={COMMON.InputRect33}
-                containerStyle={COMMON.Input31}
+                inputStyle={COMMON.InputRect86}
+                containerStyle={COMMON.Input85}
                 placeholder="Password"
                 placeholderColor={COLORS.Color280}
                 textStyle={COMMON.TextsInput32}

@@ -65,8 +65,8 @@ const SectionForgetPass = (props) => {
                 Please enter your email{' '}
             </MText>
             <MInput
-                inputStyle={COMMON.InputRect49}
-                containerStyle={COMMON.Input47}
+                inputStyle={COMMON.InputRect86}
+                containerStyle={COMMON.Input85}
                 placeholder="Info@example.com"
                 placeholderColor={COLORS.Color758}
                 textStyle={COMMON.TextsInput48}

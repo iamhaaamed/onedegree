@@ -38,13 +38,6 @@ export default function AppNavigator() {
                 />
 
                 <Stack.Navigator>
-                    {/* {ShowSplash && (
-                        <Stack.Screen
-                            options={{ headerShown: false }}
-                            name="Splash"
-                            component={SplashScreen}
-                        />
-                    )} */}
                     <Stack.Screen
                         options={{ headerShown: false }}
                         name="Splash"

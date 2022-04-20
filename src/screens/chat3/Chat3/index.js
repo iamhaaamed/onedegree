@@ -87,21 +87,28 @@ const Chat3 = createScreen(
                         {
                             justifyContent: 'center',
                             alignItems: 'center',
-                            maxHeight: scale(150),
+                            maxHeight: scale(250),
                         },
                     ]}>
                     <View style={{ width: '80%' }}>
                         <MInput
-                            // inputStyle={{ borderWidth: 0 }}
+                            // inputStyle={{ backgroundColor: 'red' }}
                             multiline={true}
+                            textArea={true}
                             containerStyle={COMMON.Input46}
                             placeholder="Lorem Ipsum Dolor Sit"
                             textStyle={COMMON.TextsInput47}
                             backgroundColor={COLORS.white}
-                            height={verticalScale(48)}
+                            // height={verticalScale(800)}
                             iconRight={{
                                 name: 'paperclip',
                                 color: COLORS.Color700,
+                                style: {
+                                    alignSelf: 'flex-end',
+                                    right: -15,
+                                    paddingLeft: 10,
+                                },
+                                size: scale(25),
                                 Component: MaterialCommunityIcons,
                             }}
                         />
