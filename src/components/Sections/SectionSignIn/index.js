@@ -43,7 +43,8 @@ import {
 import { SectionRowSocialCenter } from 'components/Sections';
 import { authStore } from '../../../store';
 import { navigate } from 'navigation/methods';
-const SectionSignIn = (props, navigation) => {
+import { StackActions, useNavigation } from '@react-navigation/native';
+const SectionSignIn = (props) => {
     const { style } = props;
     const {
         LAYOUT,
@@ -53,8 +54,10 @@ const SectionSignIn = (props, navigation) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
-    const { setIsUserLoggedIn } = authStore((state) => state);
 
+    const navigation = useNavigation();
+
+    const setToken = authStore((state) => state.setToken);
     return (
         <View style={[styles.SectionSignIn, style]}>
             <MText textStyle={COMMON.TxtSectionSignIn26}>Sign in </MText>
@@ -84,7 +87,10 @@ const SectionSignIn = (props, navigation) => {
                 Forgot password{' '}
             </MText>
             <MButton
-                onPress={() => setIsUserLoggedIn(true)}
+                onPress={() => {
+                    setToken('12345');
+                    navigation.dispatch(StackActions.replace('MainStack'));
+                }}
                 style={COMMON.ButtonRect36}
                 containerStyle={COMMON.Button35}
                 text="Sign in "

@@ -44,6 +44,7 @@ import {
 } from 'components/common';
 import { SectionRowCenter } from 'components/Sections';
 import { navigate } from 'navigation/methods';
+import { StackActions, useNavigation } from '@react-navigation/native';
 const intro6 = createScreen(
     () => {
         const {
@@ -69,9 +70,11 @@ const intro6 = createScreen(
         };
 
         const { setIsOnboardingViewed } = authStore((state) => state);
+        const navigation = useNavigation();
 
         const onPressDone = () => {
             setIsOnboardingViewed(true);
+            navigation.dispatch(StackActions.replace('AuthStack'));
         };
         const data = [
             {

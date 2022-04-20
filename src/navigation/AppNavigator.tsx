@@ -23,14 +23,6 @@ export default function AppNavigator() {
     //   (state: {isLoadingSearch: boolean}) => state.isLoadingSearch,
     // );
 
-    const { isUserLoggedIn, isOnboardingViewed, ShowSplash } = authStore(
-        (state) => state,
-    );
-
-    // useEffect(() => {
-    //   queryClient.cancelQueries();
-    // }, [isUserLoggedIn]);
-
     return (
         <>
             {/* <CustomSpinner
@@ -45,7 +37,6 @@ export default function AppNavigator() {
                     backgroundColor={'transparent'}
                 />
 
-                {console.log('5555555555555', isOnboardingViewed)}
                 <Stack.Navigator>
                     {/* {ShowSplash && (
                         <Stack.Screen
@@ -54,27 +45,29 @@ export default function AppNavigator() {
                             component={SplashScreen}
                         />
                     )} */}
-                    {!isOnboardingViewed && (
-                        <Stack.Screen
-                            options={{ headerShown: false }}
-                            name="Onboarding"
-                            component={OnboardingScreen}
-                        />
-                    )}
+                    <Stack.Screen
+                        options={{ headerShown: false }}
+                        name="Splash"
+                        component={SplashScreen}
+                    />
 
-                    {!isUserLoggedIn ? (
-                        <Stack.Screen
-                            options={{ headerShown: false }}
-                            name="MainStack"
-                            component={MainStack}
-                        />
-                    ) : (
-                        <Stack.Screen
-                            options={{ headerShown: false }}
-                            name="AuthStack"
-                            component={AuthStack}
-                        />
-                    )}
+                    <Stack.Screen
+                        options={{ headerShown: false }}
+                        name="Onboarding"
+                        component={OnboardingScreen}
+                    />
+
+                    <Stack.Screen
+                        options={{ headerShown: false }}
+                        name="MainStack"
+                        component={MainStack}
+                    />
+
+                    <Stack.Screen
+                        options={{ headerShown: false }}
+                        name="AuthStack"
+                        component={AuthStack}
+                    />
                 </Stack.Navigator>
             </NavigationContainer>
         </>

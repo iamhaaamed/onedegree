@@ -52,7 +52,7 @@ const SectionStart = (props) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
-    const { setIsUserLoggedIn } = authStore((state) => state);
+
     return (
         <View style={[styles.SectionStart, style]}>
             <MText textStyle={COMMON.TxtSectionStart143}>Well done! </MText>
@@ -60,7 +60,7 @@ const SectionStart = (props) => {
                 Time to start looking for your new career.{' '}
             </MText>
             <MButton
-                onPress={() => setIsUserLoggedIn(true)}
+                onPress={() => null}
                 style={COMMON.ButtonRect146}
                 containerStyle={COMMON.Button145}
                 text="Start Exploring"

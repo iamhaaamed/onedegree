@@ -42,8 +42,9 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { navigate } from 'navigation/methods';
+
 import { authStore } from '../../../store';
+import { StackActions, useNavigation } from '@react-navigation/native';
 const SplashScreen = createScreen(
     () => {
         const {
@@ -54,15 +55,21 @@ const SplashScreen = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
-        const { setShowSplash } = authStore((state) => state);
+        const { isOnboardingViewed, token } = authStore((state) => state);
+
+        const navigation = useNavigation();
+
         useEffect(() => {
-            (() => {
-                setTimeout(() => {
-                    // setShowSplash(true);
-                    navigate('Signin');
-                }, 3000);
-            })();
-        }, []);
+            setTimeout(() => {
+                if (token) {
+                    navigation.dispatch(StackActions.replace('MainStack'));
+                } else if (isOnboardingViewed) {
+                    navigation.dispatch(StackActions.replace('AuthStack'));
+                } else {
+                    navigation.dispatch(StackActions.replace('Onboarding'));
+                }
+            }, 3000);
+        }, [isOnboardingViewed, token, navigation]);
 
         return (
             <View style={styles.splash7}>

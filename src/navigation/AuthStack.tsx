@@ -53,11 +53,7 @@ const screens = [
     //     name: 'HomeScreen',
     //     component: Home2,
     // },
-    {
-        options: { headerShown: false },
-        name: 'Splash',
-        component: SplashScreen,
-    },
+
     {
         options: { headerShown: false },
         name: 'Signin',
