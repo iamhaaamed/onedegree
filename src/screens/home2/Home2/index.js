@@ -43,6 +43,7 @@ import {
     MSlider,
 } from 'components/common';
 import { SectionTophome, Sectionhome } from 'components/Sections';
+import Carousel from 'react-native-snap-carousel';
 const Home2 = createScreen(
     () => {
         const {
@@ -53,23 +54,37 @@ const Home2 = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
-
+        const data = [{}, {}, {}, {}];
+        const renderItem = ({ item, index }) => {
+            return <Sectionhome />;
+        };
         return (
             <View style={styles.Home2}>
                 <SectionTophome style={COMMON.EleHome265} />
-                <ScrollView>
-                    <View style={COMMON.SectionPaddingHome266}>
-                        <MText textStyle={COMMON.TxtHome267}>Hello,Jen! </MText>
-                        <MImage
-                            imageSource={IMAGES.image7104}
-                            style={COMMON.image68}
-                            // customWidth={scale(300)}
-                            // customHeight={scale(136)}
-                        />
-
-                        <Sectionhome />
-                    </View>
-                </ScrollView>
+                {/* <ScrollView> */}
+                <View style={COMMON.SectionPaddingHome266}>
+                    <MText textStyle={COMMON.TxtHome267}>Hello,Jen! </MText>
+                    <Carousel
+                        // ref={(c) => {
+                        //     this.carousel = c;
+                        // }}
+                        data={data}
+                        renderItem={({ item, index }) =>
+                            renderItem({ item, index })
+                        }
+                        sliderWidth={scale(320)}
+                        itemWidth={scale(300)}
+                        containerCustomStyle={styles.carouselContainer}
+                        inactiveSlideShift={100}
+                        // onSnapToItem={(index) => this.setState({ index })}
+                        // scrollInterpolator={scrollInterpolator}
+                        // slideInterpolatedStyle={animatedStyles}
+                        layout={'tinder'}
+                        layoutCardOffset={`18`}
+                        useScrollView={true}
+                    />
+                </View>
+                {/* </ScrollView> */}
             </View>
         );
     },
@@ -83,6 +98,14 @@ const styles = StyleSheet.create({
     Home2: {
         backgroundColor: COLORS.Color197,
         height: '100%',
+    },
+    carouselContainer: {
+        // marginTop: 10,
+        // marginBottom: 10,
+        alignSelf: 'center',
+        height: '100%',
+        width: scale(390),
+        // backgroundColor: 'red',
     },
 });
 export default Home2;

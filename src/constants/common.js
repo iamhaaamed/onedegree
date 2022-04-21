@@ -26,6 +26,7 @@ export const COLORS = {
     textOnSecondary: '#000000',
     success: '#28a745',
     error: '#dc3545',
+    lightText: '#212012',
     inputText: '#212529',
     placeholder: '#86888a',
     background: 'whitesmoke',

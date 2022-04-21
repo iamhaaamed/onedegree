@@ -60,15 +60,21 @@ const Sectionhome = (props) => {
 
     return (
         <View style={[styles.Sectionhome, style]}>
+            <MImage
+                imageSource={IMAGES.image7104}
+                style={COMMON.image68}
+                // customWidth={scale(300)}
+                // customHeight={scale(136)}
+            />
             {/* <View style={COMMON.SectionPaddingSectionhome69}> */}
             <MText textStyle={COMMON.TxtSectionhome70}>Photographer </MText>
             <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
-                <View style={{ width: '55%' }}>
+                <View style={{ width: '60%' }}>
                     <MText textStyle={COMMON.TxtSectionhome72}>
                         Possible Yearly Income{' '}
                     </MText>
                 </View>
-                <View style={{ width: '45%' }}>
+                <View style={{ width: '40%' }}>
                     <MText textStyle={COMMON.TxtSectionhome73}>$3000 </MText>
                 </View>
             </View>
@@ -171,11 +177,14 @@ const styles = StyleSheet.create({
         shadowRadius: 29,
         elevation: 1,
         width: '100%',
+        alignSelf: 'center',
         // height: verticalScale(378.77),
         borderTopLeftRadius: 0,
         borderTopRightRadius: 0,
         borderBottomRightRadius: 21,
         borderBottomLeftRadius: 21,
+        borderTopRightRadius: 21,
+        borderTopLeftRadius: 21,
     },
 });
 export default Sectionhome;

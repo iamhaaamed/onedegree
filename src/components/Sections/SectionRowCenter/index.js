@@ -41,7 +41,7 @@ import {
     MSlider,
 } from 'components/common';
 const SectionRowCenter = (props) => {
-    const { style, nextPress, backPress, intro } = props;
+    const { style, nextPress, backPress, intro, questions } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -71,7 +71,7 @@ const SectionRowCenter = (props) => {
                     intro && { backgroundColor: COLORS.white },
                 ]}
                 containerStyle={COMMON.Button110}
-                text="Next"
+                text={questions ? 'Save' : 'Next'}
                 textStyle={[
                     COMMON.TextsButton112,
                     intro && { color: COLORS.Color378 },

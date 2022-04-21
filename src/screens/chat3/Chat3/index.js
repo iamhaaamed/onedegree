@@ -42,8 +42,11 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { SectionTopchat } from 'components/Sections';
-import { SectionChat } from 'components/Sections';
+import {
+    SectionTopchat,
+    AttachFileModal,
+    SectionChat,
+} from 'components/Sections';
 const Chat3 = createScreen(
     () => {
         const {
@@ -109,6 +112,7 @@ const Chat3 = createScreen(
                                     paddingLeft: 10,
                                 },
                                 size: scale(25),
+                                onPress: () => <AttachFileModal />,
                                 Component: MaterialCommunityIcons,
                             }}
                         />

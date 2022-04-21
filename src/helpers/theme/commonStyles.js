@@ -1617,8 +1617,9 @@ export default function ({ COLORS }) {
             color: COLORS.Color786,
         },
         image68: {
-            width: scale(312),
+            width: scale(300),
             height: scale(136),
+            alignSelf: 'center',
             borderTopLeftRadius: 21,
             borderTopRightRadius: 21,
             borderBottomRightRadius: 0,
@@ -1738,7 +1739,7 @@ export default function ({ COLORS }) {
             color: COLORS.Color726,
         },
         TxtMoreInfo213: {
-            marginBottom: verticalScale(16),
+            marginBottom: verticalScale(10),
             fontSize: verticalScale(18),
             fontFamily: 'Muli',
             lineHeight: 29,

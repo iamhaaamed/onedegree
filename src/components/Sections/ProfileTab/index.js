@@ -15,7 +15,7 @@ import { useRef } from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import {
     MIcon,
@@ -106,10 +106,11 @@ const ProfileTab = (props) => {
                             },
                         ]}
                         iconLeft={{
-                            name: 'Questions',
+                            name: 'question',
                             color: COLORS.Color267,
                             size: scale(23),
-                            Component: FontAwesome5,
+                            style: { marginRight: 2 },
+                            Component: FontAwesome,
                         }}
                         gradient={
                             page == 'profilePage'

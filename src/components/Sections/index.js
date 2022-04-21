@@ -22,3 +22,4 @@ export { default as SectionTop01 } from './SectionTop01';
 export { default as SectionEvent } from './SectionEvent';
 export { default as SectionProgram } from './SectionProgram';
 export { default as SectionChat } from './SectionChat';
+export { default as AttachFileModal } from './AttachFileModal';

@@ -118,7 +118,7 @@ const ProfileQuestion5 = createScreen(
                             </MText>
                         </MCheckBox>
                     </View>
-                    <SectionRowCenter backPress={() => goBack()} />
+                    <SectionRowCenter backPress={() => goBack()} questions />
                 </ScrollView>
             </View>
         );
