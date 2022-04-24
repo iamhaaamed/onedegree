@@ -2081,5 +2081,19 @@ export default function ({ COLORS }) {
             width: scale(32),
             height: verticalScale(32),
         },
+        TxtSectionText13: {
+            fontSize: verticalScale(16),
+            fontFamily: 'Muli',
+            fontWeight: 'bold',
+            color: COLORS.Color209,
+            alignSelf: 'center',
+            lineHeight: scale(30),
+        },
+        TxtSectionText38: {
+            fontSize: verticalScale(15),
+            fontFamily: 'Muli',
+            fontWeight: 'bold',
+            color: COLORS.Color289,
+        },
     });
 }

@@ -23,3 +23,7 @@ export { default as SectionEvent } from './SectionEvent';
 export { default as SectionProgram } from './SectionProgram';
 export { default as SectionChat } from './SectionChat';
 export { default as AttachFileModal } from './AttachFileModal';
+export { default as SectionText1 } from './SectionText1';
+export { default as SectionText2 } from './SectionText2';
+export { default as SectionText3 } from './SectionText3';
+export { default as SectionHolder } from './SectionHolder';

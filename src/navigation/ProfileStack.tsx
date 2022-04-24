@@ -56,6 +56,7 @@ export default function ProfileStack({
 }) {
     useLayoutEffect(() => {
         const tabHiddenRoutes = [
+            'Settings',
             'TermsOfService',
             'PrivacyPolicy',
             'ProfileQuestion5',

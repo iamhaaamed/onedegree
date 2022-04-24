@@ -42,6 +42,7 @@ import {
 } from 'components/common';
 import { navigate } from 'navigation/methods';
 import { authStore } from '../../../store';
+import { StackActions, useNavigation } from '@react-navigation/native';
 const SectionStart = (props) => {
     const { style } = props;
     const {
@@ -52,7 +53,7 @@ const SectionStart = (props) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
-
+    const navigation = useNavigation();
     return (
         <View style={[styles.SectionStart, style]}>
             <MText textStyle={COMMON.TxtSectionStart143}>Well done! </MText>
@@ -60,7 +61,9 @@ const SectionStart = (props) => {
                 Time to start looking for your new career.{' '}
             </MText>
             <MButton
-                onPress={() => null}
+                onPress={() =>
+                    navigation.dispatch(StackActions.replace('MainStack'))
+                }
                 style={COMMON.ButtonRect146}
                 containerStyle={COMMON.Button145}
                 text="Start Exploring"

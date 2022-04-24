@@ -158,7 +158,7 @@ const Save = createScreen(
 );
 const styles = StyleSheet.create({
     Save1: {
-        backgroundColor: COLORS.Color875,
+        backgroundColor: COLORS.Color197,
         height: '100%',
     },
     action: {
