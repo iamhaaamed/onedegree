@@ -7,7 +7,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { COLORS } from 'constants/common';
 import { verticalScale, scale } from 'utils';
 import { MStatusBar, MButton, MText, MIcon } from 'components/common';
-
+import { navigate } from 'navigation/methods';
 const SectionText1 = (props) => {
     const { style } = props;
     const {

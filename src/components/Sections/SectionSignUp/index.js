@@ -69,11 +69,11 @@ const SectionSignUp = (props) => {
                 height={verticalScale(48)}
             />
             <MInput
-                inputStyle={COMMON.InputRect8}
-                containerStyle={COMMON.Input6}
+                inputStyle={COMMON.InputRect5}
+                containerStyle={COMMON.Input3}
                 placeholder="Password"
                 placeholderColor={COLORS.Color280}
-                textStyle={COMMON.TextsInput7}
+                textStyle={COMMON.TextsInput4}
                 secureTextEntry
                 backgroundColor={COLORS.Color963}
                 height={verticalScale(48)}

@@ -63,7 +63,7 @@ const Gettingstarted3 = createScreen(
                         imageSource={IMAGES.image2754}
                         style={COMMON.image142}
                         customWidth={scale(390)}
-                        customHeight={scale(452.02)}
+                        customHeight={scale(400)}
                     />
 
                     <SectionStart style={COMMON.EleGettingstarted3148} />

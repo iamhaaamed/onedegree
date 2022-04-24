@@ -601,7 +601,7 @@ export default function ({ COLORS }) {
             shadowOffset: { width: 0, height: 0 },
             shadowRadius: 28,
             width: scale(326),
-            height: scale(417),
+            height: scale(326),
         },
         TxtSectionVerification83: {
             marginBottom: verticalScale(8),
@@ -703,7 +703,7 @@ export default function ({ COLORS }) {
         image94: {
             marginBottom: verticalScale(78),
             width: scale(390),
-            height: scale(494),
+            height: scale(455),
         },
         TxtSectionQuestion95: {
             marginBottom: verticalScale(16),
@@ -767,7 +767,7 @@ export default function ({ COLORS }) {
             paddingTop: verticalScale(0),
             paddingRight: scale(32),
             paddingLeft: scale(32),
-            marginBottom: verticalScale(178),
+            marginBottom: verticalScale(100),
         },
         Txtquestion6104: {
             marginBottom: verticalScale(36),
@@ -1080,7 +1080,7 @@ export default function ({ COLORS }) {
             shadowOffset: { width: 0, height: 0 },
             shadowRadius: 28,
             width: scale(390),
-            height: scale(452.02),
+            height: scale(400),
         },
         TxtSectionStart143: {
             marginBottom: verticalScale(16),
@@ -1293,7 +1293,7 @@ export default function ({ COLORS }) {
             marginBottom: verticalScale(410),
         },
         RowItemSearch6: {
-            marginBottom: verticalScale(34),
+            marginBottom: verticalScale(5),
         },
         InputRect9: {
             // paddingRight: scale(145),
@@ -2026,7 +2026,7 @@ export default function ({ COLORS }) {
         },
         hiBack: {
             width: scale(390),
-            height: scale(335),
+            height: scale(340),
             position: 'absolute',
             bottom: 0,
         },

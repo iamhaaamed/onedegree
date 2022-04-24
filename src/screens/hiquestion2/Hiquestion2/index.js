@@ -56,22 +56,22 @@ const Hiquestion2 = createScreen(
 
         return (
             <View style={styles.Hiquestion2}>
-                <ScrollView>
-                    <MImage
-                        imageSource={IMAGES.image3013}
-                        style={COMMON.image94}
-                        customWidth={scale(390)}
-                        customHeight={scale(494)}
-                    />
-                    <MImage
-                        imageSource={IMAGES.hiBack}
-                        style={COMMON.hiBack}
-                        customWidth={scale(390)}
-                        customHeight={scale(494)}
-                    />
+                {/* <ScrollView> */}
+                <MImage
+                    imageSource={IMAGES.image3013}
+                    style={COMMON.image94}
+                    customWidth={scale(390)}
+                    customHeight={scale(455)}
+                />
+                <MImage
+                    imageSource={IMAGES.hiBack}
+                    style={COMMON.hiBack}
+                    customWidth={scale(390)}
+                    customHeight={scale(300)}
+                />
 
-                    <SectionQuestion style={COMMON.EleHiquestion2100} />
-                </ScrollView>
+                <SectionQuestion style={COMMON.EleHiquestion2100} />
+                {/* </ScrollView> */}
             </View>
         );
     },

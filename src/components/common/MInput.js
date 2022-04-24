@@ -63,6 +63,7 @@ const MInput = ({
     skeletonOptions,
     iconRight,
     iconLeft,
+    dolorSign,
     ...props
 }) => {
     const { COLORS, TYPOGRAPHY } = useTheme();
@@ -249,7 +250,7 @@ const MInput = ({
         ) : null} */}
 
                 {iconRight && iconRight.name ? (
-                    <View style={styles.button}>
+                    <View style={dolorSign ? styles.button2 : styles.button}>
                         <MTouchable
                             type="native"
                             onPress={iconRight.onPress}
@@ -264,7 +265,15 @@ const MInput = ({
                         </MTouchable>
                     </View>
                 ) : null}
-
+                {dolorSign && (
+                    <View style={styles.button}>
+                        <MText
+                            textStyle={styles.dolor}
+                            color={COLORS.textOnSecondary}>
+                            {dolorSign}
+                        </MText>
+                    </View>
+                )}
                 {prefix && (
                     <View style={styles.prefix}>
                         <MText
@@ -326,6 +335,11 @@ const styles = StyleSheet.create({
         textAlignVertical: 'top',
         paddingTop: 10,
     },
+    dolor: {
+        alignSelf: 'center',
+        fontSize: scale(15),
+        paddingHorizontal: scale(10),
+    },
     ltr: {
         textAlign: 'left',
     },
@@ -360,6 +374,13 @@ const styles = StyleSheet.create({
         zIndex: 2000,
         position: 'absolute',
         right: 0,
+        padding: 10,
+        marginLeft: 5,
+    },
+    button2: {
+        zIndex: 2000,
+        position: 'absolute',
+        right: 25,
         padding: 10,
         marginLeft: 5,
     },

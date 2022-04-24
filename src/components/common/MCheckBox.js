@@ -15,9 +15,9 @@ const MCheckBox = ({
     iconName = 'check',
     iconColor = '#fff',
     iconContainerStyle,
-    activeBorderColor = '#000',
-    deActiveBorderColor = '#000',
-    activeBackgroundColor = '#000',
+    activeBorderColor = '#707070',
+    deActiveBorderColor = '#707070',
+    activeBackgroundColor = '#EF6038',
     deActiveBackgroundColor = '#fff',
     IconComponent = MaterialIcons,
 }) => {

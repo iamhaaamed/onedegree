@@ -97,6 +97,12 @@ const question7 = createScreen(
                                 textStyle={COMMON.TextsInput125}
                                 backgroundColor={COLORS.Color963}
                                 height={verticalScale(48)}
+                                iconRight={{
+                                    name: 'chevron-down',
+                                    color: COLORS.Color267,
+                                    size: scale(20),
+                                }}
+                                dolorSign={'$'}
                             />
                         </View>
                         <MText textStyle={COMMON.Txtquestion7127}>Type </MText>

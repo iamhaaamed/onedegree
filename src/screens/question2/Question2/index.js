@@ -89,6 +89,7 @@ const question2 = createScreen(
                             Select all that apply{' '}
                         </MText>
                         <MCheckBox
+                            iconContainerStyle={{ borderRadius: 5 }}
                             isChecked={isChecked}
                             setIsChecked={() => setIsChecked((p) => !p)}
                             style={COMMON.CheckBox61}>
@@ -97,6 +98,7 @@ const question2 = createScreen(
                             </MText>
                         </MCheckBox>
                         <MCheckBox
+                            iconContainerStyle={{ borderRadius: 5 }}
                             isChecked={isChecked}
                             setIsChecked={() => setIsChecked((p) => !p)}
                             style={COMMON.CheckBox63}>
@@ -105,6 +107,7 @@ const question2 = createScreen(
                             </MText>
                         </MCheckBox>
                         <MCheckBox
+                            iconContainerStyle={{ borderRadius: 5 }}
                             isChecked={isChecked}
                             setIsChecked={() => setIsChecked((p) => !p)}
                             style={COMMON.CheckBox65}>
@@ -113,6 +116,7 @@ const question2 = createScreen(
                             </MText>
                         </MCheckBox>
                         <MCheckBox
+                            iconContainerStyle={{ borderRadius: 5 }}
                             isChecked={isChecked}
                             setIsChecked={() => setIsChecked((p) => !p)}
                             style={COMMON.CheckBox67}>
@@ -121,6 +125,7 @@ const question2 = createScreen(
                             </MText>
                         </MCheckBox>
                         <MCheckBox
+                            iconContainerStyle={{ borderRadius: 5 }}
                             isChecked={isChecked}
                             setIsChecked={() => setIsChecked((p) => !p)}
                             style={COMMON.CheckBox69}>
@@ -129,6 +134,7 @@ const question2 = createScreen(
                             </MText>
                         </MCheckBox>
                         <MCheckBox
+                            iconContainerStyle={{ borderRadius: 5 }}
                             isChecked={isChecked}
                             setIsChecked={() => setIsChecked((p) => !p)}
                             style={COMMON.CheckBox71}>
@@ -137,6 +143,7 @@ const question2 = createScreen(
                             </MText>
                         </MCheckBox>
                         <MCheckBox
+                            iconContainerStyle={{ borderRadius: 5 }}
                             isChecked={isChecked}
                             setIsChecked={() => setIsChecked((p) => !p)}
                             style={COMMON.CheckBox73}>
@@ -145,6 +152,7 @@ const question2 = createScreen(
                             </MText>
                         </MCheckBox>
                         <MCheckBox
+                            iconContainerStyle={{ borderRadius: 5 }}
                             isChecked={isChecked}
                             setIsChecked={() => setIsChecked((p) => !p)}
                             style={COMMON.CheckBox75}>
@@ -153,6 +161,7 @@ const question2 = createScreen(
                             </MText>
                         </MCheckBox>
                         <MCheckBox
+                            iconContainerStyle={{ borderRadius: 5 }}
                             isChecked={isChecked}
                             setIsChecked={() => setIsChecked((p) => !p)}
                             style={COMMON.CheckBox77}>

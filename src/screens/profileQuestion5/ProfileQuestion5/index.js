@@ -70,7 +70,7 @@ const ProfileQuestion5 = createScreen(
                             isChecked={isChecked}
                             setIsChecked={() => setIsChecked((p) => !p)}
                             activeBorderColor={COLORS.Color718}
-                            activeBackgroundColor={COLORS.Color718}
+                            activeBackgroundColor={COLORS.Color424}
                             style={COMMON.CheckBox41}>
                             <MText textStyle={COMMON.TextsCheckBox42}>
                                 Over an hour
@@ -80,7 +80,7 @@ const ProfileQuestion5 = createScreen(
                             isChecked={isChecked}
                             setIsChecked={() => setIsChecked((p) => !p)}
                             activeBorderColor={COLORS.Color718}
-                            activeBackgroundColor={COLORS.Color718}
+                            activeBackgroundColor={COLORS.Color424}
                             style={COMMON.CheckBox41}>
                             <MText textStyle={COMMON.TextsCheckBox44}>
                                 {' '}
@@ -91,7 +91,7 @@ const ProfileQuestion5 = createScreen(
                             isChecked={isChecked}
                             setIsChecked={() => setIsChecked((p) => !p)}
                             activeBorderColor={COLORS.Color718}
-                            activeBackgroundColor={COLORS.Color718}
+                            activeBackgroundColor={COLORS.Color424}
                             style={COMMON.CheckBox41}>
                             <MText textStyle={COMMON.TextsCheckBox44}>
                                 Up to 45 minutes
@@ -101,7 +101,7 @@ const ProfileQuestion5 = createScreen(
                             isChecked={isChecked}
                             setIsChecked={() => setIsChecked((p) => !p)}
                             activeBorderColor={COLORS.Color718}
-                            activeBackgroundColor={COLORS.Color718}
+                            activeBackgroundColor={COLORS.Color424}
                             style={COMMON.CheckBox41}>
                             <MText textStyle={COMMON.TextsCheckBox44}>
                                 Up to 20 minutes
@@ -111,7 +111,7 @@ const ProfileQuestion5 = createScreen(
                             isChecked={isChecked}
                             setIsChecked={() => setIsChecked((p) => !p)}
                             activeBorderColor={COLORS.Color718}
-                            activeBackgroundColor={COLORS.Color718}
+                            activeBackgroundColor={COLORS.Color424}
                             style={COMMON.CheckBox41}>
                             <MText textStyle={COMMON.TextsCheckBox44}>
                                 Remote only

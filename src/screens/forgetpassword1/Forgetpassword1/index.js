@@ -61,7 +61,7 @@ const Forgetpassword1 = createScreen(
                         imageSource={IMAGES.image1335}
                         style={COMMON.image82}
                         customWidth={scale(326)}
-                        customHeight={scale(417)}
+                        customHeight={scale(326)}
                     />
 
                     <SectionVerification />
