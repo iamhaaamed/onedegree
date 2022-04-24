@@ -79,6 +79,8 @@ export const COLORS = {
     Color756: '#2E3A59',
     backMore: '#F3F3F3',
     actionLine: '#3A3A3A',
+    Color647: '#ACACAC',
+    Color537: '#EF461C',
 };
 
 export const NAVIGATION_COLORS = {

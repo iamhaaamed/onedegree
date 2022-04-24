@@ -24,3 +24,4 @@ export * from './moreInfo2';
 export * from './termsofService';
 export * from './privacyPolicy';
 export * from './profileQuestion5';
+export * from './save';

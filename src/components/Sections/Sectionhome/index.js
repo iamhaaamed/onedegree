@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 15 },
         shadowRadius: 29,
         elevation: 1,
-        width: '100%',
+        width: scale(300),
         alignSelf: 'center',
         // height: verticalScale(378.77),
         borderTopLeftRadius: 0,

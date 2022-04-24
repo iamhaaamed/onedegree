@@ -12,6 +12,7 @@ import ExploreStack from './ExploreStack';
 import SearchStack from './SearchStack';
 import HomeStack from './HomeStack';
 import ProfileStack from './ProfileStack';
+import FavoriteStack from './FavoriteStack';
 import { MIcon } from 'components/common';
 
 const Tab = createBottomTabNavigator();
@@ -132,7 +133,7 @@ const MainTabs = () => {
             />
             <Tab.Screen
                 name="Favorite"
-                component={SearchStack}
+                component={FavoriteStack}
                 options={{
                     tabBarLabel: '',
                     headerShown: false,

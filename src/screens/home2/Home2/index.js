@@ -17,7 +17,7 @@ import {
     DrawerContentScrollView,
     DrawerToggleButton,
 } from '@react-navigation/drawer';
-
+import { scrollInterpolators, animatedStyles } from './animations';
 import {
     MIcon,
     MText,
@@ -72,16 +72,29 @@ const Home2 = createScreen(
                         renderItem={({ item, index }) =>
                             renderItem({ item, index })
                         }
-                        sliderWidth={scale(320)}
+                        // sliderWidth={scale(320)}
                         itemWidth={scale(300)}
+                        itemHeight={scale(500)}
+                        sliderHeight={scale(570)}
                         containerCustomStyle={styles.carouselContainer}
-                        inactiveSlideShift={100}
+                        contentContainerCustomStyle={{
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                        }}
+                        // inactiveSlideShift={100}
                         // onSnapToItem={(index) => this.setState({ index })}
                         // scrollInterpolator={scrollInterpolator}
                         // slideInterpolatedStyle={animatedStyles}
                         layout={'tinder'}
                         layoutCardOffset={`18`}
+                        // scrollInterpolator={
+                        //     scrollInterpolators[`scrollInterpolator${1}`]
+                        // }
+                        // slideInterpolatedStyle={
+                        //     animatedStyles[`animatedStyles${1}`]
+                        // }
                         useScrollView={true}
+                        vertical={true}
                     />
                 </View>
                 {/* </ScrollView> */}
@@ -100,12 +113,10 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     carouselContainer: {
-        // marginTop: 10,
-        // marginBottom: 10,
         alignSelf: 'center',
-        height: '100%',
-        width: scale(390),
-        // backgroundColor: 'red',
+
+        // height: '50%',
+        width: scale(370),
     },
 });
 export default Home2;
