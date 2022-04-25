@@ -4,19 +4,19 @@ import React from 'react';
 
 // import {ChevronBackButton} from '~/components';
 // import {DriveLength, DriveStyle, DriveType, Route} from '~/generated/graphql';
-import { ExploreScreen } from 'screens';
+import { Programs } from 'screens';
 
 const Stack = createStackNavigator();
 
 export type ExploreStackParamList = {
-    ExploreScreen: undefined;
+    Programs: undefined;
 };
 
 const screens = [
     {
         options: { headerShown: false },
-        name: 'Explore',
-        component: ExploreScreen,
+        name: 'Programs',
+        component: Programs,
     },
 ];
 
