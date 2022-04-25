@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { colors } from 'react-native-elements';
 import { scale, verticalScale } from 'utils';
 export default function ({ COLORS }) {
     return StyleSheet.create({
@@ -2094,6 +2095,43 @@ export default function ({ COLORS }) {
             fontFamily: 'Muli',
             fontWeight: 'bold',
             color: COLORS.Color289,
+        },
+        DropDown3: {
+            width: '90%',
+            alignSelf: 'center',
+            marginVertical: 10,
+            backgroundColor: COLORS.white,
+            borderRadius: 12,
+        },
+        TextsDropDown5: {
+            paddingVertical: 0,
+            fontSize: verticalScale(16),
+            fontFamily: 'Muli',
+            fontWeight: 'bold',
+            color: COLORS.Color209,
+        },
+        DropDownRect4: {
+            paddingBottom: verticalScale(12),
+            paddingTop: verticalScale(11),
+            paddingRight: scale(12),
+            paddingLeft: scale(12),
+            backgroundColor: COLORS.white,
+            shadowColor: 'rgba(140,140,140,0.16)',
+            shadowOffset: { width: 0, height: 0 },
+            shadowRadius: 28,
+            textAlign: 'center',
+            justifyContent: 'center',
+            height: verticalScale(48),
+            borderRadius: 12,
+            justifyContent: 'space-between',
+        },
+        hideText: {
+            paddingVertical: scale(12),
+            paddingHorizontal: scale(16),
+            fontSize: verticalScale(16),
+            fontFamily: 'Muli',
+            color: COLORS.Color209,
+            lineHeight: scale(25),
         },
     });
 }

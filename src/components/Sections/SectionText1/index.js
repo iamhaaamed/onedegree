@@ -40,7 +40,7 @@ const SectionText1 = (props) => {
                 iconColor={COLORS.Color424}
                 iconSize={scale(13)}
                 iconStyle={{ marginRight: scale(10) }}
-                onPress={() => navigate('TermsOfService')}>
+                onPress={() => navigate('FAQ')}>
                 {' '}
                 FAQs{' '}
             </MText>
