@@ -30,3 +30,8 @@ export { default as SectionHolder } from './SectionHolder';
 export { default as SectionItem } from './SectionItem';
 export { default as SectionText } from './SectionText';
 export { default as SectionItemQuestion } from './SectionItemQuestion';
+export { default as Question5 } from './SectionQuestion5';
+export { default as Question1 } from './Question1';
+export { default as Question2 } from './Question2';
+export { default as Question3 } from './Question3';
+export { default as Question4 } from './Question4';

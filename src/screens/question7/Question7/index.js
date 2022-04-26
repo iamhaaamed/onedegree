@@ -42,7 +42,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { SectionRowCenter, SectionTop } from 'components/Sections';
+import { SectionRowCenter, SectionTop, Question2 } from 'components/Sections';
 import { goBack, navigate } from 'navigation/methods';
 const question7 = createScreen(
     () => {
@@ -82,54 +82,7 @@ const question7 = createScreen(
                     />
 
                     <View style={COMMON.SectionPaddingquestion7120}>
-                        <MText textStyle={COMMON.Txtquestion7121}>
-                            How much do you want to make?{' '}
-                        </MText>
-                        <View style={COMMON.SectionPaddingquestion7122}>
-                            <MText textStyle={COMMON.Txtquestion7123}>
-                                Amount{' '}
-                            </MText>
-                            <MInput
-                                inputStyle={COMMON.InputRect126}
-                                containerStyle={COMMON.Input124}
-                                placeholder="Please enter Amount"
-                                placeholderColor={COLORS.Color267}
-                                textStyle={COMMON.TextsInput125}
-                                backgroundColor={COLORS.Color963}
-                                height={verticalScale(48)}
-                                iconRight={{
-                                    name: 'chevron-down',
-                                    color: COLORS.Color267,
-                                    size: scale(20),
-                                }}
-                                dolorSign={'$'}
-                            />
-                        </View>
-                        <MText textStyle={COMMON.Txtquestion7127}>Type </MText>
-                        <MCheckBox
-                            isChecked={isChecked}
-                            setIsChecked={() => setIsChecked((p) => !p)}
-                            style={COMMON.CheckBox128}>
-                            <MText textStyle={COMMON.TextsCheckBox129}>
-                                Hourly
-                            </MText>
-                        </MCheckBox>
-                        <MCheckBox
-                            isChecked={isChecked}
-                            setIsChecked={() => setIsChecked((p) => !p)}
-                            style={COMMON.CheckBox130}>
-                            <MText textStyle={COMMON.TextsCheckBox131}>
-                                Monthly
-                            </MText>
-                        </MCheckBox>
-                        <MCheckBox
-                            isChecked={isChecked}
-                            setIsChecked={() => setIsChecked((p) => !p)}
-                            style={COMMON.CheckBox132}>
-                            <MText textStyle={COMMON.TextsCheckBox133}>
-                                Annually
-                            </MText>
-                        </MCheckBox>
+                        <Question2 />
                     </View>
                     <SectionRowCenter
                         backPress={() => goBack()}

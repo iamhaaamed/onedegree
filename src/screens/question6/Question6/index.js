@@ -44,7 +44,7 @@ import {
     MSlider,
 } from 'components/common';
 import { SectionTop } from 'components/Sections';
-import { SectionRowCenter } from 'components/Sections';
+import { SectionRowCenter, Question3 } from 'components/Sections';
 const question6 = createScreen(
     () => {
         const {
@@ -74,25 +74,7 @@ const question6 = createScreen(
                     />
 
                     <View style={COMMON.SectionPaddingquestion6103}>
-                        <MText textStyle={COMMON.Txtquestion6104}>
-                            Where Do You Currently Live?{' '}
-                        </MText>
-                        <MText textStyle={COMMON.Txtquestion6105}>
-                            ZIP Code*{' '}
-                        </MText>
-                        <MInput
-                            inputStyle={COMMON.InputRect108}
-                            containerStyle={COMMON.Input106}
-                            placeholder="Please enter ZIP Code"
-                            placeholderColor={COLORS.Color267}
-                            textStyle={COMMON.TextsInput107}
-                            backgroundColor={COLORS.Color963}
-                            height={verticalScale(48)}
-                        />
-                        <MText textStyle={COMMON.Txtquestion6109}>
-                            ! Entering the zip code will help us to training
-                            programs{' '}
-                        </MText>
+                        <Question3 />
                     </View>
                     <SectionRowCenter
                         backPress={() => goBack()}

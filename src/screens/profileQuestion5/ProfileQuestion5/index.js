@@ -42,11 +42,19 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { SectionTop01 } from 'components/Sections';
-import { SectionRowCenter } from 'components/Sections';
+import {
+    Question1,
+    Question3,
+    SectionTop01,
+    Question2,
+    SectionRowCenter,
+    Question4,
+    Question5,
+} from 'components/Sections';
+
 import { goBack } from 'navigation/methods';
 const ProfileQuestion5 = createScreen(
-    () => {
+    ({ navigation, route }) => {
         const {
             LAYOUT,
             GUTTERS,
@@ -57,66 +65,30 @@ const ProfileQuestion5 = createScreen(
         } = useTheme();
 
         const [isChecked, setIsChecked] = useState(false);
-
+        const SelectQuestion = () => {
+            switch (route?.params?.code) {
+                case 1:
+                    return <Question1 />;
+                case 2:
+                    return <Question2 />;
+                case 3:
+                    return <Question3 />;
+                case 4:
+                    return <Question4 />;
+                default:
+                    return <Question5 />;
+            }
+        };
         return (
             <View style={styles.Question5}>
                 <ScrollView>
                     <SectionTop01 title="Questions" />
-                    <View style={COMMON.SectionPaddingQuestion539}>
-                        <MText textStyle={COMMON.TxtQuestion540}>
-                            How far are you willing to travel to get certified?{' '}
-                        </MText>
-                        <MCheckBox
-                            isChecked={isChecked}
-                            setIsChecked={() => setIsChecked((p) => !p)}
-                            activeBorderColor={COLORS.Color718}
-                            activeBackgroundColor={COLORS.Color424}
-                            style={COMMON.CheckBox41}>
-                            <MText textStyle={COMMON.TextsCheckBox42}>
-                                Over an hour
-                            </MText>
-                        </MCheckBox>
-                        <MCheckBox
-                            isChecked={isChecked}
-                            setIsChecked={() => setIsChecked((p) => !p)}
-                            activeBorderColor={COLORS.Color718}
-                            activeBackgroundColor={COLORS.Color424}
-                            style={COMMON.CheckBox41}>
-                            <MText textStyle={COMMON.TextsCheckBox44}>
-                                {' '}
-                                Up to 1 hour
-                            </MText>
-                        </MCheckBox>
-                        <MCheckBox
-                            isChecked={isChecked}
-                            setIsChecked={() => setIsChecked((p) => !p)}
-                            activeBorderColor={COLORS.Color718}
-                            activeBackgroundColor={COLORS.Color424}
-                            style={COMMON.CheckBox41}>
-                            <MText textStyle={COMMON.TextsCheckBox44}>
-                                Up to 45 minutes
-                            </MText>
-                        </MCheckBox>
-                        <MCheckBox
-                            isChecked={isChecked}
-                            setIsChecked={() => setIsChecked((p) => !p)}
-                            activeBorderColor={COLORS.Color718}
-                            activeBackgroundColor={COLORS.Color424}
-                            style={COMMON.CheckBox41}>
-                            <MText textStyle={COMMON.TextsCheckBox44}>
-                                Up to 20 minutes
-                            </MText>
-                        </MCheckBox>
-                        <MCheckBox
-                            isChecked={isChecked}
-                            setIsChecked={() => setIsChecked((p) => !p)}
-                            activeBorderColor={COLORS.Color718}
-                            activeBackgroundColor={COLORS.Color424}
-                            style={COMMON.CheckBox41}>
-                            <MText textStyle={COMMON.TextsCheckBox44}>
-                                Remote only
-                            </MText>
-                        </MCheckBox>
+                    <View
+                        style={[
+                            COMMON.SectionPaddingSave15,
+                            { marginTop: scale(30) },
+                        ]}>
+                        {SelectQuestion()}
                     </View>
                     <SectionRowCenter backPress={() => goBack()} questions />
                 </ScrollView>

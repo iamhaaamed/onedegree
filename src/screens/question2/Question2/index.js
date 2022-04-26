@@ -43,7 +43,7 @@ import {
     MSlider,
 } from 'components/common';
 import { navigate } from 'navigation/methods';
-import { SectionTop } from 'components/Sections';
+import { SectionTop, Question1 } from 'components/Sections';
 const question2 = createScreen(
     () => {
         const {
@@ -82,93 +82,7 @@ const question2 = createScreen(
                     />
 
                     <View style={COMMON.SectionPaddingquestion258}>
-                        <MText textStyle={COMMON.Txtquestion259}>
-                            What industries are you interested in?{' '}
-                        </MText>
-                        <MText textStyle={COMMON.Txtquestion260}>
-                            Select all that apply{' '}
-                        </MText>
-                        <MCheckBox
-                            iconContainerStyle={{ borderRadius: 5 }}
-                            isChecked={isChecked}
-                            setIsChecked={() => setIsChecked((p) => !p)}
-                            style={COMMON.CheckBox61}>
-                            <MText textStyle={COMMON.TextsCheckBox62}>
-                                Aviation
-                            </MText>
-                        </MCheckBox>
-                        <MCheckBox
-                            iconContainerStyle={{ borderRadius: 5 }}
-                            isChecked={isChecked}
-                            setIsChecked={() => setIsChecked((p) => !p)}
-                            style={COMMON.CheckBox63}>
-                            <MText textStyle={COMMON.TextsCheckBox64}>
-                                Arts
-                            </MText>
-                        </MCheckBox>
-                        <MCheckBox
-                            iconContainerStyle={{ borderRadius: 5 }}
-                            isChecked={isChecked}
-                            setIsChecked={() => setIsChecked((p) => !p)}
-                            style={COMMON.CheckBox65}>
-                            <MText textStyle={COMMON.TextsCheckBox66}>
-                                Business
-                            </MText>
-                        </MCheckBox>
-                        <MCheckBox
-                            iconContainerStyle={{ borderRadius: 5 }}
-                            isChecked={isChecked}
-                            setIsChecked={() => setIsChecked((p) => !p)}
-                            style={COMMON.CheckBox67}>
-                            <MText textStyle={COMMON.TextsCheckBox68}>
-                                Education
-                            </MText>
-                        </MCheckBox>
-                        <MCheckBox
-                            iconContainerStyle={{ borderRadius: 5 }}
-                            isChecked={isChecked}
-                            setIsChecked={() => setIsChecked((p) => !p)}
-                            style={COMMON.CheckBox69}>
-                            <MText textStyle={COMMON.TextsCheckBox70}>
-                                Law Enforcement
-                            </MText>
-                        </MCheckBox>
-                        <MCheckBox
-                            iconContainerStyle={{ borderRadius: 5 }}
-                            isChecked={isChecked}
-                            setIsChecked={() => setIsChecked((p) => !p)}
-                            style={COMMON.CheckBox71}>
-                            <MText textStyle={COMMON.TextsCheckBox72}>
-                                Medical
-                            </MText>
-                        </MCheckBox>
-                        <MCheckBox
-                            iconContainerStyle={{ borderRadius: 5 }}
-                            isChecked={isChecked}
-                            setIsChecked={() => setIsChecked((p) => !p)}
-                            style={COMMON.CheckBox73}>
-                            <MText textStyle={COMMON.TextsCheckBox74}>
-                                Service Industry
-                            </MText>
-                        </MCheckBox>
-                        <MCheckBox
-                            iconContainerStyle={{ borderRadius: 5 }}
-                            isChecked={isChecked}
-                            setIsChecked={() => setIsChecked((p) => !p)}
-                            style={COMMON.CheckBox75}>
-                            <MText textStyle={COMMON.TextsCheckBox76}>
-                                Technology
-                            </MText>
-                        </MCheckBox>
-                        <MCheckBox
-                            iconContainerStyle={{ borderRadius: 5 }}
-                            isChecked={isChecked}
-                            setIsChecked={() => setIsChecked((p) => !p)}
-                            style={COMMON.CheckBox77}>
-                            <MText textStyle={COMMON.TextsCheckBox78}>
-                                Not sure
-                            </MText>
-                        </MCheckBox>
+                        <Question1 />
                     </View>
                     <MButton
                         onPress={() => navigate('Question7')}

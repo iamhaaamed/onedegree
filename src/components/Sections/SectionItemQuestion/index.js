@@ -9,7 +9,7 @@ import { MStatusBar, MButton, MText } from 'components/common';
 import { navigate } from 'navigation/methods';
 
 const SectionItemQuestion = (props) => {
-    const { style, title, answer, page } = props;
+    const { style, title, answer, code } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -19,11 +19,6 @@ const SectionItemQuestion = (props) => {
         CONSTANTS,
     } = useTheme();
 
-    const clickCounter = useRef(0);
-    const onPress = () => {
-        console.log(`Clicked! ${clickCounter.current}`);
-        clickCounter.current = clickCounter.current + 1;
-    };
     return (
         <View {...props} style={[styles.SectionItem, style]}>
             <View style={[COMMON.RowItem]}>
@@ -33,7 +28,9 @@ const SectionItemQuestion = (props) => {
                 </View>
                 <View style={{ width: '10%', justifyContent: 'flex-end' }}>
                     <MButton
-                        onPress={() => navigate(page)}
+                        onPress={() =>
+                            navigate('ProfileQuestion5', { code: code })
+                        }
                         style={COMMON.ButtonRect8}
                         color={COLORS.white}
                         iconLeft={{

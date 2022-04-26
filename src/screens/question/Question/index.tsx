@@ -7,6 +7,9 @@ import {
     SectionTop01,
     SectionItemQuestion,
     ProfileTab,
+    Question2,
+    Question1,
+    Question3,
 } from 'components/Sections';
 import { createScreen } from 'components/elements';
 import { COLORS } from 'constants/common';
@@ -27,32 +30,32 @@ const Question = createScreen(
             {
                 title: 'What Industries Are You Interested In?',
                 answer: 'Aviation',
-                page: '',
+                code: 1,
             },
             {
                 title: 'How Much Do You Want To Make?',
                 answer: 'Hourly ',
-                page: '',
+                code: 2,
             },
             {
                 title: 'Where Do You Currently Live',
                 answer: 'Enter Zipcode',
-                page: '',
+                code: 3,
             },
             {
                 title: 'Where Do You Want To Work',
                 answer: 'Where I Currently Live',
-                page: '',
+                code: 8,
             },
             {
                 title: 'How Far Are You Willing To Travel To Get Certified?',
                 answer: 'Over An Hour',
-                page: 'ProfileQuestion5',
+                code: 4,
             },
             {
                 title: 'Where Did You Hear About Onedegree Careers?',
                 answer: 'Direct Referral (Family/Friends)',
-                page: '',
+                code: 5,
             },
         ];
         return (
@@ -67,7 +70,7 @@ const Question = createScreen(
                                 <SectionItemQuestion
                                     title={item.title}
                                     answer={item.answer}
-                                    page={item?.page}
+                                    code={item?.code}
                                 />
                             )}
                         />

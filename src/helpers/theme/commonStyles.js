@@ -2281,5 +2281,29 @@ export default function ({ COLORS }) {
             width: scale(27.66),
             height: verticalScale(26.68),
         },
+        DropDown4: {
+            width: '100%',
+        },
+        TextsDropDown6: {
+            paddingVertical: 0,
+            fontSize: verticalScale(16),
+            fontFamily: 'Muli',
+            fontWeight: 'bold',
+            color: COLORS.Color209,
+            // justifyContent: 'space-between',
+            // height: verticalScale(48),
+        },
+        DropDownRect5: {
+            // borderWidth: 1,
+            // borderColor: COLORS.Color321,
+            backgroundColor: COLORS.white,
+            // shadowColor: 'rgba(140,140,140,0.16)',
+            // shadowOffset: { width: 0, height: 0 },
+            // shadowRadius: 28,
+            textAlign: 'center',
+            justifyContent: 'center',
+            height: verticalScale(48),
+            borderRadius: 12,
+        },
     });
 }
