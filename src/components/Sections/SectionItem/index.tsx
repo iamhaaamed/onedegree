@@ -1,11 +1,12 @@
 import React from 'react';
 import { useRef } from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView, TouchableOpacity } from 'react-native';
 import useTheme from 'hooks/useTheme';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { COLORS } from 'constants/common';
 import { verticalScale, scale } from 'utils';
 import { MStatusBar, MButton, MText, MImage } from 'components/common';
+import { navigate } from 'navigation/methods';
 
 const SectionItem20 = (props) => {
     const { style } = props;
@@ -25,7 +26,10 @@ const SectionItem20 = (props) => {
     };
 
     return (
-        <View style={[styles.SectionItem, style]}>
+        <TouchableOpacity
+            style={[styles.SectionItem, style]}
+            activeOpacity={0.9}
+            onPress={() => navigate('ProgramDetails')}>
             <MImage imageSource={IMAGES.image7104} style={COMMON.image26} />
             <MText textStyle={COMMON.TxtSectionText4}>
                 electrician apprenticeship{' '}
@@ -50,7 +54,7 @@ const SectionItem20 = (props) => {
                     <MText textStyle={COMMON.TxtSectionItem18}>5 Months </MText>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 };
 const styles = StyleSheet.create({

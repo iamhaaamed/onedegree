@@ -4,12 +4,14 @@ import React from 'react';
 
 // import {ChevronBackButton} from '~/components';
 // import {DriveLength, DriveStyle, DriveType, Route} from '~/generated/graphql';
-import { Programs } from 'screens';
+import { Programs, ProgramDetails, Chat3 } from 'screens';
 
 const Stack = createStackNavigator();
 
 export type ExploreStackParamList = {
     Programs: undefined;
+    ProgramDetails: undefined;
+    Chat3: undefined;
 };
 
 const screens = [
@@ -17,6 +19,16 @@ const screens = [
         options: { headerShown: false },
         name: 'Programs',
         component: Programs,
+    },
+    {
+        options: { headerShown: false },
+        name: 'ProgramDetails',
+        component: ProgramDetails,
+    },
+    {
+        options: { headerShown: false },
+        name: 'ChatScreen',
+        component: Chat3,
     },
 ];
 
@@ -27,13 +39,7 @@ export default function ExploreStack({
     navigation: any;
     route: any;
 }) {
-    const tabHiddenRoutes = [
-        'Filter',
-        'WellKnownRoutes',
-        'PopularPlaces',
-        'RouteDetails',
-        'EditRoute',
-    ];
+    const tabHiddenRoutes = ['ProgramDetails', 'ChatScreen'];
 
     if (tabHiddenRoutes.includes(getFocusedRouteNameFromRoute(route))) {
         console.log(route);

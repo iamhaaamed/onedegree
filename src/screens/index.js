@@ -27,3 +27,5 @@ export * from './profileQuestion5';
 export * from './save';
 export * from './FAQScreen';
 export * from './programs';
+export * from './programdetail';
+export * from './question';

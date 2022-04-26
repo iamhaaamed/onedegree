@@ -28,3 +28,5 @@ export { default as SectionText2 } from './SectionText2';
 export { default as SectionText3 } from './SectionText3';
 export { default as SectionHolder } from './SectionHolder';
 export { default as SectionItem } from './SectionItem';
+export { default as SectionText } from './SectionText';
+export { default as SectionItemQuestion } from './SectionItemQuestion';

@@ -1,26 +1,15 @@
 import React from 'react';
 import { useRef } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
-import useTheme from '@panorama/theme';
+import useTheme from 'hooks/useTheme';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {
-    SectionTop01,
-    SectionText,
-    SectionItem,
-} from '../../../components/sections';
-import { createScreen } from '@panorama/elements';
-import { COLORS } from '@panorama/theme';
-import { verticalScale, scale } from '@panorama/utils';
-import {
-    MView,
-    MStatusBar,
-    MButton,
-    MText,
-    MImage,
-} from '@panorama/components';
-import { SxProps } from '@panorama/types';
+import { SectionTop01, SectionText, SectionItem } from 'components/Sections';
+import { createScreen } from 'components/elements';
+import { COLORS } from 'constants/common';
+import { verticalScale, scale } from 'utils';
+import { MStatusBar, MButton, MText, MImage } from 'components/common';
 
-const Programdetail = createScreen(
+const ProgramDetails = createScreen(
     () => {
         const {
             LAYOUT,
@@ -31,41 +20,34 @@ const Programdetail = createScreen(
             CONSTANTS,
         } = useTheme();
 
-        const clickCounter = useRef(0);
-        const onPress = () => {
-            console.log(`Clicked! ${clickCounter.current}`);
-            clickCounter.current = clickCounter.current + 1;
-        };
-
         return (
-            <MView style={styles.Programdetail2881}>
+            <View style={styles.Programdetail2881}>
                 <ScrollView>
-                    <SectionTop01 mb={verticalScale(32)} />
-                    <MView
-                        pt={verticalScale(0)}
-                        pb={verticalScale(0)}
-                        pl={scale(32)}
-                        pr={scale(32)}>
+                    <SectionTop01 title={'Training Programs'} />
+                    <View style={COMMON.SectionPaddingSave15}>
                         <MImage
-                            imageSource={IMAGES.image6152}
-                            style={COMMON.image3}
+                            imageSource={IMAGES.image7104}
+                            style={COMMON.imagedetail}
                         />
-
+                        <MButton
+                            // onPress={onPress}
+                            style={[COMMON.shareBtn]}
+                            icon={{
+                                name: 'share-outline',
+                                Component: MaterialCommunityIcons,
+                                size: scale(25),
+                                color: COLORS.white,
+                            }}
+                        />
                         <SectionText mb={verticalScale(32)} />
-                        <MText
-                            mb={verticalScale(16)}
-                            textStyle={COMMON.TxtProgramdetail288114}>
+                        <MText textStyle={COMMON.TxtProgramdetail288114}>
                             other training programs{' '}
                         </MText>
-                        <MImage
-                            imageSource={IMAGES.image8521}
-                            style={COMMON.image15}
-                        />
 
                         <SectionItem />
-                    </MView>
+                    </View>
                 </ScrollView>
-            </MView>
+            </View>
         );
     },
     {
@@ -80,4 +62,4 @@ const styles = StyleSheet.create({
         height: '100%',
     },
 });
-export default Programdetail;
+export default ProgramDetails;

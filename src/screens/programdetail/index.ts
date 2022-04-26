@@ -1,1 +1,1 @@
-export { default as Programdetail } from './Programdetail';
+export { default as ProgramDetails } from './Programdetail';

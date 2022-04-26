@@ -57,16 +57,23 @@ const ProfileTab = (props) => {
         <View style={[styles.tabView, style]}>
             <View style={COMMON.RowItem}>
                 <TouchableOpacity style={styles.selectTab} activeOpacity={0.6}>
-                    {/* <MText textStyle={COMMON.TxtSectionInfo28}>Profile</MText> */}
                     <MButton
                         onPress={() => navigate('MyProfile')}
                         style={COMMON.tabStyle}
                         containerStyle={COMMON.tabSelect}
                         text="Profile"
-                        textStyle={COMMON.TextsButton37}
+                        textStyle={[
+                            COMMON.TextsButton37,
+                            page !== 'profilePage' && {
+                                color: COLORS.textOnSecondary,
+                            },
+                        ]}
                         iconLeft={{
                             name: 'account-outline',
-                            color: COLORS.white,
+                            color:
+                                page == 'profilePage'
+                                    ? COLORS.white
+                                    : COLORS.Color267,
                             size: scale(23),
                             Component: MaterialCommunityIcons,
                         }}
@@ -95,7 +102,7 @@ const ProfileTab = (props) => {
                 </TouchableOpacity>
                 <TouchableOpacity style={{ width: '50%' }} activeOpacity={0.6}>
                     <MButton
-                        onPress={() => navigate('ProfileQuestion5')}
+                        onPress={() => navigate('Question')}
                         style={COMMON.tabStyle}
                         containerStyle={COMMON.tabSelect}
                         text="Questions"
@@ -107,7 +114,10 @@ const ProfileTab = (props) => {
                         ]}
                         iconLeft={{
                             name: 'question',
-                            color: COLORS.Color267,
+                            color:
+                                page == 'profilePage'
+                                    ? COLORS.Color267
+                                    : COLORS.white,
                             size: scale(23),
                             style: { marginRight: 2 },
                             Component: FontAwesome,

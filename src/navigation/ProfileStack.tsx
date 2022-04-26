@@ -9,6 +9,7 @@ import {
     PrivacyPolicy,
     ProfileQuestion5,
     FAQScreen,
+    Question,
 } from 'screens';
 
 const Stack = createStackNavigator();
@@ -19,6 +20,7 @@ export type ProfileStackParamList = {
     PrivacyPolicy: undefined;
     ProfileQuestion5: undefined;
     FAQScreen: undefined;
+    Question: undefined;
 };
 
 const screens = [
@@ -52,6 +54,11 @@ const screens = [
         name: 'FAQ',
         component: FAQScreen,
     },
+    {
+        options: { headerShown: false },
+        name: 'Question',
+        component: Question,
+    },
 ];
 
 export default function ProfileStack({
@@ -68,6 +75,7 @@ export default function ProfileStack({
             'PrivacyPolicy',
             'ProfileQuestion5',
             'FAQ',
+            'Question',
         ];
         navigation.setOptions({
             tabBarStyle: {
