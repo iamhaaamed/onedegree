@@ -20,22 +20,9 @@
 		7F3BDAC83E52A77F99F3760B /* libPods-OneDegree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1D6F827CB0515C20A1D19F /* libPods-OneDegree.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		BB8B20F5E62471E3EA790BCD /* libPods-OneDegree-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0B9C53B0F74A948C15EF2CC /* libPods-OneDegree-tvOS.a */; };
-		0447A7ED7B9D4633B8C1D54C /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6CCBF8E50C444D32B98B1289 /* AntDesign.ttf */; };
-		6D406484869D4D899B0E86DE /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B9BEC7DFBF894A22BC97E207 /* Entypo.ttf */; };
-		DFBD1ED95DD44950A9D860C4 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D56BA8738924585ACC9A6C9 /* EvilIcons.ttf */; };
-		C8E6F1CBAD514F43BABEA055 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E361935A00964F29B884A548 /* Feather.ttf */; };
-		5A2F977F823B46EFBA434E3F /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6512E162D0DC4B42ADA5D042 /* FontAwesome.ttf */; };
-		BD3643E7685C48FCB93D4037 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8678C4D95E8742FCABA7433B /* FontAwesome5_Brands.ttf */; };
-		EC312CD33DCE4C72BAAF64B9 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30F9217EB4274DA98652CAEA /* FontAwesome5_Regular.ttf */; };
-		2A2A6E2FD3B84466BBB928B2 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32D2883B2BC74FC7AFCCCD45 /* FontAwesome5_Solid.ttf */; };
-		89B512682B874460AA42AD66 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B7EF991393B4C9389CF5535 /* Fontisto.ttf */; };
-		CA511EF437E14DAE82B18557 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D27651A5C37848EC85A165CE /* Foundation.ttf */; };
-		B9F88C207AE247AFB1BE6589 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22AF7056A6EC45A68371B3CC /* Ionicons.ttf */; };
-		24A0B172A2314015A6ABCAFA /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 792D8D982064407A9397F674 /* MaterialCommunityIcons.ttf */; };
-		26789A98A2E54AEBA7B4670A /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50EAD7B02CAA425DAC7B899B /* MaterialIcons.ttf */; };
-		9C7A01A2D30F4D7BB5CE474F /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CA7ED8C5E9A4FB39980201C /* Octicons.ttf */; };
-		4FF5174AA90B4ED790C00F4A /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF81AC6A7144235A220ED53 /* SimpleLineIcons.ttf */; };
-		2339BF9FDA45468CA6635D5E /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A10A8748531E49578884CA63 /* Zocial.ttf */; };
+
+		C0A63D6728192BA100F07952 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0A63D6628192BA100F07952 /* GoogleService-Info.plist */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +66,7 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = OneDegree/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2F9680063636759251DED0C /* Pods-OneDegree-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneDegree-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-OneDegree-tvOSTests/Pods-OneDegree-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B799B54CC1A707581A76835A /* Pods-OneDegree-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneDegree-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-OneDegree-tvOS/Pods-OneDegree-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		C0A63D6628192BA100F07952 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "OneDegree/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CFC1F11C4670E9ECEA9D9F1F /* Pods-OneDegree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneDegree.debug.xcconfig"; path = "Target Support Files/Pods-OneDegree/Pods-OneDegree.debug.xcconfig"; sourceTree = "<group>"; };
 		E0B9C53B0F74A948C15EF2CC /* libPods-OneDegree-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneDegree-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -157,6 +145,7 @@
 		13B07FAE1A68108700A75B9A /* OneDegree */ = {
 			isa = PBXGroup;
 			children = (
+				C0A63D6628192BA100F07952 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -180,7 +169,6 @@
 				A2F9680063636759251DED0C /* Pods-OneDegree-tvOSTests.debug.xcconfig */,
 				1F46F588FDA9BC7C85482A26 /* Pods-OneDegree-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -401,6 +389,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+<<<<<<< HEAD
 				0447A7ED7B9D4633B8C1D54C /* AntDesign.ttf in Resources */,
 				6D406484869D4D899B0E86DE /* Entypo.ttf in Resources */,
 				DFBD1ED95DD44950A9D860C4 /* EvilIcons.ttf in Resources */,
@@ -417,6 +406,9 @@
 				9C7A01A2D30F4D7BB5CE474F /* Octicons.ttf in Resources */,
 				4FF5174AA90B4ED790C00F4A /* SimpleLineIcons.ttf in Resources */,
 				2339BF9FDA45468CA6635D5E /* Zocial.ttf in Resources */,
+=======
+				C0A63D6728192BA100F07952 /* GoogleService-Info.plist in Resources */,
+>>>>>>> 3c8d6a7161b2642d2addb249133d1e7a6404d87b
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,7 +831,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = io.apsy.onedegree;
 				PRODUCT_NAME = OneDegree;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -861,7 +853,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = io.apsy.onedegree;
 				PRODUCT_NAME = OneDegree;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
