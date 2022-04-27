@@ -42,11 +42,11 @@ const Question = createScreen(
                 answer: 'Enter Zipcode',
                 code: 3,
             },
-            {
-                title: 'Where Do You Want To Work',
-                answer: 'Where I Currently Live',
-                code: 8,
-            },
+            // {
+            //     title: 'Where Do You Want To Work',
+            //     answer: 'Where I Currently Live',
+            //     code: 8,
+            // },
             {
                 title: 'How Far Are You Willing To Travel To Get Certified?',
                 answer: 'Over An Hour',

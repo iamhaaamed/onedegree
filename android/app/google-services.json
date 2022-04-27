@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "638092220474",
+    "project_id": "aps-onedegree-dev",
+    "storage_bucket": "aps-onedegree-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:638092220474:android:5d0cd794dec4881ccf3d03",
+        "android_client_info": {
+          "package_name": "io.apsy.onedegree"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "638092220474-1sivo8pog450kg21813a61gcqvivq047.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.apsy.onedegree",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "638092220474-8koar1n2nbo98dj2jse011e7v9p96dr6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq_L_4FurpQGeFM20SxCXpAAkggk3knhU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "638092220474-8koar1n2nbo98dj2jse011e7v9p96dr6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

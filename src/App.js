@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { ThemeContext, NavbarContext } from 'components/contexts';
-import { RootNavigator } from 'services/navigation';
 import { enableScreens } from 'react-native-screens';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import MDrawer from 'components/common/MDrawer';
