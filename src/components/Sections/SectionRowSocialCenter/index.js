@@ -42,7 +42,7 @@ import {
     MSlider,
 } from 'components/common';
 const SectionRowSocialCenter = (props) => {
-    const { style } = props;
+    const { style, googleSignin } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -85,8 +85,8 @@ const SectionRowSocialCenter = (props) => {
                 }}
             />
             <MButton
-                onPress={onPress}
-                style={COMMON.ButtonRect21}
+                onPress={googleSignin}
+                style={[COMMON.ButtonRect21]}
                 containerStyle={styles.centerIcon}
                 color={COLORS.transparent}
                 backgroundImage={{
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         textAlign: 'center',
         justifyContent: 'space-between',
-        right: '3%',
+        right: '1%',
     },
     centerIcon: {
         alignItems: 'center',

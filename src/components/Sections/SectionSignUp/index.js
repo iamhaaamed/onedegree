@@ -15,7 +15,8 @@ import { useRef } from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import * as yup from 'yup';
+import { Formik } from 'formik';
 import {
     MIcon,
     MText,
@@ -52,51 +53,90 @@ const SectionSignUp = (props) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
+    const ValidationSchema = yup.object().shape({
+        email: yup.string().email('Invalid email address').required('Required'),
+        password: yup
+            .string()
+            .min(6, 'Must be 6 characters or more')
+            .max(12, 'Must be 12 characters or less')
+            .required('Required'),
+    });
+    const googleSignup = async () => {
+        const {
+            thirdPartyAccessToken,
+            firebaseIdToken,
+            firebaseUser,
+            success,
+        } = await thirdPartyAuthService.loginWithGoogle();
+        console.log(success, 'success');
+        if (success) {
+            console.log('thirdPartyAccessToken', thirdPartyAccessToken);
+            console.log('firebaseIdToken', firebaseIdToken);
+            console.log('firebaseUser', firebaseUser);
 
+            createUserWithSocial();
+        }
+    };
     return (
         <View style={[styles.SectionSignUp, style]}>
             <MText textStyle={COMMON.TxtSectionSignUp1}>Sign up </MText>
             <MText textStyle={COMMON.TxtSectionSignUp2}>
                 Discover your new future!{' '}
             </MText>
-            <MInput
-                inputStyle={COMMON.InputRect5}
-                containerStyle={COMMON.Input3}
-                placeholder="Email Address"
-                placeholderColor={COLORS.Color280}
-                textStyle={COMMON.TextsInput4}
-                backgroundColor={COLORS.Color963}
-                height={verticalScale(48)}
-            />
-            <MInput
-                inputStyle={COMMON.InputRect5}
-                containerStyle={COMMON.Input3}
-                placeholder="Password"
-                placeholderColor={COLORS.Color280}
-                textStyle={COMMON.TextsInput4}
-                secureTextEntry
-                backgroundColor={COLORS.Color963}
-                height={verticalScale(48)}
-            />
-            <MButton
-                onPress={() => navigate('Forgetpassword1')}
-                style={COMMON.ButtonRect10}
-                containerStyle={COMMON.Button9}
-                text="Sign up "
-                textStyle={COMMON.TextsButton11}
-                gradient={{
-                    colors: [
-                        COLORS.Color323,
-                        COLORS.Color148,
-                        COLORS.Color912,
-                        COLORS.Color674,
-                        COLORS.Color455,
-                        COLORS.Color240,
-                    ],
-                    start: { x: -0.15500132739543915, y: 0.6157848834991455 },
-                    end: { x: 1.014054298400879, y: 0.17686034739017487 },
-                }}
-            />
+            <Formik
+                validationSchema={ValidationSchema}
+                initialValues={{ email: '', password: '' }}
+                onSubmit={(values) => SignIn_PhoneNumber(values)}>
+                {({ handleChange, handleSubmit, values, errors }) => (
+                    <>
+                        <MInput
+                            inputStyle={COMMON.InputRect5}
+                            containerStyle={COMMON.Input3}
+                            placeholder="Email Address"
+                            placeholderColor={COLORS.Color280}
+                            textStyle={COMMON.TextsInput4}
+                            backgroundColor={COLORS.Color963}
+                            height={verticalScale(48)}
+                        />
+                        <MInput
+                            inputStyle={COMMON.InputRect5}
+                            containerStyle={COMMON.Input3}
+                            placeholder="Password"
+                            placeholderColor={COLORS.Color280}
+                            textStyle={COMMON.TextsInput4}
+                            secureTextEntry
+                            backgroundColor={COLORS.Color963}
+                            height={verticalScale(48)}
+                        />
+                        <MButton
+                            // onPress={() => navigate('Forgetpassword1')}
+                            onPress={handleSubmit}
+                            style={COMMON.ButtonRect10}
+                            containerStyle={COMMON.Button9}
+                            text="Sign up "
+                            textStyle={COMMON.TextsButton11}
+                            gradient={{
+                                colors: [
+                                    COLORS.Color323,
+                                    COLORS.Color148,
+                                    COLORS.Color912,
+                                    COLORS.Color674,
+                                    COLORS.Color455,
+                                    COLORS.Color240,
+                                ],
+                                start: {
+                                    x: -0.15500132739543915,
+                                    y: 0.6157848834991455,
+                                },
+                                end: {
+                                    x: 1.014054298400879,
+                                    y: 0.17686034739017487,
+                                },
+                            }}
+                        />
+                    </>
+                )}
+            </Formik>
             <View style={[COMMON.RowItemCenter, COMMON.RowItemSectionSignUp12]}>
                 <View style={{ width: '30%' }}>
                     <View style={COMMON.LineSectionSignUp13}></View>
@@ -110,7 +150,10 @@ const SectionSignUp = (props) => {
                     <View style={COMMON.LineSectionSignUp15}></View>
                 </View>
             </View>
-            <SectionRowSocialCenter style={COMMON.EleSectionSignUp22} />
+            <SectionRowSocialCenter
+                style={COMMON.EleSectionSignUp22}
+                googleSignup={googleSignup}
+            />
             <TouchableOpacity
                 style={styles.signInBtn}
                 onPress={() => navigate('Signin')}>

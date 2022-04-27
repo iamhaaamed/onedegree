@@ -54,7 +54,7 @@ const MInput = ({
     englishChar,
     onKeyUp = () => {},
     disabled = false,
-    error = false,
+    error,
     value,
     backgroundColor,
     textColor,
@@ -297,6 +297,7 @@ const MInput = ({
                     color={iconLeft.color}
                 />
             ) : null}
+            {error && <MText style={styles.error}>{error.toString()}</MText>}
         </View>
     );
 };

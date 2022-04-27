@@ -15,7 +15,8 @@ import { useRef } from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import thirdPartyAuthService from 'services/thirdPartyAuthService/thirdPartyAuthService';
+import { showMessage } from 'react-native-flash-message';
 import {
     MIcon,
     MText,
@@ -56,10 +57,64 @@ const SectionSignIn = (props) => {
     } = useTheme();
 
     const navigation = useNavigation();
-
+    // const {setIsUserLoggedIn} = authStore(state => state);
     const setToken = authStore((state) => state.setToken);
+    const [isLoading, setIsLoading] = useState(false);
+    const { mutate } = useLogin();
+    const googleSignin = async () => {
+        const {
+            thirdPartyAccessToken,
+            firebaseIdToken,
+            firebaseUser,
+            success,
+        } = await thirdPartyAuthService.loginWithGoogle();
+        console.log(firebaseIdToken, 'firebaseIdToken');
+        if (success) {
+            console.log('thirdPartyAccessToken', thirdPartyAccessToken);
+            console.log('firebaseIdToken', firebaseIdToken);
+            console.log('firebaseUser', firebaseUser);
+            onSigninWithSocial();
+        }
+    };
+    const onSigninWithSocial = async () => {
+        setIsLoading(true);
+        try {
+            // mutate(
+            //     {},
+            //     {
+            //         onSuccess: onSuccessSignin,
+            //     },
+            // );
+        } catch (e) {
+            console.log(e, 'e!!!!');
+            if (e === 'NOT_FOUND') {
+                showMessage({
+                    message: 'You are not registered!',
+                    type: 'danger',
+                });
+            }
+        }
+        setIsLoading(false);
+    };
+    const onSuccessSignin = (data) => {
+        const status = data?.user_signIn?.status;
+        if (status === 'SUCCESS') {
+            setToken('12345');
+            navigation.dispatch(StackActions.replace('MainStack'));
+        } else {
+            showMessage({
+                message: status || 'Error',
+                type: 'danger',
+            });
+        }
+    };
     return (
         <View style={[styles.SectionSignIn, style]}>
+            <MLoading
+                size="large"
+                color={COLORS.Color323}
+                isLoading={isLoading}
+            />
             <MText textStyle={COMMON.TxtSectionSignIn26}>Sign in </MText>
             <MText textStyle={COMMON.TxtSectionSignIn27}>Welcome back! </MText>
             <MInput
@@ -121,7 +176,10 @@ const SectionSignIn = (props) => {
                     <View style={COMMON.LineSectionSignIn41}></View>
                 </View>
             </View>
-            <SectionRowSocialCenter style={COMMON.EleSectionSignIn42} />
+            <SectionRowSocialCenter
+                style={COMMON.EleSectionSignIn42}
+                googleSignin={googleSignin}
+            />
             <TouchableOpacity
                 style={styles.signInBtn}
                 onPress={() => navigate('Signup')}>
