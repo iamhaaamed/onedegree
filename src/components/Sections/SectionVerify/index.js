@@ -40,7 +40,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { navigate } from 'navigation/methods';
+import { goBack, navigate } from 'navigation/methods';
 const SectionVerify = (props) => {
     const { style } = props;
     const {
@@ -81,7 +81,11 @@ const SectionVerify = (props) => {
                 <MText textStyle={{ fontSize: scale(12), marginTop: 5 }}>
                     Didn’t get our password reset email?{' '}
                 </MText>
-                <MText textStyle={COMMON.TxtSectionVerify139}>Resend it </MText>
+                <MText
+                    textStyle={COMMON.TxtSectionVerify139}
+                    onPress={() => navigate('Forgetpassword')}>
+                    Resend it{' '}
+                </MText>
             </View>
         </View>
     );

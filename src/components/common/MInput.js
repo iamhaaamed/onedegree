@@ -187,7 +187,6 @@ const MInput = ({
                         },
                         wrapperStyle,
                     ]}>
-                    {console.log('multiline', textArea, multiline)}
                     <TextInput
                         multiline={multiline}
                         style={[
