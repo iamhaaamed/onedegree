@@ -15,7 +15,8 @@ import { useRef } from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import {
     MIcon,
     MText,
@@ -63,11 +64,16 @@ const SectionModal = (props) => {
 
                 <View style={[styles.SectionRowCenter, style]}>
                     <MButton
-                        onPress={() =>
-                            navigation.dispatch(
-                                StackActions.replace('AuthStack'),
-                            )
-                        }
+                        onPress={async () => {
+                            try {
+                                await auth().signOut();
+                                GoogleSignin.revokeAccess();
+                            } catch (error) {
+                                navigation.dispatch(
+                                    StackActions.replace('AuthStack'),
+                                );
+                            }
+                        }}
                         style={COMMON.ButtonRect114}
                         containerStyle={[COMMON.Button113, { elevation: 5 }]}
                         text="Yes"
