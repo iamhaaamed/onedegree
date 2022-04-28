@@ -6,6 +6,7 @@ import {
     TouchableWithoutFeedback,
     StyleSheet,
     Image,
+    Alert,
 } from 'react-native';
 import { scale, verticalScale, height } from 'utils';
 import { useState } from 'react';
@@ -41,8 +42,12 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
+import auth from '@react-native-firebase/auth';
+import thirdPartyAuthService from 'services/thirdPartyAuthService/thirdPartyAuthService';
 import { SectionRowSocialCenter } from 'components/Sections';
 import { navigate } from 'navigation/methods';
+import { showMessage } from 'react-native-flash-message';
+import { useRegister } from 'hooks/auth';
 const SectionSignUp = (props) => {
     const { style } = props;
     const {
@@ -53,13 +58,18 @@ const SectionSignUp = (props) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
+    const [isLoading, setIsLoading] = useState(false);
+    const { mutate: signupMutate } = useRegister();
     const ValidationSchema = yup.object().shape({
-        email: yup.string().email('Invalid email address').required('Required'),
+        email: yup
+            .string()
+            .email('Invalid email address')
+            .required('Invalid email address'),
         password: yup
             .string()
             .min(6, 'Must be 6 characters or more')
             .max(12, 'Must be 12 characters or less')
-            .required('Required'),
+            .required('Invalid password'),
     });
     const googleSignup = async () => {
         const {
@@ -77,8 +87,138 @@ const SectionSignUp = (props) => {
             createUserWithSocial();
         }
     };
+    const createUserWithSocial = async () => {
+        setIsLoading(true);
+
+        try {
+            signupMutate(
+                {},
+                {
+                    onSuccess: onSuccessSignup,
+                },
+            );
+        } catch (err) {
+            showMessage({
+                message: 'Failed',
+                type: 'danger',
+            });
+        }
+        setIsLoading(false);
+    };
+    const onSuccessSignup = (data) => {
+        console.log('dddddd', data);
+        const status = data.user_signUp?.status;
+        if (data.user_signUp?.status === 'SUCCESS') {
+            navigate('Hiquestion2');
+        } else {
+            showMessage({
+                message: status,
+                type: 'danger',
+            });
+        }
+    };
+    const onSubmit = (data) => {
+        createUserOnPress(data);
+    };
+    const createUserOnPress = async (data) => {
+        setIsLoading(true);
+        console.log('kkkk', data);
+        const email = data?.email;
+        const password = data?.password;
+        try {
+            await auth()
+                .createUserWithEmailAndPassword(email, password)
+                .then(async () => {
+                    await auth().currentUser?.sendEmailVerification();
+                    const emailVerified = auth().currentUser?.emailVerified;
+                    console.log(emailVerified, 'emailVerified*****');
+
+                    if (emailVerified) {
+                        completeRegistrationWithEmailPassword();
+                    } else {
+                        Alert.alert(
+                            'Email verification',
+                            'We should verify your email, please check your inbox and follow the instruction',
+                            [
+                                {
+                                    text: 'Got it',
+                                    onPress: async () => {
+                                        navigate('Hiquestion2', {
+                                            password,
+                                            email,
+                                        });
+                                    },
+                                    style: 'default',
+                                },
+                                {
+                                    text: 'Cancel',
+                                    onPress: () => null,
+                                    style: 'cancel',
+                                },
+                            ],
+                        );
+                    }
+                })
+                .catch((error) => {
+                    console.log(error, 'error');
+
+                    const errorMessage = error?.message;
+                    if (errorMessage) {
+                        showMessage({
+                            message: errorMessage,
+                            type: 'danger',
+                        });
+                    }
+                });
+            setIsLoading(false);
+        } catch (err) {
+            console.log(err, 'err*****');
+
+            setIsLoading(false);
+        }
+    };
+    const completeRegistrationWithEmailPassword = async () => {
+        signupMutate(
+            {},
+            {
+                onSuccess: onSuccessSignup,
+            },
+        );
+    };
+    async function doAppleRegister() {
+        const {
+            thirdPartyAccessToken,
+            firebaseIdToken,
+            firebaseUser,
+            success,
+        } = await thirdPartyAuthService.loginWithApple();
+        console.log(firebaseIdToken, 'firebaseIdToken');
+        if (success) {
+            console.log('thirdPartyAccessToken', thirdPartyAccessToken);
+            console.log('firebaseIdToken', firebaseIdToken);
+            console.log('firebaseUser', firebaseUser);
+
+            createUserWithSocial();
+        }
+    }
+    const FacebookSignUp = async () => {
+        const {
+            thirdPartyAccessToken,
+            firebaseIdToken,
+            firebaseUser,
+            success,
+        } = await thirdPartyAuthService.loginWithFacebook();
+        if (success) {
+            createUserWithSocial();
+        }
+    };
     return (
         <View style={[styles.SectionSignUp, style]}>
+            <MLoading
+                size="large"
+                color={COLORS.Color323}
+                isLoading={isLoading}
+            />
             <MText textStyle={COMMON.TxtSectionSignUp1}>Sign up </MText>
             <MText textStyle={COMMON.TxtSectionSignUp2}>
                 Discover your new future!{' '}
@@ -86,13 +226,15 @@ const SectionSignUp = (props) => {
             <Formik
                 validationSchema={ValidationSchema}
                 initialValues={{ email: '', password: '' }}
-                onSubmit={(values) => SignIn_PhoneNumber(values)}>
+                onSubmit={(values) => onSubmit(values)}>
                 {({ handleChange, handleSubmit, values, errors }) => (
                     <>
                         <MInput
                             inputStyle={COMMON.InputRect5}
                             containerStyle={COMMON.Input3}
                             placeholder="Email Address"
+                            onChangeText={handleChange('email')}
+                            error={errors && errors.email}
                             placeholderColor={COLORS.Color280}
                             textStyle={COMMON.TextsInput4}
                             backgroundColor={COLORS.Color963}
@@ -102,6 +244,8 @@ const SectionSignUp = (props) => {
                             inputStyle={COMMON.InputRect5}
                             containerStyle={COMMON.Input3}
                             placeholder="Password"
+                            onChangeText={handleChange('password')}
+                            error={errors && errors.password}
                             placeholderColor={COLORS.Color280}
                             textStyle={COMMON.TextsInput4}
                             secureTextEntry
@@ -153,6 +297,8 @@ const SectionSignUp = (props) => {
             <SectionRowSocialCenter
                 style={COMMON.EleSectionSignUp22}
                 googleSignup={googleSignup}
+                doAppleRegister={doAppleRegister}
+                FacebookSignUp={FacebookSignUp}
             />
             <TouchableOpacity
                 style={styles.signInBtn}

@@ -197,7 +197,8 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
 implementation platform('com.google.firebase:firebase-bom:29.3.1')
 implementation project(':lottie-react-native')
-
+implementation project(':react-native-fbsdk-next')
+implementation 'com.facebook.android:facebook-android-sdk:latest.release'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 implementation "androidx.core:core-ktx:1.5.0"
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {

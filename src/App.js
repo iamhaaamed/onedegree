@@ -64,7 +64,7 @@ const App = () => {
                 setInitializing(false);
             }
         },
-        [initializing, setIsUserLoggedIn],
+        [initializing],
     );
 
     useEffect(() => {
@@ -106,7 +106,12 @@ const App = () => {
             },
         }),
     });
-    return <AppNavigator />;
+    return (
+        <QueryClientProvider client={queryClient}>
+            <AppNavigator />
+            <FlashMessage position="top" />
+        </QueryClientProvider>
+    );
 };
 
 export default App;

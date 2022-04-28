@@ -1,12 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
-import { scale } from 'utils';
+import { scale, verticalScale } from 'utils';
 import useTheme from 'hooks/useTheme';
 import MText from './MText';
 import MTouchable from './MTouchable';
 import validate from 'validate.js';
 import MIcon from './MIcon';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import { COLORS } from 'constants/common';
 
 /**
  *
@@ -160,72 +161,75 @@ const MInput = ({
     };
 
     return (
-        <View
-            style={[
-                styles.containerDefault,
-                {
-                    // height,
-                    backgroundColor: backgroundColor ?? COLORS.inputBackground,
-                },
-                containerStyle,
-                {
-                    borderColor:
-                        flatContainerStyle.borderColor ?? 'transparent',
-                },
-            ]}>
+        <View style={error && { paddingBottom: scale(5) }}>
             <View
                 style={[
-                    styles.wrapperDefault,
+                    styles.containerDefault,
                     {
-                        alignItems: { left: 'flex-start', center: 'center' }[
-                            align
-                        ],
+                        // height,
+                        backgroundColor:
+                            backgroundColor ?? COLORS.inputBackground,
                     },
-                    wrapperStyle,
+                    containerStyle,
+                    {
+                        borderColor:
+                            flatContainerStyle.borderColor ?? 'transparent',
+                    },
                 ]}>
-                {console.log('multiline', textArea, multiline)}
-                <TextInput
-                    multiline={multiline}
+                <View
                     style={[
-                        styles.inputDefault,
-                        textArea && styles.textArea,
+                        styles.wrapperDefault,
                         {
-                            textAlign: 'left',
-                            textAlignVertical: textArea ? 'top' : 'center',
-                            ...{ borderColor, borderWidth, borderRadius },
-                            color: textColor ?? COLORS.inputText,
+                            alignItems: {
+                                left: 'flex-start',
+                                center: 'center',
+                            }[align],
                         },
-                        keyboardType === 'numeric' && styles.ltr,
-                        prefix && styles.paddingLeft,
-                        {
-                            // borderWidth: 1,
-                            borderColor: error
-                                ? COLORS.error
-                                : currentBorder
-                                ? COLORS.Color428
-                                : borderColor ?? COLORS.Color321,
-                        },
-                        inputStyle,
-                        multiline && { maxHeight: scale(300) },
-                    ]}
-                    onChangeText={_onChangeText}
-                    onFocus={_handleFocus}
-                    onBlur={_handleBlur}
-                    value={value}
-                    underlineColorAndroid="transparent"
-                    autoCorrect={false}
-                    keyboardType={keyboardType}
-                    placeholder={placeholder}
-                    placeholderTextColor={
-                        placeholderColor ?? COLORS.placeholder
-                    }
-                    // secureTextEntry={
-                    //   showPasswordButton ? !data.current.showPassword : false
-                    // }
-                    {...props}
-                />
+                        wrapperStyle,
+                    ]}>
+                    {console.log('multiline', textArea, multiline)}
+                    <TextInput
+                        multiline={multiline}
+                        style={[
+                            styles.inputDefault,
+                            textArea && styles.textArea,
+                            {
+                                textAlign: 'left',
+                                textAlignVertical: textArea ? 'top' : 'center',
+                                ...{ borderColor, borderWidth, borderRadius },
+                                color: textColor ?? COLORS.inputText,
+                            },
+                            keyboardType === 'numeric' && styles.ltr,
+                            prefix && styles.paddingLeft,
+                            {
+                                // borderWidth: 1,
+                                borderColor: error
+                                    ? COLORS.error
+                                    : currentBorder
+                                    ? COLORS.Color428
+                                    : borderColor ?? COLORS.Color321,
+                            },
+                            inputStyle,
+                            multiline && { maxHeight: scale(300) },
+                        ]}
+                        onChangeText={_onChangeText}
+                        onFocus={_handleFocus}
+                        onBlur={_handleBlur}
+                        value={value}
+                        underlineColorAndroid="transparent"
+                        autoCorrect={false}
+                        keyboardType={keyboardType}
+                        placeholder={placeholder}
+                        placeholderTextColor={
+                            placeholderColor ?? COLORS.placeholder
+                        }
+                        // secureTextEntry={
+                        //   showPasswordButton ? !data.current.showPassword : false
+                        // }
+                        {...props}
+                    />
 
-                {/* {showPasswordButton ? (
+                    {/* {showPasswordButton ? (
           <View style={styles.button}>
             <MTouchable type="native" onPress={togglePassword} borderless>
               <MIcon
@@ -237,7 +241,7 @@ const MInput = ({
           </View>
         ) : null} */}
 
-                {/* {clearButton && state.value ? (
+                    {/* {clearButton && state.value ? (
           <View style={styles.button}>
             <MTouchable type="native" onPress={resetState} borderless>
               <MIcon
@@ -249,54 +253,56 @@ const MInput = ({
           </View>
         ) : null} */}
 
-                {iconRight && iconRight.name ? (
-                    <View style={dolorSign ? styles.button2 : styles.button}>
-                        <MTouchable
-                            type="native"
-                            onPress={iconRight.onPress}
-                            borderless>
-                            <MIcon
-                                name={iconRight.name}
-                                IconComponent={iconRight.Component}
-                                color={iconRight.color ?? COLORS.inputText}
-                                size={iconRight.size}
-                                style={iconRight.style}
-                            />
-                        </MTouchable>
-                    </View>
+                    {iconRight && iconRight.name ? (
+                        <View
+                            style={dolorSign ? styles.button2 : styles.button}>
+                            <MTouchable
+                                type="native"
+                                onPress={iconRight.onPress}
+                                borderless>
+                                <MIcon
+                                    name={iconRight.name}
+                                    IconComponent={iconRight.Component}
+                                    color={iconRight.color ?? COLORS.inputText}
+                                    size={iconRight.size}
+                                    style={iconRight.style}
+                                />
+                            </MTouchable>
+                        </View>
+                    ) : null}
+                    {dolorSign && (
+                        <View style={styles.button}>
+                            <MText
+                                textStyle={styles.dolor}
+                                color={COLORS.textOnSecondary}>
+                                {dolorSign}
+                            </MText>
+                        </View>
+                    )}
+                    {prefix && (
+                        <View style={styles.prefix}>
+                            <MText
+                                textStyle={TYPOGRAPHY.span}
+                                color={COLORS.primary}>
+                                {prefix}
+                            </MText>
+                        </View>
+                    )}
+                </View>
+                {iconLeft && iconLeft.name ? (
+                    <MIcon
+                        size={iconLeft.size ?? scale(14)}
+                        style={[
+                            styles.icon,
+                            textArea && styles.iconTextArea,
+                            iconLeft.style,
+                        ]}
+                        name={iconLeft.name}
+                        IconComponent={iconLeft.Component}
+                        color={iconLeft.color}
+                    />
                 ) : null}
-                {dolorSign && (
-                    <View style={styles.button}>
-                        <MText
-                            textStyle={styles.dolor}
-                            color={COLORS.textOnSecondary}>
-                            {dolorSign}
-                        </MText>
-                    </View>
-                )}
-                {prefix && (
-                    <View style={styles.prefix}>
-                        <MText
-                            textStyle={TYPOGRAPHY.span}
-                            color={COLORS.primary}>
-                            {prefix}
-                        </MText>
-                    </View>
-                )}
             </View>
-            {iconLeft && iconLeft.name ? (
-                <MIcon
-                    size={iconLeft.size ?? scale(14)}
-                    style={[
-                        styles.icon,
-                        textArea && styles.iconTextArea,
-                        iconLeft.style,
-                    ]}
-                    name={iconLeft.name}
-                    IconComponent={iconLeft.Component}
-                    color={iconLeft.color}
-                />
-            ) : null}
             {error && <MText style={styles.error}>{error.toString()}</MText>}
         </View>
     );
@@ -392,6 +398,14 @@ const styles = StyleSheet.create({
     iconTextArea: {
         marginTop: 10,
         alignSelf: 'flex-start',
+    },
+    error: {
+        color: COLORS.error,
+        top: -10,
+        marginBottom: scale(12),
+        fontSize: verticalScale(14),
+        fontFamily: 'Muli',
+        // paddingBottom: scale(10),
     },
 });
 

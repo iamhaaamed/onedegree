@@ -18,17 +18,34 @@ export const SIGNUP = gql`
 `;
 
 export const SIGNIN = gql`
-  mutation user_signIn() {
-    user_signIn() {
-      status
-      result{
-      user{
-        id
-        firstName
-        lastName
-        email
-      }
+    query user_login {
+        user_login {
+            result {
+                isActive
+                createdAt
+                email
+                lastSeen
+                userTypes
+                isNotificationEnabled
+                imageAddress
+                firstName
+                lastName
+                age
+                ethnicity
+                educationLevel
+                currentIncome
+                industry
+                amount
+                amountType
+                whereDoYouWantToWork
+                howFarAreYouWillingToTravelToGetCertified
+                whereDidYouHearAboutOnedegreeCareers
+                whereDidYouHearAboutOnedegreeCareersTextForOther
+                externalId
+                id
+                isDeleted
+            }
+            status
+        }
     }
-    }
-  }
 `;

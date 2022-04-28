@@ -42,7 +42,15 @@ import {
     MSlider,
 } from 'components/common';
 const SectionRowSocialCenter = (props) => {
-    const { style, googleSignin } = props;
+    const {
+        style,
+        googleSignin,
+        googleSignup,
+        doAppleRegister,
+        FacebookSignUp,
+        doAppleLogin,
+        FacebookSignIn,
+    } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -52,16 +60,10 @@ const SectionRowSocialCenter = (props) => {
         CONSTANTS,
     } = useTheme();
 
-    const clickCounter = useRef(0);
-    const onPress = () => {
-        console.log(`Clicked! ${clickCounter.current}`);
-        clickCounter.current = clickCounter.current + 1;
-    };
-
     return (
         <View style={[styles.SectionRowSocialCenter, style]}>
             <MButton
-                onPress={onPress}
+                onPress={doAppleRegister || doAppleLogin}
                 // style={COMMON.ButtonRect21}
                 containerStyle={styles.centerIcon}
                 color={COLORS.transparent}
@@ -73,7 +75,7 @@ const SectionRowSocialCenter = (props) => {
                 }}
             />
             <MButton
-                onPress={onPress}
+                onPress={FacebookSignUp || FacebookSignIn}
                 // style={COMMON.ButtonRect19}
                 containerStyle={styles.centerIcon}
                 color={COLORS.transparent}
@@ -85,7 +87,7 @@ const SectionRowSocialCenter = (props) => {
                 }}
             />
             <MButton
-                onPress={googleSignin}
+                onPress={googleSignin || googleSignup}
                 style={[COMMON.ButtonRect21]}
                 containerStyle={styles.centerIcon}
                 color={COLORS.transparent}

@@ -41,10 +41,15 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
+import auth from '@react-native-firebase/auth';
+import { useLogin } from 'hooks/auth';
 import { SectionRowSocialCenter } from 'components/Sections';
 import { authStore } from '../../../store';
 import { navigate } from 'navigation/methods';
 import { StackActions, useNavigation } from '@react-navigation/native';
+import * as yup from 'yup';
+import { Formik } from 'formik';
+import { async } from 'validate.js';
 const SectionSignIn = (props) => {
     const { style } = props;
     const {
@@ -61,6 +66,17 @@ const SectionSignIn = (props) => {
     const setToken = authStore((state) => state.setToken);
     const [isLoading, setIsLoading] = useState(false);
     const { mutate } = useLogin();
+    const ValidationSchema = yup.object().shape({
+        email: yup
+            .string()
+            .email('Invalid email address')
+            .required('Invalid email address'),
+        password: yup
+            .string()
+            .min(6, 'Must be 6 characters or more')
+            .max(12, 'Must be 12 characters or less')
+            .required('Invalid password'),
+    });
     const googleSignin = async () => {
         const {
             thirdPartyAccessToken,
@@ -79,12 +95,12 @@ const SectionSignIn = (props) => {
     const onSigninWithSocial = async () => {
         setIsLoading(true);
         try {
-            // mutate(
-            //     {},
-            //     {
-            //         onSuccess: onSuccessSignin,
-            //     },
-            // );
+            mutate(
+                {},
+                {
+                    onSuccess: onSuccessSignin,
+                },
+            );
         } catch (e) {
             console.log(e, 'e!!!!');
             if (e === 'NOT_FOUND') {
@@ -96,16 +112,69 @@ const SectionSignIn = (props) => {
         }
         setIsLoading(false);
     };
-    const onSuccessSignin = (data) => {
-        const status = data?.user_signIn?.status;
+    const onSuccessSignin = async (data) => {
+        const status = data?.user_login?.status;
         if (status === 'SUCCESS') {
-            setToken('12345');
+            console.log('kkkkk', data);
+            setToken(await auth().currentUser?.getIdToken());
             navigation.dispatch(StackActions.replace('MainStack'));
         } else {
             showMessage({
                 message: status || 'Error',
                 type: 'danger',
             });
+        }
+    };
+    const signinWithEmail = async (data) => {
+        try {
+            try {
+                await auth().signInWithEmailAndPassword(
+                    data?.email,
+                    data?.password,
+                );
+            } catch (error) {
+                console.log(error, 'error for get token');
+
+                const errorMessage = error?.message;
+                if (errorMessage) {
+                    showMessage({
+                        message: errorMessage,
+                        type: 'danger',
+                    });
+                }
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
+    const onSubmit = (data) => {
+        signinWithEmail(data);
+    };
+    async function doAppleLogin() {
+        const {
+            thirdPartyAccessToken,
+            firebaseIdToken,
+            firebaseUser,
+            success,
+        } = await thirdPartyAuthService.loginWithApple();
+
+        if (success) {
+            console.log('thirdPartyAccessToken', thirdPartyAccessToken);
+            console.log('firebaseIdToken', firebaseIdToken);
+            console.log('firebaseUser', firebaseUser);
+
+            onSigninWithSocial();
+        }
+    }
+    const FacebookSignIn = async () => {
+        console.log('facebook222222222');
+
+        const {
+            firebaseIdToken,
+            success,
+        } = await thirdPartyAuthService.loginWithFacebook();
+        if (success) {
+            onSigninWithSocial();
         }
     };
     return (
@@ -117,52 +186,76 @@ const SectionSignIn = (props) => {
             />
             <MText textStyle={COMMON.TxtSectionSignIn26}>Sign in </MText>
             <MText textStyle={COMMON.TxtSectionSignIn27}>Welcome back! </MText>
-            <MInput
-                inputStyle={COMMON.InputRect86}
-                containerStyle={COMMON.Input85}
-                placeholder="Email Address"
-                placeholderColor={COLORS.Color280}
-                textStyle={COMMON.TextsInput29}
-                backgroundColor={COLORS.Color963}
-                height={verticalScale(48)}
-            />
-            <MInput
-                inputStyle={COMMON.InputRect86}
-                containerStyle={COMMON.Input85}
-                placeholder="Password"
-                placeholderColor={COLORS.Color280}
-                textStyle={COMMON.TextsInput32}
-                secureTextEntry
-                backgroundColor={COLORS.Color963}
-                height={verticalScale(48)}
-            />
-            <MText
-                textStyle={COMMON.TxtSectionSignIn34}
-                onPress={() => navigate('Forgetpassword')}>
-                Forgot password{' '}
-            </MText>
-            <MButton
-                onPress={() => {
-                    setToken('12345');
-                    navigation.dispatch(StackActions.replace('MainStack'));
-                }}
-                style={COMMON.ButtonRect36}
-                containerStyle={COMMON.Button35}
-                text="Sign in "
-                textStyle={COMMON.TextsButton37}
-                gradient={{
-                    colors: [
-                        COLORS.Color323,
-                        COLORS.Color148,
-                        COLORS.Color912,
-                        COLORS.Color674,
-                        COLORS.Color455,
-                        COLORS.Color240,
-                    ],
-                    start: { x: -0.15500132739543915, y: 0.6157848834991455 },
-                    end: { x: 1.014054298400879, y: 0.17686034739017487 },
-                }}
-            />
+            <Formik
+                validationSchema={ValidationSchema}
+                initialValues={{ email: '', password: '' }}
+                onSubmit={(values) => onSubmit(values)}>
+                {({ handleChange, handleSubmit, values, errors }) => (
+                    <>
+                        <MInput
+                            inputStyle={COMMON.InputRect86}
+                            containerStyle={COMMON.Input85}
+                            placeholder="Email Address"
+                            placeholderColor={COLORS.Color280}
+                            onChangeText={handleChange('email')}
+                            error={errors && errors.email}
+                            textStyle={COMMON.TextsInput29}
+                            backgroundColor={COLORS.Color963}
+                            height={verticalScale(48)}
+                        />
+                        <MInput
+                            inputStyle={COMMON.InputRect86}
+                            containerStyle={COMMON.Input85}
+                            placeholder="Password"
+                            onChangeText={handleChange('password')}
+                            error={errors && errors.password}
+                            placeholderColor={COLORS.Color280}
+                            textStyle={COMMON.TextsInput32}
+                            secureTextEntry
+                            backgroundColor={COLORS.Color963}
+                            height={verticalScale(48)}
+                        />
+                        <MText
+                            textStyle={COMMON.TxtSectionSignIn34}
+                            onPress={() => navigate('Forgetpassword')}>
+                            Forgot password{' '}
+                        </MText>
+                        <MButton
+                            onPress={
+                                handleSubmit
+                                // () => {
+                                // setToken('12345');
+                                // navigation.dispatch(
+                                //     StackActions.replace('MainStack'),
+                                // );
+                                // }
+                            }
+                            style={COMMON.ButtonRect36}
+                            containerStyle={COMMON.Button35}
+                            text="Sign in "
+                            textStyle={COMMON.TextsButton37}
+                            gradient={{
+                                colors: [
+                                    COLORS.Color323,
+                                    COLORS.Color148,
+                                    COLORS.Color912,
+                                    COLORS.Color674,
+                                    COLORS.Color455,
+                                    COLORS.Color240,
+                                ],
+                                start: {
+                                    x: -0.15500132739543915,
+                                    y: 0.6157848834991455,
+                                },
+                                end: {
+                                    x: 1.014054298400879,
+                                    y: 0.17686034739017487,
+                                },
+                            }}
+                        />
+                    </>
+                )}
+            </Formik>
             <View style={[COMMON.RowItemCenter, COMMON.RowItemSectionSignIn38]}>
                 <View style={{ width: '30%' }}>
                     <View style={COMMON.LineSectionSignIn39}></View>
@@ -179,6 +272,8 @@ const SectionSignIn = (props) => {
             <SectionRowSocialCenter
                 style={COMMON.EleSectionSignIn42}
                 googleSignin={googleSignin}
+                doAppleLogin={doAppleLogin}
+                FacebookSignIn={FacebookSignIn}
             />
             <TouchableOpacity
                 style={styles.signInBtn}

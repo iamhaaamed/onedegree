@@ -1,9 +1,9 @@
 import auth from '@react-native-firebase/auth';
 import { useMutation } from 'react-query';
 
-import graphQLClient from 'graphql/graphQLClient';
-import { SIGNIN, SIGNUP } from 'graphql/signup/mutations';
-import { authStore } from 'store';
+import graphQLClient from '../../graphql/graphQLClient';
+import { SIGNIN, SIGNUP } from '../../graphql/signup/mutations';
+import { authStore } from '../../store';
 
 const useLogin = () => {
     const { setUserId } = authStore((state) => state);
@@ -35,8 +35,8 @@ const useRegister = () => {
         },
         {
             onSuccess: (data: any) => {
-                if (data.user_signUp?.status === 'SUCCESS') {
-                    setUserId(data.user_signUp?.result?.id);
+                if (data.user_login?.status === 'SUCCESS') {
+                    setUserId(data.user_login?.result?.id);
                 }
             },
         },
