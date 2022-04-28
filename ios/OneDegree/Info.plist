@@ -20,6 +20,22 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+		<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.638092220474-51d7umjsfv3ueud0u168asvcqsedlfm0</string>
+				<string>fb684155826131549</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>684155826131549</string>
+	<key>FacebookDisplayName</key>
+	<string>OneDegree</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
