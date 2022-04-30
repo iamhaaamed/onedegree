@@ -42,7 +42,7 @@ import {
 } from 'components/common';
 import { navigate } from 'navigation/methods';
 const Sectionhome = (props) => {
-    const { style } = props;
+    const { style, data } = props;
     const {
         LAYOUT,
         GUTTERS,

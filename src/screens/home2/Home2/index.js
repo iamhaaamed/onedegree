@@ -1,5 +1,4 @@
-import React from 'react';
-import { useRef } from 'react';
+import React, { useEffect } from 'react';
 import useTheme from 'hooks/useTheme';
 import { useState } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
@@ -42,8 +41,11 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
+import { useLogin } from 'hooks/auth';
 import { SectionTophome, Sectionhome } from 'components/Sections';
 import Carousel from 'react-native-snap-carousel';
+import { useGetCareers } from 'hooks/careers';
+import { showMessage } from 'react-native-flash-message';
 const Home2 = createScreen(
     () => {
         const {
@@ -54,21 +56,75 @@ const Home2 = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
-        const data = [{}, {}, {}, {}];
+
+        const [user, setUser] = useState();
+        const [isLoading2, setIsLoading2] = useState(false);
+        const { mutate } = useLogin();
+        useEffect(() => {
+            setIsLoading2(true);
+            // mutate(
+            //     {},
+            //     {
+            //         onSuccess: (data) => {
+            //             if (data?.user_login?.status == 'SUCCESS')
+            //                 setUser(data?.user_login?.result);
+            //         },
+            //     },
+            // );
+            try {
+                mutate(
+                    {},
+                    {
+                        onSuccess: (data) => {
+                            if (data?.user_login?.status == 'SUCCESS')
+                                setUser(data?.user_login?.result);
+                        },
+                    },
+                );
+            } catch (e) {
+                console.log(e, 'e!!!!');
+                if (e === 'NOT_FOUND') {
+                    showMessage({
+                        message: 'You are not registered!',
+                        type: 'danger',
+                    });
+                }
+            }
+            setIsLoading2(false);
+        }, []);
+        const {
+            isLoading,
+            data: careers,
+            fetchNextPage,
+            hasNextPage,
+            isRefetching,
+            refetch,
+        } = useGetCareers({});
+
+        const Careers = careers?.pages;
         const renderItem = ({ item, index }) => {
-            return <Sectionhome />;
+            return <Sectionhome data={item} />;
         };
         return (
             <View style={styles.Home2}>
+                <MLoading
+                    isLoading={isLoading || isLoading2}
+                    size="large"
+                    color={COLORS.Color323}
+                />
                 <SectionTophome style={COMMON.EleHome265} />
                 {/* <ScrollView> */}
                 <View style={COMMON.SectionPaddingHome266}>
-                    <MText textStyle={COMMON.TxtHome267}>Hello,Jen! </MText>
+                    <MText textStyle={COMMON.TxtHome267}>
+                        Hello,{user?.email} !{' '}
+                    </MText>
                     <Carousel
                         // ref={(c) => {
                         //     this.carousel = c;
                         // }}
-                        data={data}
+                        data={Careers}
+                        refreshing={isRefetching}
+                        onRefresh={refetch}
                         renderItem={({ item, index }) =>
                             renderItem({ item, index })
                         }
@@ -95,6 +151,12 @@ const Home2 = createScreen(
                         // }
                         useScrollView={true}
                         vertical={true}
+                        onEndReachedThreshold={0.9}
+                        onEndReached={() => {
+                            if (hasNextPage) {
+                                fetchNextPage();
+                            }
+                        }}
                     />
                 </View>
                 {/* </ScrollView> */}

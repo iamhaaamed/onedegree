@@ -19,8 +19,8 @@ const useLogin = () => {
         },
         {
             onSuccess: (data: any) => {
-                if (data.user_signIn?.status === 'SUCCESS') {
-                    setUserId(data.user_signIn?.result?.id);
+                if (data.user_login?.status === 'SUCCESS') {
+                    setUserId(data.user_login?.result?.id);
                 }
             },
         },
@@ -35,8 +35,8 @@ const useRegister = () => {
         },
         {
             onSuccess: (data: any) => {
-                if (data.user_login?.status === 'SUCCESS') {
-                    setUserId(data.user_login?.result?.id);
+                if (data.user_signUp?.status === 'SUCCESS') {
+                    setUserId(data.user_signUp?.result?.id);
                 }
             },
         },

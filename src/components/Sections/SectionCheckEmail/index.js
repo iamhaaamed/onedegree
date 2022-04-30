@@ -14,12 +14,7 @@ import { useRef } from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {
-    CodeField,
-    Cursor,
-    useBlurOnFulfill,
-    useClearByFocusCell,
-} from 'react-native-confirmation-code-field';
+
 import {
     MIcon,
     MText,
@@ -44,13 +39,10 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { useRegister } from 'hooks/auth';
-import auth from '@react-native-firebase/auth';
-import { showMessage } from 'react-native-flash-message';
 import { goBack, navigate } from 'navigation/methods';
 const CELL_COUNT = 6;
-const SectionVerification = (props) => {
-    const { style, email, password } = props;
+const SectionCheckEmail = (props) => {
+    const { style, password, email } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -59,86 +51,21 @@ const SectionVerification = (props) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
-    const [isLoading, setIsLoading] = useState(false);
-    const { mutate } = useRegister();
-    const onVerifyEmail = async () => {
-        setIsLoading(true);
-        try {
-            await auth().signInWithEmailAndPassword(email, password);
-            const checkDone = auth().currentUser?.emailVerified;
-            console.log('6666', checkDone);
-            if (checkDone) {
-                completeRegistrationWithEmailPassword();
-            } else {
-                showMessage({
-                    message: 'Failed, Please Retry',
-                    type: 'danger',
-                });
-            }
-        } catch (err) {
-            console.log(err, 'verifyEmail*****', email, password);
-        }
-        setIsLoading(false);
-    };
-    const completeRegistrationWithEmailPassword = async () => {
-        mutate(undefined, {
-            onSuccess: (data) => {
-                if (data?.user_signUp?.status === 'SUCCESS') {
-                    navigate('Hiquestion2');
-                } else {
-                    showMessage({
-                        message: data?.user_signUp?.status,
-                        type: 'danger',
-                    });
-                }
-            },
-        });
-    };
+
     return (
         <View style={[styles.SectionVerification, style]}>
-            <MLoading
-                size="large"
-                color={COLORS.Color323}
-                isLoading={isLoading}
-            />
-            {/* <MText textStyle={COMMON.TxtSectionVerification83}>
-                Verification{' '}
+            <MText textStyle={COMMON.TxtSectionVerification83}>
+                Check your mail
             </MText>
             <MText textStyle={COMMON.TxtSectionVerification84}>
-                The code was sent to sample@mail.com{' '}
-            </MText> */}
-            {/* <CodeField
-                ref={ref}
-                {...prop}
-                value={value}
-                onChangeText={(txt) => setValue(txt)}
-                cellCount={CELL_COUNT}
-                rootStyle={styles.codeFieldRoot}
-                keyboardType="number-pad"
-                textContentType="oneTimeCode"
-                renderCell={({ index, symbol, isFocused }) => (
-                    <Text
-                        key={index}
-                        style={[styles.cell, isFocused && styles.focusCell]}
-                        onLayout={getCellOnLayoutHandler(index)}>
-                        {symbol || (isFocused ? <Cursor /> : null)}
-                    </Text>
-                )}
-            /> */}
-            {/* <MInput
-                inputStyle={COMMON.InputRect86}
-                containerStyle={COMMON.Input85}
-                backgroundColor={COLORS.Color963}
-                height={verticalScale(48)}
-            /> */}
-            {/* <MText textStyle={COMMON.TxtSectionVerification87}>
-                Resend code{' '}
-            </MText> */}
+                We Should Verify Your Email, Please Check Your Inbox And Follow
+                The Instruction
+            </MText>
             <MButton
-                onPress={onVerifyEmail}
+                onPress={() => navigate('Forgetpassword1', { email, password })}
                 style={COMMON.ButtonRect89}
-                containerStyle={[COMMON.Button88, { marginTop: scale(100) }]}
-                text="Verify email"
+                containerStyle={COMMON.Button88}
+                text="Open email app"
                 textStyle={COMMON.TextsButton90}
                 gradient={{
                     colors: [
@@ -152,6 +79,14 @@ const SectionVerification = (props) => {
                     start: { x: -0.15500132739543915, y: 0.6157848834991455 },
                     end: { x: 1.014054298400879, y: 0.17686034739017487 },
                 }}
+            />
+            <MButton
+                onPress={() => navigate('Hiquestion2')}
+                style={COMMON.ButtonRect92}
+                containerStyle={COMMON.Button91}
+                text="Skip, I’ll confirm later"
+                textStyle={COMMON.TextsButton93}
+                transparent
             />
             <TouchableOpacity
                 style={styles.signInBtn}
@@ -198,8 +133,8 @@ const styles = StyleSheet.create({
         borderColor: COLORS.primary,
     },
     signInBtn: {
-        marginTop: scale(50),
+        marginTop: scale(20),
         alignItems: 'center',
     },
 });
-export default SectionVerification;
+export default SectionCheckEmail;

@@ -44,6 +44,7 @@ import {
 } from 'components/common';
 import { navigate } from 'navigation/methods';
 import { SectionTop, Question1 } from 'components/Sections';
+import { useUpdateProfile } from 'hooks/profile';
 const question2 = createScreen(
     () => {
         const {
@@ -54,26 +55,14 @@ const question2 = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
-
-        const clickCounter = useRef(0);
-        const onPress = () => {
-            console.log(`Clicked! ${clickCounter.current}`);
-            clickCounter.current = clickCounter.current + 1;
-        };
-
-        const [isChecked, setIsChecked] = useState(false);
+        const [Answers, setAnswers] = useState();
+        console.log('Answers', Answers);
+        const { mutate } = useUpdateProfile();
 
         return (
             <View style={styles.question2}>
                 <ScrollView>
-                    {/* <View style={COMMON.SectionPaddingquestion254}> */}
                     <SectionTop />
-                    {/* <View style={{ alignItems: 'center' }}>
-                            <MText textStyle={COMMON.Txtquestion256}>
-                                Getting started{' '}
-                            </MText>
-                        </View> */}
-                    {/* </View> */}
                     <MImage
                         imageSource={IMAGES.image2101}
                         style={COMMON.Image57}
@@ -82,7 +71,7 @@ const question2 = createScreen(
                     />
 
                     <View style={COMMON.SectionPaddingquestion258}>
-                        <Question1 />
+                        <Question1 setAnswer={(value) => setAnswers(value)} />
                     </View>
                     <MButton
                         onPress={() => navigate('Question7')}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     View,
     Text,
@@ -41,6 +41,7 @@ import {
     MSlider,
 } from 'components/common';
 import { navigate } from 'navigation/methods';
+
 const SectionTophome = (props) => {
     const { style } = props;
     const {
@@ -51,12 +52,6 @@ const SectionTophome = (props) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
-
-    const clickCounter = useRef(0);
-    const onPress = () => {
-        console.log(`Clicked! ${clickCounter.current}`);
-        clickCounter.current = clickCounter.current + 1;
-    };
 
     return (
         <View style={[styles.SectionTophome, style]}>

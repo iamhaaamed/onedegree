@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRef } from 'react';
 import useTheme from 'hooks/useTheme';
 import { useState } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView, FlatList } from 'react-native';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { createScreen } from 'components/elements';
 import { COLORS } from 'constants/common';
@@ -44,8 +44,9 @@ import {
 } from 'components/common';
 import { navigate } from 'navigation/methods';
 import { SectionTop, Qustion1 } from 'components/Sections';
+
 const Question1 = (props) => {
-    const { style, title, answer, page } = props;
+    const { style, title, answer, page, setAnswer } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -54,90 +55,82 @@ const Question1 = (props) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
-
-    const clickCounter = useRef(0);
-    const onPress = () => {
-        console.log(`Clicked! ${clickCounter.current}`);
-        clickCounter.current = clickCounter.current + 1;
-    };
-
+    const options = [
+        {
+            title: 'Aviation',
+        },
+        {
+            title: 'Arts',
+        },
+        {
+            title: 'Business',
+        },
+        {
+            title: 'Education',
+        },
+        {
+            title: 'Law Enforcement',
+        },
+        {
+            title: 'Medical',
+        },
+        {
+            title: 'Service Industry',
+        },
+        {
+            title: 'Technology',
+        },
+        {
+            title: 'Not sure',
+        },
+    ];
+    useEffect(() => {
+        setAnswer(IndustryArray);
+    }, [IndustryArray]);
     const [isChecked, setIsChecked] = useState(false);
+    const [IndustryArray, setIndustryArray] = useState([]);
+    console.log('///////////', IndustryArray);
 
     return (
         <>
             <MText textStyle={COMMON.Txtquestion259}>
                 What industries are you interested in?{' '}
             </MText>
-            <MText textStyle={COMMON.Txtquestion260}>
-                Select all that apply{' '}
-            </MText>
+
             <MCheckBox
                 iconContainerStyle={{ borderRadius: 5 }}
                 isChecked={isChecked}
-                setIsChecked={() => setIsChecked((p) => !p)}
+                setIsChecked={() => {
+                    setIsChecked((p) => !p);
+                    let x = [];
+                    options?.map((item, index) => x.push(item?.title));
+                    setIndustryArray(x);
+                }}
                 style={COMMON.CheckBox61}>
-                <MText textStyle={COMMON.TextsCheckBox62}>Aviation</MText>
-            </MCheckBox>
-            <MCheckBox
-                iconContainerStyle={{ borderRadius: 5 }}
-                isChecked={isChecked}
-                setIsChecked={() => setIsChecked((p) => !p)}
-                style={COMMON.CheckBox63}>
-                <MText textStyle={COMMON.TextsCheckBox64}>Arts</MText>
-            </MCheckBox>
-            <MCheckBox
-                iconContainerStyle={{ borderRadius: 5 }}
-                isChecked={isChecked}
-                setIsChecked={() => setIsChecked((p) => !p)}
-                style={COMMON.CheckBox65}>
-                <MText textStyle={COMMON.TextsCheckBox66}>Business</MText>
-            </MCheckBox>
-            <MCheckBox
-                iconContainerStyle={{ borderRadius: 5 }}
-                isChecked={isChecked}
-                setIsChecked={() => setIsChecked((p) => !p)}
-                style={COMMON.CheckBox67}>
-                <MText textStyle={COMMON.TextsCheckBox68}>Education</MText>
-            </MCheckBox>
-            <MCheckBox
-                iconContainerStyle={{ borderRadius: 5 }}
-                isChecked={isChecked}
-                setIsChecked={() => setIsChecked((p) => !p)}
-                style={COMMON.CheckBox69}>
-                <MText textStyle={COMMON.TextsCheckBox70}>
-                    Law Enforcement
+                <MText textStyle={COMMON.TextsCheckBox62}>
+                    Select all that apply
                 </MText>
             </MCheckBox>
-            <MCheckBox
-                iconContainerStyle={{ borderRadius: 5 }}
-                isChecked={isChecked}
-                setIsChecked={() => setIsChecked((p) => !p)}
-                style={COMMON.CheckBox71}>
-                <MText textStyle={COMMON.TextsCheckBox72}>Medical</MText>
-            </MCheckBox>
-            <MCheckBox
-                iconContainerStyle={{ borderRadius: 5 }}
-                isChecked={isChecked}
-                setIsChecked={() => setIsChecked((p) => !p)}
-                style={COMMON.CheckBox73}>
-                <MText textStyle={COMMON.TextsCheckBox74}>
-                    Service Industry
-                </MText>
-            </MCheckBox>
-            <MCheckBox
-                iconContainerStyle={{ borderRadius: 5 }}
-                isChecked={isChecked}
-                setIsChecked={() => setIsChecked((p) => !p)}
-                style={COMMON.CheckBox75}>
-                <MText textStyle={COMMON.TextsCheckBox76}>Technology</MText>
-            </MCheckBox>
-            <MCheckBox
-                iconContainerStyle={{ borderRadius: 5 }}
-                isChecked={isChecked}
-                setIsChecked={() => setIsChecked((p) => !p)}
-                style={COMMON.CheckBox77}>
-                <MText textStyle={COMMON.TextsCheckBox78}>Not sure</MText>
-            </MCheckBox>
+            <FlatList
+                data={options}
+                renderItem={({ item, index }) => (
+                    <MCheckBox
+                        iconContainerStyle={{ borderRadius: 5 }}
+                        isChecked={isChecked}
+                        setIsChecked={() => setIsChecked((p) => !p)}
+                        style={COMMON.CheckBox61}>
+                        <MText
+                            textStyle={
+                                index == 8
+                                    ? COMMON.TextsCheckBox78
+                                    : COMMON.TextsCheckBox62
+                            }>
+                            {item?.title}
+                        </MText>
+                    </MCheckBox>
+                )}
+                keyExtractor={(item, index) => index.toString()}
+            />
         </>
     );
 };

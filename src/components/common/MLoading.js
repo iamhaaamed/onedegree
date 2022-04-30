@@ -27,7 +27,7 @@ const MLoading = ({ size, color, animationProps, isLoading }) => {
                     />
                 </View>
             ) : (
-                <View>
+                <View style={{ zIndex: 2000 }}>
                     <ActivityIndicator size={size} color={color} />
                 </View>
             )}

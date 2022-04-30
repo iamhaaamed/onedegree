@@ -29,5 +29,6 @@ export default function () {
         splash3: require('assets/images/3.png'),
         splash4: require('assets/images/4.png'),
         google: require('assets/images/google.png'),
+        checkEmail: require('assets/images/checkEmail.png'),
     };
 }

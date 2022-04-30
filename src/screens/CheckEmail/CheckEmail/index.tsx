@@ -42,8 +42,8 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { SectionVerification } from 'components/Sections';
-const Forgetpassword1 = createScreen(
+import { SectionCheckEmail } from 'components/Sections';
+const CheckEmail = createScreen(
     ({ route }) => {
         const {
             LAYOUT,
@@ -53,18 +53,19 @@ const Forgetpassword1 = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
+        console.log('2222222', route.params);
         const { email, password } = route?.params || {};
         return (
             <View style={styles.Forgetpassword1}>
                 <ScrollView>
                     <MImage
-                        imageSource={IMAGES.image1335}
-                        style={COMMON.image82}
-                        customWidth={scale(350)}
-                        customHeight={scale(350)}
+                        imageSource={IMAGES.checkEmail}
+                        style={COMMON.image821}
+                        customWidth={scale(300)}
+                        customHeight={scale(300)}
                     />
 
-                    <SectionVerification email={email} password={password} />
+                    <SectionCheckEmail email={email} password={password} />
                 </ScrollView>
             </View>
         );
@@ -81,4 +82,4 @@ const styles = StyleSheet.create({
         height: '100%',
     },
 });
-export default Forgetpassword1;
+export default CheckEmail;

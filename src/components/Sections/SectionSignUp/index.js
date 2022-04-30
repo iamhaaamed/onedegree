@@ -143,7 +143,7 @@ const SectionSignUp = (props) => {
                                 {
                                     text: 'Got it',
                                     onPress: async () => {
-                                        navigate('Hiquestion2', {
+                                        navigate('CheckEmail', {
                                             password,
                                             email,
                                         });

@@ -29,3 +29,4 @@ export * from './FAQScreen';
 export * from './programs';
 export * from './programdetail';
 export * from './question';
+export * from './CheckEmail';

@@ -22,6 +22,7 @@ import {
     Search,
     Chat3,
     Home2,
+    CheckEmail,
 } from 'screens';
 
 import { navigate } from './methods';
@@ -45,6 +46,7 @@ export type AuthStackParamList = {
     Search: undefined;
     Chat3: undefined;
     Home2: undefined;
+    CheckEmail: undefined;
 };
 
 const screens = [
@@ -88,6 +90,11 @@ const screens = [
         options: { headerShown: false },
         name: 'Question2',
         component: Question2,
+    },
+    {
+        options: { headerShown: false },
+        name: 'CheckEmail',
+        component: CheckEmail,
     },
     {
         options: { headerShown: false },

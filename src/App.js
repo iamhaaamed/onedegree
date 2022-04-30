@@ -47,7 +47,7 @@ const App = () => {
         async (user) => {
             if (user) {
                 const idToken = await auth().currentUser?.getIdToken();
-
+                console.log('tokennn:', idToken);
                 if (idToken) {
                     graphQLClient.setHeader(
                         'authorization',
