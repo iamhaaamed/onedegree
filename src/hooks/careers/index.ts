@@ -6,6 +6,7 @@ import {
 } from 'react-query';
 import graphQLClient from '../../graphql/graphQLClient';
 import { GET_CAREERS, GET_LIKE_CAREES } from '../../graphql/careers/queries';
+import { USER_UNLIKE, USER_LIKE } from '../../graphql/careers/mutations';
 const PAGE_SIZE = 10;
 const useGetCareers = ({ options = {} }: { options?: any }) => {
     const res = useInfiniteQuery(
@@ -39,13 +40,24 @@ const useGetCareers = ({ options = {} }: { options?: any }) => {
     return { ...res };
 };
 const useGetLikeCareers = ({ careerId }) => {
-    console.log(
-        'rrrrrrrrrrrrrrrrrrrrrrrddddddddddddddddddddddddddddddddddddd ',
-        careerId,
-    );
-
     return useQuery(['LikeCareers', careerId], async () => {
         return await graphQLClient.request(GET_LIKE_CAREES, { careerId });
     });
 };
-export { useGetCareers, useGetLikeCareers };
+const useLikeCareer = () => {
+    return useMutation(async (careerId) => {
+        console.log('/////////////////////////', careerId);
+
+        return await graphQLClient.request(USER_LIKE, {
+            careerId,
+        });
+    });
+};
+const useUnlikeCareer = () => {
+    return useMutation(async (careerId) => {
+        return await graphQLClient.request(USER_UNLIKE, {
+            careerId,
+        });
+    });
+};
+export { useGetCareers, useGetLikeCareers, useLikeCareer, useUnlikeCareer };

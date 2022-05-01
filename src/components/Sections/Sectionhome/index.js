@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     View,
     Text,
@@ -15,7 +15,11 @@ import { useRef } from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useGetLikeCareers } from 'hooks/careers';
+import {
+    useGetLikeCareers,
+    useLikeCareer,
+    useUnlikeCareer,
+} from 'hooks/careers';
 import {
     MIcon,
     MText,
@@ -51,16 +55,17 @@ const Sectionhome = (props) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
+    const [Like, setLike] = useState(false);
 
     const { data: LikeCareers } = useGetLikeCareers({
         careerId: data?.career?.id,
     });
-    console.log('////', LikeCareers);
-    const clickCounter = useRef(0);
-    const onPress = () => {
-        console.log(`Clicked! ${clickCounter.current}`);
-        clickCounter.current = clickCounter.current + 1;
-    };
+    useEffect(() => {
+        if (LikeCareers?.career_getUserLikeCareer?.result) setLike(true);
+    }, [LikeCareers]);
+    const { mutate: LikeMutate } = useLikeCareer();
+    const { mutate: UnLikeMutate } = useUnlikeCareer();
+
     return (
         <View style={[styles.Sectionhome, style]}>
             <MImage
@@ -145,12 +150,36 @@ const Sectionhome = (props) => {
             <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
                 <View style={{ width: '50%' }}>
                     <MButton
-                        onPress={onPress}
-                        style={COMMON.ButtonRect920}
-                        containerStyle={COMMON.Button910}
+                        onPress={() => {
+                            if (Like)
+                                UnLikeMutate(data?.career?.id, {
+                                    onSuccess: (data) => {
+                                        if (
+                                            data?.career_unlike?.status ==
+                                            'SUCCESS'
+                                        )
+                                            setLike(false);
+                                    },
+                                });
+                            else
+                                LikeMutate(data?.career?.id, {
+                                    onSuccess: (data) => {
+                                        if (
+                                            data?.career_like?.status ==
+                                            'SUCCESS'
+                                        )
+                                            setLike(true);
+                                    },
+                                });
+                        }}
+                        style={[
+                            COMMON.ButtonRect920,
+                            { paddingHorizontal: 10 },
+                        ]}
+                        containerStyle={[COMMON.Button910]}
                         color={COLORS.white}
                         iconLeft={{
-                            name: 'heart-outline',
+                            name: Like ? 'heart' : 'heart-outline',
                             color: COLORS.Color134,
                             Component: MaterialCommunityIcons,
                         }}
