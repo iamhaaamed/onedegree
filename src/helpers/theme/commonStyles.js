@@ -979,6 +979,7 @@ export default function ({ COLORS }) {
             borderBottomLeftRadius: 12,
         },
         Txtquestion7127: {
+            marginTop: verticalScale(25),
             marginBottom: verticalScale(25),
             fontSize: verticalScale(17),
             fontFamily: 'Muli',

@@ -399,7 +399,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start',
     },
     error: {
-        color: COLORS.error,
+        color: '#dc3545',
         top: -10,
         marginBottom: scale(12),
         fontSize: verticalScale(14),

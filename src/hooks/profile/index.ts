@@ -10,9 +10,11 @@ const PAGE_SIZE = 10;
 const useUpdateProfile = () => {
     const queryClient = useQueryClient();
     return useMutation(
-        async (UserInput) => {
+        async (userInput) => {
+            console.log('uuuuuuuuuuu', userInput);
+
             return await GraphQlClient.request(UPDATE_USERPROFILE, {
-                UserInput,
+                userInput: userInput,
             });
         },
         {

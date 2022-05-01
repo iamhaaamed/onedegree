@@ -69,7 +69,7 @@ const Sectionhome = (props) => {
     return (
         <View style={[styles.Sectionhome, style]}>
             <MImage
-                imageSource={IMAGES.image7104}
+                imageSource={{ uri: data?.career?.imageAddress }}
                 style={COMMON.image68}
                 // customWidth={scale(300)}
                 // customHeight={scale(136)}

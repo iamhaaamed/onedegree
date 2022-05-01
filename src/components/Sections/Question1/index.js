@@ -56,41 +56,27 @@ const Question1 = (props) => {
         CONSTANTS,
     } = useTheme();
     const options = [
-        {
-            title: 'Aviation',
-        },
-        {
-            title: 'Arts',
-        },
-        {
-            title: 'Business',
-        },
-        {
-            title: 'Education',
-        },
-        {
-            title: 'Law Enforcement',
-        },
-        {
-            title: 'Medical',
-        },
-        {
-            title: 'Service Industry',
-        },
-        {
-            title: 'Technology',
-        },
-        {
-            title: 'Not sure',
-        },
+        'Aviation',
+        'Arts',
+        'Business',
+        'Education',
+        'Law Enforcement',
+        'Medical',
+        'Service Industry',
+        'Technology',
+        'Not sure',
     ];
+
+    const [isChecked, setIsChecked] = useState([]);
+    const [IndustryArray, setIndustryArray] = useState([]);
+    console.log('///////////', IndustryArray);
     useEffect(() => {
         setAnswer(IndustryArray);
     }, [IndustryArray]);
-    const [isChecked, setIsChecked] = useState(false);
-    const [IndustryArray, setIndustryArray] = useState([]);
-    console.log('///////////', IndustryArray);
-
+    const handleDirection = (item, i) => {
+        // setType(item);
+        setIsChecked([...isChecked, i]);
+    };
     return (
         <>
             <MText textStyle={COMMON.Txtquestion259}>
@@ -116,8 +102,10 @@ const Question1 = (props) => {
                 renderItem={({ item, index }) => (
                     <MCheckBox
                         iconContainerStyle={{ borderRadius: 5 }}
-                        isChecked={isChecked}
-                        setIsChecked={() => setIsChecked((p) => !p)}
+                        isChecked={isChecked == index ? true : false}
+                        setIsChecked={() => {
+                            handleDirection(item, index);
+                        }}
                         style={COMMON.CheckBox61}>
                         <MText
                             textStyle={
@@ -125,7 +113,7 @@ const Question1 = (props) => {
                                     ? COMMON.TextsCheckBox78
                                     : COMMON.TextsCheckBox62
                             }>
-                            {item?.title}
+                            {item}
                         </MText>
                     </MCheckBox>
                 )}

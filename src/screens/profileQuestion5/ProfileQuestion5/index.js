@@ -64,11 +64,13 @@ const ProfileQuestion5 = createScreen(
             CONSTANTS,
         } = useTheme();
 
-        const [isChecked, setIsChecked] = useState(false);
+        const [isChecked, setAnswers] = useState();
         const SelectQuestion = () => {
             switch (route?.params?.code) {
                 case 1:
-                    return <Question1 />;
+                    return (
+                        <Question1 setAnswer={(value) => setAnswers(value)} />
+                    );
                 case 2:
                     return <Question2 />;
                 case 3:

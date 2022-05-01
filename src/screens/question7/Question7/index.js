@@ -44,8 +44,9 @@ import {
 } from 'components/common';
 import { SectionRowCenter, SectionTop, Question2 } from 'components/Sections';
 import { goBack, navigate } from 'navigation/methods';
+
 const question7 = createScreen(
-    () => {
+    ({ route }) => {
         const {
             LAYOUT,
             GUTTERS,
@@ -55,25 +56,15 @@ const question7 = createScreen(
             CONSTANTS,
         } = useTheme();
 
-        const clickCounter = useRef(0);
-        const onPress = () => {
-            console.log(`Clicked! ${clickCounter.current}`);
-            clickCounter.current = clickCounter.current + 1;
+        const [userInput, setUserInput] = useState();
+
+        const Complete = (data) => {
+            if (data.amount && data.type) setUserInput(data);
         };
-
-        const [isChecked, setIsChecked] = useState(false);
-
         return (
             <View style={styles.question7}>
                 <ScrollView>
                     <SectionTop />
-                    {/* <View style={COMMON.SectionPaddingquestion7116}>
-                        <View style={COMMON.SectionPaddingquestion7117}>
-                            <MText textStyle={COMMON.Txtquestion7118}>
-                                Getting started{' '}
-                            </MText>
-                        </View>
-                    </View> */}
                     <MImage
                         imageSource={IMAGES.image6696}
                         style={COMMON.Image119}
@@ -82,11 +73,16 @@ const question7 = createScreen(
                     />
 
                     <View style={COMMON.SectionPaddingquestion7120}>
-                        <Question2 />
+                        <Question2 onComplete={(data) => Complete(data)} />
                     </View>
                     <SectionRowCenter
                         backPress={() => goBack()}
-                        nextPress={() => navigate('Question6')}
+                        nextPress={() =>
+                            navigate('Question6', {
+                                userInput,
+                                ...route?.params,
+                            })
+                        }
                     />
                 </ScrollView>
             </View>

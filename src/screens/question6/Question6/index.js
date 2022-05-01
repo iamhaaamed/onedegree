@@ -45,8 +45,9 @@ import {
 } from 'components/common';
 import { SectionTop } from 'components/Sections';
 import { SectionRowCenter, Question3 } from 'components/Sections';
+import { useUpdateProfile } from 'hooks/profile';
 const question6 = createScreen(
-    () => {
+    ({ route }) => {
         const {
             LAYOUT,
             GUTTERS,
@@ -55,16 +56,16 @@ const question6 = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
-
-        const clickCounter = useRef(0);
-        const onPress = () => {
-            console.log(`Clicked! ${clickCounter.current}`);
-            clickCounter.current = clickCounter.current + 1;
-        };
-
+        const { isLoading, mutate } = useUpdateProfile();
+        console.log('route', route?.params);
         return (
             <View style={styles.question6}>
                 <ScrollView>
+                    <MLoading
+                        size="large"
+                        color={COLORS.Color323}
+                        isLoading={isLoading}
+                    />
                     <SectionTop />
                     <MImage
                         imageSource={IMAGES.image2773}
@@ -78,7 +79,29 @@ const question6 = createScreen(
                     </View>
                     <SectionRowCenter
                         backPress={() => goBack()}
-                        nextPress={() => navigate('Gettingstarted3')}
+                        nextPress={
+                            () =>
+                                mutate(
+                                    {
+                                        amount:
+                                            route?.params?.userInput?.amount,
+                                        amountType:
+                                            route?.params?.userInput?.type ==
+                                            'Hourly'
+                                                ? 'HOURLY'
+                                                : route?.params?.userInput
+                                                      ?.type == 'Monthly'
+                                                ? 'MONTHLY'
+                                                : 'ANNUALLY',
+                                    },
+                                    {
+                                        onSuccess: (data) => {
+                                            console.log('666666', data);
+                                        },
+                                    },
+                                )
+                            // navigate('Gettingstarted3')
+                        }
                     />
                 </ScrollView>
             </View>

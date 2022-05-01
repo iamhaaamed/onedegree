@@ -57,7 +57,6 @@ const question2 = createScreen(
         } = useTheme();
         const [Answers, setAnswers] = useState();
         console.log('Answers', Answers);
-        const { mutate } = useUpdateProfile();
 
         return (
             <View style={styles.question2}>
@@ -74,7 +73,7 @@ const question2 = createScreen(
                         <Question1 setAnswer={(value) => setAnswers(value)} />
                     </View>
                     <MButton
-                        onPress={() => navigate('Question7')}
+                        onPress={() => navigate('Question7', { Answers })}
                         style={COMMON.ButtonRect80}
                         containerStyle={COMMON.Button79}
                         text="Next"

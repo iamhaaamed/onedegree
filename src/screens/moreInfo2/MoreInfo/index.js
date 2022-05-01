@@ -133,7 +133,9 @@ const MoreInfo = createScreen(
                                 ]}>
                                 <View style={{ width: '75%' }}>
                                     <MImage
-                                        imageSource={IMAGES.image7104}
+                                        imageSource={{
+                                            uri: Info?.career?.imageAddress,
+                                        }}
                                         style={COMMON.image7}
                                         customWidth={scale(137)}
                                         customHeight={scale(137)}
@@ -258,7 +260,10 @@ const MoreInfo = createScreen(
                             data={Info?.career?.otherPerks}
                         />
                         <View style={COMMON.SectionPaddingMoreInfo218}>
-                            <MVideo source={futsal} style={COMMON.image19} />
+                            <MVideo
+                                source={{ uri: Info?.career?.videoAddress }}
+                                style={COMMON.image19}
+                            />
                         </View>
                     </View>
                     <View style={COMMON.SectionPaddingMoreInfo220}>
