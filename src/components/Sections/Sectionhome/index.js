@@ -56,7 +56,7 @@ const Sectionhome = (props) => {
         CONSTANTS,
     } = useTheme();
     const [Like, setLike] = useState(false);
-
+    console.log('lllllllllllll', data);
     const { data: LikeCareers } = useGetLikeCareers({
         careerId: data?.career?.id,
     });
@@ -114,39 +114,32 @@ const Sectionhome = (props) => {
                     </MText>
                 </View>
             </View>
-            <MText textStyle={COMMON.TxtSectionhome80}>
-                Top Training Programs{' '}
-            </MText>
-            <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
-                <View style={{ width: '50%' }}>
-                    <MText textStyle={COMMON.TxtSectionhome82}>
-                        school name{' '}
+            {data?.programVm?.length > 0 && (
+                <>
+                    {' '}
+                    <MText textStyle={COMMON.TxtSectionhome80}>
+                        Top Training Programs{' '}
                     </MText>
-                </View>
-                <View style={{ width: '50%' }}>
-                    <MText textStyle={COMMON.TxtSectionhome83}>6 miles </MText>
-                </View>
-            </View>
-            <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
-                <View style={{ width: '50%' }}>
-                    <MText textStyle={COMMON.TxtSectionhome82}>
-                        school name{' '}
-                    </MText>
-                </View>
-                <View style={{ width: '50%' }}>
-                    <MText textStyle={COMMON.TxtSectionhome83}>6 miles </MText>
-                </View>
-            </View>
-            <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
-                <View style={{ width: '50%' }}>
-                    <MText textStyle={COMMON.TxtSectionhome82}>
-                        school name{' '}
-                    </MText>
-                </View>
-                <View style={{ width: '50%' }}>
-                    <MText textStyle={COMMON.TxtSectionhome83}>6 miles </MText>
-                </View>
-            </View>
+                    {data?.programVm?.map((item, index) => (
+                        <View
+                            style={[
+                                COMMON.RowItem,
+                                COMMON.RowItemSectionhome71,
+                            ]}>
+                            <View style={{ width: '50%' }}>
+                                <MText textStyle={COMMON.TxtSectionhome82}>
+                                    {item?.programs?.title}
+                                </MText>
+                            </View>
+                            <View style={{ width: '50%' }}>
+                                <MText textStyle={COMMON.TxtSectionhome83}>
+                                    {item?.distance} miles{' '}
+                                </MText>
+                            </View>
+                        </View>
+                    ))}
+                </>
+            )}
             <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
                 <View style={{ width: '50%' }}>
                     <MButton
@@ -187,7 +180,7 @@ const Sectionhome = (props) => {
                 </View>
                 <View style={{ width: '50%' }}>
                     <MButton
-                        onPress={() => navigate('MoreInfo', { data })}
+                        onPress={() => navigate('MoreInfo', { data, Like })}
                         style={COMMON.ButtonRect920}
                         containerStyle={[
                             COMMON.Button910,

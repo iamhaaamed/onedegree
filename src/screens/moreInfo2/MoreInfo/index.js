@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import useTheme from 'hooks/useTheme';
 import { useState } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
+import { View, Image, Text, TouchableOpacity, Share } from 'react-native';
 import { createScreen } from 'components/elements';
 import { COLORS } from 'constants/common';
 import ActionSheet from 'react-native-actions-sheet';
@@ -48,6 +48,11 @@ import { SectionTop01 } from 'components/Sections';
 import { SectionRow, SectionModalRemoveSave } from 'components/Sections';
 import futsal from '../../../assets/video/futsal.mp4';
 import { navigate } from 'navigation/methods';
+import {
+    useGetLikeCareers,
+    useLikeCareer,
+    useUnlikeCareer,
+} from 'hooks/careers';
 const MoreInfo = createScreen(
     ({ route }) => {
         const {
@@ -58,6 +63,7 @@ const MoreInfo = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
+        const [Like, setLike] = useState(route?.params?.Like);
         console.log('rrrrrr', route?.params?.data);
         const Info = route?.params?.data;
         const refActionSheet = useRef(null);
@@ -66,12 +72,26 @@ const MoreInfo = createScreen(
                 refActionSheet.current?.setModalVisible();
             }
         };
-        const clickCounter = useRef(0);
-        const onPress = () => {
-            console.log(`Clicked! ${clickCounter.current}`);
-            clickCounter.current = clickCounter.current + 1;
-        };
 
+        const { mutate: LikeMutate } = useLikeCareer();
+        const { mutate: UnLikeMutate } = useUnlikeCareer();
+        const OnShare = async (data) => {
+            try {
+                // let img = data.images_link[0]?.replace(":3000", "")
+                const result = await Share.share({
+                    message: Info?.career?.title,
+                });
+                if (result.action === Share.sharedAction) {
+                    if (result.activityType) {
+                        // shared with activity type of result.activityType
+                    } else {
+                        // shared
+                    }
+                } else if (result.action === Share.dismissedAction) {
+                    // dismissed
+                }
+            } catch (error) {}
+        };
         return (
             <View style={styles.MoreInfo2}>
                 <ScrollView>
@@ -124,20 +144,47 @@ const MoreInfo = createScreen(
                                         width: '10%',
                                     }}>
                                     <MButton
-                                        onPress={onPress}
+                                        onPress={() => {
+                                            if (Like)
+                                                UnLikeMutate(Info?.career?.id, {
+                                                    onSuccess: (data) => {
+                                                        if (
+                                                            data?.career_unlike
+                                                                ?.status ==
+                                                            'SUCCESS'
+                                                        )
+                                                            setLike(false);
+                                                    },
+                                                });
+                                            else
+                                                LikeMutate(Info?.career?.id, {
+                                                    onSuccess: (data) => {
+                                                        if (
+                                                            data?.career_like
+                                                                ?.status ==
+                                                            'SUCCESS'
+                                                        )
+                                                            setLike(true);
+                                                    },
+                                                });
+                                        }}
                                         style={COMMON.ButtonRect9}
                                         containerStyle={COMMON.Button8}
                                         color={COLORS.Color327}
                                         iconLeft={{
-                                            name: 'heart-outline',
-                                            color: COLORS.Color756,
+                                            name: Like
+                                                ? 'heart'
+                                                : 'heart-outline',
+                                            color: Like
+                                                ? COLORS.Color134
+                                                : COLORS.Color756,
                                             Component: MaterialCommunityIcons,
                                         }}
                                     />
                                 </View>
                                 <View style={{ width: '10%' }}>
                                     <MButton
-                                        onPress={onPress}
+                                        onPress={() => OnShare()}
                                         style={COMMON.ButtonRect9}
                                         containerStyle={COMMON.Button8}
                                         color={COLORS.Color327}
