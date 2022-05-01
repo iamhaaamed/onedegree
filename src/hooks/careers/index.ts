@@ -5,7 +5,7 @@ import {
     useQueryClient,
 } from 'react-query';
 import graphQLClient from '../../graphql/graphQLClient';
-import { GET_CAREERS } from '../../graphql/careers/queries';
+import { GET_CAREERS, GET_LIKE_CAREES } from '../../graphql/careers/queries';
 const PAGE_SIZE = 10;
 const useGetCareers = ({ options = {} }: { options?: any }) => {
     const res = useInfiniteQuery(
@@ -25,24 +25,27 @@ const useGetCareers = ({ options = {} }: { options?: any }) => {
                 }
                 return undefined;
             },
-            select: (data) => (
-                console.log(
-                    '/////',
-                    data?.pages[0]?.career_getCareers?.result?.items,
-                ),
-                {
-                    ...data,
+            select: (data) => ({
+                ...data,
 
-                    pages: data?.pages
-                        ?.map((a) => a.career_getCareers?.result?.items)
-                        .reduce((a: string | any[], b: any) => a.concat(b), []),
-                }
-            ),
+                pages: data?.pages
+                    ?.map((a) => a.career_getCareers?.result?.items)
+                    .reduce((a: string | any[], b: any) => a.concat(b), []),
+            }),
             ...options,
         },
     );
 
     return { ...res };
 };
+const useGetLikeCareers = ({ careerId }) => {
+    console.log(
+        'rrrrrrrrrrrrrrrrrrrrrrrddddddddddddddddddddddddddddddddddddd ',
+        careerId,
+    );
 
-export { useGetCareers };
+    return useQuery(['LikeCareers', careerId], async () => {
+        return await graphQLClient.request(GET_LIKE_CAREES, { careerId });
+    });
+};
+export { useGetCareers, useGetLikeCareers };

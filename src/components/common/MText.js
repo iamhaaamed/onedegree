@@ -15,97 +15,101 @@ import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
  * @returns
  */
 const MText = (props) => {
-  const {
-    containerStyle,
-    onPress,
-    textStyle,
-    children,
-    color,
-    IconComponent,
-    iconColor,
-    iconName,
-    iconSize,
-    iconStyle,
-    loading,
-    skeletonOptions,
-  } = props;
+    const {
+        containerStyle,
+        onPress,
+        textStyle,
+        children,
+        color,
+        IconComponent,
+        iconColor,
+        iconName,
+        iconSize,
+        iconStyle,
+        loading,
+        skeletonOptions,
+        numberOfLines,
+    } = props;
 
-  const { TYPOGRAPHY } = useTheme();
-  const mergedStyle = StyleSheet.flatten([
-    TYPOGRAPHY.textRegular,
-    textStyle,
-    color && { color },
-  ]);
-  const customStyle =
-    mergedStyle && mergedStyle.fontSize
-      ? { ...mergedStyle, fontSize: scale(mergedStyle.fontSize) }
-      : mergedStyle;
+    const { TYPOGRAPHY } = useTheme();
+    const mergedStyle = StyleSheet.flatten([
+        TYPOGRAPHY.textRegular,
+        textStyle,
+        color && { color },
+    ]);
+    const customStyle =
+        mergedStyle && mergedStyle.fontSize
+            ? { ...mergedStyle, fontSize: scale(mergedStyle.fontSize) }
+            : mergedStyle;
 
-  if (loading) {
-    const { numberOfLines, style: skeletonStyle, fullWidth } =
-      skeletonOptions ?? {};
-    const numLines = numberOfLines ?? 1;
-    const lines = [];
-    for (let i = 0; i < numLines; i++) {
-      let width;
-      if (!fullWidth) {
-        width = Math.round(Math.random() * 50.0 + 50) + '%';
-      }
-      lines.push(
-        <View
-          key={i}
-          style={[
-            width && { width },
-            {
-              height: customStyle.fontSize * 1.1,
-              borderRadius: 12,
-              marginBottom: customStyle.fontSize * 0.3,
-              ...skeletonStyle,
-            },
-          ]}
-        />,
-      );
+    if (loading) {
+        const { numberOfLines, style: skeletonStyle, fullWidth } =
+            skeletonOptions ?? {};
+        const numLines = numberOfLines ?? 1;
+        const lines = [];
+        for (let i = 0; i < numLines; i++) {
+            let width;
+            if (!fullWidth) {
+                width = Math.round(Math.random() * 50.0 + 50) + '%';
+            }
+            lines.push(
+                <View
+                    key={i}
+                    style={[
+                        width && { width },
+                        {
+                            height: customStyle.fontSize * 1.1,
+                            borderRadius: 12,
+                            marginBottom: customStyle.fontSize * 0.3,
+                            ...skeletonStyle,
+                        },
+                    ]}
+                />,
+            );
+        }
+
+        return <SkeletonPlaceholder>{lines}</SkeletonPlaceholder>;
+    }
+    if (onPress) {
+        return (
+            <View style={containerStyle}>
+                <TouchableWithoutFeedback onPress={() => onPress()}>
+                    <Text
+                        {...props}
+                        style={customStyle}
+                        numberOfLines={numberOfLines}>
+                        {iconName && (
+                            <MIcon
+                                name={iconName}
+                                IconComponent={IconComponent}
+                                size={iconSize}
+                                color={iconColor ?? color}
+                                style={iconStyle}
+                            />
+                        )}
+                        {children}
+                    </Text>
+                </TouchableWithoutFeedback>
+            </View>
+        );
     }
 
-    return <SkeletonPlaceholder>{lines}</SkeletonPlaceholder>;
-  }
-  if (onPress) {
     return (
-      <View style={containerStyle}>
-        <TouchableWithoutFeedback onPress={() => onPress()}>
-          <Text {...props} style={customStyle}>
-            {iconName && (
-              <MIcon
-                name={iconName}
-                IconComponent={IconComponent}
-                size={iconSize}
-                color={iconColor ?? color}
-                style={iconStyle}
-              />
-            )}
-            {children}
-          </Text>
-        </TouchableWithoutFeedback>
-      </View>
+        <View style={containerStyle}>
+            <Text {...props} style={customStyle}>
+                {iconName && (
+                    <MIcon
+                        name={iconName}
+                        IconComponent={IconComponent}
+                        size={iconSize}
+                        color={iconColor ?? color}
+                        style={iconStyle}
+                    />
+                )}
+                {children}
+            </Text>
+        </View>
     );
-  }
-
-  return (
-    <View style={containerStyle}>
-      <Text {...props} style={customStyle}>
-        {iconName && (
-          <MIcon
-            name={iconName}
-            IconComponent={IconComponent}
-            size={iconSize}
-            color={iconColor ?? color}
-            style={iconStyle}
-          />
-        )}
-        {children}
-      </Text>
-    </View>
-  );
 };
 
 export default MText;

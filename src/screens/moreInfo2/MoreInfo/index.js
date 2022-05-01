@@ -42,11 +42,14 @@ import {
     MAccordion,
     MSnackbar,
     MSlider,
+    MVideo,
 } from 'components/common';
 import { SectionTop01 } from 'components/Sections';
 import { SectionRow, SectionModalRemoveSave } from 'components/Sections';
+import futsal from '../../../assets/video/futsal.mp4';
+import { navigate } from 'navigation/methods';
 const MoreInfo = createScreen(
-    () => {
+    ({ route }) => {
         const {
             LAYOUT,
             GUTTERS,
@@ -55,6 +58,8 @@ const MoreInfo = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
+        console.log('rrrrrr', route?.params?.data);
+        const Info = route?.params?.data;
         const refActionSheet = useRef(null);
         const showActionSheet = () => {
             if (refActionSheet.current) {
@@ -146,62 +151,72 @@ const MoreInfo = createScreen(
                             </View>
                         </View>
                         <MText textStyle={COMMON.TxtMoreInfo212}>
-                            Photographer{' '}
+                            {Info?.career?.title}
                         </MText>
                         <MText textStyle={COMMON.TxtMoreInfo213}>
-                            Possible yearly income : $38,970{' '}
+                            Possible yearly income : $
+                            {Info?.career?.possibleYearlyIncome}
                         </MText>
                         <MText textStyle={COMMON.TxtMoreInfo214}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do{' '}
+                            {Info?.career?.description}
                         </MText>
                     </View>
                     <View style={COMMON.RowItemMoreInfo26}>
                         <SectionRow
                             style={{ backgroundColor: COLORS.backMore }}
                             title="certification cost"
-                            data="$4000"
+                            data={'$' + Info?.career?.maxCertificationCost}
                         />
                         <SectionRow
                             title="Months To Pay Off"
                             infoIcon
-                            data="$4000"
+                            data={Info?.career?.monthsToPayOffNumber}
                         />
                         <SectionRow
                             style={{ backgroundColor: COLORS.backMore }}
                             title="Work Hours"
-                            data="$4000"
+                            data={Info?.career?.workHours}
                         />
-                        <SectionRow title="100% Remote" data="Yes" />
+                        <SectionRow
+                            title="100% Remote"
+                            data={
+                                Info?.career?.is100PercentRemote ? 'Yes' : 'No'
+                            }
+                        />
                         <SectionRow
                             style={{ backgroundColor: COLORS.backMore }}
                             title="Typical Salary"
-                            data="$4000"
+                            data={'$' + Info?.career?.typicalSalary}
                         />
-                        <SectionRow title="Starting Salary" data="$4000" />
+                        <SectionRow
+                            title="Starting Salary"
+                            data={'$' + Info?.career?.startingSalary}
+                        />
                         <SectionRow
                             style={{ backgroundColor: COLORS.backMore }}
                             title="10-Year Growth"
-                            data="$4000"
+                            data={Info?.career?.tenYearGrowth}
                         />
-                        <SectionRow title="Type Of Work" data="Help Support" />
                         <SectionRow
-                            style={{ backgroundColor: COLORS.backMore }}
+                            title="Type Of Work"
+                            data={Info?.career?.typeOfWork}
+                            textStyle={styles?.text}
+                        />
+                        <SectionRow
+                            style={{
+                                backgroundColor: COLORS.backMore,
+                            }}
+                            textStyle={styles?.text}
                             title="Other Perks"
-                            data="Be In And Around Airplanes"
+                            data={Info?.career?.otherPerks}
                         />
                         <View style={COMMON.SectionPaddingMoreInfo218}>
-                            <MImage
-                                imageSource={IMAGES.image7104}
-                                style={COMMON.image19}
-                                customWidth={scale(326)}
-                                customHeight={scale(169)}
-                            />
+                            <MVideo source={futsal} style={COMMON.image19} />
                         </View>
                     </View>
                     <View style={COMMON.SectionPaddingMoreInfo220}>
                         <MButton
-                            onPress={() => showActionSheet()}
+                            onPress={() => navigate('ChatScreen')}
                             style={COMMON.ButtonRect22}
                             containerStyle={COMMON.Button21}
                             text="Ask Question"
@@ -254,6 +269,12 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: scale(30),
         borderTopRightRadius: scale(30),
         height: scale(200),
+    },
+    text: {
+        textAlign: 'left',
+        width: scale(250),
+        paddingHorizontal: 5,
+        alignSelf: 'center',
     },
 });
 export default MoreInfo;

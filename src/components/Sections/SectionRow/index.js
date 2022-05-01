@@ -43,7 +43,7 @@ import {
 import { navigate } from 'navigation/methods';
 import { SectionModal } from '..';
 const SectionRow = (props) => {
-    const { style, title, data, infoIcon } = props;
+    const { style, title, data, infoIcon, textStyle } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -70,7 +70,11 @@ const SectionRow = (props) => {
                     style={styles.info}
                 />
             )}
-            <MText textStyle={COMMON.TxtSectionRow17}>{data} </MText>
+            <MText
+                textStyle={[COMMON.TxtSectionRow17, textStyle]}
+                numberOfLines={2}>
+                {data}
+            </MText>
             <ActionSheet ref={refActionSheet} containerStyle={styles.action}>
                 <SectionModal
                     showModal={() => refActionSheet.current?.setModalVisible()}
@@ -89,7 +93,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         textAlign: 'center',
         justifyContent: 'space-between',
-        height: verticalScale(63),
+        // height: verticalScale(63),
     },
     info: {
         marginRight: '25%',

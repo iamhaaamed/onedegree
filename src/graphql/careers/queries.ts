@@ -131,3 +131,20 @@ export const GET_CAREERS = gql`
         }
     }
 `;
+export const GET_LIKE_CAREES = gql`
+    query career_getUserLikeCareer($careerId: Int!) {
+        career_getUserLikeCareer(careerId: $careerId) {
+            result {
+                createdAt
+                careerId
+                userId
+                user {
+                    id
+                }
+                id
+                isDeleted
+            }
+            status
+        }
+    }
+`;

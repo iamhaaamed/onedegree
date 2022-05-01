@@ -56,21 +56,15 @@ const Home2 = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
-
+        const [
+            onEndReachedCalledDuringMomentum,
+            setonEndReachedCalledDuringMomentum,
+        ] = useState(true);
         const [user, setUser] = useState();
         const [isLoading2, setIsLoading2] = useState(false);
         const { mutate } = useLogin();
         useEffect(() => {
             setIsLoading2(true);
-            // mutate(
-            //     {},
-            //     {
-            //         onSuccess: (data) => {
-            //             if (data?.user_login?.status == 'SUCCESS')
-            //                 setUser(data?.user_login?.result);
-            //         },
-            //     },
-            // );
             try {
                 mutate(
                     {},
@@ -101,10 +95,11 @@ const Home2 = createScreen(
             refetch,
         } = useGetCareers({});
 
-        const Careers = careers?.pages;
+        let Careers = careers?.pages;
         const renderItem = ({ item, index }) => {
             return <Sectionhome data={item} />;
         };
+        console.log('hasNextPage', hasNextPage);
         return (
             <View style={styles.Home2}>
                 <MLoading
@@ -122,6 +117,10 @@ const Home2 = createScreen(
                         // ref={(c) => {
                         //     this.carousel = c;
                         // }}
+                        enableSnap={true}
+                        enableMomentum={true}
+                        maxToRenderPerBatch={8}
+                        initialNumToRender={4}
                         data={Careers}
                         refreshing={isRefetching}
                         onRefresh={refetch}
@@ -156,6 +155,14 @@ const Home2 = createScreen(
                             if (hasNextPage) {
                                 fetchNextPage();
                             }
+                        }}
+                        // activeAnimationOptions={{
+                        //     friction: 4,
+                        //     tension: 40,
+                        // }}
+                        keyExtractor={(item, index) => index.toString()}
+                        onMomentumScrollBegin={() => {
+                            setonEndReachedCalledDuringMomentum(false);
                         }}
                     />
                 </View>

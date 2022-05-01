@@ -15,7 +15,7 @@ import { useRef } from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import { useGetLikeCareers } from 'hooks/careers';
 import {
     MIcon,
     MText,
@@ -52,12 +52,15 @@ const Sectionhome = (props) => {
         CONSTANTS,
     } = useTheme();
 
+    const { data: LikeCareers } = useGetLikeCareers({
+        careerId: data?.career?.id,
+    });
+    console.log('////', LikeCareers);
     const clickCounter = useRef(0);
     const onPress = () => {
         console.log(`Clicked! ${clickCounter.current}`);
         clickCounter.current = clickCounter.current + 1;
     };
-
     return (
         <View style={[styles.Sectionhome, style]}>
             <MImage
@@ -67,7 +70,9 @@ const Sectionhome = (props) => {
                 // customHeight={scale(136)}
             />
             {/* <View style={COMMON.SectionPaddingSectionhome69}> */}
-            <MText textStyle={COMMON.TxtSectionhome70}>Photographer </MText>
+            <MText textStyle={COMMON.TxtSectionhome70}>
+                {data?.career?.title}
+            </MText>
             <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
                 <View style={{ width: '60%' }}>
                     <MText textStyle={COMMON.TxtSectionhome72}>
@@ -75,7 +80,9 @@ const Sectionhome = (props) => {
                     </MText>
                 </View>
                 <View style={{ width: '40%' }}>
-                    <MText textStyle={COMMON.TxtSectionhome73}>$3000 </MText>
+                    <MText textStyle={COMMON.TxtSectionhome73}>
+                        ${data?.career?.possibleYearlyIncome}{' '}
+                    </MText>
                 </View>
             </View>
             <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
@@ -85,7 +92,9 @@ const Sectionhome = (props) => {
                     </MText>
                 </View>
                 <View style={{ width: '65%' }}>
-                    <MText textStyle={COMMON.TxtSectionhome73}>2 months </MText>
+                    <MText textStyle={COMMON.TxtSectionhome73}>
+                        {data?.career?.trainingTime}
+                    </MText>
                 </View>
             </View>
             <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
@@ -96,7 +105,7 @@ const Sectionhome = (props) => {
                 </View>
                 <View style={{ width: '65%' }}>
                     <MText textStyle={COMMON.TxtSectionhome73}>
-                        Ensure good health{' '}
+                        {data?.career?.socialImpact}
                     </MText>
                 </View>
             </View>
@@ -149,7 +158,7 @@ const Sectionhome = (props) => {
                 </View>
                 <View style={{ width: '50%' }}>
                     <MButton
-                        onPress={() => navigate('MoreInfo')}
+                        onPress={() => navigate('MoreInfo', { data })}
                         style={COMMON.ButtonRect920}
                         containerStyle={[
                             COMMON.Button910,
