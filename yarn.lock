@@ -7111,10 +7111,10 @@ react-native-elements@^3.4.2:
     react-native-ratings "8.0.4"
     react-native-size-matters "^0.3.1"
 
-react-native-fbsdk-next@^8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-fbsdk-next/-/react-native-fbsdk-next-8.0.0.tgz#b632f6ecc1512bede89359ded6b4c88f4ed1a5ff"
-  integrity sha512-Lfvv3KSiznyu5QNEjXAKupPLVDJ4D57NLL1sP6RoVCaa3MagrzxeZzHWX+5jOpo6dig+M4g4U7m00yuAYtkGUA==
+react-native-fbsdk-next@^7:
+  version "7.3.3"
+  resolved "https://registry.yarnpkg.com/react-native-fbsdk-next/-/react-native-fbsdk-next-7.3.3.tgz#3fbf0bf66c9bb7038a78957cd447acbe3b4ca339"
+  integrity sha512-8DRzfqPIUZ3OmzaVmn3zNDSg6eieDFDGhkoLbJvs2juXyz+RdqxM5DbMTTw0VFKiNrvdtfFFbL8Sslg8/ecStQ==
   dependencies:
     "@expo/config-plugins" "^4.0.4"
     xml2js "^0.4.23"
