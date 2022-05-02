@@ -58,6 +58,10 @@ const question6 = createScreen(
         } = useTheme();
         const { isLoading, mutate } = useUpdateProfile();
         console.log('route', route?.params);
+        const [ZipCode, setZipCode] = useState();
+        console.log('zzzzzzzzz', ZipCode);
+        const lat = `https://maps.googleapis.com/maps/api/geocode/json?address=${ZipCode}&key=AIzaSyAq_L_4FurpQGeFM20SxCXpAAkggk3knhU&region=us`;
+        console.log('laaaaa', lat);
         return (
             <View style={styles.question6}>
                 <ScrollView>
@@ -75,7 +79,7 @@ const question6 = createScreen(
                     />
 
                     <View style={COMMON.SectionPaddingquestion6103}>
-                        <Question3 />
+                        <Question3 setZipCode={(data) => setZipCode(data)} />
                     </View>
                     <SectionRowCenter
                         backPress={() => goBack()}

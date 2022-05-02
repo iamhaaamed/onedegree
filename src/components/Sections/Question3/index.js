@@ -45,7 +45,7 @@ import {
 import { navigate } from 'navigation/methods';
 import { SectionTop, Qustion1 } from 'components/Sections';
 const Question3 = (props) => {
-    const { style, title, answer, page } = props;
+    const { style, title, answer, page, setZipCode } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -55,14 +55,8 @@ const Question3 = (props) => {
         CONSTANTS,
     } = useTheme();
 
-    const clickCounter = useRef(0);
-    const onPress = () => {
-        console.log(`Clicked! ${clickCounter.current}`);
-        clickCounter.current = clickCounter.current + 1;
-    };
-
-    const [isChecked, setIsChecked] = useState(false);
-
+    // const [ZipCode, setZipCode] = useState();
+    // console.log('zzzzzzzzz', ZipCode);
     return (
         <>
             <MText textStyle={COMMON.Txtquestion6104}>
@@ -74,9 +68,11 @@ const Question3 = (props) => {
                 containerStyle={COMMON.Input106}
                 placeholder="Please enter ZIP Code"
                 placeholderColor={COLORS.Color267}
+                onChangeText={(text) => setZipCode(text)}
                 textStyle={COMMON.TextsInput107}
                 backgroundColor={COLORS.Color963}
                 height={verticalScale(48)}
+                keyboardType="numeric"
             />
             <MText textStyle={COMMON.Txtquestion6109}>
                 ! Entering the zip code will help us to training programs{' '}
