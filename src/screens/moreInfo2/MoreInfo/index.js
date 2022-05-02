@@ -9,7 +9,7 @@ import { COLORS } from 'constants/common';
 import ActionSheet from 'react-native-actions-sheet';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { scale, verticalScale, height } from 'utils';
+import { scale, verticalScale, height, toPascalCase } from 'utils';
 import LinearGradient from 'react-native-linear-gradient';
 import { DateTimePickerMod } from 'components/common/MDateTimePicker';
 import {
@@ -46,7 +46,6 @@ import {
 } from 'components/common';
 import { SectionTop01 } from 'components/Sections';
 import { SectionRow, SectionModalRemoveSave } from 'components/Sections';
-import futsal from '../../../assets/video/futsal.mp4';
 import { navigate } from 'navigation/methods';
 import {
     useGetLikeCareers,
@@ -213,7 +212,7 @@ const MoreInfo = createScreen(
                     <View style={COMMON.RowItemMoreInfo26}>
                         <SectionRow
                             style={{ backgroundColor: COLORS.backMore }}
-                            title="certification cost"
+                            title="Certification Cost"
                             data={'$' + Info?.career?.maxCertificationCost}
                         />
                         <SectionRow
@@ -224,7 +223,7 @@ const MoreInfo = createScreen(
                         <SectionRow
                             style={{ backgroundColor: COLORS.backMore }}
                             title="Work Hours"
-                            data={Info?.career?.workHours}
+                            data={toPascalCase(Info?.career?.workHours)}
                         />
                         <SectionRow
                             title="100% Remote"
@@ -248,7 +247,7 @@ const MoreInfo = createScreen(
                         />
                         <SectionRow
                             title="Type Of Work"
-                            data={Info?.career?.typeOfWork}
+                            data={toPascalCase(Info?.career?.typeOfWork)}
                             textStyle={styles?.text}
                         />
                         <SectionRow
@@ -257,7 +256,7 @@ const MoreInfo = createScreen(
                             }}
                             textStyle={styles?.text}
                             title="Other Perks"
-                            data={Info?.career?.otherPerks}
+                            data={toPascalCase(Info?.career?.otherPerks)}
                         />
                         <View style={COMMON.SectionPaddingMoreInfo218}>
                             <MVideo
