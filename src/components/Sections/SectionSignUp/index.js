@@ -48,6 +48,7 @@ import { SectionRowSocialCenter } from 'components/Sections';
 import { navigate } from 'navigation/methods';
 import { showMessage } from 'react-native-flash-message';
 import { useRegister } from 'hooks/auth';
+import { authStore } from '../../../store';
 const SectionSignUp = (props) => {
     const { style } = props;
     const {
@@ -59,6 +60,7 @@ const SectionSignUp = (props) => {
         CONSTANTS,
     } = useTheme();
     const [isLoading, setIsLoading] = useState(false);
+    const setUserName = authStore((state) => state.setUserName);
     const { mutate: signupMutate } = useRegister();
     const ValidationSchema = yup.object().shape({
         email: yup
@@ -83,7 +85,7 @@ const SectionSignUp = (props) => {
             console.log('thirdPartyAccessToken', thirdPartyAccessToken);
             console.log('firebaseIdToken', firebaseIdToken);
             console.log('firebaseUser', firebaseUser);
-
+            setUserName(firebaseUser?.displayName);
             createUserWithSocial();
         }
     };
@@ -197,7 +199,7 @@ const SectionSignUp = (props) => {
             console.log('thirdPartyAccessToken', thirdPartyAccessToken);
             console.log('firebaseIdToken', firebaseIdToken);
             console.log('firebaseUser', firebaseUser);
-
+            setUserName(firebaseUser?.displayName);
             createUserWithSocial();
         }
     }

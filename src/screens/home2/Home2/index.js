@@ -46,6 +46,7 @@ import { SectionTophome, Sectionhome } from 'components/Sections';
 import Carousel from 'react-native-snap-carousel';
 import { useGetCareers } from 'hooks/careers';
 import { showMessage } from 'react-native-flash-message';
+import { authStore } from '../../../store';
 const Home2 = createScreen(
     () => {
         const {
@@ -63,6 +64,7 @@ const Home2 = createScreen(
         const [user, setUser] = useState();
         const [isLoading2, setIsLoading2] = useState(false);
         const { mutate } = useLogin();
+        const { UserName } = authStore((state) => state);
         useEffect(() => {
             setIsLoading2(true);
             try {
@@ -110,7 +112,7 @@ const Home2 = createScreen(
                 <SectionTophome style={COMMON.EleHome265} />
                 <View style={COMMON.SectionPaddingHome266}>
                     <MText textStyle={COMMON.TxtHome267}>
-                        Hello,{user?.email} !{' '}
+                        Hello,{UserName} !{' '}
                     </MText>
                     <Carousel
                         // ref={(c) => {
