@@ -57,7 +57,16 @@ const question2 = createScreen(
         } = useTheme();
         const [Answers, setAnswers] = useState();
         console.log('Answers', Answers);
-
+        function callMyMethod(array) {
+            let string = '';
+            array.forEach(function (counter, currentIndex) {
+                string += counter;
+                if (currentIndex != array.length - 1) {
+                    string += ',';
+                }
+            });
+            return string;
+        }
         return (
             <View style={styles.question2}>
                 <ScrollView>
@@ -73,7 +82,11 @@ const question2 = createScreen(
                         <Question1 setAnswer={(value) => setAnswers(value)} />
                     </View>
                     <MButton
-                        onPress={() => navigate('Question7', { Answers })}
+                        onPress={() => {
+                            let String = callMyMethod(Answers);
+                            console.log('String', String);
+                            navigate('Question7', { Answers: String });
+                        }}
                         style={COMMON.ButtonRect80}
                         containerStyle={COMMON.Button79}
                         text="Next"

@@ -14,7 +14,7 @@ const useUpdateProfile = () => {
             console.log('uuuuuuuuuuu', userInput);
 
             return await GraphQlClient.request(UPDATE_USERPROFILE, {
-                userInput: userInput,
+                userInput,
             });
         },
         {

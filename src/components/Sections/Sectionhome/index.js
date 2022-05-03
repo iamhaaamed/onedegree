@@ -7,7 +7,7 @@ import {
     StyleSheet,
     Image,
 } from 'react-native';
-import { scale, verticalScale, height } from 'utils';
+import { scale, verticalScale, height, toPascalCase } from 'utils';
 import { useState } from 'react';
 import useTheme from 'hooks/useTheme';
 import { COLORS } from 'constants/common';
@@ -74,8 +74,7 @@ const Sectionhome = (props) => {
                 // customWidth={scale(300)}
                 // customHeight={scale(136)}
             />
-            {/* <View style={COMMON.SectionPaddingSectionhome69}> */}
-            <MText textStyle={COMMON.TxtSectionhome70}>
+            <MText textStyle={COMMON.TxtSectionhome70} numberOfLines={2}>
                 {data?.career?.title}
             </MText>
             <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
@@ -98,7 +97,7 @@ const Sectionhome = (props) => {
                 </View>
                 <View style={{ width: '65%' }}>
                     <MText textStyle={COMMON.TxtSectionhome73}>
-                        {data?.career?.trainingTime}
+                        {toPascalCase(data?.career?.trainingTime)}
                     </MText>
                 </View>
             </View>
@@ -110,34 +109,38 @@ const Sectionhome = (props) => {
                 </View>
                 <View style={{ width: '65%' }}>
                     <MText textStyle={COMMON.TxtSectionhome73}>
-                        {data?.career?.socialImpact}
+                        {toPascalCase(data?.career?.socialImpact)}
                     </MText>
                 </View>
             </View>
             {data?.programVm?.length > 0 && (
                 <>
-                    {' '}
                     <MText textStyle={COMMON.TxtSectionhome80}>
                         Top Training Programs{' '}
                     </MText>
-                    {data?.programVm?.map((item, index) => (
-                        <View
-                            style={[
-                                COMMON.RowItem,
-                                COMMON.RowItemSectionhome71,
-                            ]}>
-                            <View style={{ width: '50%' }}>
-                                <MText textStyle={COMMON.TxtSectionhome82}>
-                                    {item?.programs?.title}
-                                </MText>
-                            </View>
-                            <View style={{ width: '50%' }}>
-                                <MText textStyle={COMMON.TxtSectionhome83}>
-                                    {item?.distance} miles{' '}
-                                </MText>
-                            </View>
-                        </View>
-                    ))}
+                    {data?.programVm?.map(
+                        (item, index) =>
+                            index < 3 && (
+                                <View
+                                    style={[
+                                        COMMON.RowItem,
+                                        COMMON.RowItemSectionhome71,
+                                    ]}>
+                                    <View style={{ width: '50%' }}>
+                                        <MText
+                                            textStyle={COMMON.TxtSectionhome82}>
+                                            {item?.programs?.title}
+                                        </MText>
+                                    </View>
+                                    <View style={{ width: '50%' }}>
+                                        <MText
+                                            textStyle={COMMON.TxtSectionhome83}>
+                                            {item?.distance} miles{' '}
+                                        </MText>
+                                    </View>
+                                </View>
+                            ),
+                    )}
                 </>
             )}
             <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
@@ -181,21 +184,27 @@ const Sectionhome = (props) => {
                 <View style={{ width: '50%' }}>
                     <MButton
                         onPress={() => navigate('MoreInfo', { data, Like })}
-                        style={COMMON.ButtonRect920}
+                        style={[
+                            COMMON.ButtonRect920,
+                            { paddingHorizontal: 20 },
+                        ]}
                         containerStyle={[
                             COMMON.Button910,
-                            { alignSelf: 'flex-end' },
+                            {
+                                alignSelf: 'flex-end',
+                                height: scale(30),
+                            },
                         ]}
                         color={COLORS.white}
                         iconRight={{
                             name: 'alert-circle-outline',
                             color: COLORS.Color424,
+                            onPress: () => navigate('MoreInfo', { data, Like }),
                             Component: MaterialCommunityIcons,
                         }}
                     />
                 </View>
             </View>
-            {/* </View> */}
         </View>
     );
 };
@@ -209,9 +218,6 @@ const styles = StyleSheet.create({
         elevation: 1,
         width: scale(300),
         alignSelf: 'center',
-        // height: verticalScale(378.77),
-        borderTopLeftRadius: 0,
-        borderTopRightRadius: 0,
         borderBottomRightRadius: 21,
         borderBottomLeftRadius: 21,
         borderTopRightRadius: 21,

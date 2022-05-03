@@ -65,6 +65,7 @@ const ProfileQuestion5 = createScreen(
         } = useTheme();
 
         const [isChecked, setAnswers] = useState();
+        const [ZipCode, setZipCode] = useState();
         const SelectQuestion = () => {
             switch (route?.params?.code) {
                 case 1:
@@ -74,7 +75,9 @@ const ProfileQuestion5 = createScreen(
                 case 2:
                     return <Question2 />;
                 case 3:
-                    return <Question3 />;
+                    return (
+                        <Question3 setZipCode={(data) => setZipCode(data)} />
+                    );
                 case 4:
                     return <Question4 />;
                 default:

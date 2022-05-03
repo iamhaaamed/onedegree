@@ -96,28 +96,32 @@ const Save = createScreen(
                                 <View
                                     style={{
                                         width: '48%',
-                                        marginVertical: 10,
+                                        marginVertical: scale(20),
                                         marginHorizontal: 5,
                                     }}>
-                                    <MImage
+                                    <MImageBackground
                                         imageSource={IMAGES.intro3}
                                         style={COMMON.image10}
                                         // customWidth={scale(154)}
                                         // customHeight={scale(150)}
-                                    />
-
-                                    <View
-                                        style={[
-                                            COMMON.RowItem,
-                                            { alignItems: 'center' },
-                                        ]}>
-                                        <View style={{ width: '75%' }}>
+                                    >
+                                        <View
+                                            style={{
+                                                width: '95%',
+                                                alignSelf: 'center',
+                                                top: '80%',
+                                            }}>
                                             <MText
                                                 textStyle={COMMON.TxtSave112}>
                                                 bike delivery{' '}
                                             </MText>
                                         </View>
-                                        <View style={{ width: '25%' }}>
+                                        <View
+                                            style={{
+                                                width: '25%',
+                                                alignSelf: 'flex-end',
+                                                top: '70%',
+                                            }}>
                                             <MButton
                                                 onPress={() =>
                                                     showActionSheet()
@@ -132,7 +136,7 @@ const Save = createScreen(
                                                 }}
                                             />
                                         </View>
-                                    </View>
+                                    </MImageBackground>
                                 </View>
                             )}
                         />

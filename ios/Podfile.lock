@@ -28,8 +28,8 @@ PODS:
     - React
   - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
-  - FBAEMKit (13.1.0):
-    - FBSDKCoreKit_Basics (= 13.1.0)
+  - FBAEMKit (12.3.2):
+    - FBSDKCoreKit_Basics (= 12.3.2)
   - FBLazyVector (0.63.4)
   - FBReactNativeSpec (0.63.4):
     - Folly (= 2020.01.13.00)
@@ -38,18 +38,14 @@ PODS:
     - React-Core (= 0.63.4)
     - React-jsi (= 0.63.4)
     - ReactCommon/turbomodule/core (= 0.63.4)
-  - FBSDKCoreKit (13.1.0):
-    - FBAEMKit (= 13.1.0)
-    - FBSDKCoreKit_Basics (= 13.1.0)
-  - FBSDKCoreKit_Basics (13.1.0)
-  - FBSDKGamingServicesKit (13.1.0):
-    - FBSDKCoreKit (= 13.1.0)
-    - FBSDKCoreKit_Basics (= 13.1.0)
-    - FBSDKShareKit (= 13.1.0)
-  - FBSDKLoginKit (13.1.0):
-    - FBSDKCoreKit (= 13.1.0)
-  - FBSDKShareKit (13.1.0):
-    - FBSDKCoreKit (= 13.1.0)
+  - FBSDKCoreKit (12.3.2):
+    - FBAEMKit (= 12.3.2)
+    - FBSDKCoreKit_Basics (= 12.3.2)
+  - FBSDKCoreKit_Basics (12.3.2)
+  - FBSDKLoginKit (12.3.2):
+    - FBSDKCoreKit (= 12.3.2)
+  - FBSDKShareKit (12.3.2):
+    - FBSDKCoreKit (= 12.3.2)
   - Firebase/Auth (8.15.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 8.15.0)
@@ -377,20 +373,19 @@ PODS:
     - react-native-config/App (= 1.4.5)
   - react-native-config/App (1.4.5):
     - React-Core
-  - react-native-fbsdk-next (8.0.0):
+  - react-native-fbsdk-next (7.3.3):
     - React-Core
-    - react-native-fbsdk-next/Core (= 8.0.0)
-    - react-native-fbsdk-next/Login (= 8.0.0)
-    - react-native-fbsdk-next/Share (= 8.0.0)
-  - react-native-fbsdk-next/Core (8.0.0):
-    - FBSDKCoreKit (~> 13.1.0)
+    - react-native-fbsdk-next/Core (= 7.3.3)
+    - react-native-fbsdk-next/Login (= 7.3.3)
+    - react-native-fbsdk-next/Share (= 7.3.3)
+  - react-native-fbsdk-next/Core (7.3.3):
+    - FBSDKCoreKit (~> 12.3.2)
     - React-Core
-  - react-native-fbsdk-next/Login (8.0.0):
-    - FBSDKLoginKit (~> 13.1.0)
+  - react-native-fbsdk-next/Login (7.3.3):
+    - FBSDKLoginKit (~> 12.3.2)
     - React-Core
-  - react-native-fbsdk-next/Share (8.0.0):
-    - FBSDKGamingServicesKit (~> 13.1.0)
-    - FBSDKShareKit (~> 13.1.0)
+  - react-native-fbsdk-next/Share (7.3.3):
+    - FBSDKShareKit (~> 12.3.2)
     - React-Core
   - react-native-image-picker (4.0.6):
     - React-Core
@@ -593,7 +588,6 @@ SPEC REPOS:
     - FBAEMKit
     - FBSDKCoreKit
     - FBSDKCoreKit_Basics
-    - FBSDKGamingServicesKit
     - FBSDKLoginKit
     - FBSDKShareKit
     - Firebase
@@ -743,14 +737,13 @@ SPEC CHECKSUMS:
   BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: cde416483dac037923206447da6e1454df403714
-  FBAEMKit: 3be32ffb79fe7c0603fed00d81742b23241e89a5
+  FBAEMKit: 955ca52eba8219c20f90774e8c6ff8bc7b3192a3
   FBLazyVector: 3bb422f41b18121b71783a905c10e58606f7dc3e
   FBReactNativeSpec: f2c97f2529dd79c083355182cc158c9f98f4bd6e
-  FBSDKCoreKit: eff97dea778dbe6cc4498959cffb619c75675102
-  FBSDKCoreKit_Basics: c151609a1cf6976a5958febcf0043266a8fd5151
-  FBSDKGamingServicesKit: c05d00fe9d6a01c484ae8b025915b778fabc1944
-  FBSDKLoginKit: 42932c7ad6f6b91854fc0a6bcc79b7e807bcde4b
-  FBSDKShareKit: ba73d5d51af028bfc9e6fa34be16340fe055e0fa
+  FBSDKCoreKit: 678f64eda3f0ff25c189c2ebbfe87b1d96a85a6d
+  FBSDKCoreKit_Basics: 6bee7c1f0932432901781203fa5e587ec5099148
+  FBSDKLoginKit: 56d55e23fe66a6db045826190b0b4dbc0e1ca0a0
+  FBSDKShareKit: 4ef957addab76816116ea92bd872e792f7137669
   Firebase: 5f8193dff4b5b7c5d5ef72ae54bb76c08e2b841d
   FirebaseAuth: 3e73bf8abf4fbb40f8b421f361f4cc48ee57388c
   FirebaseCore: 5743c5785c074a794d35f2fff7ecc254a91e08b1
@@ -791,7 +784,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
   react-native-config: 6502b1879f97ed5ac570a029961fc35ea606cd14
-  react-native-fbsdk-next: 9e7e30e1ac0580e630ff19479707eb3ead346f4d
+  react-native-fbsdk-next: 6d497a06fc5c33360f5794b4428a0236789a60e6
   react-native-image-picker: a6e56460d34905c849ada551db30897dc7f3d535
   react-native-pager-view: b1914469643f40042e65d78cbf3d3dfebd6fb0d9
   react-native-safe-area-context: b6e0e284002381d2ff29fa4fff42b4d8282e3c94

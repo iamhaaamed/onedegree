@@ -135,6 +135,7 @@ const Home2 = createScreen(
                         contentContainerCustomStyle={{
                             justifyContent: 'center',
                             alignItems: 'center',
+                            marginTop: '-5%',
                         }}
                         // inactiveSlideShift={100}
                         // onSnapToItem={(index) => this.setState({ index })}
@@ -183,8 +184,6 @@ const styles = StyleSheet.create({
     },
     carouselContainer: {
         alignSelf: 'center',
-
-        // height: '50%',
         width: scale(370),
     },
 });
