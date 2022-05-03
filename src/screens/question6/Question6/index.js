@@ -18,7 +18,7 @@ import {
     DrawerContentScrollView,
     DrawerToggleButton,
 } from '@react-navigation/drawer';
-
+import axios from 'axios';
 import {
     MIcon,
     MText,
@@ -46,6 +46,7 @@ import {
 import { SectionTop } from 'components/Sections';
 import { SectionRowCenter, Question3 } from 'components/Sections';
 import { useUpdateProfile } from 'hooks/profile';
+import { async } from 'validate.js';
 const question6 = createScreen(
     ({ route }) => {
         const {
@@ -60,8 +61,8 @@ const question6 = createScreen(
         console.log('route', route?.params);
         const [ZipCode, setZipCode] = useState();
         console.log('zzzzzzzzz', ZipCode);
-        const lat = `https://maps.googleapis.com/maps/api/geocode/json?address=${ZipCode}&key=AIzaSyAq_L_4FurpQGeFM20SxCXpAAkggk3knhU&region=us`;
-        console.log('laaaaa', lat);
+        const getLatLang = `https://maps.googleapis.com/maps/api/geocode/json?address=${ZipCode}&key=AIzaSyAq_L_4FurpQGeFM20SxCXpAAkggk3knhU&region=us`;
+        console.log('laaaaa', getLatLang);
         return (
             <View style={styles.question6}>
                 <ScrollView>
@@ -84,27 +85,52 @@ const question6 = createScreen(
                     <SectionRowCenter
                         backPress={() => goBack()}
                         nextPress={
-                            () =>
-                                mutate(
-                                    {
-                                        amount:
-                                            route?.params?.userInput?.amount,
-                                        amountType:
-                                            route?.params?.userInput?.type ==
-                                            'Hourly'
-                                                ? 'HOURLY'
-                                                : route?.params?.userInput
-                                                      ?.type == 'Monthly'
-                                                ? 'MONTHLY'
-                                                : 'ANNUALLY',
-                                    },
-                                    {
-                                        onSuccess: (data) => {
-                                            console.log('666666', data);
-                                        },
-                                    },
-                                )
-                            // navigate('Gettingstarted3')
+                            async () =>
+                                axios
+                                    .get(getLatLang)
+                                    .then(function (response) {
+                                        console.log(response);
+                                    })
+                                    .catch(function (error) {
+                                        console.log(error);
+                                    })
+                                    .then(function () {
+                                        // always executed
+                                    })
+                            // mutate(
+                            //     {
+                            //         point: [10, 12],
+                            //         industry: route?.params?.Answers,
+                            //         currentIncome: 10,
+                            //         isNotificationEnabled: true,
+                            //         age: 1,
+                            //         ethnicity: 'ONE',
+                            //         educationLevel: 'ONE',
+                            //         howFarAreYouWillingToTravelToGetCertified:
+                            //             'REMOTE_ONLY',
+                            //         whereDidYouHearAboutOnedegreeCareers:
+                            //             'CRAIGSLIST',
+                            //         amount: route?.params?.userInput?.amount,
+                            //         amountType:
+                            //             route?.params?.userInput?.type ==
+                            //             'Hourly'
+                            //                 ? 'HOURLY'
+                            //                 : route?.params?.userInput?.type ==
+                            //                   'Monthly'
+                            //                 ? 'MONTHLY'
+                            //                 : 'ANNUALLY',
+                            //     },
+                            //     {
+                            //         onSuccess: (data) => {
+                            //             console.log('666666', data);
+                            //             if (
+                            //                 data?.user_updateProfile?.status ==
+                            //                 'SUCCESS'
+                            //             )
+                            //                 navigate('Gettingstarted3');
+                            //         },
+                            //     },
+                            // )
                         }
                     />
                 </ScrollView>

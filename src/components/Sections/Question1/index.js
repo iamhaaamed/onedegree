@@ -44,6 +44,7 @@ import {
 } from 'components/common';
 import { navigate } from 'navigation/methods';
 import { SectionTop, Qustion1 } from 'components/Sections';
+import { setLocale } from 'yup';
 
 const Question1 = (props) => {
     const { style, title, answer, page, setAnswer } = props;
@@ -66,16 +67,26 @@ const Question1 = (props) => {
         'Technology',
         'Not sure',
     ];
-
+    const [All, setAll] = useState(false);
     const [isChecked, setIsChecked] = useState([]);
     const [IndustryArray, setIndustryArray] = useState([]);
-    console.log('///////////', IndustryArray);
+    console.log('///////////', IndustryArray, isChecked);
     useEffect(() => {
         setAnswer(IndustryArray);
     }, [IndustryArray]);
     const handleDirection = (item, i) => {
-        // setType(item);
-        setIsChecked([...isChecked, i]);
+        var index = isChecked.findIndex(function (obj) {
+            return obj === i;
+        });
+        if (index !== -1) {
+            isChecked.splice(index, 1);
+            IndustryArray.splice(index, 1);
+        } else {
+            isChecked.push(i);
+            IndustryArray.push(item);
+        }
+        setIsChecked([...new Set(isChecked)]);
+        setIndustryArray([...new Set(IndustryArray)]);
     };
     return (
         <>
@@ -85,12 +96,17 @@ const Question1 = (props) => {
 
             <MCheckBox
                 iconContainerStyle={{ borderRadius: 5 }}
-                isChecked={isChecked}
+                isChecked={All}
                 setIsChecked={() => {
-                    setIsChecked((p) => !p);
                     let x = [];
-                    options?.map((item, index) => x.push(item?.title));
-                    setIndustryArray(x);
+                    let y = [];
+                    options?.map((item, index) => {
+                        x.push(item);
+                        y.push(index);
+                    });
+                    setAll(!All);
+                    setIsChecked([...new Set(y)]);
+                    setIndustryArray([...new Set(x)]);
                 }}
                 style={COMMON.CheckBox61}>
                 <MText textStyle={COMMON.TextsCheckBox62}>
@@ -102,7 +118,7 @@ const Question1 = (props) => {
                 renderItem={({ item, index }) => (
                     <MCheckBox
                         iconContainerStyle={{ borderRadius: 5 }}
-                        isChecked={isChecked == index ? true : false}
+                        isChecked={isChecked[index] == index ? true : false}
                         setIsChecked={() => {
                             handleDirection(item, index);
                         }}
