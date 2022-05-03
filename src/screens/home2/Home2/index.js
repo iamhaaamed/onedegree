@@ -108,7 +108,6 @@ const Home2 = createScreen(
                     color={COLORS.Color323}
                 />
                 <SectionTophome style={COMMON.EleHome265} />
-                {/* <ScrollView> */}
                 <View style={COMMON.SectionPaddingHome266}>
                     <MText textStyle={COMMON.TxtHome267}>
                         Hello,{user?.email} !{' '}
@@ -127,6 +126,7 @@ const Home2 = createScreen(
                         renderItem={({ item, index }) =>
                             renderItem({ item, index })
                         }
+                        lockScrollWhileSnapping
                         // sliderWidth={scale(320)}
                         itemWidth={scale(300)}
                         itemHeight={scale(500)}
@@ -138,7 +138,11 @@ const Home2 = createScreen(
                             marginTop: '-5%',
                         }}
                         // inactiveSlideShift={100}
-                        // onSnapToItem={(index) => this.setState({ index })}
+                        onSnapToItem={() => {
+                            if (hasNextPage) {
+                                fetchNextPage();
+                            }
+                        }}
                         // scrollInterpolator={scrollInterpolator}
                         // slideInterpolatedStyle={animatedStyles}
                         layout={'tinder'}
@@ -167,7 +171,6 @@ const Home2 = createScreen(
                         }}
                     />
                 </View>
-                {/* </ScrollView> */}
             </View>
         );
     },

@@ -90,6 +90,7 @@ const question6 = createScreen(
                                     .get(getLatLang)
                                     .then(function (response) {
                                         console.log(response?.data?.results);
+                                        navigate('Gettingstarted3');
                                         if (response.data.status == 'OK') {
                                             mutate(
                                                 {

@@ -25,3 +25,4 @@ export { default as MTab } from './MTab';
 export { default as MAccordion } from './MAccordion';
 export { default as MSlider } from './MSlider';
 export { default as MSnackbar } from './MSnackbar';
+export { default as Container } from './Container';

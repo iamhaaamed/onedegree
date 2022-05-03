@@ -6,7 +6,7 @@ import LottieView from 'lottie-react-native';
  * @typedef {{size: 'small || large' }}
  * */
 
-const MLoading = ({ size, color, animationProps, isLoading }) => {
+const MLoading = ({ size, color, animationProps, isLoading, visible }) => {
     let animation = React.createRef();
 
     useEffect(() => {
