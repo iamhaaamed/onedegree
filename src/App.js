@@ -1,26 +1,13 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { ThemeContext, NavbarContext } from 'components/contexts';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { enableScreens } from 'react-native-screens';
+import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import auth from '@react-native-firebase/auth';
-import Config from 'react-native-config';
-import graphQLClient from '../src/graphql/graphQLClient';
-import MDrawer from 'components/common/MDrawer';
-import {
-    DrawerContentOne,
-    DrawerContentTwo,
-    DrawerContentThree,
-    DrawerContentFour,
-    DrawerContentFive,
-} from 'screens/home/MDrawerShowcase/drawer.showcase';
-import FlashMessage, { showMessage } from 'react-native-flash-message';
 import AppNavigator from 'navigation/AppNavigator';
-import { DrawerContent, drawerStyle } from 'components/Screen/Menu';
-import { LogBox } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import Config from 'react-native-config';
+import FlashMessage, { showMessage } from 'react-native-flash-message';
+import { enableScreens } from 'react-native-screens';
 import { QueryCache, QueryClient, QueryClientProvider } from 'react-query';
+import graphQLClient from '../src/graphql/graphQLClient';
 let queryClient: QueryClient;
 console.warn = () => null;
 GoogleSignin.configure({
@@ -37,11 +24,6 @@ GoogleSignin.configure({
 enableScreens();
 
 const App = () => {
-    const Drawer = createDrawerNavigator();
-    const [bottomNavbarIndex, setBottomNavbarIndex] = useState(1);
-    const value = { bottomNavbarIndex, setBottomNavbarIndex };
-
-    const drawerIndex = 1;
     const [initializing, setInitializing] = useState(true);
     const handleUser = useCallback(
         async (user) => {
@@ -56,8 +38,6 @@ const App = () => {
                 }
             } else {
                 graphQLClient.setHeader('authorization', '');
-                // setIsUserLoggedIn(false);
-                AsyncStorage.clear();
                 queryClient.clear();
             }
             if (initializing) {
@@ -100,7 +80,6 @@ const App = () => {
                         await auth().signOut();
                     } catch (error) {
                         console.log('errrrr', error);
-                        // setIsUserLoggedIn(false);
                     }
                 }
             },

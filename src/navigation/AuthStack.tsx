@@ -1,31 +1,18 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
-
-import { MText, ArrowBackButton } from 'components/common';
-// import {User} from '~/generated/graphql';
 import {
+    CheckEmail,
+    Forgetpassword,
+    Forgetpassword1,
+    Gettingstarted3,
+    Hiquestion2,
+    Question2,
+    Question6,
+    Question7,
     Signin,
     Signup,
     VerifyEmail,
-    Forgetpassword1,
-    Forgetpassword,
-    LoginScreen,
-    Question7,
-    Question6,
-    Question2,
-    Hiquestion2,
-    Gettingstarted3,
-    SplashScreen,
-    Notification1,
-    Chat2,
-    Search,
-    Chat3,
-    Home2,
-    CheckEmail,
 } from 'screens';
-
-import { navigate } from './methods';
 
 const Stack = createStackNavigator();
 

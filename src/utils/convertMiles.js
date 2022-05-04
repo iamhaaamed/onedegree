@@ -1,3 +1,3 @@
 export const convertMiles = (meters) => {
-    return meters * 0.000621371192;
+    return 0.000621371 * meters;
 };

@@ -1225,7 +1225,7 @@ export default function ({ COLORS }) {
         },
         button4: {
             marginBottom: verticalScale(28),
-            marginTop: verticalScale(60),
+            marginTop: verticalScale(0),
             width: scale(314),
             height: verticalScale(52),
             alignSelf: 'center',
