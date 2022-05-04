@@ -122,7 +122,7 @@ const intro6 = createScreen(
                     <PagerView
                         style={{
                             width: '100%',
-                            height: scale(600),
+                            height: page == 0 ? scale(530) : scale(500),
                         }}
                         ref={viewPager}
                         initialPage={0}
@@ -149,57 +149,39 @@ const intro6 = createScreen(
                                                 textStyle={COMMON.Txtintro63}>
                                                 {subtitle}
                                             </MText>
-                                            {index == 0 ? (
-                                                <MButton
-                                                    onPress={onPress}
-                                                    style={COMMON.buttonRect5}
-                                                    containerStyle={
-                                                        COMMON.button4
-                                                    }
-                                                    text="Get started"
-                                                    textStyle={
-                                                        COMMON.Textsbutton6
-                                                    }
-                                                    color={COLORS.Color611}
-                                                    iconSide
-                                                    iconTop={{
-                                                        name:
-                                                            'arrow-forward-sharp',
-                                                        color: COLORS.Color378,
-                                                    }}
-                                                />
-                                            ) : (
-                                                <SectionRowCenter
-                                                    nextPress={() => {
-                                                        if (
-                                                            page !==
-                                                            data.length - 1
-                                                        ) {
-                                                            move(
-                                                                viewPager,
-                                                                page,
-                                                                1,
-                                                            );
-                                                        } else {
-                                                            onPressDone();
-                                                        }
-                                                    }}
-                                                    backPress={() =>
-                                                        move(
-                                                            viewPager,
-                                                            page,
-                                                            -1,
-                                                        )
-                                                    }
-                                                    intro
-                                                />
-                                            )}
                                         </View>
                                     </View>
                                 );
                             },
                         )}
                     </PagerView>
+                    {page == 0 ? (
+                        <MButton
+                            onPress={onPress}
+                            style={COMMON.buttonRect5}
+                            containerStyle={COMMON.button4}
+                            text="Get started"
+                            textStyle={COMMON.Textsbutton6}
+                            color={COLORS.Color611}
+                            iconSide
+                            iconTop={{
+                                name: 'arrow-forward-sharp',
+                                color: COLORS.Color378,
+                            }}
+                        />
+                    ) : (
+                        <SectionRowCenter
+                            nextPress={() => {
+                                if (page !== data.length - 1) {
+                                    move(viewPager, page, 1);
+                                } else {
+                                    onPressDone();
+                                }
+                            }}
+                            backPress={() => move(viewPager, page, -1)}
+                            intro
+                        />
+                    )}
                     <View
                         style={{
                             flexDirection: 'row',
