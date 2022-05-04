@@ -47,6 +47,7 @@ import Carousel from 'react-native-snap-carousel';
 import { useGetCareers } from 'hooks/careers';
 import { showMessage } from 'react-native-flash-message';
 import { authStore } from '../../../store';
+import { Source } from 'graphql/language/source';
 const Home2 = createScreen(
     () => {
         const {
@@ -101,13 +102,14 @@ const Home2 = createScreen(
         const renderItem = ({ item, index }) => {
             return <Sectionhome data={item} />;
         };
-        console.log('hasNextPage', hasNextPage);
+        console.log('isLoading', isLoading);
         return (
             <View style={styles.Home2}>
                 <MLoading
                     isLoading={isLoading || isLoading2}
                     size="large"
                     color={COLORS.Color323}
+                    style={{ top: '50%' }}
                 />
                 <SectionTophome style={COMMON.EleHome265} />
                 <View style={COMMON.SectionPaddingHome266}>
@@ -185,7 +187,7 @@ const Home2 = createScreen(
 const styles = StyleSheet.create({
     Home2: {
         backgroundColor: COLORS.Color197,
-        height: '100%',
+        flex: 1,
     },
     carouselContainer: {
         alignSelf: 'center',

@@ -63,7 +63,6 @@ const MoreInfo = createScreen(
             CONSTANTS,
         } = useTheme();
         const [Like, setLike] = useState(route?.params?.Like);
-        console.log('rrrrrr', route?.params?.data);
         const Info = route?.params?.data;
         const refActionSheet = useRef(null);
         const showActionSheet = () => {

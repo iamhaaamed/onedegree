@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Keyboard } from 'react-native';
-import { MLoading } from '.';
+import { MLoading } from 'components/common';
 const Container = ({ style, children, isLoading, loadingOnPage }) => {
     const shouldSetResponse = () => true;
     const onRelease = () => Keyboard.dismiss();

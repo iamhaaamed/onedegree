@@ -56,7 +56,6 @@ const Sectionhome = (props) => {
         CONSTANTS,
     } = useTheme();
     const [Like, setLike] = useState(false);
-    console.log('lllllllllllll', data);
     const { data: LikeCareers } = useGetLikeCareers({
         careerId: data?.career?.id,
     });
@@ -126,13 +125,13 @@ const Sectionhome = (props) => {
                                         COMMON.RowItem,
                                         COMMON.RowItemSectionhome71,
                                     ]}>
-                                    <View style={{ width: '50%' }}>
+                                    <View style={{ width: '30%' }}>
                                         <MText
                                             textStyle={COMMON.TxtSectionhome82}>
                                             {item?.programs?.title}
                                         </MText>
                                     </View>
-                                    <View style={{ width: '50%' }}>
+                                    <View style={{ width: '70%' }}>
                                         <MText
                                             textStyle={COMMON.TxtSectionhome83}>
                                             {item?.distance} miles{' '}
