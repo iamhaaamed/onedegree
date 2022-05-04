@@ -7,7 +7,13 @@ import {
     StyleSheet,
     Image,
 } from 'react-native';
-import { scale, verticalScale, height, toPascalCase } from 'utils';
+import {
+    scale,
+    verticalScale,
+    height,
+    toPascalCase,
+    convertMiles,
+} from 'utils';
 import { useState } from 'react';
 import useTheme from 'hooks/useTheme';
 import { COLORS } from 'constants/common';
@@ -125,16 +131,22 @@ const Sectionhome = (props) => {
                                         COMMON.RowItem,
                                         COMMON.RowItemSectionhome71,
                                     ]}>
-                                    <View style={{ width: '30%' }}>
+                                    <View
+                                        style={{
+                                            width: '50%',
+                                        }}>
                                         <MText
                                             textStyle={COMMON.TxtSectionhome82}>
                                             {item?.programs?.title}
                                         </MText>
                                     </View>
-                                    <View style={{ width: '70%' }}>
+                                    <View style={{ width: '50%' }}>
                                         <MText
                                             textStyle={COMMON.TxtSectionhome83}>
-                                            {item?.distance} miles{' '}
+                                            {parseFloat(
+                                                convertMiles(item?.distance),
+                                            ).toFixed(2)}{' '}
+                                            miles{' '}
                                         </MText>
                                     </View>
                                 </View>

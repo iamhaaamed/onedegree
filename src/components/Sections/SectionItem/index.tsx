@@ -9,7 +9,7 @@ import { MStatusBar, MButton, MText, MImage } from 'components/common';
 import { navigate } from 'navigation/methods';
 
 const SectionItem20 = (props) => {
-    const { style } = props;
+    const { style, data } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -19,21 +19,18 @@ const SectionItem20 = (props) => {
         CONSTANTS,
     } = useTheme();
 
-    const clickCounter = useRef(0);
-    const onPress = () => {
-        console.log(`Clicked! ${clickCounter.current}`);
-        clickCounter.current = clickCounter.current + 1;
-    };
+    console.log('data', data);
 
     return (
         <TouchableOpacity
             style={[styles.SectionItem, style]}
             activeOpacity={0.9}
-            onPress={() => navigate('ProgramDetails')}>
-            <MImage imageSource={IMAGES.image7104} style={COMMON.image26} />
-            <MText textStyle={COMMON.TxtSectionText4}>
-                electrician apprenticeship{' '}
-            </MText>
+            onPress={() => navigate('ProgramDetails', { programId: data?.id })}>
+            <MImage
+                imageSource={{ uri: data?.imageAddrss }}
+                style={COMMON.image26}
+            />
+            <MText textStyle={COMMON.TxtSectionText4}>{data?.title} </MText>
             <View style={[COMMON.RowItem]}>
                 <View style={{ width: '38%' }}>
                     <MText textStyle={COMMON.TxtSectionItem17}>
@@ -41,7 +38,9 @@ const SectionItem20 = (props) => {
                     </MText>
                 </View>
                 <View style={{ width: '62%' }}>
-                    <MText textStyle={COMMON.TxtSectionItem18}>$30 </MText>
+                    <MText textStyle={COMMON.TxtSectionItem18}>
+                        ${data?.programCost}{' '}
+                    </MText>
                 </View>
             </View>
             <View style={[COMMON.RowItem]} mb={verticalScale(21)}>
@@ -51,7 +50,9 @@ const SectionItem20 = (props) => {
                     </MText>
                 </View>
                 <View style={{ width: '52%' }}>
-                    <MText textStyle={COMMON.TxtSectionItem18}>5 Months </MText>
+                    <MText textStyle={COMMON.TxtSectionItem18}>
+                        {data?.lengthOfProgram} Months{' '}
+                    </MText>
                 </View>
             </View>
         </TouchableOpacity>
@@ -64,7 +65,8 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 15 },
         shadowRadius: 29,
         elevation: 1,
-        width: '100%',
+        width: '99.5%',
+        alignSelf: 'center',
         // height: verticalScale(121),
         borderTopLeftRadius: 21,
         borderTopRightRadius: 21,
