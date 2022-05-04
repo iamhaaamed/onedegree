@@ -39,6 +39,7 @@ import {
     MAccordion,
     MSnackbar,
     MSlider,
+    KeyboardAwareScrollView,
 } from 'components/common';
 import { showMessage } from 'react-native-flash-message';
 import auth from '@react-native-firebase/auth';
@@ -88,7 +89,7 @@ const SectionForgetPass = (props) => {
         onSubmitForgotPassword(data);
     };
     return (
-        <View style={[styles.SectionForgetPass, style]}>
+        <KeyboardAwareScrollView style={[styles.SectionForgetPass, style]}>
             <MLoading
                 size="large"
                 color={COLORS.Color323}
@@ -156,7 +157,7 @@ const SectionForgetPass = (props) => {
                     Sign up{' '}
                 </MText>
             </TouchableOpacity>
-        </View>
+        </KeyboardAwareScrollView>
     );
 };
 const styles = StyleSheet.create({

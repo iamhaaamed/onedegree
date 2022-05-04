@@ -132,6 +132,17 @@ const SectionSignIn = (props) => {
                     data?.email,
                     data?.password,
                 );
+                const checkDone = auth().currentUser?.emailVerified;
+                console.log('6666', checkDone);
+                if (checkDone) {
+                    setToken(await auth().currentUser?.getIdToken());
+                    navigation.dispatch(StackActions.replace('MainStack'));
+                } else {
+                    showMessage({
+                        message: 'Failed, Please Retry',
+                        type: 'danger',
+                    });
+                }
             } catch (error) {
                 console.log(error, 'error for get token');
 

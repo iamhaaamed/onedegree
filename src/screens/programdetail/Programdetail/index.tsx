@@ -10,7 +10,7 @@ import { verticalScale, scale } from 'utils';
 import { MStatusBar, MButton, MText, MImage } from 'components/common';
 
 const ProgramDetails = createScreen(
-    () => {
+    ({ route }) => {
         const {
             LAYOUT,
             GUTTERS,
@@ -19,6 +19,7 @@ const ProgramDetails = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
+        console.log('route', route?.params?.programId);
 
         return (
             <View style={styles.Programdetail2881}>

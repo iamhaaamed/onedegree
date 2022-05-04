@@ -19,8 +19,6 @@ const SectionItem20 = (props) => {
         CONSTANTS,
     } = useTheme();
 
-    console.log('data', data);
-
     return (
         <TouchableOpacity
             style={[styles.SectionItem, style]}

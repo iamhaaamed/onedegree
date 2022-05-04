@@ -97,8 +97,8 @@ const Programs = createScreen(
                             maxHeight: verticalScale(630),
                         }}
                         showsVerticalScrollIndicator={false}
-                        refreshing={isRefetching}
-                        onRefresh={refetch}
+                        // refreshing={isRefetching}
+                        // onRefresh={refetch}
                         renderItem={({ item }) => <SectionItem data={item} />}
                         keyExtractor={(item, index) =>
                             item?.id ? item?.id?.toString() : index.toString()
