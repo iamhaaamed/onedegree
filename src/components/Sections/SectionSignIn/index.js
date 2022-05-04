@@ -49,7 +49,6 @@ import { navigate } from 'navigation/methods';
 import { StackActions, useNavigation } from '@react-navigation/native';
 import * as yup from 'yup';
 import { Formik } from 'formik';
-import { async } from 'validate.js';
 const SectionSignIn = (props) => {
     const { style } = props;
     const {
@@ -62,8 +61,8 @@ const SectionSignIn = (props) => {
     } = useTheme();
 
     const navigation = useNavigation();
-    // const {setIsUserLoggedIn} = authStore(state => state);
     const setToken = authStore((state) => state.setToken);
+    const setUserName = authStore((state) => state.setUserName);
     const [isLoading, setIsLoading] = useState(false);
     const { mutate } = useLogin();
     const ValidationSchema = yup.object().shape({
@@ -88,7 +87,8 @@ const SectionSignIn = (props) => {
         if (success) {
             console.log('thirdPartyAccessToken', thirdPartyAccessToken);
             console.log('firebaseIdToken', firebaseIdToken);
-            console.log('firebaseUser', firebaseUser);
+            console.log('firebaseUser', firebaseUser?.displayName);
+            setUserName(firebaseUser?.displayName);
             onSigninWithSocial();
         }
     };
@@ -162,7 +162,7 @@ const SectionSignIn = (props) => {
             console.log('thirdPartyAccessToken', thirdPartyAccessToken);
             console.log('firebaseIdToken', firebaseIdToken);
             console.log('firebaseUser', firebaseUser);
-
+            setUserName(firebaseUser?.displayName);
             onSigninWithSocial();
         }
     }

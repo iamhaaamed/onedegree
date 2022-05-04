@@ -6,6 +6,8 @@ export type AuthState = {
     token: string;
     userId: number;
     isOnboardingViewed: boolean;
+    UserName: string;
+    setUserName: (UserName: string) => void;
     setToken: (token: string) => void;
     setUserId: (userId: number) => void;
     setIsOnboardingViewed: (isOnboardingViewed: boolean) => void;
@@ -22,7 +24,8 @@ export const authStore = create<AuthState>(
             token: '',
             userId: 0,
             isOnboardingViewed: false,
-
+            UserName: '',
+            setUserName: (UserName: string) => set({ UserName }),
             setToken: (token: string) => set({ token }),
             setUserId: (userId: number) => set({ userId }),
             setIsOnboardingViewed: (isOnboardingViewed: boolean) =>

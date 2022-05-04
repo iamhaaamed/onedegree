@@ -7,7 +7,13 @@ import {
     StyleSheet,
     Image,
 } from 'react-native';
-import { scale, verticalScale, height, toPascalCase } from 'utils';
+import {
+    scale,
+    verticalScale,
+    height,
+    toPascalCase,
+    convertMiles,
+} from 'utils';
 import { useState } from 'react';
 import useTheme from 'hooks/useTheme';
 import { COLORS } from 'constants/common';
@@ -56,7 +62,6 @@ const Sectionhome = (props) => {
         CONSTANTS,
     } = useTheme();
     const [Like, setLike] = useState(false);
-    console.log('lllllllllllll', data);
     const { data: LikeCareers } = useGetLikeCareers({
         careerId: data?.career?.id,
     });
@@ -126,7 +131,10 @@ const Sectionhome = (props) => {
                                         COMMON.RowItem,
                                         COMMON.RowItemSectionhome71,
                                     ]}>
-                                    <View style={{ width: '50%' }}>
+                                    <View
+                                        style={{
+                                            width: '50%',
+                                        }}>
                                         <MText
                                             textStyle={COMMON.TxtSectionhome82}>
                                             {item?.programs?.title}
@@ -135,7 +143,10 @@ const Sectionhome = (props) => {
                                     <View style={{ width: '50%' }}>
                                         <MText
                                             textStyle={COMMON.TxtSectionhome83}>
-                                            {item?.distance} miles{' '}
+                                            {parseFloat(
+                                                convertMiles(item?.distance),
+                                            ).toFixed(2)}{' '}
+                                            miles{' '}
                                         </MText>
                                     </View>
                                 </View>

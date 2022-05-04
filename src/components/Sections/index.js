@@ -36,3 +36,4 @@ export { default as Question2 } from './Question2';
 export { default as Question3 } from './Question3';
 export { default as Question4 } from './Question4';
 export { default as SectionCheckEmail } from './SectionCheckEmail';
+export { default as Container } from './Container';

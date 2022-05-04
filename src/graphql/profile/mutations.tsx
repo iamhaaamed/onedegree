@@ -1,9 +1,8 @@
 import { gql } from 'graphql-request';
 
 export const UPDATE_USERPROFILE = gql`
-mutation user_updateProfile ($userInput: UserInput) {
-    user_updateProfile (userInput: $userInput) {
-        result {
+    mutation user_updateProfile($userInput: UserInput) {
+        user_updateProfile(userInput: $userInput) {
             result {
                 isActive
                 createdAt
@@ -24,7 +23,7 @@ mutation user_updateProfile ($userInput: UserInput) {
                 whereDoYouWantToWork
                 howFarAreYouWillingToTravelToGetCertified
                 whereDidYouHearAboutOnedegreeCareers
-                whereDidYouHearAboutOnedegreeCareersTextForOther               
+                whereDidYouHearAboutOnedegreeCareersTextForOther
                 externalId
                 id
                 isDeleted

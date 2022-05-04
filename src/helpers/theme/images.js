@@ -30,5 +30,6 @@ export default function () {
         splash4: require('assets/images/4.png'),
         google: require('assets/images/google.png'),
         checkEmail: require('assets/images/checkEmail.png'),
+        loading: require('assets/images/loading.png'),
     };
 }

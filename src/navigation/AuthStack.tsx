@@ -55,11 +55,7 @@ const screens = [
     //     name: 'HomeScreen',
     //     component: Home2,
     // },
-    {
-        options: { headerShown: false },
-        name: 'Question2',
-        component: Question2,
-    },
+
     {
         options: { headerShown: false },
         name: 'Signin',
@@ -90,11 +86,11 @@ const screens = [
         name: 'Question6',
         component: Question6,
     },
-    // {
-    //     options: { headerShown: false },
-    //     name: 'Question2',
-    //     component: Question2,
-    // },
+    {
+        options: { headerShown: false },
+        name: 'Question2',
+        component: Question2,
+    },
     {
         options: { headerShown: false },
         name: 'CheckEmail',

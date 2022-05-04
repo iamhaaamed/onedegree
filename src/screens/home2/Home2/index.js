@@ -46,6 +46,8 @@ import { SectionTophome, Sectionhome } from 'components/Sections';
 import Carousel from 'react-native-snap-carousel';
 import { useGetCareers } from 'hooks/careers';
 import { showMessage } from 'react-native-flash-message';
+import { authStore } from '../../../store';
+import { Source } from 'graphql/language/source';
 const Home2 = createScreen(
     () => {
         const {
@@ -63,6 +65,7 @@ const Home2 = createScreen(
         const [user, setUser] = useState();
         const [isLoading2, setIsLoading2] = useState(false);
         const { mutate } = useLogin();
+        const { UserName } = authStore((state) => state);
         useEffect(() => {
             setIsLoading2(true);
             try {
@@ -99,19 +102,19 @@ const Home2 = createScreen(
         const renderItem = ({ item, index }) => {
             return <Sectionhome data={item} />;
         };
-        console.log('hasNextPage', hasNextPage);
+        console.log('isLoading', isLoading);
         return (
             <View style={styles.Home2}>
                 <MLoading
                     isLoading={isLoading || isLoading2}
                     size="large"
                     color={COLORS.Color323}
+                    style={{ top: '50%' }}
                 />
                 <SectionTophome style={COMMON.EleHome265} />
-                {/* <ScrollView> */}
                 <View style={COMMON.SectionPaddingHome266}>
                     <MText textStyle={COMMON.TxtHome267}>
-                        Hello,{user?.email} !{' '}
+                        Hello,{UserName} !{' '}
                     </MText>
                     <Carousel
                         // ref={(c) => {
@@ -127,6 +130,7 @@ const Home2 = createScreen(
                         renderItem={({ item, index }) =>
                             renderItem({ item, index })
                         }
+                        lockScrollWhileSnapping
                         // sliderWidth={scale(320)}
                         itemWidth={scale(300)}
                         itemHeight={scale(500)}
@@ -138,7 +142,11 @@ const Home2 = createScreen(
                             marginTop: '-5%',
                         }}
                         // inactiveSlideShift={100}
-                        // onSnapToItem={(index) => this.setState({ index })}
+                        onSnapToItem={() => {
+                            if (hasNextPage) {
+                                fetchNextPage();
+                            }
+                        }}
                         // scrollInterpolator={scrollInterpolator}
                         // slideInterpolatedStyle={animatedStyles}
                         layout={'tinder'}
@@ -167,7 +175,6 @@ const Home2 = createScreen(
                         }}
                     />
                 </View>
-                {/* </ScrollView> */}
             </View>
         );
     },
@@ -180,7 +187,7 @@ const Home2 = createScreen(
 const styles = StyleSheet.create({
     Home2: {
         backgroundColor: COLORS.Color197,
-        height: '100%',
+        flex: 1,
     },
     carouselContainer: {
         alignSelf: 'center',
