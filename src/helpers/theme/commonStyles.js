@@ -60,20 +60,20 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(22),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color209,
         },
         TxtSectionSignUp2: {
             marginBottom: verticalScale(15),
             fontSize: verticalScale(17),
             fontFamily: 'Muli',
-            lineHeight: 24,
+            lineHeight: verticalScale(30),
             color: COLORS.Color726,
         },
         TextsInput4: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 20,
+            lineHeight: verticalScale(20),
             color: COLORS.Color280,
         },
         InputRect5: {
@@ -103,7 +103,7 @@ export default function ({ COLORS }) {
         TextsInput7: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 20,
+            lineHeight: verticalScale(20),
             color: COLORS.Color280,
         },
 
@@ -157,7 +157,7 @@ export default function ({ COLORS }) {
             textAlign: 'center',
             fontSize: verticalScale(13),
             fontFamily: 'Muli',
-            lineHeight: 15,
+            lineHeight: verticalScale(15),
             color: COLORS.Color726,
         },
         LineSectionSignUp15: {
@@ -225,7 +225,7 @@ export default function ({ COLORS }) {
         TxtSectionSignUp24: {
             fontSize: verticalScale(14),
             fontFamily: 'Muli',
-            lineHeight: 15,
+            lineHeight: verticalScale(15),
             color: COLORS.Color525,
         },
         image25: {
@@ -237,20 +237,20 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(22),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color209,
         },
         TxtSectionSignIn27: {
             marginBottom: verticalScale(15),
             fontSize: verticalScale(17),
             fontFamily: 'Muli',
-            lineHeight: 24,
+            lineHeight: verticalScale(24),
             color: COLORS.Color726,
         },
         TextsInput29: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 20,
+            lineHeight: verticalScale(20),
             color: COLORS.Color280,
         },
         InputRect30: {
@@ -279,7 +279,7 @@ export default function ({ COLORS }) {
         TextsInput32: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 20,
+            lineHeight: verticalScale(20),
             color: COLORS.Color280,
         },
         InputRect33: {
@@ -309,7 +309,7 @@ export default function ({ COLORS }) {
             marginBottom: verticalScale(24),
             fontSize: verticalScale(15),
             fontFamily: 'Muli',
-            lineHeight: 16,
+            lineHeight: verticalScale(16),
             color: COLORS.Color525,
         },
         TextsButton37: {
@@ -354,7 +354,7 @@ export default function ({ COLORS }) {
             textAlign: 'center',
             fontSize: verticalScale(13),
             fontFamily: 'Muli',
-            lineHeight: 15,
+            lineHeight: verticalScale(15),
             color: COLORS.Color726,
         },
         LineSectionSignIn41: {
@@ -372,7 +372,7 @@ export default function ({ COLORS }) {
         TxtSectionSignIn44: {
             fontSize: verticalScale(14),
             fontFamily: 'Muli',
-            lineHeight: 15,
+            lineHeight: verticalScale(15),
             color: COLORS.Color525,
         },
         image45: {
@@ -387,13 +387,13 @@ export default function ({ COLORS }) {
             marginBottom: verticalScale(16),
             fontSize: verticalScale(22),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color209,
         },
         TextsInput48: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color758,
         },
         InputRect49: {
@@ -451,7 +451,7 @@ export default function ({ COLORS }) {
             textAlign: 'center',
             fontSize: verticalScale(14),
             fontFamily: 'Muli',
-            lineHeight: 15,
+            lineHeight: verticalScale(15),
             color: COLORS.Color525,
         },
         SectionPaddingquestion255: {
@@ -463,7 +463,7 @@ export default function ({ COLORS }) {
         Txtquestion256: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color209,
         },
         Image57: {
@@ -480,19 +480,19 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(17),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 39,
+            lineHeight: verticalScale(39),
             color: COLORS.Color209,
         },
         Txtquestion260: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color886,
         },
         TextsCheckBox62: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(35),
             color: COLORS.Color886,
         },
         CheckBox61: {
@@ -501,7 +501,7 @@ export default function ({ COLORS }) {
         TextsCheckBox64: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color886,
         },
         CheckBox63: {
@@ -510,7 +510,7 @@ export default function ({ COLORS }) {
         TextsCheckBox66: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color886,
         },
         CheckBox65: {
@@ -519,7 +519,7 @@ export default function ({ COLORS }) {
         TextsCheckBox68: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color886,
         },
         CheckBox67: {
@@ -528,7 +528,7 @@ export default function ({ COLORS }) {
         TextsCheckBox70: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color886,
         },
         CheckBox69: {
@@ -537,7 +537,7 @@ export default function ({ COLORS }) {
         TextsCheckBox72: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color886,
         },
         CheckBox71: {
@@ -546,7 +546,7 @@ export default function ({ COLORS }) {
         TextsCheckBox74: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color886,
         },
         CheckBox73: {
@@ -555,7 +555,7 @@ export default function ({ COLORS }) {
         TextsCheckBox76: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color886,
         },
         CheckBox75: {
@@ -564,7 +564,7 @@ export default function ({ COLORS }) {
         TextsCheckBox78: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color603,
         },
         CheckBox77: {
@@ -621,14 +621,14 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(22),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color209,
         },
         TxtSectionVerification84: {
             marginBottom: verticalScale(14),
             fontSize: verticalScale(15),
             fontFamily: 'Muli',
-            lineHeight: 16,
+            lineHeight: verticalScale(16),
             color: COLORS.Color726,
         },
         InputRect86: {
@@ -657,7 +657,7 @@ export default function ({ COLORS }) {
             marginBottom: verticalScale(39),
             fontSize: verticalScale(15),
             fontFamily: 'Muli',
-            lineHeight: 16,
+            lineHeight: verticalScale(16),
             color: COLORS.Color525,
         },
         TextsButton90: {
@@ -722,14 +722,14 @@ export default function ({ COLORS }) {
             marginBottom: verticalScale(16),
             fontSize: verticalScale(22),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color209,
         },
         TxtSectionQuestion96: {
             marginBottom: verticalScale(19),
             fontSize: verticalScale(14),
             fontFamily: 'Muli',
-            lineHeight: 26,
+            lineHeight: verticalScale(26),
             color: COLORS.Color726,
         },
         TextsButton99: {
@@ -767,7 +767,7 @@ export default function ({ COLORS }) {
             textAlign: 'center',
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            // lineHeight: 42,
+            // //lineHeight: 42,
             color: COLORS.Color209,
         },
         Image102: {
@@ -787,7 +787,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(17),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 39,
+            lineHeight: verticalScale(39),
             color: COLORS.Color209,
         },
         Txtquestion6105: {
@@ -795,13 +795,13 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(17),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 39,
+            lineHeight: verticalScale(39),
             color: COLORS.Color209,
         },
         TextsInput107: {
             fontSize: verticalScale(14),
             fontFamily: 'Muli',
-            lineHeight: 36,
+            lineHeight: verticalScale(36),
             color: COLORS.Color267,
         },
         InputRect108: {
@@ -833,7 +833,7 @@ export default function ({ COLORS }) {
             textAlign: 'center',
             fontSize: verticalScale(17),
             fontFamily: 'Muli',
-            lineHeight: 30,
+            lineHeight: verticalScale(30),
             color: COLORS.Color209,
         },
         TextsButton112: {
@@ -917,7 +917,7 @@ export default function ({ COLORS }) {
         Txtquestion7118: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color209,
         },
         Image119: {
@@ -935,7 +935,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(17),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 39,
+            lineHeight: verticalScale(39),
             color: COLORS.Color209,
         },
         SectionPaddingquestion7122: {
@@ -946,13 +946,13 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(17),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 39,
+            lineHeight: verticalScale(39),
             color: COLORS.Color209,
         },
         TextsInput125: {
             fontSize: verticalScale(14),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color267,
         },
         InputRect126: {
@@ -984,13 +984,13 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(17),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 39,
+            lineHeight: verticalScale(39),
             color: COLORS.Color209,
         },
         TextsCheckBox129: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color886,
         },
         CheckBox128: {
@@ -1004,7 +1004,7 @@ export default function ({ COLORS }) {
         TextsCheckBox131: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color886,
         },
         CheckBox130: {
@@ -1018,7 +1018,7 @@ export default function ({ COLORS }) {
         TextsCheckBox133: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color886,
         },
         CheckBox132: {
@@ -1041,7 +1041,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(22),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color209,
         },
         TextsButton138: {
@@ -1074,7 +1074,7 @@ export default function ({ COLORS }) {
             marginBottom: verticalScale(26),
             fontSize: verticalScale(14),
             fontFamily: 'Muli',
-            lineHeight: 26,
+            lineHeight: verticalScale(26),
             color: COLORS.Color516,
         },
         SectionPaddingSectiontop1140: {
@@ -1086,7 +1086,7 @@ export default function ({ COLORS }) {
         TxtSectiontop1141: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color209,
         },
         image142: {
@@ -1104,7 +1104,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(26),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 24,
+            lineHeight: verticalScale(24),
             color: COLORS.Color726,
         },
         TxtSectionStart144: {
@@ -1113,7 +1113,7 @@ export default function ({ COLORS }) {
             textAlign: 'center',
             fontSize: verticalScale(15),
             fontFamily: 'Muli',
-            lineHeight: 26,
+            lineHeight: verticalScale(26),
             color: COLORS.Color726,
         },
         TextsButton147: {
@@ -1202,7 +1202,7 @@ export default function ({ COLORS }) {
             fontWeight: 'bold',
             paddingRight: scale(32),
             paddingLeft: scale(32),
-            lineHeight: 42,
+            lineHeight: verticalScale(50),
             color: COLORS.white,
         },
         buttonRect5: {
@@ -1242,7 +1242,7 @@ export default function ({ COLORS }) {
             fontFamily: 'Muli',
             fontWeight: 'bold',
             flexWrap: 'wrap',
-            // lineHeight: 42,
+            // //lineHeight: 42,
             color: COLORS.Color571,
         },
         EleNotification122: {
@@ -1265,7 +1265,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(15),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 24,
+            lineHeight: verticalScale(24),
             color: COLORS.Color786,
         },
         EleChat218: {
@@ -1288,13 +1288,13 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(15),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 24,
+            lineHeight: verticalScale(24),
             color: COLORS.Color786,
         },
         TxtSectionProgram17: {
             fontSize: verticalScale(14),
             fontFamily: 'Muli',
-            lineHeight: 24,
+            lineHeight: verticalScale(24),
             color: COLORS.Color745,
         },
         EleSearch4: {
@@ -1336,7 +1336,7 @@ export default function ({ COLORS }) {
         TextsInput8: {
             fontSize: verticalScale(17),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color519,
         },
         Button10: {
@@ -1386,14 +1386,14 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(17),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 22,
+            lineHeight: verticalScale(22),
             color: COLORS.Color786,
             paddingVertical: scale(10),
         },
         TxtSearch16: {
             fontSize: verticalScale(12),
             fontFamily: 'Muli',
-            lineHeight: scale(20),
+            lineHeight: verticalScale(20),
             color: COLORS.Color786,
             paddingVertical: scale(10),
         },
@@ -1402,7 +1402,7 @@ export default function ({ COLORS }) {
             textAlign: 'right',
             fontSize: verticalScale(13),
             fontFamily: 'Muli',
-            lineHeight: 20,
+            lineHeight: verticalScale(20),
             color: COLORS.Color786,
             paddingVertical: scale(10),
         },
@@ -1439,14 +1439,14 @@ export default function ({ COLORS }) {
         TxtSectionEvent27: {
             fontSize: verticalScale(14),
             fontFamily: 'Muli',
-            lineHeight: 24,
+            lineHeight: verticalScale(24),
             color: COLORS.Color745,
         },
         TxtSectionEvent26: {
             marginBottom: verticalScale(7),
             fontSize: verticalScale(15),
             fontFamily: 'Muli',
-            lineHeight: 28,
+            lineHeight: verticalScale(28),
             color: COLORS.Color726,
         },
         Button25: {
@@ -1457,14 +1457,14 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(15),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 24,
+            lineHeight: verticalScale(24),
             color: COLORS.Color726,
             alignSelf: 'center',
         },
         TxtSectionTopchat28: {
             fontSize: verticalScale(11),
             fontFamily: 'Muli',
-            lineHeight: 24,
+            lineHeight: verticalScale(24),
             color: COLORS.Color745,
             alignSelf: 'center',
         },
@@ -1576,7 +1576,7 @@ export default function ({ COLORS }) {
         TxtSectionChat33: {
             fontSize: verticalScale(14),
             fontFamily: 'Muli',
-            // lineHeight: 24,
+            // //lineHeight: 24,
             color: COLORS.Color375,
         },
         EleHome265: {
@@ -1614,7 +1614,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(24),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 24,
+            // //lineHeight: scale(24),
             color: COLORS.Color786,
         },
         image68: {
@@ -1631,7 +1631,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(19),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 24,
+            lineHeight: verticalScale(24),
             color: COLORS.Color726,
         },
         RowItemSectionhome71: {
@@ -1640,26 +1640,26 @@ export default function ({ COLORS }) {
         TxtSectionhome72: {
             fontSize: verticalScale(14),
             fontFamily: 'Muli',
-            lineHeight: 24,
+            lineHeight: verticalScale(24),
             color: COLORS.Color726,
         },
         TxtSectionhome80: {
             marginBottom: verticalScale(16),
             fontSize: verticalScale(14),
             fontFamily: 'Muli',
-            lineHeight: 24,
+            lineHeight: verticalScale(24),
             color: COLORS.Color726,
         },
         TxtSectionhome82: {
             fontSize: verticalScale(15),
             fontFamily: 'Muli',
-            lineHeight: 24,
+            lineHeight: verticalScale(24),
             color: COLORS.Color424,
         },
         TxtSectionhome83: {
             fontSize: verticalScale(14),
             fontFamily: 'Muli',
-            lineHeight: 24,
+            lineHeight: verticalScale(24),
             color: COLORS.Color424,
             textAlign: 'right',
         },
@@ -1667,14 +1667,14 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(15),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 24,
+            lineHeight: verticalScale(24),
             color: COLORS.Color726,
         },
         TxtSectionhome732: {
             fontSize: verticalScale(15),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 24,
+            lineHeight: verticalScale(24),
             color: COLORS.Color726,
             textAlign: 'right',
         },
@@ -1736,21 +1736,21 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(19),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 24,
+            lineHeight: verticalScale(24),
             color: COLORS.Color726,
         },
         TxtMoreInfo213: {
             marginBottom: verticalScale(10),
             fontSize: verticalScale(18),
             fontFamily: 'Muli',
-            lineHeight: 29,
+            lineHeight: verticalScale(29),
             color: COLORS.Color726,
         },
         TxtMoreInfo214: {
             marginBottom: verticalScale(41),
             fontSize: verticalScale(17),
             fontFamily: 'Muli',
-            lineHeight: 29,
+            lineHeight: verticalScale(29),
             color: COLORS.Color726,
         },
         SectionPaddingMoreInfo218: {
@@ -1806,7 +1806,7 @@ export default function ({ COLORS }) {
         TxtSectionRow16: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 29,
+            lineHeight: verticalScale(29),
             color: COLORS.Color726,
         },
         TxtSectionRow17: {
@@ -1815,7 +1815,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 29,
+            lineHeight: verticalScale(29),
             color: COLORS.Color726,
         },
         SectionPaddingMoreInfo25: {
@@ -1832,14 +1832,14 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 29,
+            lineHeight: verticalScale(29),
             color: COLORS.Color726,
         },
         TxtSectionModal53: {
             marginBottom: verticalScale(100),
             fontSize: verticalScale(15),
             fontFamily: 'Muli',
-            lineHeight: 29,
+            lineHeight: verticalScale(29),
             color: COLORS.Color726,
         },
         TxtSectionModal532: {
@@ -1847,7 +1847,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 29,
+            lineHeight: verticalScale(29),
             color: COLORS.Color726,
         },
         ButtonRect55: {
@@ -1896,14 +1896,14 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 39,
+            lineHeight: verticalScale(39),
             color: COLORS.Color571,
         },
         TxtTermsofService16: {
             // marginBottom: verticalScale(314),
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 30,
+            lineHeight: verticalScale(30),
             color: COLORS.Color786,
         },
         SectionPaddingProfile421: {
@@ -1927,7 +1927,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color571,
         },
         ButtonRect25: {
@@ -1981,7 +1981,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(17),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 30,
+            lineHeight: verticalScale(30),
             color: COLORS.Color289,
         },
         EleProfile430: {
@@ -1990,14 +1990,14 @@ export default function ({ COLORS }) {
         TxtSectionInfo28: {
             fontSize: verticalScale(17),
             fontFamily: 'Muli',
-            lineHeight: 24,
+            lineHeight: verticalScale(24),
             color: COLORS.Color726,
         },
         TxtSectionInfo29: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
             textAlign: 'right',
-            lineHeight: 24,
+            lineHeight: verticalScale(24),
             color: COLORS.Color267,
         },
         SectionPaddingQuestion539: {
@@ -2013,7 +2013,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(20),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color718,
             // marginBottom: '5%',
         },
@@ -2027,13 +2027,13 @@ export default function ({ COLORS }) {
         TextsCheckBox42: {
             fontSize: verticalScale(17),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color209,
         },
         TextsCheckBox44: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            lineHeight: 42,
+            lineHeight: verticalScale(42),
             color: COLORS.Color886,
         },
         tabSelect: {
@@ -2092,7 +2092,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: 23,
+            lineHeight: verticalScale(23),
             color: COLORS.white,
         },
         ButtonRect14: {
@@ -2121,7 +2121,7 @@ export default function ({ COLORS }) {
             fontWeight: 'bold',
             color: COLORS.Color209,
             alignSelf: 'center',
-            lineHeight: scale(30),
+            lineHeight: verticalScale(30),
         },
         TxtSectionText38: {
             fontSize: verticalScale(15),
@@ -2164,7 +2164,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
             color: COLORS.Color209,
-            lineHeight: scale(25),
+            lineHeight: verticalScale(25),
         },
         InputRect23: {
             paddingRight: scale(145),
@@ -2206,7 +2206,7 @@ export default function ({ COLORS }) {
             fontWeight: 'bold',
             color: COLORS.Color726,
             marginHorizontal: scale(13),
-            lineHeight: scale(25),
+            lineHeight: verticalScale(25),
             marginVertical: scale(10),
         },
         TxtSectionItem17: {
@@ -2214,7 +2214,7 @@ export default function ({ COLORS }) {
             fontFamily: 'Muli',
             color: COLORS.Color424,
             marginHorizontal: scale(13),
-            lineHeight: scale(22),
+            lineHeight: verticalScale(22),
             paddingBottom: scale(10),
         },
         TxtSectionItem18: {
@@ -2223,7 +2223,7 @@ export default function ({ COLORS }) {
             fontWeight: 'bold',
             color: COLORS.Color726,
             marginHorizontal: scale(13),
-            lineHeight: scale(22),
+            lineHeight: verticalScale(22),
         },
         TxtProgramdetail288114: {
             fontSize: verticalScale(16),

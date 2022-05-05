@@ -97,7 +97,7 @@ const Home2 = createScreen(
             isRefetching,
             refetch,
         } = useGetCareers({});
-
+        console.log('UserName', UserName);
         let Careers = careers?.pages;
         const renderItem = ({ item, index }) => {
             return <Sectionhome data={item} />;
@@ -114,7 +114,7 @@ const Home2 = createScreen(
                 <SectionTophome style={COMMON.EleHome265} />
                 <View style={COMMON.SectionPaddingHome266}>
                     <MText textStyle={COMMON.TxtHome267}>
-                        Hello,{UserName} !{' '}
+                        Hello,{UserName ? UserName : user?.email} !
                     </MText>
                     <Carousel
                         // ref={(c) => {

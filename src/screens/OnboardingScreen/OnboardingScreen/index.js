@@ -81,25 +81,25 @@ const intro6 = createScreen(
                 imageUrl: IMAGES.image5606,
                 imageBack: IMAGES.imageBack2,
                 subtitle:
-                    " We help you explore careers that are high-paying and don't require college.",
+                    "We Help You Explore Careers That Are High-Paying And Don't Require College.",
             },
             {
                 imageUrl: IMAGES.intro2,
                 imageBack: IMAGES.imageBack2,
                 subtitle:
-                    'Our unique support process helps you easily pick a new career path and avoid college debt.',
+                    'Our Unique Support Process Helps You Easily Pick A New Career Path And Avoid College Debt.',
             },
             {
                 imageUrl: IMAGES.intro3,
                 imageBack: IMAGES.imageBack1,
                 subtitle:
-                    'We connect you to the best training programs in your area so you can confidently pursue your new career.',
+                    'We Connect You To The Best Training Programs In Your Area So You Can Confidently Pursue Your New Career.',
             },
             {
                 imageUrl: IMAGES.intro4,
                 imageBack: IMAGES.imageBack1,
                 subtitle:
-                    'We connect you to the best training programs in your area so you can confidently pursue your new career.',
+                    'We Connect You To The Best Training Programs In Your Area So You Can Confidently Pursue Your New Career.',
             },
         ];
         return (

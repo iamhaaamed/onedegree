@@ -58,6 +58,7 @@ const SectionRowCenter = (props) => {
                 style={intro ? COMMON.ButtonRect1142 : COMMON.ButtonRect114}
                 containerStyle={COMMON.Button113}
                 text="Back"
+                // type={intro ? 'native' : 'none'}
                 textStyle={[
                     COMMON.TextsButton115,
                     intro && { color: COLORS.white },
@@ -70,6 +71,7 @@ const SectionRowCenter = (props) => {
                     COMMON.ButtonRect111,
                     intro && { backgroundColor: COLORS.transparent },
                 ]}
+                // type={intro ? 'highlight' : 'none'}
                 containerStyle={COMMON.Button110}
                 text={questions ? 'Save' : 'Next'}
                 textStyle={[

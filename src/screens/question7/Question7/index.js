@@ -77,12 +77,13 @@ const question7 = createScreen(
                     </View>
                     <SectionRowCenter
                         backPress={() => goBack()}
-                        nextPress={() =>
-                            navigate('Question6', {
-                                userInput,
-                                ...route?.params,
-                            })
-                        }
+                        nextPress={() => {
+                            if (userInput)
+                                navigate('Question6', {
+                                    userInput,
+                                    ...route?.params,
+                                });
+                        }}
                     />
                 </ScrollView>
             </View>

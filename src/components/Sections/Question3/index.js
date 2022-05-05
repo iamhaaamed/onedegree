@@ -44,6 +44,8 @@ import {
 } from 'components/common';
 import { navigate } from 'navigation/methods';
 import { SectionTop, Qustion1 } from 'components/Sections';
+import * as yup from 'yup';
+import { Formik } from 'formik';
 const Question3 = (props) => {
     const { style, title, answer, page, setZipCode } = props;
     const {
@@ -57,23 +59,44 @@ const Question3 = (props) => {
 
     // const [ZipCode, setZipCode] = useState();
     // console.log('zzzzzzzzz', ZipCode);
+    const ValidationSchema = yup.object().shape({
+        amount: yup
+            .number()
+            .min(5, 'Must be 5 characters or more')
+            .required('Invalid Zip Code'),
+    });
     return (
         <>
             <MText textStyle={COMMON.Txtquestion6104}>
                 Where Do You Currently Live?{' '}
             </MText>
             <MText textStyle={COMMON.Txtquestion6105}>ZIP Code* </MText>
-            <MInput
-                inputStyle={COMMON.InputRect108}
-                containerStyle={COMMON.Input106}
-                placeholder="Please enter ZIP Code"
-                placeholderColor={COLORS.Color267}
-                onChangeText={(text) => setZipCode(text)}
-                textStyle={COMMON.TextsInput107}
-                backgroundColor={COLORS.Color963}
-                height={verticalScale(48)}
-                keyboardType="numeric"
-            />
+            <Formik
+                validationSchema={ValidationSchema}
+                initialValues={{ zipcode: '' }}
+                // onSubmit={(values) => onSubmit(values)}
+            >
+                {({ handleChange, handleSubmit, values, errors }) => (
+                    <>
+                        {handleSubmit}
+                        <MInput
+                            inputStyle={COMMON.InputRect108}
+                            containerStyle={COMMON.Input106}
+                            placeholder="Please enter ZIP Code"
+                            error={errors && errors.amount}
+                            placeholderColor={COLORS.Color267}
+                            onChangeText={(text) => {
+                                setZipCode(text);
+                                handleChange('amount');
+                            }}
+                            textStyle={COMMON.TextsInput107}
+                            backgroundColor={COLORS.Color963}
+                            height={verticalScale(48)}
+                            keyboardType="numeric"
+                        />
+                    </>
+                )}
+            </Formik>
             <MText textStyle={COMMON.Txtquestion6109}>
                 ! Entering the zip code will help us to training programs{' '}
             </MText>

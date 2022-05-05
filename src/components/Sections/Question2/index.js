@@ -92,7 +92,7 @@ const Question2 = (props) => {
                 How much do you want to make?{' '}
             </MText>
             <View style={COMMON.SectionPaddingquestion7122}>
-                <MText textStyle={COMMON.Txtquestion7123}>Amount </MText>
+                <MText textStyle={COMMON.Txtquestion7123}>Amount *</MText>
 
                 <Formik
                     validationSchema={ValidationSchema}
