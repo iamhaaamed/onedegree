@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRef } from 'react';
+import { useEffect } from 'react';
 import useTheme from 'hooks/useTheme';
 import { useState } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
@@ -57,7 +57,10 @@ const Question3 = (props) => {
         CONSTANTS,
     } = useTheme();
 
-    // const [ZipCode, setZipCode] = useState();
+    const [ZipCode, setZipCode1] = useState();
+    useEffect(() => {
+        if (ZipCode) setZipCode(ZipCode);
+    }, [ZipCode]);
     // console.log('zzzzzzzzz', ZipCode);
     const ValidationSchema = yup.object().shape({
         amount: yup
@@ -86,7 +89,7 @@ const Question3 = (props) => {
                             error={errors && errors.amount}
                             placeholderColor={COLORS.Color267}
                             onChangeText={(text) => {
-                                setZipCode(text);
+                                setZipCode1(text);
                                 handleChange('amount');
                             }}
                             textStyle={COMMON.TextsInput107}
@@ -94,6 +97,11 @@ const Question3 = (props) => {
                             height={verticalScale(48)}
                             keyboardType="numeric"
                         />
+                        {!ZipCode && (
+                            <MText textStyle={styles.error}>
+                                Enter Zip Code
+                            </MText>
+                        )}
                     </>
                 )}
             </Formik>
@@ -107,6 +115,14 @@ const styles = StyleSheet.create({
     Question61796: {
         backgroundColor: COLORS.Color197,
         height: '100%',
+    },
+    error: {
+        color: COLORS.error,
+        marginBottom: scale(12),
+        fontSize: verticalScale(14),
+        fontFamily: 'Muli',
+        top: '-220%',
+        // paddingBottom: scale(10),
     },
 });
 export default Question3;

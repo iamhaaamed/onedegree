@@ -61,7 +61,8 @@ const question6 = createScreen(
         console.log('route', route?.params);
         const [ZipCode, setZipCode] = useState();
         console.log('zzzzzzzzz', ZipCode);
-        const getLatLang = `https://maps.googleapis.com/maps/api/geocode/json?address=${ZipCode}&key=AIzaSyAq_L_4FurpQGeFM20SxCXpAAkggk3knhU&region=us`;
+        const getLatLang = `https://api.promaptools.com/service/us/zip-lat-lng/get/?zip=${ZipCode}&key=17o8dysaCDrgv1c`;
+        //  `https://maps.googleapis.com/maps/api/geocode/json?address=${ZipCode}&key=AIzaSyAq_L_4FurpQGeFM20SxCXpAAkggk3knhU&region=us`;
         console.log('laaaaa', getLatLang);
         return (
             <View style={styles.question6}>
@@ -89,18 +90,21 @@ const question6 = createScreen(
                                 axios
                                     .get(getLatLang)
                                     .then(function (response) {
-                                        console.log(response?.data?.results);
-                                        navigate('Gettingstarted3');
-                                        if (response.data.status == 'OK') {
+                                        console.log(response?.data?.output);
+                                        if (response?.data?.output[0]) {
                                             mutate(
                                                 {
                                                     point: [
-                                                        response.data?.results
-                                                            ?.geometry?.location
-                                                            ?.lat,
-                                                        response.data?.results
-                                                            ?.geometry?.location
-                                                            ?.lng,
+                                                        parseInt(
+                                                            response?.data
+                                                                ?.output[0]
+                                                                ?.latitude,
+                                                        ),
+                                                        parseInt(
+                                                            response?.data
+                                                                ?.output[0]
+                                                                ?.longitude,
+                                                        ),
                                                     ],
                                                     industry:
                                                         route?.params?.Answers,

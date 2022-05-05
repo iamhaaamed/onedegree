@@ -83,9 +83,11 @@ const question2 = createScreen(
                     </View>
                     <MButton
                         onPress={() => {
-                            let String = callMyMethod(Answers);
-                            console.log('String', String);
-                            navigate('Question7', { Answers: String });
+                            if (Answers && Answers?.length > 0) {
+                                let String = callMyMethod(Answers);
+                                console.log('String', String);
+                                navigate('Question7', { Answers: String });
+                            }
                         }}
                         style={COMMON.ButtonRect80}
                         containerStyle={COMMON.Button79}
