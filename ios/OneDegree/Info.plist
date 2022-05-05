@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
-		<array>
+	<array>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>

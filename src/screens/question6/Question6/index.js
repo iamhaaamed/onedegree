@@ -61,7 +61,8 @@ const question6 = createScreen(
         console.log('route', route?.params);
         const [ZipCode, setZipCode] = useState();
         console.log('zzzzzzzzz', ZipCode);
-        const getLatLang = `https://maps.googleapis.com/maps/api/geocode/json?address=${ZipCode}&key=AIzaSyAq_L_4FurpQGeFM20SxCXpAAkggk3knhU&region=us`;
+        const getLatLang = `https://api.promaptools.com/service/us/zip-lat-lng/get/?zip=${ZipCode}&key=17o8dysaCDrgv1c`;
+        //  `https://maps.googleapis.com/maps/api/geocode/json?address=${ZipCode}&key=AIzaSyAq_L_4FurpQGeFM20SxCXpAAkggk3knhU&region=us`;
         console.log('laaaaa', getLatLang);
         return (
             <View style={styles.question6}>
@@ -84,72 +85,80 @@ const question6 = createScreen(
                     </View>
                     <SectionRowCenter
                         backPress={() => goBack()}
-                        nextPress={async () =>
-                            axios
-                                .get(getLatLang)
-                                .then(function (response) {
-                                    console.log(response?.data?.results);
-                                    navigate('Gettingstarted3');
-                                    if (response.data.status == 'OK') {
-                                        mutate(
-                                            {
-                                                point: [
-                                                    response.data?.results
-                                                        ?.geometry?.location
-                                                        ?.lat,
-                                                    response.data?.results
-                                                        ?.geometry?.location
-                                                        ?.lng,
-                                                ],
-                                                industry:
-                                                    route?.params?.Answers,
-                                                currentIncome: 10,
-                                                isNotificationEnabled: true,
-                                                age: 1,
-                                                ethnicity: 'ONE',
-                                                educationLevel: 'ONE',
-                                                howFarAreYouWillingToTravelToGetCertified:
-                                                    'REMOTE_ONLY',
-                                                whereDidYouHearAboutOnedegreeCareers:
-                                                    'CRAIGSLIST',
-                                                amount: parseFloat(
-                                                    route?.params?.userInput
-                                                        ?.amount,
-                                                ),
-                                                amountType:
-                                                    route?.params?.userInput
-                                                        ?.type == 'Hourly'
-                                                        ? 'HOURLY'
-                                                        : route?.params
-                                                              ?.userInput
-                                                              ?.type ==
-                                                          'Monthly'
-                                                        ? 'MONTHLY'
-                                                        : 'ANNUALLY',
-                                            },
-                                            {
-                                                onSuccess: (data) => {
-                                                    console.log('666666', data);
-                                                    if (
-                                                        data?.user_updateProfile
-                                                            ?.status ==
-                                                        'SUCCESS'
-                                                    )
-                                                        navigate(
-                                                            'Gettingstarted3',
-                                                        );
+                        nextPress={async () => {
+                            if (ZipCode)
+                                axios
+                                    .get(getLatLang)
+                                    .then(function (response) {
+                                        console.log(response?.data?.output);
+                                        if (response?.data?.output[0]) {
+                                            mutate(
+                                                {
+                                                    point: [
+                                                        parseInt(
+                                                            response?.data
+                                                                ?.output[0]
+                                                                ?.latitude,
+                                                        ),
+                                                        parseInt(
+                                                            response?.data
+                                                                ?.output[0]
+                                                                ?.longitude,
+                                                        ),
+                                                    ],
+                                                    industry:
+                                                        route?.params?.Answers,
+                                                    currentIncome: 10,
+                                                    isNotificationEnabled: true,
+                                                    age: 1,
+                                                    ethnicity: 'ONE',
+                                                    educationLevel: 'ONE',
+                                                    howFarAreYouWillingToTravelToGetCertified:
+                                                        'REMOTE_ONLY',
+                                                    whereDidYouHearAboutOnedegreeCareers:
+                                                        'CRAIGSLIST',
+                                                    amount: parseFloat(
+                                                        route?.params?.userInput
+                                                            ?.amount,
+                                                    ),
+                                                    amountType:
+                                                        route?.params?.userInput
+                                                            ?.type == 'Hourly'
+                                                            ? 'HOURLY'
+                                                            : route?.params
+                                                                  ?.userInput
+                                                                  ?.type ==
+                                                              'Monthly'
+                                                            ? 'MONTHLY'
+                                                            : 'ANNUALLY',
                                                 },
-                                            },
-                                        );
-                                    }
-                                })
-                                .catch(function (error) {
-                                    console.log(error);
-                                })
-                                .then(function () {
-                                    // always executed
-                                })
-                        }
+                                                {
+                                                    onSuccess: (data) => {
+                                                        console.log(
+                                                            '666666',
+                                                            data,
+                                                        );
+                                                        if (
+                                                            data
+                                                                ?.user_updateProfile
+                                                                ?.status ==
+                                                            'SUCCESS'
+                                                        )
+                                                            navigate(
+                                                                'Gettingstarted3',
+                                                            );
+                                                    },
+                                                },
+                                            );
+                                        }
+                                    })
+                                    .catch(function (error) {
+                                        console.log(error);
+                                    })
+                                    .then(function () {
+                                        // always executed
+                                    });
+                        }}
                     />
                 </ScrollView>
             </View>

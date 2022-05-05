@@ -170,9 +170,12 @@ const Question2 = (props) => {
                                 )}
                                 keyExtractor={(index) => index.toString()}
                             />
-                            <MText textStyle={styles.error}>
-                                {errors && errors.type}
-                            </MText>
+                            {!Type && (
+                                <MText textStyle={styles.error}>
+                                    {/* {errors && errors.type} */}
+                                    Select one of types
+                                </MText>
+                            )}
                         </>
                     )}
                 </Formik>

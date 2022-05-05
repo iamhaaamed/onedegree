@@ -226,6 +226,7 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         flexDirection: 'row',
+        alignSelf: 'center',
         justifyContent: 'space-between',
     },
     parentView: {

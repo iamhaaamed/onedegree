@@ -35,3 +35,40 @@ export const GET_PROGRAMS = gql`
         }
     }
 `;
+export const GET_ONE_PROGRAM = gql`
+    query program_getProgram($programId: Int!) {
+        program_getProgram(programId: $programId) {
+            result {
+                isActive
+                createdAt
+                title
+                programCost
+                lengthOfProgram
+                imageAddrss
+                link
+                jobPlacementRate
+                typeOfTrainingProgram
+                careerId
+                career {
+                    title
+                    imageAddress
+                    trainingTime
+                    programs {
+                        programCost
+                        title
+                        lengthOfProgram
+                        imageAddrss
+                        id
+                    }
+                }
+                conversations {
+                    id
+                }
+                userId
+                id
+                isDeleted
+            }
+            status
+        }
+    }
+`;

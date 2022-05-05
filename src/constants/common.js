@@ -86,6 +86,8 @@ export const COLORS = {
     Color693: 'rgba(103,103,103,0.87)',
     blue: '#0088FF',
     Color888: '#245CE1',
+    Color390: '#F5F5F5',
+    Color185: '#655A5F',
 };
 
 export const NAVIGATION_COLORS = {

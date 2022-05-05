@@ -62,6 +62,7 @@ const Sectionhome = (props) => {
         CONSTANTS,
     } = useTheme();
     const [Like, setLike] = useState(false);
+    console.log('..........', data?.career?.id);
     const { data: LikeCareers } = useGetLikeCareers({
         careerId: data?.career?.id,
     });

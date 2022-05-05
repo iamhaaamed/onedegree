@@ -97,10 +97,11 @@ const Home2 = createScreen(
             isRefetching,
             refetch,
         } = useGetCareers({});
-
+        console.log('UserName', UserName);
         let Careers = careers?.pages;
         const renderItem = ({ item, index }) => {
-            return <Sectionhome data={item} />;
+            console.log('iiii', item);
+            return item ? <Sectionhome data={item} /> : null;
         };
         console.log('isLoading', isLoading);
         return (
@@ -114,7 +115,7 @@ const Home2 = createScreen(
                 <SectionTophome style={COMMON.EleHome265} />
                 <View style={COMMON.SectionPaddingHome266}>
                     <MText textStyle={COMMON.TxtHome267}>
-                        Hello,{UserName} !{' '}
+                        Hello,{UserName ? UserName : user?.email} !
                     </MText>
                     <Carousel
                         // ref={(c) => {
@@ -122,11 +123,9 @@ const Home2 = createScreen(
                         // }}
                         enableSnap={true}
                         enableMomentum={true}
-                        maxToRenderPerBatch={8}
-                        initialNumToRender={4}
                         data={Careers}
-                        refreshing={isRefetching}
-                        onRefresh={refetch}
+                        // refreshing={isRefetching}
+                        // onRefresh={refetch}
                         renderItem={({ item, index }) =>
                             renderItem({ item, index })
                         }
@@ -159,17 +158,17 @@ const Home2 = createScreen(
                         // }
                         useScrollView={true}
                         vertical={true}
-                        onEndReachedThreshold={0.9}
-                        onEndReached={() => {
-                            if (hasNextPage) {
-                                fetchNextPage();
-                            }
-                        }}
+                        // onEndReachedThreshold={0.9}
+                        // onEndReached={() => {
+                        //     if (hasNextPage) {
+                        //         fetchNextPage();
+                        //     }
+                        // }}
                         // activeAnimationOptions={{
                         //     friction: 4,
                         //     tension: 40,
                         // }}
-                        keyExtractor={(item, index) => index.toString()}
+                        // keyExtractor={(item, index) => index.toString()}
                         onMomentumScrollBegin={() => {
                             setonEndReachedCalledDuringMomentum(false);
                         }}

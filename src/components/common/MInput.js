@@ -302,7 +302,11 @@ const MInput = ({
                     />
                 ) : null}
             </View>
-            {error && <MText style={styles.error}>{error.toString()}</MText>}
+            {error && (
+                <MText style={styles.error} color={'#dc3545'}>
+                    {error.toString()}
+                </MText>
+            )}
         </View>
     );
 };

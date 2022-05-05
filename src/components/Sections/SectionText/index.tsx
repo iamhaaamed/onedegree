@@ -9,7 +9,7 @@ import { MStatusBar, MButton, MText, MImage } from 'components/common';
 import { navigate } from 'navigation/methods';
 
 const SectionText = (props) => {
-    const { style } = props;
+    const { style, data } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -19,12 +19,6 @@ const SectionText = (props) => {
         CONSTANTS,
     } = useTheme();
 
-    const clickCounter = useRef(0);
-    const onPress = () => {
-        console.log(`Clicked! ${clickCounter.current}`);
-        clickCounter.current = clickCounter.current + 1;
-    };
-
     return (
         <View {...props} style={[styles.SectionText, style]}>
             <MText
@@ -32,16 +26,18 @@ const SectionText = (props) => {
                     COMMON.TxtSectionText4,
                     { marginHorizontal: scale(0), marginTop: -10 },
                 ]}>
-                Training Program’s Name{' '}
+                {data?.title}
             </MText>
             <View style={[COMMON.RowItem, { height: verticalScale(32) }]}>
-                <View style={{ width: '40%' }}>
+                <View style={{ width: '38%' }}>
                     <MText textStyle={COMMON.TxtSectionText5}>
                         Program Cost:{' '}
                     </MText>
                 </View>
-                <View style={{ width: '60%' }}>
-                    <MText textStyle={COMMON.TxtSectionText45}>$200 </MText>
+                <View style={{ width: '62%' }}>
+                    <MText textStyle={COMMON.TxtSectionText45}>
+                        ${data?.programCost}{' '}
+                    </MText>
                 </View>
             </View>
             <View style={[COMMON.RowItem, { height: verticalScale(32) }]}>
@@ -51,17 +47,21 @@ const SectionText = (props) => {
                     </MText>
                 </View>
                 <View style={{ width: '52%' }}>
-                    <MText textStyle={COMMON.TxtSectionText45}>6 months </MText>
+                    <MText textStyle={COMMON.TxtSectionText45}>
+                        {data?.lengthOfProgram} months{' '}
+                    </MText>
                 </View>
             </View>
             <View style={[COMMON.RowItem, { height: verticalScale(32) }]}>
-                <View style={{ width: '55%' }}>
+                <View style={{ width: '52%' }}>
                     <MText textStyle={COMMON.TxtSectionText5}>
                         Job Placement Rate:{' '}
                     </MText>
                 </View>
-                <View style={{ width: '45%' }}>
-                    <MText textStyle={COMMON.TxtSectionText45}>10% </MText>
+                <View style={{ width: '55%' }}>
+                    <MText textStyle={COMMON.TxtSectionText45}>
+                        {data?.jobPlacementRate}%{' '}
+                    </MText>
                 </View>
             </View>
             <MButton

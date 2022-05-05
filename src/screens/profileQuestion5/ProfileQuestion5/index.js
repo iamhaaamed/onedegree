@@ -66,6 +66,10 @@ const ProfileQuestion5 = createScreen(
 
         const [isChecked, setAnswers] = useState();
         const [ZipCode, setZipCode] = useState();
+        const [userInput, setUserInput] = useState();
+        const Complete = (data) => {
+            if (data.amount && data.type) setUserInput(data);
+        };
         const SelectQuestion = () => {
             switch (route?.params?.code) {
                 case 1:
@@ -73,7 +77,7 @@ const ProfileQuestion5 = createScreen(
                         <Question1 setAnswer={(value) => setAnswers(value)} />
                     );
                 case 2:
-                    return <Question2 />;
+                    return <Question2 onComplete={(data) => Complete(data)} />;
                 case 3:
                     return (
                         <Question3 setZipCode={(data) => setZipCode(data)} />
