@@ -26,3 +26,4 @@ export { default as MAccordion } from './MAccordion';
 export { default as MSlider } from './MSlider';
 export { default as MSnackbar } from './MSnackbar';
 export { default as KeyboardAwareScrollView } from './KeyboardAwareScrollView';
+export { default as MView } from './MView';

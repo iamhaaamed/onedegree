@@ -42,7 +42,8 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { SectionTop01 } from 'components/Sections';
+import ActionSheet from 'react-native-actions-sheet';
+import { SearchFilter, SectionTop01 } from 'components/Sections';
 const Search = createScreen(
     () => {
         const {
@@ -53,7 +54,12 @@ const Search = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
-
+        const refActionSheet = useRef(null);
+        const showActionSheet = () => {
+            if (refActionSheet.current) {
+                refActionSheet.current?.setModalVisible();
+            }
+        };
         const clickCounter = useRef(0);
         const onPress = () => {
             console.log(`Clicked! ${clickCounter.current}`);
@@ -90,7 +96,7 @@ const Search = createScreen(
                             </View>
                             <View style={{ width: '20%' }}>
                                 <MButton
-                                    onPress={onPress}
+                                    onPress={() => showActionSheet()}
                                     style={COMMON.ButtonRect11}
                                     containerStyle={COMMON.Button10}
                                     color={COLORS.white}
@@ -142,42 +148,16 @@ const Search = createScreen(
                                 </View>
                             </View>
                         </View>
-                        {/* <View style={COMMON.SectionPaddingSearch18}>
-                            <View
-                                style={[
-                                    COMMON.RowItem,
-                                    COMMON.RowItemSearch19,
-                                ]}>
-                                <View style={{ width: '20%' }}>
-                                    <MImage
-                                        imageSource={IMAGES.image6787}
-                                        style={COMMON.image20}
-                                        customWidth={scale(59)}
-                                        customHeight={scale(69)}
-                                    />
-                                </View>
-                                <View style={{ width: '50%' }}>
-                                    <MText textStyle={COMMON.TxtSearch21}>
-                                        Photographer{' '}
-                                    </MText>
-                                    <MText textStyle={COMMON.TxtSearch22}>
-                                        Possible Yearly Income{' '}
-                                    </MText>
-                                </View>
-                                <View style={{ width: '30%' }}>
-                                    <MIcon
-                                        IconComponent={MaterialCommunityIcons}
-                                        name="heart-outline"
-                                        size={24}
-                                        color={'#000000'}
-                                    />
-                                    <MText textStyle={COMMON.TxtSearch23}>
-                                        $85,711{' '}
-                                    </MText>
-                                </View>
-                            </View>
-                        </View> */}
                     </View>
+                    <ActionSheet
+                        ref={refActionSheet}
+                        containerStyle={styles.action}>
+                        <SearchFilter
+                            showModal={() =>
+                                refActionSheet.current?.setModalVisible()
+                            }
+                        />
+                    </ActionSheet>
                 </ScrollView>
             </View>
         );
@@ -192,6 +172,11 @@ const styles = StyleSheet.create({
     Search: {
         backgroundColor: COLORS.Color780,
         height: '100%',
+    },
+    action: {
+        borderTopLeftRadius: scale(30),
+        borderTopRightRadius: scale(30),
+        maxHeight: scale(600),
     },
 });
 export default Search;

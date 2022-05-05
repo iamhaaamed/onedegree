@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRef } from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView, Linking } from 'react-native';
 import useTheme from 'hooks/useTheme';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { SectionTop01, SectionText, SectionItem } from 'components/Sections';
@@ -24,7 +24,7 @@ const ProgramDetails = createScreen(
             route?.params?.programId,
         );
         const programDetails = program?.program_getProgram?.result;
-        console.log('pppppppppppp', program);
+        console.log('pppppppppppp', programDetails?.link);
 
         return (
             <View style={styles.Programdetail2881}>
@@ -36,7 +36,12 @@ const ProgramDetails = createScreen(
                             style={COMMON.imagedetail}
                         />
                         <MButton
-                            // onPress={onPress}
+                            onPress={() => {
+                                console.log('0000000000000');
+
+                                Linking.openURL(programDetails?.link);
+                            }}
+                            containerStyle={styles.link}
                             style={[COMMON.shareBtn]}
                             icon={{
                                 name: 'share-outline',
@@ -71,6 +76,16 @@ const styles = StyleSheet.create({
     Programdetail2881: {
         backgroundColor: COLORS.Color197,
         height: '100%',
+    },
+    link: {
+        backgroundColor: COLORS.blue,
+        width: scale(45),
+        height: scale(45),
+        borderRadius: 10,
+        marginTop: -45,
+        right: scale(10),
+        padding: 5,
+        alignSelf: 'flex-end',
     },
 });
 export default ProgramDetails;

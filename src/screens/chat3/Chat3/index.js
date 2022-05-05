@@ -112,7 +112,7 @@ const Chat3 = createScreen(
                                     paddingLeft: 10,
                                 },
                                 size: scale(25),
-                                onPress: () => <AttachFileModal />,
+                                // onPress: () => <AttachFileModal />,
                                 Component: MaterialCommunityIcons,
                             }}
                         />

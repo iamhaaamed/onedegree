@@ -100,7 +100,8 @@ const Home2 = createScreen(
         console.log('UserName', UserName);
         let Careers = careers?.pages;
         const renderItem = ({ item, index }) => {
-            return <Sectionhome data={item} />;
+            console.log('iiii', item);
+            return item ? <Sectionhome data={item} /> : null;
         };
         console.log('isLoading', isLoading);
         return (
