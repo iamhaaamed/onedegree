@@ -8,7 +8,7 @@ import { createScreen } from 'components/elements';
 import { COLORS } from 'constants/common';
 import { verticalScale, scale } from 'utils';
 import { MStatusBar, MButton, MText, MImage } from 'components/common';
-
+import { useGetOneProgram } from 'hooks/programs';
 const ProgramDetails = createScreen(
     ({ route }) => {
         const {
@@ -20,6 +20,11 @@ const ProgramDetails = createScreen(
             CONSTANTS,
         } = useTheme();
         console.log('route', route?.params?.programId);
+        const { isLoading, data: program } = useGetOneProgram(
+            route?.params?.programId,
+        );
+        const programDetails = program?.program_getProgram?.result;
+        console.log('pppppppppppp', program);
 
         return (
             <View style={styles.Programdetail2881}>
@@ -27,7 +32,7 @@ const ProgramDetails = createScreen(
                     <SectionTop01 title={'Training Programs'} />
                     <View style={COMMON.SectionPaddingSave15}>
                         <MImage
-                            imageSource={IMAGES.image7104}
+                            imageSource={{ uri: programDetails?.imageAddrss }}
                             style={COMMON.imagedetail}
                         />
                         <MButton
@@ -40,12 +45,17 @@ const ProgramDetails = createScreen(
                                 color: COLORS.white,
                             }}
                         />
-                        <SectionText mb={verticalScale(32)} />
-                        <MText textStyle={COMMON.TxtProgramdetail288114}>
-                            other training programs{' '}
-                        </MText>
+                        <SectionText data={programDetails} />
+                        {programDetails?.career && (
+                            <>
+                                <MText
+                                    textStyle={COMMON.TxtProgramdetail288114}>
+                                    Other Training Programs{' '}
+                                </MText>
 
-                        <SectionItem />
+                                <SectionItem />
+                            </>
+                        )}
                     </View>
                 </ScrollView>
             </View>

@@ -5,7 +5,7 @@ import {
     useQueryClient,
 } from 'react-query';
 import graphQLClient from '../../graphql/graphQLClient';
-import { GET_PROGRAMS } from '../../graphql/programs/queries';
+import { GET_PROGRAMS, GET_ONE_PROGRAM } from '../../graphql/programs/queries';
 const PAGE_SIZE = 10;
 const useGetPrograms = ({ options = {} }: { options?: any }) => {
     const res = useInfiniteQuery(
@@ -38,5 +38,12 @@ const useGetPrograms = ({ options = {} }: { options?: any }) => {
 
     return { ...res };
 };
+const useGetOneProgram = (programId) => {
+    const res = useQuery(['getPrograms', programId], async () => {
+        return graphQLClient.request(GET_ONE_PROGRAM, { programId });
+    });
 
-export { useGetPrograms };
+    return { ...res, route: res?.data?.program_getProgram?.result };
+};
+
+export { useGetPrograms, useGetOneProgram };

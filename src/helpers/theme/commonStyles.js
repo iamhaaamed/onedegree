@@ -2222,7 +2222,8 @@ export default function ({ COLORS }) {
             fontFamily: 'Muli',
             fontWeight: 'bold',
             color: COLORS.Color726,
-            marginHorizontal: scale(13),
+            left: '-5%',
+            // marginHorizontal: scale(13),
             lineHeight: verticalScale(22),
         },
         TxtProgramdetail288114: {

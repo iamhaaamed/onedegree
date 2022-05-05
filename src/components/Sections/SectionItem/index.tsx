@@ -41,7 +41,7 @@ const SectionItem20 = (props) => {
                     </MText>
                 </View>
             </View>
-            <View style={[COMMON.RowItem]} mb={verticalScale(21)}>
+            <View style={[COMMON.RowItem]}>
                 <View style={{ width: '48%' }}>
                     <MText textStyle={COMMON.TxtSectionItem17}>
                         Length of Program :{' '}
