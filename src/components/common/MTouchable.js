@@ -25,6 +25,7 @@ const MTouchable = (props) => {
         nativeBackground,
         useForeground,
         rippleColor,
+        underlayColor,
         borderless,
     } = props;
     let TouchableComponent = null;
@@ -33,11 +34,11 @@ const MTouchable = (props) => {
     switch (type) {
         case 'highlight':
             TouchableComponent = TouchableHighlight;
-            defaultProps = {};
+            defaultProps = { underlayColor: underlayColor };
             break;
         case 'opacity':
             TouchableComponent = TouchableOpacity;
-            defaultProps = { activeOpacity: 0.85, underlayColor: 'white' };
+            defaultProps = { activeOpacity: 0.85 };
             break;
         case 'none':
             TouchableComponent = TouchableWithoutFeedback;

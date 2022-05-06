@@ -62,7 +62,7 @@ const intro6 = createScreen(
             move(viewPager, page, +1);
         };
         const [page, setPage] = useState(0);
-
+        const [TextStyle, setTextStyle] = useState(false);
         const viewPager = useRef(null);
 
         const move = (pager: any, pageNumber: number, delta: any) => {
@@ -170,6 +170,7 @@ const intro6 = createScreen(
                                 onPressDone();
                             }
                         }}
+                        // TextStyle={TextStyle}
                         backPress={() => move(viewPager, page, -1)}
                         intro
                     />

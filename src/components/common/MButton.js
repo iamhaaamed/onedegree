@@ -49,6 +49,7 @@ const MButton = (props) => {
         containerStyle,
         gradient,
         iconSide,
+        underlayColor,
     } = props;
     const { COLORS, GUTTERS, TYPOGRAPHY } = useTheme();
     const selectedType =
@@ -194,6 +195,7 @@ const MButton = (props) => {
                 !transparent && (backgroundImage || gradient) && styles.shadow,
                 containerStyle,
             ]}
+            underlayColor={underlayColor}
             rippleColor={rippleColor}
             borderless={transparent}>
             {backgroundImage ? (
