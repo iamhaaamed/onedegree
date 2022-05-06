@@ -68,6 +68,9 @@ const SectionModal = (props) => {
                             try {
                                 await auth().signOut();
                                 GoogleSignin.revokeAccess();
+                                navigation.dispatch(
+                                    StackActions.replace('AuthStack'),
+                                );
                             } catch (error) {
                                 navigation.dispatch(
                                     StackActions.replace('AuthStack'),
