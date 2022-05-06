@@ -50,15 +50,28 @@ const SectionRowCenter = (props) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
-
+    const [isHovered, setIsHovered] = useState(false);
+    const [isBack, setIsBack] = useState(false);
     return (
         <View style={[styles.SectionRowCenter, style]}>
             <MButton
                 onPress={backPress}
-                style={intro ? [COMMON.ButtonRect1142] : COMMON.ButtonRect114}
+                onPressIn={() => setIsBack(true)}
+                onPressOut={() => setIsBack(false)}
+                style={
+                    intro
+                        ? [
+                              COMMON.ButtonRect1142,
+                              isBack && {
+                                  backgroundColor:
+                                      'rgba(255,255,255,0.1607843137254902 )',
+                              },
+                          ]
+                        : COMMON.ButtonRect114
+                }
                 containerStyle={[COMMON.Button113, { borderRadius: 8 }]}
                 text="Back"
-                type={intro ? 'highlight' : 'none'}
+                // type={intro ? 'highlight' : 'none'}
                 underlayColor={intro ? COLORS.Color276 : 'tarnsparent'}
                 textStyle={[
                     COMMON.TextsButton115,
@@ -68,6 +81,8 @@ const SectionRowCenter = (props) => {
             />
             <MButton
                 onPress={nextPress}
+                onPressIn={() => setIsHovered(true)}
+                onPressOut={() => setIsHovered(false)}
                 style={[
                     COMMON.ButtonRect111,
                     intro && { backgroundColor: COLORS.transparent },
@@ -78,8 +93,9 @@ const SectionRowCenter = (props) => {
                 text={questions ? 'Save' : 'Next'}
                 textStyle={[
                     COMMON.TextsButton112,
-                    intro && { color: COLORS.white },
-                    // TextStyle && { color: COLORS.Color323 },
+                    intro && {
+                        color: isHovered ? COLORS.Color323 : COLORS.white,
+                    },
                 ]}
                 gradient={
                     intro
