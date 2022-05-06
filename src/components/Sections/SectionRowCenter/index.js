@@ -41,7 +41,7 @@ import {
     MSlider,
 } from 'components/common';
 const SectionRowCenter = (props) => {
-    const { style, nextPress, backPress, intro, questions } = props;
+    const { style, nextPress, backPress, intro, questions, TextStyle } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -55,10 +55,11 @@ const SectionRowCenter = (props) => {
         <View style={[styles.SectionRowCenter, style]}>
             <MButton
                 onPress={backPress}
-                style={intro ? COMMON.ButtonRect1142 : COMMON.ButtonRect114}
-                containerStyle={COMMON.Button113}
+                style={intro ? [COMMON.ButtonRect1142] : COMMON.ButtonRect114}
+                containerStyle={[COMMON.Button113, { borderRadius: 8 }]}
                 text="Back"
-                // type={intro ? 'native' : 'none'}
+                type={intro ? 'highlight' : 'none'}
+                underlayColor={intro ? COLORS.Color276 : 'tarnsparent'}
                 textStyle={[
                     COMMON.TextsButton115,
                     intro && { color: COLORS.white },
@@ -71,12 +72,14 @@ const SectionRowCenter = (props) => {
                     COMMON.ButtonRect111,
                     intro && { backgroundColor: COLORS.transparent },
                 ]}
-                // type={intro ? 'highlight' : 'none'}
-                containerStyle={COMMON.Button110}
+                type={intro ? 'highlight' : 'none'}
+                underlayColor={intro ? COLORS.white : 'tarnsparent'}
+                containerStyle={[COMMON.Button110, { borderRadius: 12 }]}
                 text={questions ? 'Save' : 'Next'}
                 textStyle={[
                     COMMON.TextsButton112,
                     intro && { color: COLORS.white },
+                    // TextStyle && { color: COLORS.Color323 },
                 ]}
                 gradient={
                     intro

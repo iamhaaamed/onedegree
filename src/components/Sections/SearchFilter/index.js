@@ -44,7 +44,7 @@ import {
 } from 'components/common';
 import { SectionRowCenter } from 'components/Sections';
 const SearchFilter = (props) => {
-    const { style, user } = props;
+    const { style, user, showModal } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -397,7 +397,33 @@ const SearchFilter = (props) => {
                     />
                 </MView>
                 <View style={styles.center}>
-                    <SectionRowCenter />
+                    {/* <SectionRowCenter /> */}
+                    <MButton
+                        onPress={() => showModal(true)}
+                        style={COMMON.ButtonRect114}
+                        containerStyle={[COMMON.Button113, { elevation: 5 }]}
+                        text="Back"
+                        textStyle={[COMMON.TextsButton115]}
+                        color={COLORS.Color963}
+                    />
+                    <MButton
+                        onPress={() => showModal(true)}
+                        style={[COMMON.ButtonRect111]}
+                        containerStyle={COMMON.Button110}
+                        text="Filter"
+                        textStyle={[COMMON.TextsButton112]}
+                        gradient={{
+                            colors: [COLORS.Color323, COLORS.Color409],
+                            start: {
+                                x: -0.15500132739543915,
+                                y: 0.6157848834991455,
+                            },
+                            end: {
+                                x: 1.014054298400879,
+                                y: 0.17686034739017487,
+                            },
+                        }}
+                    />
                 </View>
             </ScrollView>
         </MView>
@@ -414,7 +440,9 @@ const styles = StyleSheet.create({
         marginTop: '-5%',
     },
     center: {
-        right: '10%',
+        // right: '10%',
+        flexDirection: 'row',
+        marginTop: '10%',
     },
 });
 export default SearchFilter;
