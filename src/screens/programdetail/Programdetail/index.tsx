@@ -80,9 +80,11 @@ const ProgramDetails = createScreen(
                                 }
                             }
                             showsVerticalScrollIndicator={false}
-                            renderItem={({ item }) => (
-                                <SectionItem data={item} />
-                            )}
+                            renderItem={({ item }) =>
+                                item?.id == programDetails?.id ? null : (
+                                    <SectionItem data={item} />
+                                )
+                            }
                             keyExtractor={(item, index) =>
                                 item?.id
                                     ? item?.id?.toString()
