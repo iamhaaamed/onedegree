@@ -1,6 +1,13 @@
 import React from 'react';
 import { useRef } from 'react';
-import { StyleSheet, View, ScrollView, Linking } from 'react-native';
+import {
+    StyleSheet,
+    View,
+    ScrollView,
+    Linking,
+    FlatList,
+    ActivityIndicator,
+} from 'react-native';
 import useTheme from 'hooks/useTheme';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { SectionTop01, SectionText, SectionItem } from 'components/Sections';
@@ -8,7 +15,7 @@ import { createScreen } from 'components/elements';
 import { COLORS } from 'constants/common';
 import { verticalScale, scale } from 'utils';
 import { MStatusBar, MButton, MText, MImage } from 'components/common';
-import { useGetOneProgram } from 'hooks/programs';
+import { useGetOneProgram, useGetPrograms } from 'hooks/programs';
 const ProgramDetails = createScreen(
     ({ route }) => {
         const {
@@ -19,13 +26,33 @@ const ProgramDetails = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
-        console.log('route', route?.params?.programId);
         const { isLoading, data: program } = useGetOneProgram(
             route?.params?.programId,
         );
         const programDetails = program?.program_getProgram?.result;
-        console.log('pppppppppppp', programDetails?.link);
-
+        const {
+            isLoading: isLoadingPrograms,
+            data: programs,
+            fetchNextPage,
+            hasNextPage,
+            isRefetching,
+            refetch,
+        } = useGetPrograms(
+            programDetails
+                ? {
+                      where: {
+                          typeOfTrainingProgram: {
+                              eq: programDetails?.typeOfTrainingProgram,
+                          },
+                      },
+                  }
+                : {},
+        );
+        const renderFooter = () => {
+            return (
+                <ActivityIndicator size={scale(50)} color={COLORS.Color323} />
+            );
+        };
         return (
             <View style={styles.Programdetail2881}>
                 <ScrollView>
@@ -37,8 +64,6 @@ const ProgramDetails = createScreen(
                         />
                         <MButton
                             onPress={() => {
-                                console.log('0000000000000');
-
                                 Linking.openURL(programDetails?.link);
                             }}
                             containerStyle={styles.link}
@@ -51,16 +76,39 @@ const ProgramDetails = createScreen(
                             }}
                         />
                         <SectionText data={programDetails} />
-                        {programDetails?.career && (
-                            <>
+                        <FlatList
+                            data={programs?.pages}
+                            style={
+                                {
+                                    // maxHeight: verticalScale(300),
+                                }
+                            }
+                            showsVerticalScrollIndicator={false}
+                            renderItem={({ item }) => (
+                                <SectionItem data={item} />
+                            )}
+                            keyExtractor={(item, index) =>
+                                item?.id
+                                    ? item?.id?.toString()
+                                    : index.toString()
+                            }
+                            ListHeaderComponent={
                                 <MText
                                     textStyle={COMMON.TxtProgramdetail288114}>
                                     Other Training Programs{' '}
                                 </MText>
-
-                                <SectionItem />
-                            </>
-                        )}
+                            }
+                            ListFooterComponent={renderFooter}
+                            ListFooterComponentStyle={{
+                                height: verticalScale(50),
+                            }}
+                            onEndReachedThreshold={0.9}
+                            onEndReached={() => {
+                                if (hasNextPage) {
+                                    fetchNextPage();
+                                }
+                            }}
+                        />
                     </View>
                 </ScrollView>
             </View>

@@ -7,13 +7,23 @@ import {
 import graphQLClient from '../../graphql/graphQLClient';
 import { GET_PROGRAMS, GET_ONE_PROGRAM } from '../../graphql/programs/queries';
 const PAGE_SIZE = 10;
-const useGetPrograms = ({ options = {} }: { options?: any }) => {
+const useGetPrograms = ({
+    where,
+    order,
+    options = {},
+}: {
+    where?: any;
+    order?: any;
+    options?: any;
+}) => {
     const res = useInfiniteQuery(
         ['getPrograms'],
         async ({ pageParam = 0 }) => {
             return graphQLClient.request(GET_PROGRAMS, {
                 skip: pageParam * PAGE_SIZE,
                 take: PAGE_SIZE,
+                where,
+                order,
             });
         },
         {

@@ -45,7 +45,6 @@ const Programs = createScreen(
             isRefetching,
             refetch,
         } = useGetPrograms({});
-        console.log('.......', programs);
         let Programs = programs?.pages;
         const renderFooter = () => {
             return (
