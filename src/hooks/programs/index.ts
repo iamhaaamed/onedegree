@@ -16,6 +16,8 @@ const useGetPrograms = ({
     order?: any;
     options?: any;
 }) => {
+    console.log('wwwwwwwwwwwww', where);
+
     const res = useInfiniteQuery(
         ['getPrograms'],
         async ({ pageParam = 0 }) => {
@@ -42,6 +44,7 @@ const useGetPrograms = ({
                     ?.map((a) => a.program_GetPrograms?.result?.items)
                     .reduce((a: string | any[], b: any) => a.concat(b), []),
             }),
+
             ...options,
         },
     );
