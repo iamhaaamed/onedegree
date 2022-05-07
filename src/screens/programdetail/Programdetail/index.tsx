@@ -37,17 +37,13 @@ const ProgramDetails = createScreen(
             hasNextPage,
             isRefetching,
             refetch,
-        } = useGetPrograms(
-            programDetails
-                ? {
-                      where: {
-                          typeOfTrainingProgram: {
-                              eq: programDetails?.typeOfTrainingProgram,
-                          },
-                      },
-                  }
-                : {},
-        );
+        } = useGetPrograms({
+            where: {
+                typeOfTrainingProgram: {
+                    eq: route?.params?.programWhere,
+                },
+            },
+        });
         const renderFooter = () => {
             return (
                 <ActivityIndicator size={scale(50)} color={COLORS.Color323} />

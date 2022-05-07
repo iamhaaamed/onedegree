@@ -23,7 +23,12 @@ const SectionItem20 = (props) => {
         <TouchableOpacity
             style={[styles.SectionItem, style]}
             activeOpacity={0.9}
-            onPress={() => navigate('ProgramDetails', { programId: data?.id })}>
+            onPress={() =>
+                navigate('ProgramDetails', {
+                    programId: data?.id,
+                    programWhere: data?.typeOfTrainingProgram,
+                })
+            }>
             <MImage
                 imageSource={{ uri: data?.imageAddrss }}
                 style={COMMON.image26}
