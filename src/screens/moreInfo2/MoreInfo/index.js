@@ -9,7 +9,13 @@ import { COLORS } from 'constants/common';
 import ActionSheet from 'react-native-actions-sheet';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { scale, verticalScale, height, toPascalCase } from 'utils';
+import {
+    scale,
+    verticalScale,
+    height,
+    toPascalCase,
+    convertFirstCharacterAllWordsToUppercase,
+} from 'utils';
 import LinearGradient from 'react-native-linear-gradient';
 import { DateTimePickerMod } from 'components/common/MDateTimePicker';
 import {
@@ -201,11 +207,13 @@ const MoreInfo = createScreen(
                             {Info?.career?.title}
                         </MText>
                         <MText textStyle={COMMON.TxtMoreInfo213}>
-                            Possible yearly income : $
+                            Possible Yearly Income : $
                             {Info?.career?.possibleYearlyIncome}
                         </MText>
                         <MText textStyle={COMMON.TxtMoreInfo214}>
-                            {Info?.career?.description}
+                            {convertFirstCharacterAllWordsToUppercase(
+                                Info?.career?.description,
+                            )}
                         </MText>
                     </View>
                     <View style={COMMON.RowItemMoreInfo26}>
