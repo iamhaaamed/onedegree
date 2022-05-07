@@ -56,13 +56,13 @@ const SectionModal = (props) => {
             <View style={styles.line} />
             <View style={COMMON.SectionPaddingSectionModal51}>
                 <MText textStyle={COMMON.TxtSectionModal52}>
-                    Months to pay off{' '}
+                    Months To Pay Off{' '}
                 </MText>
                 <MText textStyle={COMMON.TxtSectionModal53}>
-                    This is the number of months it will take to pay off your
-                    certification if you pay 20% of your take home pay towards
-                    it. Example: If you make $1000 per week and you put $200
-                    towards paying off your certification.{' '}
+                    This Is The Number Of Months It Will Take To Pay Off Your
+                    Certification If You Pay 20% Of Your Take Home Pay Towards
+                    It. Example: If You Make $1000 Per Week And You Put $200
+                    Towards Paying Off Your Certification.{' '}
                 </MText>
 
                 <MButton
