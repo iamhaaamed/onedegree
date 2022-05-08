@@ -78,10 +78,10 @@ const ProfileScreen = createScreen(
 
                         <MText textStyle={COMMON.TxtProfile423}>don jon </MText>
                         <MButton
-                            onPress={onPress}
+                            onPress={() => navigate('EditProfile')}
                             style={COMMON.ButtonRect25}
                             containerStyle={COMMON.Button24}
-                            text="Complete profile"
+                            text="Complete Profile"
                             textStyle={COMMON.TextsButton26}
                             color={COLORS.Color977}
                         />

@@ -30,3 +30,4 @@ export * from './programs';
 export * from './programdetail';
 export * from './question';
 export * from './CheckEmail';
+export * from './EditProfile';
