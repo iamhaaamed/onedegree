@@ -43,7 +43,7 @@ import {
 } from 'components/common';
 import { goBack, navigate } from 'navigation/methods';
 const SectionTop01 = (props) => {
-    const { style, title, rightView, noIcon } = props;
+    const { style, title, rightView, noIcon, programDetails } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -53,18 +53,15 @@ const SectionTop01 = (props) => {
         CONSTANTS,
     } = useTheme();
 
-    const clickCounter = useRef(0);
-    const onPress = () => {
-        console.log(`Clicked! ${clickCounter.current}`);
-        clickCounter.current = clickCounter.current + 1;
-    };
-
     return (
         <View style={[styles.SectionTop01, style]}>
             <View style={{ alignSelf: 'center', width: '10%' }}>
                 {!noIcon && (
                     <MButton
-                        onPress={() => goBack()}
+                        onPress={() => {
+                            if (programDetails) navigate('Programs');
+                            else goBack();
+                        }}
                         style={COMMON.ButtonRect10}
                         color={'transparent'}
                         iconRight={{

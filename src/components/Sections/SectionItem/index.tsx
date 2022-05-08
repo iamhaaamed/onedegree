@@ -7,7 +7,7 @@ import { COLORS } from 'constants/common';
 import { verticalScale, scale } from 'utils';
 import { MStatusBar, MButton, MText, MImage } from 'components/common';
 import { navigate } from 'navigation/methods';
-
+import { StackActions, useNavigation } from '@react-navigation/native';
 const SectionItem20 = (props) => {
     const { style, data } = props;
     const {
@@ -18,16 +18,22 @@ const SectionItem20 = (props) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
-
+    const navigation = useNavigation();
     return (
         <TouchableOpacity
             style={[styles.SectionItem, style]}
             activeOpacity={0.9}
-            onPress={() =>
-                navigate('ProgramDetails', {
-                    programId: data?.id,
-                    programWhere: data?.typeOfTrainingProgram,
-                })
+            onPress={
+                () => {
+                    navigation.dispatch(
+                        StackActions.replace('ProgramDetails', {
+                            programId: data?.id,
+                        }),
+                    );
+                }
+                // navigate('ProgramDetails', {
+                //     programId: data?.id,
+                // })
             }>
             <MImage
                 imageSource={{ uri: data?.imageAddrss }}

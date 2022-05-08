@@ -42,7 +42,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { SectionTop01 } from 'components/Sections';
+import { Container, SectionTop01 } from 'components/Sections';
 const TermsofService1 = createScreen(
     () => {
         const {
@@ -61,7 +61,7 @@ const TermsofService1 = createScreen(
         };
 
         return (
-            <View style={styles.TermsofService1}>
+            <Container style={styles.TermsofService1}>
                 <ScrollView>
                     <SectionTop01 title="Terms Of Service" />
                     <View style={COMMON.SectionPaddingTermsofService14}>
@@ -84,7 +84,7 @@ const TermsofService1 = createScreen(
                         </MText>
                     </View>
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {

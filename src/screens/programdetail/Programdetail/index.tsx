@@ -10,7 +10,12 @@ import {
 } from 'react-native';
 import useTheme from 'hooks/useTheme';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { SectionTop01, SectionText, SectionItem } from 'components/Sections';
+import {
+    SectionTop01,
+    SectionText,
+    SectionItem,
+    Container,
+} from 'components/Sections';
 import { createScreen } from 'components/elements';
 import { COLORS } from 'constants/common';
 import { verticalScale, scale } from 'utils';
@@ -38,21 +43,24 @@ const ProgramDetails = createScreen(
             isRefetching,
             refetch,
         } = useGetPrograms({
-            where: {
-                typeOfTrainingProgram: {
-                    eq: route?.params?.programWhere,
-                },
-            },
+            // where: {
+            //     typeOfTrainingProgram: {
+            //         eq: programDetails?.typeOfTrainingProgram,
+            //     },
+            // },
+            // options: {
+            //     enabled: !!programDetails,
+            // },
         });
         const renderFooter = () => {
-            return (
+            return hasNextPage ? (
                 <ActivityIndicator size={scale(50)} color={COLORS.Color323} />
-            );
+            ) : null;
         };
         return (
-            <View style={styles.Programdetail2881}>
-                <ScrollView>
-                    <SectionTop01 title={'Training Programs'} />
+            <Container style={styles.Programdetail2881}>
+                <ScrollView showsVerticalScrollIndicator={false}>
+                    <SectionTop01 title={'Training Programs'} programDetails />
                     <View style={COMMON.SectionPaddingSave15}>
                         <MImage
                             imageSource={{ uri: programDetails?.imageAddrss }}
@@ -76,7 +84,9 @@ const ProgramDetails = createScreen(
                             data={programs?.pages}
                             style={
                                 {
-                                    // maxHeight: verticalScale(300),
+                                    // height: verticalScale(800),
+                                    // backgroundColor: 'red',
+                                    // marginBottom: '10%',
                                 }
                             }
                             showsVerticalScrollIndicator={false}
@@ -109,7 +119,7 @@ const ProgramDetails = createScreen(
                         />
                     </View>
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {

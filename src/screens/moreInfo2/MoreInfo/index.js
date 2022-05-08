@@ -50,7 +50,7 @@ import {
     MSlider,
     MVideo,
 } from 'components/common';
-import { SectionTop01 } from 'components/Sections';
+import { Container, SectionTop01 } from 'components/Sections';
 import { SectionRow, SectionModalRemoveSave } from 'components/Sections';
 import { navigate } from 'navigation/methods';
 import {
@@ -97,7 +97,7 @@ const MoreInfo = createScreen(
             } catch (error) {}
         };
         return (
-            <View style={styles.MoreInfo2}>
+            <Container style={styles.MoreInfo2}>
                 <ScrollView>
                     <SectionTop01
                         style={COMMON.EleMoreInfo24}
@@ -309,7 +309,7 @@ const MoreInfo = createScreen(
                         />
                     </ActionSheet>
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {
@@ -321,7 +321,7 @@ const MoreInfo = createScreen(
 const styles = StyleSheet.create({
     MoreInfo2: {
         backgroundColor: COLORS.Color197,
-        height: '100%',
+        flex: 1,
     },
     action: {
         borderTopLeftRadius: scale(30),

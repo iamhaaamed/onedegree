@@ -1,14 +1,14 @@
 import React from 'react';
-import { View, StyleSheet, Keyboard } from 'react-native';
+import { View, StyleSheet, Keyboard, SafeAreaView } from 'react-native';
 import { MLoading } from 'components/common';
 const Container = ({ style, children, isLoading, loadingOnPage }) => {
     const shouldSetResponse = () => true;
     const onRelease = () => Keyboard.dismiss();
     return (
-        <View
+        <SafeAreaView
             onResponderRelease={onRelease}
             onStartShouldSetResponder={shouldSetResponse}
-            style={[style]}>
+            style={[style, { flex: 1 }]}>
             {isLoading ? (
                 <MLoading size="large" color={'#EF5B31'} />
             ) : (
@@ -22,7 +22,7 @@ const Container = ({ style, children, isLoading, loadingOnPage }) => {
                     )}
                 </>
             )}
-        </View>
+        </SafeAreaView>
     );
 };
 export default Container;
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         height: '100%',
         position: 'absolute',
         justifyContent: 'center',
-        backgroundColor: 'rgba(0,0,0,0.2)',
+        backgroundColor: 'rgba(0,0,0,0.1)',
         paddingBottom: '10%',
         zIndex: 20,
     },

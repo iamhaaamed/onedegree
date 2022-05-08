@@ -43,7 +43,11 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { SectionTop01, SectionModalRemoveSave } from 'components/Sections';
+import {
+    SectionTop01,
+    SectionModalRemoveSave,
+    Container,
+} from 'components/Sections';
 const Save = createScreen(
     () => {
         const {
@@ -68,7 +72,7 @@ const Save = createScreen(
         };
         const Data = [{}, {}, {}];
         return (
-            <View style={styles.Save1}>
+            <Container style={styles.Save1}>
                 <ScrollView>
                     <SectionTop01
                         style={COMMON.EleSave14}
@@ -151,7 +155,7 @@ const Save = createScreen(
                         />
                     </ActionSheet>
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {

@@ -43,7 +43,7 @@ import {
     MSlider,
 } from 'components/common';
 import { navigate } from 'navigation/methods';
-import { SectionTop, Question1 } from 'components/Sections';
+import { SectionTop, Question1, Container } from 'components/Sections';
 import { useUpdateProfile } from 'hooks/profile';
 const question2 = createScreen(
     () => {
@@ -68,7 +68,7 @@ const question2 = createScreen(
             return string;
         }
         return (
-            <View style={styles.question2}>
+            <Container style={styles.question2}>
                 <ScrollView>
                     <SectionTop />
                     <MImage
@@ -113,7 +113,7 @@ const question2 = createScreen(
                         }}
                     />
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {

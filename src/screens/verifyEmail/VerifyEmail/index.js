@@ -42,7 +42,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { SectionVerify } from 'components/Sections';
+import { Container, SectionVerify } from 'components/Sections';
 const VerifyEmail = createScreen(
     () => {
         const {
@@ -55,7 +55,7 @@ const VerifyEmail = createScreen(
         } = useTheme();
 
         return (
-            <View style={styles.VerifyEmail}>
+            <Container style={styles.VerifyEmail}>
                 <ScrollView>
                     <MImage
                         imageSource={IMAGES.image4477}
@@ -66,7 +66,7 @@ const VerifyEmail = createScreen(
 
                     <SectionVerify />
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {

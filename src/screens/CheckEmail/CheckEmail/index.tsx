@@ -42,7 +42,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { SectionCheckEmail } from 'components/Sections';
+import { SectionCheckEmail, Container } from 'components/Sections';
 const CheckEmail = createScreen(
     ({ route }) => {
         const {
@@ -56,7 +56,7 @@ const CheckEmail = createScreen(
         console.log('2222222', route.params);
         const { email, password } = route?.params || {};
         return (
-            <View style={styles.Forgetpassword1}>
+            <Container style={styles.Forgetpassword1}>
                 <ScrollView>
                     <MImage
                         imageSource={IMAGES.checkEmail}
@@ -67,7 +67,7 @@ const CheckEmail = createScreen(
 
                     <SectionCheckEmail email={email} password={password} />
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {

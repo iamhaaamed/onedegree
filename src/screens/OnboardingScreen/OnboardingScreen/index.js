@@ -103,7 +103,7 @@ const intro6 = createScreen(
             },
         ];
         return (
-            <View style={styles.intro6}>
+            <Container style={styles.intro6}>
                 {/* <ScrollView> */}
                 <MImage
                     imageSource={IMAGES.image7436}
@@ -203,7 +203,7 @@ const intro6 = createScreen(
                     ))}
                 </View>
                 {/* </ScrollView> */}
-            </View>
+            </Container>
         );
     },
     {

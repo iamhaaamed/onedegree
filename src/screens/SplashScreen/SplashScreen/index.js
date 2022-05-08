@@ -45,6 +45,7 @@ import {
 
 import { authStore } from '../../../store';
 import { StackActions, useNavigation } from '@react-navigation/native';
+import { Container } from 'components/Sections';
 const SplashScreen = createScreen(
     () => {
         const {
@@ -72,7 +73,7 @@ const SplashScreen = createScreen(
         }, [isOnboardingViewed, token, navigation]);
 
         return (
-            <View style={styles.splash7}>
+            <Container style={styles.splash7}>
                 <Animatable.View
                     animation="fadeInDown"
                     easing="ease-out"
@@ -155,7 +156,7 @@ const SplashScreen = createScreen(
                         customHeight={scale(144)}
                     />
                 </Animatable.View>
-            </View>
+            </Container>
         );
     },
     {

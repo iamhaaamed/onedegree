@@ -42,7 +42,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { SectionQuestion } from 'components/Sections';
+import { SectionQuestion, Container } from 'components/Sections';
 const Hiquestion2 = createScreen(
     () => {
         const {
@@ -55,7 +55,7 @@ const Hiquestion2 = createScreen(
         } = useTheme();
 
         return (
-            <View style={styles.Hiquestion2}>
+            <Container style={styles.Hiquestion2}>
                 {/* <ScrollView> */}
                 <MImage
                     imageSource={IMAGES.image3013}
@@ -72,7 +72,7 @@ const Hiquestion2 = createScreen(
 
                 <SectionQuestion style={COMMON.EleHiquestion2100} />
                 {/* </ScrollView> */}
-            </View>
+            </Container>
         );
     },
     {

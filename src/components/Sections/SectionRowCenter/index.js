@@ -87,9 +87,12 @@ const SectionRowCenter = (props) => {
                     COMMON.ButtonRect111,
                     intro && { backgroundColor: COLORS.transparent },
                 ]}
-                type={intro ? 'highlight' : 'none'}
+                type={intro ? 'highlight' : 'opacity'}
                 underlayColor={intro ? COLORS.white : 'tarnsparent'}
-                containerStyle={[COMMON.Button110, { borderRadius: 12 }]}
+                containerStyle={[
+                    COMMON.Button110,
+                    { borderRadius: 12, width: '50%' },
+                ]}
                 text={questions ? 'Save' : 'Next'}
                 textStyle={[
                     COMMON.TextsButton112,

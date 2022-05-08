@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import { StyleSheet, View, ScrollView, FlatList } from 'react-native';
 import useTheme from 'hooks/useTheme';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { SectionTop01 } from 'components/Sections';
+import { SectionTop01, Container } from 'components/Sections';
 import { createScreen } from 'components/elements';
 import { COLORS } from 'constants/common';
 import { verticalScale, scale } from 'utils';
@@ -32,7 +32,7 @@ const FAQ = createScreen(
             setSelectedItem(i);
         };
         return (
-            <View style={styles.Settings2604}>
+            <Container style={styles.Settings2604}>
                 <ScrollView>
                     <SectionTop01 title="Faqs" style={{ marginBottom: 10 }} />
                     <FlatList
@@ -73,7 +73,7 @@ const FAQ = createScreen(
                         onEndReachedThreshold={0.9}
                     />
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {

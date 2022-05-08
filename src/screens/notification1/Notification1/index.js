@@ -42,7 +42,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { SectionTop01 } from 'components/Sections';
+import { Container, SectionTop01 } from 'components/Sections';
 import { SectionEvent } from 'components/Sections';
 const Notification1 = createScreen(
     ({ navigation }) => {
@@ -60,7 +60,7 @@ const Notification1 = createScreen(
         }, [navigation]);
 
         return (
-            <View style={styles.Notification1}>
+            <Container style={styles.Notification1}>
                 <ScrollView>
                     <SectionTop01
                         style={COMMON.EleNotification122}
@@ -71,7 +71,7 @@ const Notification1 = createScreen(
                         <SectionEvent />
                     </View>
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {

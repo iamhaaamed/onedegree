@@ -42,7 +42,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { SectionTop01 } from 'components/Sections';
+import { Container, SectionTop01 } from 'components/Sections';
 import { SectionProgram } from 'components/Sections';
 const Chat2 = createScreen(
     () => {
@@ -62,7 +62,7 @@ const Chat2 = createScreen(
         };
 
         return (
-            <View style={styles.Chat2}>
+            <Container style={styles.Chat2}>
                 <ScrollView>
                     <SectionTop01
                         style={COMMON.EleNotification122}
@@ -73,7 +73,7 @@ const Chat2 = createScreen(
                         <SectionProgram />
                     </View>
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {

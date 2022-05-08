@@ -42,7 +42,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { Sectiontop1 } from 'components/Sections';
+import { Container, Sectiontop1 } from 'components/Sections';
 import { SectionStart } from 'components/Sections';
 const Gettingstarted3 = createScreen(
     () => {
@@ -56,7 +56,7 @@ const Gettingstarted3 = createScreen(
         } = useTheme();
 
         return (
-            <View style={styles.Gettingstarted3}>
+            <Container style={styles.Gettingstarted3}>
                 <ScrollView>
                     <Sectiontop1 />
                     <MImage
@@ -68,7 +68,7 @@ const Gettingstarted3 = createScreen(
 
                     <SectionStart style={COMMON.EleGettingstarted3148} />
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {

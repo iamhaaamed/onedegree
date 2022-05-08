@@ -41,6 +41,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
+import { authStore } from '../../../store';
 import { StackActions, useNavigation } from '@react-navigation/native';
 const SectionModal = (props) => {
     const { style, showModal } = props;
@@ -53,6 +54,7 @@ const SectionModal = (props) => {
         CONSTANTS,
     } = useTheme();
     const navigation = useNavigation();
+    const setToken = authStore((state) => state.setToken);
     return (
         <View style={[styles.SectionModal, style]}>
             <View style={styles.line} />
@@ -68,10 +70,12 @@ const SectionModal = (props) => {
                             try {
                                 await auth().signOut();
                                 GoogleSignin.revokeAccess();
+                                setToken(null);
                                 navigation.dispatch(
                                     StackActions.replace('AuthStack'),
                                 );
                             } catch (error) {
+                                setToken(null);
                                 navigation.dispatch(
                                     StackActions.replace('AuthStack'),
                                 );

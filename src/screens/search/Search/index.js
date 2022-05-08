@@ -43,7 +43,7 @@ import {
     MSlider,
 } from 'components/common';
 import ActionSheet from 'react-native-actions-sheet';
-import { SearchFilter, SectionTop01 } from 'components/Sections';
+import { Container, SearchFilter, SectionTop01 } from 'components/Sections';
 const Search = createScreen(
     () => {
         const {
@@ -67,7 +67,7 @@ const Search = createScreen(
         };
 
         return (
-            <View style={styles.Search}>
+            <Container style={styles.Search}>
                 <ScrollView>
                     <SectionTop01
                         style={COMMON.EleSearch4}
@@ -159,7 +159,7 @@ const Search = createScreen(
                         />
                     </ActionSheet>
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {

@@ -42,7 +42,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { SectionVerification } from 'components/Sections';
+import { Container, SectionVerification } from 'components/Sections';
 const Forgetpassword1 = createScreen(
     ({ route }) => {
         const {
@@ -55,7 +55,7 @@ const Forgetpassword1 = createScreen(
         } = useTheme();
         const { email, password } = route?.params || {};
         return (
-            <View style={styles.Forgetpassword1}>
+            <Container style={styles.Forgetpassword1}>
                 <ScrollView>
                     <MImage
                         imageSource={IMAGES.image1335}
@@ -66,7 +66,7 @@ const Forgetpassword1 = createScreen(
 
                     <SectionVerification email={email} password={password} />
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {

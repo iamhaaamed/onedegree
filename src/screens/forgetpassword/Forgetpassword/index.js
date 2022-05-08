@@ -42,7 +42,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { SectionForgetPass } from 'components/Sections';
+import { Container, SectionForgetPass } from 'components/Sections';
 const Forgetpassword = createScreen(
     () => {
         const {
@@ -54,14 +54,8 @@ const Forgetpassword = createScreen(
             CONSTANTS,
         } = useTheme();
 
-        const clickCounter = useRef(0);
-        const onPress = () => {
-            console.log(`Clicked! ${clickCounter.current}`);
-            clickCounter.current = clickCounter.current + 1;
-        };
-
         return (
-            <View style={styles.Forgetpassword}>
+            <Container style={styles.Forgetpassword}>
                 <ScrollView>
                     <MImage
                         imageSource={IMAGES.image6296}
@@ -72,7 +66,7 @@ const Forgetpassword = createScreen(
 
                     <SectionForgetPass />
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {
