@@ -3,7 +3,7 @@ import React from 'react';
 import { useRef } from 'react';
 import useTheme from 'hooks/useTheme';
 import { useState } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView, SafeAreaView } from 'react-native';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { createScreen } from 'components/elements';
 import { COLORS } from 'constants/common';
@@ -64,7 +64,7 @@ const ProfileScreen = createScreen(
         };
 
         return (
-            <Container style={styles.Profile4}>
+            <SafeAreaView style={styles.Profile4}>
                 <ScrollView>
                     <SectionTop01 title="Profile" noIcon rightView />
                     <ProfileTab page="profilePage" />
@@ -142,7 +142,7 @@ const ProfileScreen = createScreen(
                         />
                     </View>
                 </ScrollView>
-            </Container>
+            </SafeAreaView>
         );
     },
     {

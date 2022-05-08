@@ -2,7 +2,7 @@ import React from 'react';
 import { useRef } from 'react';
 import useTheme from 'hooks/useTheme';
 import { useState } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView, SafeAreaView } from 'react-native';
 import { View, Image, Text, TouchableOpacity, Share } from 'react-native';
 import { createScreen } from 'components/elements';
 import { COLORS } from 'constants/common';
@@ -97,7 +97,7 @@ const MoreInfo = createScreen(
             } catch (error) {}
         };
         return (
-            <Container style={styles.MoreInfo2}>
+            <SafeAreaView style={styles.MoreInfo2}>
                 <ScrollView>
                     <SectionTop01
                         style={COMMON.EleMoreInfo24}
@@ -309,7 +309,7 @@ const MoreInfo = createScreen(
                         />
                     </ActionSheet>
                 </ScrollView>
-            </Container>
+            </SafeAreaView>
         );
     },
     {
@@ -321,7 +321,6 @@ const MoreInfo = createScreen(
 const styles = StyleSheet.create({
     MoreInfo2: {
         backgroundColor: COLORS.Color197,
-        flex: 1,
     },
     action: {
         borderTopLeftRadius: scale(30),

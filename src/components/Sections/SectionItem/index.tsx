@@ -41,24 +41,24 @@ const SectionItem20 = (props) => {
             />
             <MText textStyle={COMMON.TxtSectionText4}>{data?.title} </MText>
             <View style={[COMMON.RowItem]}>
-                <View style={{ width: '38%' }}>
+                <View style={{ width: '40%' }}>
                     <MText textStyle={COMMON.TxtSectionItem17}>
                         Program Cost:{' '}
                     </MText>
                 </View>
-                <View style={{ width: '62%' }}>
+                <View style={{ width: '60%' }}>
                     <MText textStyle={COMMON.TxtSectionItem18}>
                         ${data?.programCost}{' '}
                     </MText>
                 </View>
             </View>
             <View style={[COMMON.RowItem]}>
-                <View style={{ width: '48%' }}>
+                <View style={{ width: '55%' }}>
                     <MText textStyle={COMMON.TxtSectionItem17}>
                         Length of Program :{' '}
                     </MText>
                 </View>
-                <View style={{ width: '52%' }}>
+                <View style={{ width: '70%' }}>
                     <MText textStyle={COMMON.TxtSectionItem18}>
                         {data?.lengthOfProgram} Months{' '}
                     </MText>

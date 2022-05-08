@@ -1988,13 +1988,13 @@ export default function ({ COLORS }) {
             marginBottom: verticalScale(16),
         },
         TxtSectionInfo28: {
-            fontSize: verticalScale(17),
+            fontSize: verticalScale(15),
             fontFamily: 'Muli',
             lineHeight: verticalScale(24),
             color: COLORS.Color726,
         },
         TxtSectionInfo29: {
-            fontSize: verticalScale(16),
+            fontSize: verticalScale(14),
             fontFamily: 'Muli',
             textAlign: 'right',
             lineHeight: verticalScale(24),
