@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import useTheme from 'hooks/useTheme';
 import { useState } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView, SafeAreaView } from 'react-native';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { createScreen } from 'components/elements';
 import { COLORS } from 'constants/common';
@@ -105,7 +105,7 @@ const Home2 = createScreen(
         };
         console.log('isLoading', isLoading);
         return (
-            <View style={styles.Home2}>
+            <SafeAreaView style={styles.Home2}>
                 <MLoading
                     isLoading={isLoading || isLoading2}
                     size="large"
@@ -174,7 +174,7 @@ const Home2 = createScreen(
                         }}
                     />
                 </View>
-            </View>
+            </SafeAreaView>
         );
     },
     {

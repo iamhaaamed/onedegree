@@ -17,7 +17,6 @@ export const GET_PROGRAMS = gql`
                     imageAddrss
                     link
                     jobPlacementRate
-                    typeOfTrainingProgram
                     careerId
                     conversations {
                         careerId
@@ -47,7 +46,6 @@ export const GET_ONE_PROGRAM = gql`
                 imageAddrss
                 link
                 jobPlacementRate
-                typeOfTrainingProgram
                 careerId
                 career {
                     title

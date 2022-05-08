@@ -42,7 +42,6 @@ export const GET_CAREERS = gql`
                             imageAddrss
                             link
                             jobPlacementRate
-                            typeOfTrainingProgram
                             careerId
                             userId
                             id
@@ -111,7 +110,6 @@ export const GET_CAREERS = gql`
                             imageAddrss
                             link
                             jobPlacementRate
-                            typeOfTrainingProgram
                             careerId
                             userId
                             id
