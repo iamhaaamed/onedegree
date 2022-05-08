@@ -1,45 +1,10 @@
-import React from 'react';
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    StyleSheet,
-    Image,
-} from 'react-native';
-import { scale, verticalScale, height } from 'utils';
-import { useState } from 'react';
-import useTheme from 'hooks/useTheme';
+import { MButton } from 'components/common';
 import { COLORS } from 'constants/common';
-import { useRef } from 'react';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import useTheme from 'hooks/useTheme';
+import React, { useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { scale, verticalScale } from 'utils';
 
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
 const SectionRowCenter = (props) => {
     const { style, nextPress, backPress, intro, questions, TextStyle } = props;
     const {
@@ -121,7 +86,7 @@ const SectionRowCenter = (props) => {
 };
 const styles = StyleSheet.create({
     SectionRowCenter: {
-        paddingBottom: verticalScale(27),
+        // paddingBottom: verticalScale(27),
         paddingTop: verticalScale(27),
         paddingRight: scale(32),
         paddingLeft: scale(32),

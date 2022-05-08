@@ -1,49 +1,12 @@
-import React from 'react';
-import { useRef } from 'react';
-import useTheme from 'hooks/useTheme';
-import { useState } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
+import { MImage } from 'components/common';
 import { createScreen } from 'components/elements';
-import { COLORS } from 'constants/common';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { scale, verticalScale, height } from 'utils';
-import LinearGradient from 'react-native-linear-gradient';
-import { DateTimePickerMod } from 'components/common/MDateTimePicker';
-import {
-    DrawerItem,
-    DrawerItemList,
-    DrawerContentScrollView,
-    DrawerToggleButton,
-} from '@react-navigation/drawer';
-
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
 import { Container, SectionSignIn } from 'components/Sections';
-import { SectionRowSocialCenter } from 'components/Sections';
+import { COLORS } from 'constants/common';
+import useTheme from 'hooks/useTheme';
+import React from 'react';
+import { ScrollView, StyleSheet } from 'react-native';
+import { scale } from 'utils';
+
 const Signin = createScreen(
     () => {
         const {

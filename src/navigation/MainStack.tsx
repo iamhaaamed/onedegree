@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { COLORS } from 'constants/common';
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Platform } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import tabBarStore from '../store/tabBarStore';
@@ -95,7 +95,9 @@ const MainTabs = () => {
                             size={scale(20)}
                             color={focused ? COLORS.Color289 : COLORS.Color565}
                             IconComponent={family}
-                            style={{ marginTop: 20 }}
+                            style={{
+                                marginTop: Platform.OS == 'ios' ? '5%' : 20,
+                            }}
                         />
                     );
                 },
@@ -171,6 +173,6 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.backMainIcon,
         borderRadius: 5,
         padding: 5,
-        marginTop: 20,
+        marginTop: Platform.OS == 'ios' ? '5%' : 20,
     },
 });
