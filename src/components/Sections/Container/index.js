@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, StyleSheet, Keyboard } from 'react-native';
+import { View, StyleSheet, Keyboard, SafeAreaView } from 'react-native';
 import { MLoading } from 'components/common';
 const Container = ({ style, children, isLoading, loadingOnPage }) => {
     const shouldSetResponse = () => true;
     const onRelease = () => Keyboard.dismiss();
     return (
-        <View
+        <SafeAreaView
             onResponderRelease={onRelease}
             onStartShouldSetResponder={shouldSetResponse}
             style={[style, { flex: 1 }]}>
@@ -22,7 +22,7 @@ const Container = ({ style, children, isLoading, loadingOnPage }) => {
                     )}
                 </>
             )}
-        </View>
+        </SafeAreaView>
     );
 };
 export default Container;

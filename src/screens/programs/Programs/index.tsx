@@ -9,7 +9,12 @@ import {
 } from 'react-native';
 import useTheme from 'hooks/useTheme';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { SectionTop01, SectionItem, Container } from 'components/Sections';
+import {
+    SectionTop01,
+    SectionItem,
+    Container,
+    ProgramFilter,
+} from 'components/Sections';
 import { createScreen } from 'components/elements';
 import { COLORS } from 'constants/common';
 import { verticalScale, scale, height } from 'utils';
@@ -21,6 +26,7 @@ import {
     MFlatList,
 } from 'components/common';
 import { useGetPrograms } from 'hooks/programs';
+import ActionSheet from 'react-native-actions-sheet';
 const Programs = createScreen(
     () => {
         const {
@@ -32,10 +38,11 @@ const Programs = createScreen(
             CONSTANTS,
         } = useTheme();
 
-        const clickCounter = useRef(0);
-        const onPress = () => {
-            console.log(`Clicked! ${clickCounter.current}`);
-            clickCounter.current = clickCounter.current + 1;
+        const refActionSheet = useRef(null);
+        const showActionSheet = () => {
+            if (refActionSheet.current) {
+                refActionSheet.current?.setModalVisible();
+            }
         };
         const {
             isLoading,
@@ -47,13 +54,13 @@ const Programs = createScreen(
         } = useGetPrograms({});
         let Programs = programs?.pages;
         const renderFooter = () => {
-            return (
+            return hasNextPage ? (
                 <ActivityIndicator size={scale(50)} color={COLORS.Color323} />
-            );
+            ) : null;
         };
         return (
             <Container style={styles.Programs276}>
-                <SectionTop01 title="Training Programs" />
+                <SectionTop01 title="Training Programs" noIcon />
                 <View
                     style={[
                         COMMON.SectionPaddingSave15,
@@ -78,7 +85,9 @@ const Programs = createScreen(
                         </View>
                         <View style={{ width: '20%' }}>
                             <MButton
-                                onPress={onPress}
+                                onPress={() => {
+                                    showActionSheet();
+                                }}
                                 style={[COMMON.filterBtn]}
                                 color={COLORS.white}
                                 iconRight={{
@@ -114,6 +123,15 @@ const Programs = createScreen(
                         }}
                     />
                 </View>
+                <ActionSheet
+                    ref={refActionSheet}
+                    containerStyle={styles.action}>
+                    <ProgramFilter
+                        showModal={() =>
+                            refActionSheet.current?.setModalVisible()
+                        }
+                    />
+                </ActionSheet>
             </Container>
         );
     },
@@ -127,6 +145,11 @@ const styles = StyleSheet.create({
     Programs276: {
         backgroundColor: COLORS.Color197,
         flex: 1,
+    },
+    action: {
+        borderTopLeftRadius: scale(30),
+        borderTopRightRadius: scale(30),
+        maxHeight: scale(600),
     },
 });
 export default Programs;

@@ -2345,6 +2345,13 @@ export default function ({ COLORS }) {
             fontFamily: 'Muli',
             color: COLORS.Color726,
         },
+        TxtModal222: {
+            fontSize: verticalScale(12),
+            fontFamily: 'Muli',
+            color: COLORS.Color267,
+            marginVertical: verticalScale(5),
+            marginTop: scale(10),
+        },
         Slider3: {
             alignItems: 'center',
             textAlign: 'center',

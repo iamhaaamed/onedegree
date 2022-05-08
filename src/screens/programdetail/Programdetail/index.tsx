@@ -54,7 +54,12 @@ const ProgramDetails = createScreen(
         });
         const renderFooter = () => {
             return (
-                <ActivityIndicator size={scale(50)} color={COLORS.Color323} />
+                hasNextPage && (
+                    <ActivityIndicator
+                        size={scale(50)}
+                        color={COLORS.Color323}
+                    />
+                )
             );
         };
         return (
