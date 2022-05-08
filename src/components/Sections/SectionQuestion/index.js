@@ -52,24 +52,18 @@ const SectionQuestion = (props) => {
         CONSTANTS,
     } = useTheme();
 
-    const clickCounter = useRef(0);
-    const onPress = () => {
-        console.log(`Clicked! ${clickCounter.current}`);
-        clickCounter.current = clickCounter.current + 1;
-    };
-
     return (
         <View style={[styles.SectionQuestion, style]}>
-            <MText textStyle={COMMON.TxtSectionQuestion95}>Hi, welcome </MText>
+            <MText textStyle={COMMON.TxtSectionQuestion95}>Hi, Welcome </MText>
             <MText textStyle={COMMON.TxtSectionQuestion96}>
-                We’re so excited to help you find the perfect skilled career
-                that is both high-paying and doesn’t require college debt.{' '}
+                We’re So Excited To Help You Find The Perfect Skilled Career
+                That Is Both High-Paying And Doesn’t Require College Debt.
             </MText>
             <MButton
                 onPress={() => navigate('Question2')}
                 style={COMMON.ButtonRect98}
                 containerStyle={COMMON.Button97}
-                text="Let’s get started!"
+                text="Let’s Get Started!"
                 textStyle={COMMON.TextsButton99}
                 gradient={{
                     colors: [
@@ -94,6 +88,7 @@ const styles = StyleSheet.create({
         paddingRight: scale(32),
         paddingLeft: scale(32),
         width: '100%',
+        top: '-4%',
     },
 });
 export default SectionQuestion;

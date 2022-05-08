@@ -47,6 +47,7 @@ import { Container, SectionTop } from 'components/Sections';
 import { SectionRowCenter, Question3 } from 'components/Sections';
 import { useUpdateProfile } from 'hooks/profile';
 import { async } from 'validate.js';
+import { showMessage } from 'react-native-flash-message';
 const question6 = createScreen(
     ({ route }) => {
         const {
@@ -111,6 +112,7 @@ const question6 = createScreen(
                                                     currentIncome: 10,
                                                     isNotificationEnabled: true,
                                                     age: 1,
+                                                    genders: 'MALE',
                                                     ethnicity: 'ONE',
                                                     educationLevel: 'ONE',
                                                     howFarAreYouWillingToTravelToGetCertified:
@@ -153,7 +155,10 @@ const question6 = createScreen(
                                         }
                                     })
                                     .catch(function (error) {
-                                        console.log(error);
+                                        showMessage({
+                                            message: `Something went wrong: ${error.message}`,
+                                            type: 'danger',
+                                        });
                                     })
                                     .then(function () {
                                         // always executed

@@ -56,9 +56,9 @@ const SectionStart = (props) => {
     const navigation = useNavigation();
     return (
         <View style={[styles.SectionStart, style]}>
-            <MText textStyle={COMMON.TxtSectionStart143}>Well done! </MText>
+            <MText textStyle={COMMON.TxtSectionStart143}>Well Done! </MText>
             <MText textStyle={COMMON.TxtSectionStart144}>
-                Time to start looking for your new career.{' '}
+                Time To Start Looking For Your New Career.
             </MText>
             <MButton
                 onPress={() =>
