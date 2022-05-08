@@ -305,7 +305,11 @@ const SectionSignUp = (props) => {
             <TouchableOpacity
                 style={styles.signInBtn}
                 onPress={() => navigate('Signin')}>
-                <MText textStyle={{ fontSize: scale(12), marginTop: -1 }}>
+                <MText
+                    textStyle={[
+                        COMMON.TxtSectionSignIn44,
+                        { color: COLORS.lightText },
+                    ]}>
                     Not A Member?{' '}
                 </MText>
                 <MText textStyle={COMMON.TxtSectionSignUp24}>Sign In </MText>
