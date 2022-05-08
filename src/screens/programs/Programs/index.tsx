@@ -149,7 +149,6 @@ const styles = StyleSheet.create({
     action: {
         borderTopLeftRadius: scale(30),
         borderTopRightRadius: scale(30),
-        maxHeight: scale(600),
     },
 });
 export default Programs;

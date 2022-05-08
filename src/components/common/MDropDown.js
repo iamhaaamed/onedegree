@@ -4,7 +4,7 @@ import { MIcon, MText } from 'components/common';
 import { Platform, View, StyleSheet } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import RNPickerSelect, { PickerStyle } from 'react-native-picker-select';
-
+import { COLORS } from 'constants/common';
 /**
  * @param {label: string}
  * @param {labelStyle: TextStyle}
@@ -17,78 +17,84 @@ import RNPickerSelect, { PickerStyle } from 'react-native-picker-select';
  * */
 
 const defaultIcon = () => (
-  <MIcon
-    color="gray"
-    name="keyboard-arrow-down"
-    IconComponent={MaterialIcons}
-  />
+    <MIcon
+        color={COLORS.Color424}
+        name="keyboard-arrow-down"
+        IconComponent={MaterialIcons}
+    />
 );
 
 const MDropDown = ({
-  data,
-  label,
-  style,
-  status,
-  message,
-  disabled,
-  labelStyle,
-  messageStyle,
-  getSelectedItem,
-  placeholderObject,
-  defaultAndroidMode,
-  Icon = defaultIcon,
-  ...rest
+    data,
+    label,
+    style,
+    status,
+    message,
+    disabled,
+    labelStyle,
+    messageStyle,
+    getSelectedItem,
+    placeholderObject,
+    defaultAndroidMode,
+    Icon = defaultIcon,
+    ...rest
 }) => {
-  const { COLORS, GUTTERS, TYPOGRAPHY } = useTheme();
-  const [selectedItem, setSelectedItem] = useState({
-    value: null,
-    index: null,
-  });
-  const handleOnChange = (value, index) => {
-    setSelectedItem({ value, index });
-    getSelectedItem({ value, index });
-  };
+    const { COLORS, GUTTERS, TYPOGRAPHY } = useTheme();
+    const [selectedItem, setSelectedItem] = useState({
+        value: null,
+        index: null,
+    });
+    const handleOnChange = (value, index) => {
+        setSelectedItem({ value, index });
+        getSelectedItem({ value, index });
+    };
 
-  return (
-    <View style={style?.wrapperStyle}>
-      {label && (
-        <MText textStyle={[styles.defaultText, labelStyle]}>{label}</MText>
-      )}
-      <View style={style?.container}>
-        <RNPickerSelect
-          items={data}
-          disabled={disabled}
-          placeholder={placeholderObject}
-          onValueChange={(value, index) => handleOnChange(value, index)}
-          useNativeAndroidPickerStyle={
-            !defaultAndroidMode ?? Platform.OS === 'android' ? false : true
-          }
-          style={style}
-          value={selectedItem.value}
-          Icon={Icon}
-          {...rest}
-        />
-      </View>
-      {message && (
-        <MText textStyle={[styles.defaultMessage, messageStyle]}>
-          {message}
-        </MText>
-      )}
-    </View>
-  );
+    return (
+        <View style={style?.wrapperStyle}>
+            {label && (
+                <MText textStyle={[styles.defaultText, labelStyle]}>
+                    {label}
+                </MText>
+            )}
+            <View style={style?.container}>
+                <RNPickerSelect
+                    items={data}
+                    disabled={disabled}
+                    placeholder={placeholderObject}
+                    onValueChange={(value, index) =>
+                        handleOnChange(value, index)
+                    }
+                    useNativeAndroidPickerStyle={
+                        !defaultAndroidMode ?? Platform.OS === 'android'
+                            ? false
+                            : true
+                    }
+                    style={style}
+                    value={selectedItem.value}
+                    Icon={Icon}
+                    {...rest}
+                />
+            </View>
+            {message && (
+                <MText textStyle={[styles.defaultMessage, messageStyle]}>
+                    {message}
+                </MText>
+            )}
+        </View>
+    );
 };
 
 const styles = StyleSheet.create({
-  pickerTextColor: {
-    color: '#000',
-  },
-  defaultText: {
-    fontSize: 16,
-  },
-  defaultMessage: {
-    color: '#ccc',
-    fontSize: 14,
-  },
+    pickerTextColor: {
+        color: '#000',
+    },
+    defaultText: {
+        fontSize: 16,
+    },
+    defaultMessage: {
+        color: '#ccc',
+        fontSize: 14,
+    },
 });
 
 export default MDropDown;

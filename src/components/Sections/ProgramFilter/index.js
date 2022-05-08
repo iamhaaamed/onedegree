@@ -60,7 +60,7 @@ const ProgramFilter = (props) => {
     const [sliderValue, setSliderValue] = React.useState([85]);
     const [multiSliderValue, setMultiSliderValue] = React.useState([70, 85]);
     return (
-        <MView style={[COMMON.ModalRect1, COMMON.Modal0]}>
+        <MView style={styles.view}>
             <View style={styles.line} />
             <ScrollView
                 showsVerticalScrollIndicator={false}
@@ -82,7 +82,7 @@ const ProgramFilter = (props) => {
                         textStyle={{ color: COLORS.Color185 }}
                         icon={{
                             name: 'keyboard-arrow-down',
-                            color: COLORS.Color185,
+                            color: COLORS.Color424,
                             style: { alignSelf: 'center', top: '5%' },
                             Component: MaterialCommunityIcons,
                         }}
@@ -96,10 +96,10 @@ const ProgramFilter = (props) => {
                                 shadowOffset: { width: 0, height: 0 },
                             },
 
-                            inputAndroid: COMMON.TextsDropDown12,
-                            inputIOS: COMMON.TextsDropDown12,
-                            inputAndroidContainer: COMMON.DropDownRect11,
-                            inputIOSContainer: COMMON.DropDownRect11,
+                            inputAndroid: COMMON.TextsDropDown6,
+                            inputIOS: COMMON.TextsDropDown6,
+                            inputAndroidContainer: COMMON.DropDownRect5,
+                            inputIOSContainer: COMMON.DropDownRect5,
                         }}
                     />
                     <MText
@@ -121,19 +121,29 @@ const ProgramFilter = (props) => {
                     max={100}
                     step={0.5}
                     enableLabel={false}
-                    markerContainerStyle={{ top: -17 }}
-                    containerStyle={COMMON.Slider3}
+                    markerContainerStyle={{
+                        marginTop: -18,
+                    }}
+                    containerStyle={[COMMON.Slider3, { marginTop: '7%' }]}
                     trackStyle={COMMON.BottomBar5}
                     unselectedStyle={COMMON.BottomBar563}
                     selectedStyle={COMMON.TopBar6}
                     customMarker={() => (
-                        <MView style={COMMON.Circle7}>
-                            <MText
-                                color="rgb(244,96,54)"
-                                style={[COMMON.text1008]}>
-                                {sliderValue[0]}
-                            </MText>
-                        </MView>
+                        <View
+                            style={{
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                            }}>
+                            <View style={styles.orangeView}>
+                                <MText
+                                    color={COLORS.white}
+                                    style={[COMMON.text1008]}>
+                                    $ {sliderValue[0]}
+                                </MText>
+                            </View>
+                            <View style={styles.TriangleShapeCSS} />
+                            <MView style={COMMON.Circle7}></MView>
+                        </View>
                     )}></MSlider>
 
                 <MText mb={verticalScale(12)} textStyle={COMMON.TxtModal2}>
@@ -148,7 +158,7 @@ const ProgramFilter = (props) => {
                         defaultAndroidMode={false}
                         icon={{
                             name: 'keyboard-arrow-down',
-                            color: COLORS.Color185,
+                            color: COLORS.Color424,
                             Component: MaterialCommunityIcons,
                         }}
                         style={{
@@ -161,10 +171,10 @@ const ProgramFilter = (props) => {
                                 shadowOffset: { width: 0, height: 0 },
                             },
 
-                            inputAndroid: COMMON.TextsDropDown27,
-                            inputIOS: COMMON.TextsDropDown27,
-                            inputAndroidContainer: COMMON.DropDownRect11,
-                            inputIOSContainer: COMMON.DropDownRect11,
+                            inputAndroid: COMMON.TextsDropDown6,
+                            inputIOS: COMMON.TextsDropDown6,
+                            inputAndroidContainer: COMMON.DropDownRect5,
+                            inputIOSContainer: COMMON.DropDownRect5,
                         }}
                     />
                 </MView>
@@ -180,7 +190,7 @@ const ProgramFilter = (props) => {
                         defaultAndroidMode={false}
                         icon={{
                             name: 'keyboard-arrow-down',
-                            color: COLORS.Color185,
+                            color: COLORS.Color424,
                             Component: MaterialCommunityIcons,
                         }}
                         style={{
@@ -193,10 +203,10 @@ const ProgramFilter = (props) => {
                                 shadowOffset: { width: 0, height: 0 },
                             },
 
-                            inputAndroid: COMMON.TextsDropDown27,
-                            inputIOS: COMMON.TextsDropDown27,
-                            inputAndroidContainer: COMMON.DropDownRect11,
-                            inputIOSContainer: COMMON.DropDownRect11,
+                            inputAndroid: COMMON.TextsDropDown6,
+                            inputIOS: COMMON.TextsDropDown6,
+                            inputAndroidContainer: COMMON.DropDownRect5,
+                            inputIOSContainer: COMMON.DropDownRect5,
                         }}
                     />
                 </MView>
@@ -236,18 +246,44 @@ const ProgramFilter = (props) => {
 };
 const styles = StyleSheet.create({
     line: {
-        width: '30%',
+        width: scale(60),
         alignSelf: 'center',
         backgroundColor: COLORS.Color321,
         padding: 2,
         borderRadius: 5,
         marginBottom: scale(30),
-        marginTop: '-5%',
+        marginTop: '5%',
     },
     center: {
         // right: '10%',
         flexDirection: 'row',
         marginTop: '10%',
+    },
+    view: {
+        justifyContent: 'center',
+        alignSelf: 'center',
+        maxHeight: scale(550),
+    },
+    TriangleShapeCSS: {
+        width: 0,
+        height: 0,
+        borderLeftWidth: scale(5),
+        borderRightWidth: scale(5),
+        borderTopWidth: scale(5),
+        borderStyle: 'solid',
+        backgroundColor: 'transparent',
+        borderLeftColor: 'transparent',
+        borderRightColor: 'transparent',
+        borderTopColor: COLORS.Color323,
+        marginBottom: 3,
+    },
+    orangeView: {
+        width: scale(50),
+        height: scale(30),
+        borderRadius: scale(7),
+        backgroundColor: COLORS.Color323,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 });
 export default ProgramFilter;
