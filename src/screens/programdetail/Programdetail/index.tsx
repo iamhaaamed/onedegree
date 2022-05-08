@@ -43,24 +43,19 @@ const ProgramDetails = createScreen(
             isRefetching,
             refetch,
         } = useGetPrograms({
-            where: {
-                typeOfTrainingProgram: {
-                    eq: programDetails?.typeOfTrainingProgram,
-                },
-            },
-            options: {
-                enabled: !!programDetails,
-            },
+            // where: {
+            //     typeOfTrainingProgram: {
+            //         eq: programDetails?.typeOfTrainingProgram,
+            //     },
+            // },
+            // options: {
+            //     enabled: !!programDetails,
+            // },
         });
         const renderFooter = () => {
-            return (
-                hasNextPage && (
-                    <ActivityIndicator
-                        size={scale(50)}
-                        color={COLORS.Color323}
-                    />
-                )
-            );
+            return hasNextPage ? (
+                <ActivityIndicator size={scale(50)} color={COLORS.Color323} />
+            ) : null;
         };
         return (
             <Container style={styles.Programdetail2881}>
