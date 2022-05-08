@@ -26,17 +26,15 @@ const SplashScreen = createScreen(
 
         useEffect(() => {
             // navigation.dispatch(StackActions.replace('AuthStack'));
-            navigation.dispatch(StackActions.replace('Onboarding'));
-
-            // setTimeout(() => {
-            //     if (token) {
-            //         navigation.dispatch(StackActions.replace('MainStack'));
-            //     } else if (isOnboardingViewed) {
-            //         navigation.dispatch(StackActions.replace('AuthStack'));
-            //     } else {
-            //         navigation.dispatch(StackActions.replace('Onboarding'));
-            //     }
-            // }, 3000);
+            setTimeout(() => {
+                if (token) {
+                    navigation.dispatch(StackActions.replace('MainStack'));
+                } else if (isOnboardingViewed) {
+                    navigation.dispatch(StackActions.replace('AuthStack'));
+                } else {
+                    navigation.dispatch(StackActions.replace('Onboarding'));
+                }
+            }, 3000);
         }, [isOnboardingViewed, token, navigation]);
 
         return (
