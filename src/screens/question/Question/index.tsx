@@ -10,6 +10,7 @@ import {
     Question2,
     Question1,
     Question3,
+    Container,
 } from 'components/Sections';
 import { createScreen } from 'components/elements';
 import { COLORS } from 'constants/common';
@@ -59,7 +60,7 @@ const Question = createScreen(
             },
         ];
         return (
-            <View style={styles.Question1674}>
+            <Container style={styles.Question1674}>
                 <ScrollView>
                     <SectionTop01 title="Questions" rightView />
                     <View style={COMMON.SectionPaddingSave15}>
@@ -76,7 +77,7 @@ const Question = createScreen(
                         />
                     </View>
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {

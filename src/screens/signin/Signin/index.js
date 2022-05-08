@@ -42,7 +42,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { SectionSignIn } from 'components/Sections';
+import { Container, SectionSignIn } from 'components/Sections';
 import { SectionRowSocialCenter } from 'components/Sections';
 const Signin = createScreen(
     () => {
@@ -56,7 +56,7 @@ const Signin = createScreen(
         } = useTheme();
 
         return (
-            <View style={styles.Signin}>
+            <Container style={styles.Signin}>
                 <ScrollView>
                     <MImage
                         imageSource={IMAGES.image7352}
@@ -67,7 +67,7 @@ const Signin = createScreen(
 
                     <SectionSignIn />
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {

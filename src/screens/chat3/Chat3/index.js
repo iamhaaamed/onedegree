@@ -46,6 +46,7 @@ import {
     SectionTopchat,
     AttachFileModal,
     SectionChat,
+    Container,
 } from 'components/Sections';
 const Chat3 = createScreen(
     () => {
@@ -65,7 +66,7 @@ const Chat3 = createScreen(
         };
 
         return (
-            <View style={styles.Chat3}>
+            <Container style={styles.Chat3}>
                 {/* <ScrollView> */}
                 <SectionTopchat style={COMMON.EleChat330} />
                 <ScrollView style={COMMON.SectionPaddingChat331}>
@@ -132,7 +133,7 @@ const Chat3 = createScreen(
                     </View>
                 </View>
                 {/* </ScrollView> */}
-            </View>
+            </Container>
         );
     },
     {

@@ -50,6 +50,7 @@ import {
     SectionRowCenter,
     Question4,
     Question5,
+    Container,
 } from 'components/Sections';
 
 import { goBack } from 'navigation/methods';
@@ -89,7 +90,7 @@ const ProfileQuestion5 = createScreen(
             }
         };
         return (
-            <View style={styles.Question5}>
+            <Container style={styles.Question5}>
                 <ScrollView>
                     <SectionTop01 title="Questions" />
                     <View
@@ -101,7 +102,7 @@ const ProfileQuestion5 = createScreen(
                     </View>
                     <SectionRowCenter backPress={() => goBack()} questions />
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {
@@ -114,6 +115,7 @@ const styles = StyleSheet.create({
     Question5: {
         backgroundColor: COLORS.Color596,
         height: '100%',
+        flex: 1,
     },
 });
 export default ProfileQuestion5;

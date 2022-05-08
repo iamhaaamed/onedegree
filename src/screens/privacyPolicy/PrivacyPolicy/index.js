@@ -42,7 +42,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { SectionTop01 } from 'components/Sections';
+import { Container, SectionTop01 } from 'components/Sections';
 const PrivacyPolicy = createScreen(
     () => {
         const {
@@ -61,7 +61,7 @@ const PrivacyPolicy = createScreen(
         };
 
         return (
-            <View style={styles.PrivacyPolicy}>
+            <Container style={styles.PrivacyPolicy}>
                 <ScrollView>
                     <SectionTop01 title="Privacy Policy" />
                     <View style={COMMON.SectionPaddingTermsofService14}>
@@ -84,7 +84,7 @@ const PrivacyPolicy = createScreen(
                         </MText>
                     </View>
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {

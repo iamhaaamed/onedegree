@@ -19,7 +19,7 @@ const useGetPrograms = ({
     console.log('wwwwwwwwwwwww', where);
 
     const res = useInfiniteQuery(
-        ['getPrograms'],
+        ['getPrograms', where],
         async ({ pageParam = 0 }) => {
             return graphQLClient.request(GET_PROGRAMS, {
                 skip: pageParam * PAGE_SIZE,

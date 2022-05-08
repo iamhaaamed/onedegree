@@ -42,7 +42,12 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { SectionRowCenter, SectionTop, Question2 } from 'components/Sections';
+import {
+    SectionRowCenter,
+    SectionTop,
+    Question2,
+    Container,
+} from 'components/Sections';
 import { goBack, navigate } from 'navigation/methods';
 
 const question7 = createScreen(
@@ -62,7 +67,7 @@ const question7 = createScreen(
             if (data.amount && data.type) setUserInput(data);
         };
         return (
-            <View style={styles.question7}>
+            <Container style={styles.question7}>
                 <ScrollView>
                     <SectionTop />
                     <MImage
@@ -86,7 +91,7 @@ const question7 = createScreen(
                         }}
                     />
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {

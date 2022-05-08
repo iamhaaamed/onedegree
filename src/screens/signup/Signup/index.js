@@ -42,7 +42,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { SectionSignUp } from 'components/Sections';
+import { Container, SectionSignUp } from 'components/Sections';
 import { SectionRowSocialCenter } from 'components/Sections';
 const Signup = createScreen(
     () => {
@@ -55,14 +55,8 @@ const Signup = createScreen(
             CONSTANTS,
         } = useTheme();
 
-        const clickCounter = useRef(0);
-        const onPress = () => {
-            console.log(`Clicked! ${clickCounter.current}`);
-            clickCounter.current = clickCounter.current + 1;
-        };
-
         return (
-            <View style={styles.Signup}>
+            <Container style={styles.Signup}>
                 <ScrollView>
                     <MImage
                         imageSource={IMAGES.image2228}
@@ -73,7 +67,7 @@ const Signup = createScreen(
 
                     <SectionSignUp />
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {

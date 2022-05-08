@@ -43,7 +43,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { SectionTop } from 'components/Sections';
+import { Container, SectionTop } from 'components/Sections';
 import { SectionRowCenter, Question3 } from 'components/Sections';
 import { useUpdateProfile } from 'hooks/profile';
 import { async } from 'validate.js';
@@ -65,7 +65,7 @@ const question6 = createScreen(
         //  `https://maps.googleapis.com/maps/api/geocode/json?address=${ZipCode}&key=AIzaSyAq_L_4FurpQGeFM20SxCXpAAkggk3knhU&region=us`;
         console.log('laaaaa', getLatLang);
         return (
-            <View style={styles.question6}>
+            <Container style={styles.question6}>
                 <ScrollView>
                     <MLoading
                         size="large"
@@ -161,7 +161,7 @@ const question6 = createScreen(
                         }}
                     />
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {

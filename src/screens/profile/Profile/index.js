@@ -12,7 +12,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { scale, verticalScale, height } from 'utils';
 import LinearGradient from 'react-native-linear-gradient';
 import { DateTimePickerMod } from 'components/common/MDateTimePicker';
-import { ProfileTab } from 'components/Sections';
+import { Container, ProfileTab } from 'components/Sections';
 import {
     DrawerItem,
     DrawerItemList,
@@ -64,7 +64,7 @@ const ProfileScreen = createScreen(
         };
 
         return (
-            <View style={styles.Profile4}>
+            <Container style={styles.Profile4}>
                 <ScrollView>
                     <SectionTop01 title="Profile" noIcon rightView />
                     <ProfileTab page="profilePage" />
@@ -142,7 +142,7 @@ const ProfileScreen = createScreen(
                         />
                     </View>
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {

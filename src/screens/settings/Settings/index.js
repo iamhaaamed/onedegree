@@ -9,6 +9,7 @@ import {
     SectionText2,
     SectionHolder,
     SectionText3,
+    Container,
 } from 'components/Sections';
 import { createScreen } from 'components/elements';
 import { COLORS } from 'constants/common';
@@ -26,7 +27,7 @@ const Settings6187 = createScreen(
         } = useTheme();
 
         return (
-            <View style={styles.Settings6187}>
+            <Container style={styles.Settings6187}>
                 <ScrollView>
                     <SectionTop01 title="Settings" />
                     <View style={COMMON.SectionPaddingHome266}>
@@ -36,7 +37,7 @@ const Settings6187 = createScreen(
                         <SectionText3 />
                     </View>
                 </ScrollView>
-            </View>
+            </Container>
         );
     },
     {
