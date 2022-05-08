@@ -1,50 +1,15 @@
-import React, { useState, useRef } from 'react';
-import useTheme from 'hooks/useTheme';
-import { StyleSheet, ScrollView } from 'react-native';
-import PagerView from 'react-native-pager-view';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
-import { createScreen } from 'components/elements';
-import { COLORS } from 'constants/common';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { scale, verticalScale, height } from 'utils';
-import { authStore } from '../../../store';
-import LinearGradient from 'react-native-linear-gradient';
-import { DateTimePickerMod } from 'components/common/MDateTimePicker';
-import {
-    DrawerItem,
-    DrawerItemList,
-    DrawerContentScrollView,
-    DrawerToggleButton,
-} from '@react-navigation/drawer';
-
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
-import { Container, SectionRowCenter } from 'components/Sections';
-import { navigate } from 'navigation/methods';
 import { StackActions, useNavigation } from '@react-navigation/native';
+import { MButton, MImage, MText } from 'components/common';
+import { createScreen } from 'components/elements';
+import { Container, SectionRowCenter } from 'components/Sections';
+import { COLORS } from 'constants/common';
+import useTheme from 'hooks/useTheme';
+import React, { useRef, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import PagerView from 'react-native-pager-view';
+import { scale } from 'utils';
+import { authStore } from '../../../store';
+
 const intro6 = createScreen(
     () => {
         const {
@@ -151,7 +116,10 @@ const intro6 = createScreen(
                     <MButton
                         onPress={onPress}
                         style={COMMON.buttonRect5}
-                        containerStyle={COMMON.button4}
+                        containerStyle={[
+                            COMMON.button4,
+                            { marginBottom: '2%' },
+                        ]}
                         text="Get started"
                         textStyle={COMMON.Textsbutton6}
                         color={COLORS.Color611}

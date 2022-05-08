@@ -19,6 +19,16 @@
 		5221616087E1A6A49FBDF8B6 /* libPods-OneDegree-OneDegreeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D591FB23BA2850FDA3A14D /* libPods-OneDegree-OneDegreeTests.a */; };
 		7F3BDAC83E52A77F99F3760B /* libPods-OneDegree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1D6F827CB0515C20A1D19F /* libPods-OneDegree.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		8363AFDD2827C7F700C57AC1 /* Muli.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8363AFDC2827C7F700C57AC1 /* Muli.ttf */; };
+		8363AFDE2827C7F700C57AC1 /* Muli.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8363AFDC2827C7F700C57AC1 /* Muli.ttf */; };
+		8363AFDF2827C7F700C57AC1 /* Muli.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8363AFDC2827C7F700C57AC1 /* Muli.ttf */; };
+		8363AFE02827C7F700C57AC1 /* Muli.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8363AFDC2827C7F700C57AC1 /* Muli.ttf */; };
+		8363AFE22827E3D400C57AC1 /* libGoogleSignIn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8363AFE12827E3D400C57AC1 /* libGoogleSignIn.a */; };
+		8363AFE42827E3D400C57AC1 /* libRNGoogleSignin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8363AFE32827E3D400C57AC1 /* libRNGoogleSignin.a */; };
+		8363AFE62827E42200C57AC1 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8363AFE52827E42200C57AC1 /* AddressBook.framework */; };
+		8363AFE82827E42C00C57AC1 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8363AFE72827E42C00C57AC1 /* SafariServices.framework */; };
+		8363AFEA2827E43D00C57AC1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8363AFE92827E43D00C57AC1 /* SystemConfiguration.framework */; };
+		8363AFEC2827E45200C57AC1 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8363AFEB2827E45200C57AC1 /* libz.tbd */; };
 		BB8B20F5E62471E3EA790BCD /* libPods-OneDegree-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0B9C53B0F74A948C15EF2CC /* libPods-OneDegree-tvOS.a */; };
 		C0A63D6728192BA100F07952 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0A63D6628192BA100F07952 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -72,6 +82,13 @@
 		79605889C2496567A8E6D6FF /* Pods-OneDegree-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneDegree-tvOS.release.xcconfig"; path = "Target Support Files/Pods-OneDegree-tvOS/Pods-OneDegree-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		79D591FB23BA2850FDA3A14D /* libPods-OneDegree-OneDegreeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneDegree-OneDegreeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = OneDegree/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8363AFDC2827C7F700C57AC1 /* Muli.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Muli.ttf; path = ../src/assets/fonts/Muli.ttf; sourceTree = "<group>"; };
+		8363AFE12827E3D400C57AC1 /* libGoogleSignIn.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libGoogleSignIn.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8363AFE32827E3D400C57AC1 /* libRNGoogleSignin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNGoogleSignin.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8363AFE52827E42200C57AC1 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		8363AFE72827E42C00C57AC1 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		8363AFE92827E43D00C57AC1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8363AFEB2827E45200C57AC1 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		8678C4D95E8742FCABA7433B /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		9B7EF991393B4C9389CF5535 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		A10A8748531E49578884CA63 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
@@ -100,6 +117,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8363AFEC2827E45200C57AC1 /* libz.tbd in Frameworks */,
+				8363AFEA2827E43D00C57AC1 /* SystemConfiguration.framework in Frameworks */,
+				8363AFE82827E42C00C57AC1 /* SafariServices.framework in Frameworks */,
+				8363AFE62827E42200C57AC1 /* AddressBook.framework in Frameworks */,
+				8363AFE22827E3D400C57AC1 /* libGoogleSignIn.a in Frameworks */,
+				8363AFE42827E3D400C57AC1 /* libRNGoogleSignin.a in Frameworks */,
 				7F3BDAC83E52A77F99F3760B /* libPods-OneDegree.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,6 +196,12 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8363AFEB2827E45200C57AC1 /* libz.tbd */,
+				8363AFE92827E43D00C57AC1 /* SystemConfiguration.framework */,
+				8363AFE72827E42C00C57AC1 /* SafariServices.framework */,
+				8363AFE52827E42200C57AC1 /* AddressBook.framework */,
+				8363AFE12827E3D400C57AC1 /* libGoogleSignIn.a */,
+				8363AFE32827E3D400C57AC1 /* libRNGoogleSignin.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				6F1D6F827CB0515C20A1D19F /* libPods-OneDegree.a */,
@@ -193,6 +222,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				8363AFDC2827C7F700C57AC1 /* Muli.ttf */,
 				13B07FAE1A68108700A75B9A /* OneDegree */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* OneDegreeTests */,
@@ -379,6 +409,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8363AFDE2827C7F700C57AC1 /* Muli.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +420,7 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				C0A63D6728192BA100F07952 /* GoogleService-Info.plist in Resources */,
+				8363AFDD2827C7F700C57AC1 /* Muli.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */,
+				8363AFDF2827C7F700C57AC1 /* Muli.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +437,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8363AFE02827C7F700C57AC1 /* Muli.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -856,7 +890,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = OneDegree/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -879,7 +913,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = OneDegree/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
