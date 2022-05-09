@@ -7140,10 +7140,10 @@ react-native-elements@^3.4.2:
     react-native-ratings "8.0.4"
     react-native-size-matters "^0.3.1"
 
-react-native-fbsdk-next@^7:
-  version "7.3.3"
-  resolved "https://registry.yarnpkg.com/react-native-fbsdk-next/-/react-native-fbsdk-next-7.3.3.tgz#3fbf0bf66c9bb7038a78957cd447acbe3b4ca339"
-  integrity sha512-8DRzfqPIUZ3OmzaVmn3zNDSg6eieDFDGhkoLbJvs2juXyz+RdqxM5DbMTTw0VFKiNrvdtfFFbL8Sslg8/ecStQ==
+react-native-fbsdk-next@^8.0.2:
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-fbsdk-next/-/react-native-fbsdk-next-8.0.2.tgz#a63a96a22e5a343801e10aa56931cff25d2a7599"
+  integrity sha512-+YHlJe6hFxV4MUsJGRJTyaYdRh+tAnbpKl26vQHnhOq8CokMnZqmAZF7VYNhGkplScftkmQ09e4zw7R7Jh+04w==
   dependencies:
     "@expo/config-plugins" "^4.0.4"
     xml2js "^0.4.23"
@@ -7317,10 +7317,10 @@ react-native-vector-icons@^8.1.0:
     prop-types "^15.7.2"
     yargs "^16.1.1"
 
-react-native-video@^5.1.1:
-  version "5.1.1"
-  resolved "https://registry.npmjs.org/react-native-video/-/react-native-video-5.1.1.tgz"
-  integrity sha512-zee8gRUrjPWRoZSEBiMebClqu1iAuCQNLjzqpmXFrRWEoJj7azM3BPqLQWJgsnfLiYUYGySeApC/G60THM5+tw==
+react-native-video@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-video/-/react-native-video-5.2.0.tgz#c3f2c541775f4fda7e0d26d75a6fb59819b13d5e"
+  integrity sha512-5SK1lxyzrCkZF+WuxUxLR1Pt65E0rsWB1w1GrGxSLdC9zWYBumcmuHl+wPJ7UQvznjaH2Ze7uU1R3arejI7+WQ==
   dependencies:
     keymirror "^0.1.1"
     prop-types "^15.7.2"
