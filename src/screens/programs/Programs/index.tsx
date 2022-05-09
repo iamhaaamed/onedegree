@@ -25,7 +25,7 @@ import {
     MImage,
     MFlatList,
 } from 'components/common';
-import { useGetPrograms } from 'hooks/programs';
+import { useGetPrograms } from 'hooks/save';
 import ActionSheet from 'react-native-actions-sheet';
 const Programs = createScreen(
     () => {

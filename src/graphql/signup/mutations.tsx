@@ -44,7 +44,13 @@ export const SIGNIN = gql`
                 howFarAreYouWillingToTravelToGetCertified
                 whereDidYouHearAboutOnedegreeCareers
                 whereDidYouHearAboutOnedegreeCareersTextForOther
-
+                userLikeCareers {
+                    career {
+                        title
+                        imageAddress
+                        id
+                    }
+                }
                 externalId
                 id
                 isDeleted

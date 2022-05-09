@@ -1,9 +1,15 @@
 import React from 'react';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import useTheme from 'hooks/useTheme';
 import { useState } from 'react';
 import { StyleSheet, ScrollView, FlatList } from 'react-native';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
+import {
+    View,
+    Image,
+    Text,
+    TouchableOpacity,
+    ActivityIndicator,
+} from 'react-native';
 import { createScreen } from 'components/elements';
 import { COLORS } from 'constants/common';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -48,6 +54,8 @@ import {
     SectionModalRemoveSave,
     Container,
 } from 'components/Sections';
+import { useGetCareers } from 'hooks/save';
+import { navigate } from 'navigation/methods';
 const Save = createScreen(
     () => {
         const {
@@ -58,21 +66,38 @@ const Save = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
+        const [CareerId, setCareerId] = useState();
+        const {
+            isLoading,
+            data: careers,
+            fetchNextPage,
+            hasNextPage,
+            isRefetching,
+            refetch,
+        } = useGetCareers({ where: { isLiked: { eq: true } } });
 
-        const clickCounter = useRef(0);
-        const onPress = () => {
-            console.log(`Clicked! ${clickCounter.current}`);
-            clickCounter.current = clickCounter.current + 1;
-        };
         const refActionSheet = useRef(null);
-        const showActionSheet = () => {
+        const showActionSheet = (item) => {
             if (refActionSheet.current) {
                 refActionSheet.current?.setModalVisible();
             }
         };
-        const Data = [{}, {}, {}];
+        {
+            console.log('e!!!!', hasNextPage);
+        }
+        const renderFooter = () => {
+            return hasNextPage ? (
+                <ActivityIndicator size={scale(50)} color={COLORS.Color323} />
+            ) : null;
+        };
         return (
             <Container style={styles.Save1}>
+                <MLoading
+                    isLoading={isLoading}
+                    size="large"
+                    color={COLORS.Color323}
+                    style={{ top: '50%' }}
+                />
                 <ScrollView>
                     <SectionTop01
                         style={COMMON.EleSave14}
@@ -94,17 +119,28 @@ const Save = createScreen(
                         />
                         <FlatList
                             numColumns={2}
-                            data={Data}
+                            data={careers?.pages}
                             style={{ width: '100%' }}
+                            refreshing={isRefetching}
+                            onRefresh={refetch}
                             renderItem={({ item, index }) => (
-                                <View
+                                <TouchableOpacity
+                                    activeOpacity={0.6}
+                                    onPress={() =>
+                                        navigate('MoreInfo', {
+                                            data: item,
+                                            Like: true,
+                                        })
+                                    }
                                     style={{
                                         width: '48%',
                                         marginVertical: scale(20),
                                         marginHorizontal: 5,
                                     }}>
                                     <MImageBackground
-                                        imageSource={IMAGES.intro3}
+                                        imageSource={{
+                                            uri: item?.career?.imageAddress,
+                                        }}
                                         style={COMMON.image10}
                                         // customWidth={scale(154)}
                                         // customHeight={scale(150)}
@@ -116,8 +152,9 @@ const Save = createScreen(
                                                 top: '80%',
                                             }}>
                                             <MText
-                                                textStyle={COMMON.TxtSave112}>
-                                                bike delivery{' '}
+                                                textStyle={COMMON.TxtSave112}
+                                                numberOfLines={1}>
+                                                {item?.career?.title}
                                             </MText>
                                         </View>
                                         <View
@@ -127,9 +164,12 @@ const Save = createScreen(
                                                 top: '70%',
                                             }}>
                                             <MButton
-                                                onPress={() =>
-                                                    showActionSheet()
-                                                }
+                                                onPress={() => {
+                                                    setCareerId(
+                                                        item?.career?.id,
+                                                    );
+                                                    showActionSheet();
+                                                }}
                                                 style={COMMON.ButtonRect14}
                                                 containerStyle={COMMON.Button13}
                                                 color={COLORS.Color647}
@@ -141,14 +181,30 @@ const Save = createScreen(
                                             />
                                         </View>
                                     </MImageBackground>
-                                </View>
+                                </TouchableOpacity>
                             )}
+                            keyExtractor={(item, index) =>
+                                item?.id
+                                    ? item?.id?.toString()
+                                    : index.toString()
+                            }
+                            ListFooterComponent={renderFooter}
+                            ListFooterComponentStyle={{
+                                height: verticalScale(50),
+                            }}
+                            onEndReachedThreshold={0.9}
+                            onEndReached={() => {
+                                if (hasNextPage) {
+                                    fetchNextPage();
+                                }
+                            }}
                         />
                     </View>
                     <ActionSheet
                         ref={refActionSheet}
                         containerStyle={styles.action}>
                         <SectionModalRemoveSave
+                            CareerId={CareerId}
                             showModal={() =>
                                 refActionSheet.current?.setModalVisible()
                             }

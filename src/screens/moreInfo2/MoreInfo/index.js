@@ -70,12 +70,6 @@ const MoreInfo = createScreen(
         } = useTheme();
         const [Like, setLike] = useState(route?.params?.Like);
         const Info = route?.params?.data;
-        const refActionSheet = useRef(null);
-        const showActionSheet = () => {
-            if (refActionSheet.current) {
-                refActionSheet.current?.setModalVisible();
-            }
-        };
 
         const { mutate: LikeMutate } = useLikeCareer();
         const { mutate: UnLikeMutate } = useUnlikeCareer();
@@ -299,15 +293,6 @@ const MoreInfo = createScreen(
                             }}
                         />
                     </View>
-                    <ActionSheet
-                        ref={refActionSheet}
-                        containerStyle={styles.action}>
-                        <SectionModalRemoveSave
-                            showModal={() =>
-                                refActionSheet.current?.setModalVisible()
-                            }
-                        />
-                    </ActionSheet>
                 </ScrollView>
             </SafeAreaView>
         );

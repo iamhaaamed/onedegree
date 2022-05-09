@@ -1,13 +1,15 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { View } from 'react-native';
 
-import { Save } from 'screens';
+import { Save, MoreInfo } from 'screens';
 
 const Stack = createStackNavigator();
 
 export type MapStackParamList = {
     Search: undefined;
+    MoreInfo: undefined;
 };
 
 const screens = [
@@ -16,9 +18,32 @@ const screens = [
         name: 'Save',
         component: Save,
     },
+    {
+        options: { headerShown: false },
+        name: 'MoreInfo',
+        component: MoreInfo,
+    },
 ];
 
-export default function SearchStack() {
+export default function SearchStack({
+    navigation,
+    route,
+}: {
+    navigation: any;
+    route: any;
+}) {
+    useLayoutEffect(() => {
+        const tabHiddenRoutes = ['MoreInfo'];
+        navigation.setOptions({
+            tabBarStyle: {
+                display: tabHiddenRoutes.includes(
+                    getFocusedRouteNameFromRoute(route),
+                )
+                    ? 'none'
+                    : 'flex',
+            },
+        });
+    }, [navigation, route]);
     return (
         <Stack.Navigator
             screenOptions={{

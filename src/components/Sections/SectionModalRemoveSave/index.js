@@ -40,8 +40,10 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
+import { useGetLikeCareers, useLikeCareer, useUnlikeCareer } from 'hooks/save';
+import { showMessage } from 'react-native-flash-message';
 const SectionModalRemoveSave = (props) => {
-    const { style, showModal, nextPress, backPress } = props;
+    const { style, showModal, nextPress, backPress, CareerId } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -50,7 +52,7 @@ const SectionModalRemoveSave = (props) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
-
+    const { mutate: UnLikeMutate } = useUnlikeCareer();
     return (
         <View style={[styles.SectionModal, style]}>
             <View style={COMMON.SectionPaddingSectionModal51}>
@@ -68,7 +70,21 @@ const SectionModalRemoveSave = (props) => {
                         color={COLORS.Color963}
                     />
                     <MButton
-                        onPress={nextPress}
+                        onPress={() =>
+                            UnLikeMutate(CareerId, {
+                                onSuccess: (data) => {
+                                    if (
+                                        data?.career_unlike?.status == 'SUCCESS'
+                                    )
+                                        showModal(true);
+                                    else
+                                        showMessage({
+                                            message: `Something went wrong: ${error.message}`,
+                                            type: 'danger',
+                                        });
+                                },
+                            })
+                        }
                         style={[COMMON.ButtonRect111]}
                         containerStyle={COMMON.Button110}
                         text="Remove"

@@ -2093,7 +2093,7 @@ export default function ({ COLORS }) {
             shadowRadius: 29,
             width: scale(145),
             height: scale(150),
-            backgroundColor: 'red',
+            backgroundColor: COLORS.white,
             borderTopLeftRadius: 10,
             borderTopRightRadius: 10,
             borderBottomRightRadius: 10,

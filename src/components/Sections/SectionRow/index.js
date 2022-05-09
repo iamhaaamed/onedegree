@@ -71,7 +71,11 @@ const SectionRow = (props) => {
                 />
             )}
             <MText
-                textStyle={[COMMON.TxtSectionRow17, textStyle]}
+                textStyle={[
+                    COMMON.TxtSectionRow17,
+                    textStyle,
+                    { maxWidth: scale(200) },
+                ]}
                 numberOfLines={2}>
                 {data}
             </MText>
