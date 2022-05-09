@@ -58,7 +58,7 @@ const Question2 = (props) => {
     } = useTheme();
 
     const [isChecked, setIsChecked] = useState();
-    const [ExteraView, setView] = useState(false);
+    // const [ExteraView, setView] = useState(false);
     const [Dolor, setDolor] = useState('$');
     const [Type, setType] = useState();
     const [Amount, setAmount] = useState('');
@@ -102,7 +102,7 @@ const Question2 = (props) => {
                     {({ handleChange, handleSubmit, values, errors }) => (
                         <>
                             {handleSubmit}
-                            {ExteraView && (
+                            {/* {ExteraView && (
                                 <View style={styles.exteraView}>
                                     <MText
                                         textStyle={styles.dolor}
@@ -124,7 +124,7 @@ const Question2 = (props) => {
                                         {Dolor == '$' ? '€' : '$'}
                                     </MText>
                                 </View>
-                            )}
+                            )} */}
                             <MInput
                                 inputStyle={COMMON.InputRect126}
                                 containerStyle={COMMON.Input124}
@@ -139,13 +139,13 @@ const Question2 = (props) => {
                                 backgroundColor={COLORS.Color963}
                                 keyboardType="number-pad"
                                 height={verticalScale(48)}
-                                iconRight={{
-                                    name: 'chevron-down',
-                                    color: COLORS.Color267,
-                                    onPress: () => setView(!ExteraView),
-                                    size: scale(20),
-                                }}
-                                dolorSign={Dolor}
+                                // iconRight={{
+                                //     name: 'chevron-down',
+                                //     color: COLORS.Color267,
+                                //     onPress: () => setView(!ExteraView),
+                                //     size: scale(20),
+                                // }}
+                                dolorSign={'USD'}
                             />
 
                             <MText textStyle={COMMON.Txtquestion7127}>
