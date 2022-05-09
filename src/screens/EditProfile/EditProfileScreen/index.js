@@ -138,14 +138,12 @@ const EditProfile = createScreen(
                         </MText>
                         <MView style={COMMON.DropDown10}>
                             <MDropDown
-                                mb={verticalScale(24)}
-                                // data={CONSTANTS.dropDown}
+                                data={CONSTANTS.dropDown}
                                 getSelectedItem={(item) =>
                                     setSelectedItem(item)
                                 }
                                 placeholderObject={{
                                     label: 'Male',
-                                    lable: 'Female',
                                 }} //change label
                                 defaultAndroidMode={false}
                                 icon={{

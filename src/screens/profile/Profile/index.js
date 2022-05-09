@@ -9,7 +9,7 @@ import { createScreen } from 'components/elements';
 import { COLORS } from 'constants/common';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { scale, verticalScale, height } from 'utils';
+import { scale, verticalScale, height, toPascalCase } from 'utils';
 import LinearGradient from 'react-native-linear-gradient';
 import { DateTimePickerMod } from 'components/common/MDateTimePicker';
 import { Container, ProfileTab } from 'components/Sections';
@@ -49,6 +49,7 @@ import { SectionTop01 } from 'components/Sections';
 import { SectionInfo } from 'components/Sections';
 import { showMessage } from 'react-native-flash-message';
 import { authStore } from '../../../store';
+
 const ProfileScreen = createScreen(
     () => {
         const {
@@ -92,6 +93,11 @@ const ProfileScreen = createScreen(
             clickCounter.current = clickCounter.current + 1;
         };
         console.log('uuuuuuuuuu', user);
+        //         fetch('https://maps.googleapis.com/maps/api/geocode/json?address=' + myLat + ',' + myLon + '&key=' + myApiKey)
+        //         .then((response) => response.json())
+        //         .then((responseJson) => {
+        //             console.log('ADDRESS GEOCODE is BACK!! => ' + JSON.stringify(responseJson));
+        // })
         return (
             <SafeAreaView style={styles.Profile4}>
                 <MLoading
@@ -152,7 +158,7 @@ const ProfileScreen = createScreen(
                         <SectionInfo
                             style={COMMON.EleProfile430}
                             title="Gender"
-                            data="Male"
+                            data={toPascalCase(user?.genders) || 'Male'}
                         />
                         <SectionInfo
                             style={COMMON.EleProfile430}
@@ -162,7 +168,7 @@ const ProfileScreen = createScreen(
                         <SectionInfo
                             style={COMMON.EleProfile430}
                             title="Current Income"
-                            data="$120,000"
+                            data={user?.currentIncome || ' '}
                         />
                         <MButton
                             onPress={onPress}
