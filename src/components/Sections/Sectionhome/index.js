@@ -62,7 +62,6 @@ const Sectionhome = (props) => {
         CONSTANTS,
     } = useTheme();
     const [Like, setLike] = useState(false);
-    console.log('..........', data?.career?.id);
     const { data: LikeCareers } = useGetLikeCareers({
         careerId: data?.career?.id,
     });
@@ -96,24 +95,24 @@ const Sectionhome = (props) => {
                 </View>
             </View>
             <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
-                <View style={{ width: '35%' }}>
+                <View style={{ width: '37%' }}>
                     <MText textStyle={COMMON.TxtSectionhome72}>
                         Training Time{' '}
                     </MText>
                 </View>
-                <View style={{ width: '65%' }}>
+                <View style={{ width: '63%' }}>
                     <MText textStyle={COMMON.TxtSectionhome73}>
                         {toPascalCase(data?.career?.trainingTime)}
                     </MText>
                 </View>
             </View>
             <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
-                <View style={{ width: '35%' }}>
+                <View style={{ width: '36%' }}>
                     <MText textStyle={COMMON.TxtSectionhome72}>
                         Social Impact{' '}
                     </MText>
                 </View>
-                <View style={{ width: '65%' }}>
+                <View style={{ width: '64%' }}>
                     <MText textStyle={COMMON.TxtSectionhome73}>
                         {toPascalCase(data?.career?.socialImpact)}
                     </MText>

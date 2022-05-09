@@ -221,9 +221,9 @@ const SectionSignUp = (props) => {
                 color={COLORS.Color323}
                 isLoading={isLoading}
             />
-            <MText textStyle={COMMON.TxtSectionSignUp1}>Sign up </MText>
+            <MText textStyle={COMMON.TxtSectionSignUp1}>Sign Up </MText>
             <MText textStyle={COMMON.TxtSectionSignUp2}>
-                Discover your new future!{' '}
+                Discover Your New Future!{' '}
             </MText>
             <Formik
                 validationSchema={ValidationSchema}
@@ -259,7 +259,7 @@ const SectionSignUp = (props) => {
                             onPress={handleSubmit}
                             style={COMMON.ButtonRect10}
                             containerStyle={COMMON.Button9}
-                            text="Sign up "
+                            text="Sign Up "
                             textStyle={COMMON.TextsButton11}
                             gradient={{
                                 colors: [
@@ -289,7 +289,7 @@ const SectionSignUp = (props) => {
                 </View>
                 <View style={[COMMON.ColCenter, { width: '40%' }]}>
                     <MText textStyle={COMMON.TxtSectionSignUp14}>
-                        Or continue with{' '}
+                        Or Continue With{' '}
                     </MText>
                 </View>
                 <View style={{ width: '30%' }}>
@@ -305,8 +305,12 @@ const SectionSignUp = (props) => {
             <TouchableOpacity
                 style={styles.signInBtn}
                 onPress={() => navigate('Signin')}>
-                <MText textStyle={{ fontSize: scale(12), marginTop: -1 }}>
-                    Not a member?{' '}
+                <MText
+                    textStyle={[
+                        COMMON.TxtSectionSignIn44,
+                        { color: COLORS.lightText },
+                    ]}>
+                    Not A Member?{' '}
                 </MText>
                 <MText textStyle={COMMON.TxtSectionSignUp24}>Sign In </MText>
             </TouchableOpacity>

@@ -10,6 +10,7 @@ import {
     ProfileQuestion5,
     FAQScreen,
     Question,
+    EditProfile,
 } from 'screens';
 
 const Stack = createStackNavigator();
@@ -21,6 +22,7 @@ export type ProfileStackParamList = {
     ProfileQuestion5: undefined;
     FAQScreen: undefined;
     Question: undefined;
+    EditProfile: undefined;
 };
 
 const screens = [
@@ -51,6 +53,11 @@ const screens = [
     },
     {
         options: { headerShown: false },
+        name: 'EditProfile',
+        component: EditProfile,
+    },
+    {
+        options: { headerShown: false },
         name: 'FAQ',
         component: FAQScreen,
     },
@@ -76,6 +83,7 @@ export default function ProfileStack({
             'ProfileQuestion5',
             'FAQ',
             'Question',
+            'EditProfile',
         ];
         navigation.setOptions({
             tabBarStyle: {

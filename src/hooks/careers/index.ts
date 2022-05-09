@@ -8,13 +8,20 @@ import graphQLClient from '../../graphql/graphQLClient';
 import { GET_CAREERS, GET_LIKE_CAREES } from '../../graphql/careers/queries';
 import { USER_UNLIKE, USER_LIKE } from '../../graphql/careers/mutations';
 const PAGE_SIZE = 10;
-const useGetCareers = ({ options = {} }: { options?: any }) => {
+const useGetCareers = ({
+    order,
+    options = {},
+}: {
+    order: any;
+    options?: any;
+}) => {
     const res = useInfiniteQuery(
-        ['getCarees'],
+        ['getCarees', order],
         async ({ pageParam = 0 }) => {
             return graphQLClient.request(GET_CAREERS, {
                 skip: pageParam * PAGE_SIZE,
                 take: PAGE_SIZE,
+                order,
             });
         },
         {

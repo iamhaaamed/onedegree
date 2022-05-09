@@ -107,10 +107,10 @@ const Question2 = (props) => {
                                     <MText
                                         textStyle={styles.dolor}
                                         onPress={() => {
-                                            setDolor('£');
+                                            setDolor(Dolor == '£' ? '€' : '£');
                                             setView(false);
                                         }}>
-                                        £
+                                        {Dolor == '£' ? '€' : '£'}
                                     </MText>
                                     <MText
                                         textStyle={[
@@ -118,10 +118,10 @@ const Question2 = (props) => {
                                             { marginTop: 20 },
                                         ]}
                                         onPress={() => {
-                                            setDolor('$');
+                                            setDolor(Dolor == '$' ? '€' : '$');
                                             setView(false);
                                         }}>
-                                        $
+                                        {Dolor == '$' ? '€' : '$'}
                                     </MText>
                                 </View>
                             )}

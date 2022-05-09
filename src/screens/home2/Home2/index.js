@@ -96,11 +96,10 @@ const Home2 = createScreen(
             hasNextPage,
             isRefetching,
             refetch,
-        } = useGetCareers({});
+        } = useGetCareers({ order: [{ isLiked: 'DESC' }] });
         console.log('UserName', UserName);
         let Careers = careers?.pages;
         const renderItem = ({ item, index }) => {
-            console.log('iiii', item);
             return item ? <Sectionhome data={item} /> : null;
         };
         console.log('isLoading', isLoading);

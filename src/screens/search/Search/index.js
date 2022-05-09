@@ -120,7 +120,7 @@ const Search = createScreen(
                                 </View>
                                 <View
                                     style={{
-                                        width: '60%',
+                                        width: '58%',
                                         marginLeft: scale(10),
                                     }}>
                                     <MText textStyle={COMMON.TxtSearch15}>

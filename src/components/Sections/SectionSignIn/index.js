@@ -195,8 +195,8 @@ const SectionSignIn = (props) => {
                 color={COLORS.Color323}
                 isLoading={isLoading}
             />
-            <MText textStyle={COMMON.TxtSectionSignIn26}>Sign in </MText>
-            <MText textStyle={COMMON.TxtSectionSignIn27}>Welcome back! </MText>
+            <MText textStyle={COMMON.TxtSectionSignIn26}>Sign In </MText>
+            <MText textStyle={COMMON.TxtSectionSignIn27}>Welcome Back! </MText>
             <Formik
                 validationSchema={ValidationSchema}
                 initialValues={{ email: '', password: '' }}
@@ -229,7 +229,7 @@ const SectionSignIn = (props) => {
                         <MText
                             textStyle={COMMON.TxtSectionSignIn34}
                             onPress={() => navigate('Forgetpassword')}>
-                            Forgot password{' '}
+                            Forgot Password{' '}
                         </MText>
                         <MButton
                             onPress={
@@ -243,7 +243,7 @@ const SectionSignIn = (props) => {
                             }
                             style={COMMON.ButtonRect36}
                             containerStyle={COMMON.Button35}
-                            text="Sign in "
+                            text="Sign In "
                             textStyle={COMMON.TextsButton37}
                             gradient={{
                                 colors: [
@@ -273,7 +273,7 @@ const SectionSignIn = (props) => {
                 </View>
                 <View style={[COMMON.ColCenter, { width: '40%' }]}>
                     <MText textStyle={COMMON.TxtSectionSignIn40}>
-                        Or continue with{' '}
+                        Or Continue With{' '}
                     </MText>
                 </View>
                 <View style={{ width: '30%' }}>
@@ -294,9 +294,9 @@ const SectionSignIn = (props) => {
                         COMMON.TxtSectionSignIn44,
                         { color: COLORS.lightText },
                     ]}>
-                    Not a member?{' '}
+                    Not A Member?{' '}
                 </MText>
-                <MText textStyle={COMMON.TxtSectionSignIn44}>Sign up </MText>
+                <MText textStyle={COMMON.TxtSectionSignIn44}>Sign Up </MText>
             </TouchableOpacity>
         </View>
     );

@@ -1,51 +1,15 @@
-import React, { useEffect } from 'react';
-import useTheme from 'hooks/useTheme';
-import { useState } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
-import * as Animatable from 'react-native-animatable';
-import { createScreen } from 'components/elements';
-import { COLORS } from 'constants/common';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { scale, verticalScale, height } from 'utils';
-import LinearGradient from 'react-native-linear-gradient';
-import { DateTimePickerMod } from 'components/common/MDateTimePicker';
-import {
-    DrawerItem,
-    DrawerItemList,
-    DrawerContentScrollView,
-    DrawerToggleButton,
-} from '@react-navigation/drawer';
-
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
-
-import { authStore } from '../../../store';
 import { StackActions, useNavigation } from '@react-navigation/native';
+import { MImage } from 'components/common';
+import { createScreen } from 'components/elements';
 import { Container } from 'components/Sections';
+import { COLORS } from 'constants/common';
+import useTheme from 'hooks/useTheme';
+import React, { useEffect } from 'react';
+import { StyleSheet } from 'react-native';
+import * as Animatable from 'react-native-animatable';
+import { scale } from 'utils';
+import { authStore } from '../../../store';
+
 const SplashScreen = createScreen(
     () => {
         const {
@@ -61,6 +25,7 @@ const SplashScreen = createScreen(
         const navigation = useNavigation();
 
         useEffect(() => {
+            // navigation.dispatch(StackActions.replace('AuthStack'));
             setTimeout(() => {
                 if (token) {
                     navigation.dispatch(StackActions.replace('MainStack'));

@@ -62,7 +62,7 @@ const SectionVerify = (props) => {
                 onPress={() => navigate('Signin')}
                 style={COMMON.ButtonRect137}
                 containerStyle={COMMON.Button136}
-                text="Sign in "
+                text="Sign In "
                 textStyle={COMMON.TextsButton138}
                 gradient={{
                     colors: [

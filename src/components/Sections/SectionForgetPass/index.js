@@ -151,7 +151,7 @@ const SectionForgetPass = (props) => {
                 style={styles.signUpBtn}
                 onPress={() => navigate('Signup')}>
                 <MText textStyle={{ fontSize: scale(12), marginTop: -1 }}>
-                    Not a member?{' '}
+                    Not A Member?{' '}
                 </MText>
                 <MText textStyle={COMMON.TxtSectionForgetPass53}>
                     Sign up{' '}

@@ -247,6 +247,14 @@ export default function ({ COLORS }) {
             lineHeight: verticalScale(24),
             color: COLORS.Color726,
         },
+        TxtSectionSignIn271: {
+            marginBottom: verticalScale(5),
+            marginTop: verticalScale(10),
+            fontSize: verticalScale(17),
+            fontFamily: 'Muli',
+            lineHeight: verticalScale(24),
+            color: COLORS.Color726,
+        },
         TextsInput29: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
@@ -1988,13 +1996,13 @@ export default function ({ COLORS }) {
             marginBottom: verticalScale(16),
         },
         TxtSectionInfo28: {
-            fontSize: verticalScale(17),
+            fontSize: verticalScale(15),
             fontFamily: 'Muli',
             lineHeight: verticalScale(24),
             color: COLORS.Color726,
         },
         TxtSectionInfo29: {
-            fontSize: verticalScale(16),
+            fontSize: verticalScale(14),
             fontFamily: 'Muli',
             textAlign: 'right',
             lineHeight: verticalScale(24),
@@ -2397,6 +2405,19 @@ export default function ({ COLORS }) {
             elevation: 5,
             marginHorizontal: scale(1),
             marginVertical: verticalScale(5),
+        },
+        editPic: {
+            width: scale(35),
+            height: scale(35),
+            borderRadius: scale(50),
+            backgroundColor: COLORS.Color424,
+            justifyContent: 'center',
+            alignItems: 'center',
+            alignSelf: 'center',
+            top: '-6%',
+            left: '10%',
+            borderWidth: 2,
+            borderColor: COLORS.white,
         },
     });
 }
