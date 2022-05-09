@@ -1112,7 +1112,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(26),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: verticalScale(24),
+            lineHeight: verticalScale(30),
             color: COLORS.Color726,
         },
         TxtSectionStart144: {
@@ -1641,6 +1641,9 @@ export default function ({ COLORS }) {
             fontWeight: 'bold',
             lineHeight: verticalScale(24),
             color: COLORS.Color726,
+            height: verticalScale(60),
+            alignItems: 'center',
+            justifyContent: 'center',
         },
         RowItemSectionhome71: {
             marginBottom: verticalScale(14),

@@ -1,6 +1,6 @@
 import { navigate } from 'navigation/methods';
 import React from 'react';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import useTheme from 'hooks/useTheme';
 import { useState } from 'react';
 import { StyleSheet, ScrollView, SafeAreaView } from 'react-native';
@@ -44,8 +44,11 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
+import { useLogin } from 'hooks/auth';
 import { SectionTop01 } from 'components/Sections';
 import { SectionInfo } from 'components/Sections';
+import { showMessage } from 'react-native-flash-message';
+import { authStore } from '../../../store';
 const ProfileScreen = createScreen(
     () => {
         const {
@@ -56,27 +59,73 @@ const ProfileScreen = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
-
+        const [user, setUser] = useState();
+        const [isLoading2, setIsLoading2] = useState(false);
+        const { isLoading, mutate } = useLogin();
+        const { UserName } = authStore((state) => state);
+        useEffect(() => {
+            setIsLoading2(true);
+            try {
+                mutate(
+                    {},
+                    {
+                        onSuccess: (data) => {
+                            if (data?.user_login?.status == 'SUCCESS')
+                                setUser(data?.user_login?.result);
+                        },
+                    },
+                );
+            } catch (e) {
+                console.log(e, 'e!!!!');
+                if (e === 'NOT_FOUND') {
+                    showMessage({
+                        message: 'You are not registered!',
+                        type: 'danger',
+                    });
+                }
+            }
+            setIsLoading2(false);
+        }, []);
         const clickCounter = useRef(0);
         const onPress = () => {
             console.log(`Clicked! ${clickCounter.current}`);
             clickCounter.current = clickCounter.current + 1;
         };
-
+        console.log('uuuuuuuuuu', user);
         return (
             <SafeAreaView style={styles.Profile4}>
+                <MLoading
+                    isLoading={isLoading}
+                    size="large"
+                    color={COLORS.Color323}
+                    style={{ top: '50%' }}
+                />
                 <ScrollView>
                     <SectionTop01 title="Profile" noIcon rightView />
                     <ProfileTab page="profilePage" />
                     <View style={COMMON.SectionPaddingProfile421}>
-                        <MImage
-                            imageSource={IMAGES.image7104}
-                            style={COMMON.image22}
-                            customWidth={scale(326)}
-                            customHeight={scale(94)}
-                        />
+                        {user?.imageAddress ? (
+                            <MImage
+                                imageSource={{ uri: user?.imageAddress }}
+                                style={COMMON.image22}
+                                customWidth={scale(326)}
+                                customHeight={scale(94)}
+                            />
+                        ) : (
+                            <View style={[COMMON.image22, styles.emptyImage]}>
+                                <MIcon
+                                    name={'account'}
+                                    color={COLORS.Color267}
+                                    size={scale(30)}
+                                />
+                            </View>
+                        )}
 
-                        <MText textStyle={COMMON.TxtProfile423}>don jon </MText>
+                        <MText textStyle={COMMON.TxtProfile423}>
+                            {user?.firstName
+                                ? `${user?.firstName} ${user?.lastName}`
+                                : UserName}
+                        </MText>
                         <MButton
                             onPress={() => navigate('EditProfile')}
                             style={COMMON.ButtonRect25}
@@ -93,12 +142,12 @@ const ProfileScreen = createScreen(
                         <SectionInfo
                             style={COMMON.EleProfile430}
                             title="Age"
-                            data="22"
+                            data={user?.age || ' '}
                         />
                         <SectionInfo
                             style={COMMON.EleProfile430}
                             title="Ethnicity"
-                            data="White"
+                            data={user?.ethnicity || 'White'}
                         />
                         <SectionInfo
                             style={COMMON.EleProfile430}
@@ -108,7 +157,7 @@ const ProfileScreen = createScreen(
                         <SectionInfo
                             style={COMMON.EleProfile430}
                             title="Education Level "
-                            data="Associate Degree"
+                            data={user?.educationLevel || ' '}
                         />
                         <SectionInfo
                             style={COMMON.EleProfile430}
@@ -155,6 +204,11 @@ const styles = StyleSheet.create({
     Profile4: {
         backgroundColor: COLORS.Color596,
         height: '100%',
+    },
+    emptyImage: {
+        backgroundColor: COLORS.Color321,
+        justifyContent: 'center',
+        borderRadius: 1000,
     },
 });
 

@@ -134,6 +134,43 @@ const EditProfile = createScreen(
                             height={verticalScale(53)}
                         />
                         <MText textStyle={COMMON.TxtSectionSignIn271}>
+                            Gender{' '}
+                        </MText>
+                        <MView style={COMMON.DropDown10}>
+                            <MDropDown
+                                mb={verticalScale(24)}
+                                // data={CONSTANTS.dropDown}
+                                getSelectedItem={(item) =>
+                                    setSelectedItem(item)
+                                }
+                                placeholderObject={{
+                                    label: 'Male',
+                                    lable: 'Female',
+                                }} //change label
+                                defaultAndroidMode={false}
+                                icon={{
+                                    name: 'keyboard-arrow-down',
+                                    color: COLORS.Color424,
+                                    Component: MaterialCommunityIcons,
+                                }}
+                                style={{
+                                    container: {
+                                        elevation: 1,
+                                        backgroundColor: COLORS.white,
+                                        borderRadius: 8,
+                                        shadowColor: 'rgba(140,140,140,0.16)',
+                                        shadowOpacity: 0.5,
+                                        shadowOffset: { width: 0, height: 0 },
+                                    },
+
+                                    inputAndroid: COMMON.TextsDropDown6,
+                                    inputIOS: COMMON.TextsDropDown6,
+                                    inputAndroidContainer: COMMON.DropDownRect5,
+                                    inputIOSContainer: COMMON.DropDownRect5,
+                                }}
+                            />
+                        </MView>
+                        <MText textStyle={COMMON.TxtSectionSignIn271}>
                             Age
                         </MText>
                         <MView style={COMMON.DropDown10}>

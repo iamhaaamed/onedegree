@@ -30,6 +30,9 @@ export const SIGNIN = gql`
                 imageAddress
                 firstName
                 lastName
+                longitude
+                latitude
+                genders
                 age
                 ethnicity
                 educationLevel
@@ -41,6 +44,7 @@ export const SIGNIN = gql`
                 howFarAreYouWillingToTravelToGetCertified
                 whereDidYouHearAboutOnedegreeCareers
                 whereDidYouHearAboutOnedegreeCareersTextForOther
+
                 externalId
                 id
                 isDeleted
