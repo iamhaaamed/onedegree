@@ -1,63 +1,20 @@
-import React, { useEffect } from 'react';
+import { scale } from 'utils';
 import useTheme from 'hooks/useTheme';
-import { useState } from 'react';
-import { StyleSheet, ScrollView, SafeAreaView } from 'react-native';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
-import { createScreen } from 'components/elements';
-import { COLORS } from 'constants/common';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { scale, verticalScale, height } from 'utils';
-import LinearGradient from 'react-native-linear-gradient';
-import { DateTimePickerMod } from 'components/common/MDateTimePicker';
-import {
-    DrawerItem,
-    DrawerItemList,
-    DrawerContentScrollView,
-    DrawerToggleButton,
-} from '@react-navigation/drawer';
-import { scrollInterpolators, animatedStyles } from './animations';
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
 import { useLogin } from 'hooks/auth';
-import { SectionTophome, Sectionhome } from 'components/Sections';
-import Carousel from 'react-native-snap-carousel';
-import { useGetCareers } from 'hooks/careers';
-import { showMessage } from 'react-native-flash-message';
+import { COLORS } from 'constants/common';
 import { authStore } from '../../../store';
-import { Source } from 'graphql/language/source';
+import { useGetCareers } from 'hooks/careers';
+import Carousel from 'react-native-snap-carousel';
+import React, { useEffect, useState } from 'react';
+import { createScreen } from 'components/elements';
+import { MLoading, MText } from 'components/common';
+import { showMessage } from 'react-native-flash-message';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { Sectionhome, SectionTophome } from 'components/Sections';
+
 const Home2 = createScreen(
     () => {
-        const {
-            LAYOUT,
-            GUTTERS,
-            TYPOGRAPHY,
-            IMAGES,
-            COMMON,
-            CONSTANTS,
-        } = useTheme();
+        const { COMMON } = useTheme();
         const [
             onEndReachedCalledDuringMomentum,
             setonEndReachedCalledDuringMomentum,
@@ -65,7 +22,8 @@ const Home2 = createScreen(
         const [user, setUser] = useState();
         const [isLoading2, setIsLoading2] = useState(false);
         const { mutate } = useLogin();
-        const { UserName } = authStore((state) => state);
+        const { UserName, token } = authStore((state) => state);
+
         useEffect(() => {
             setIsLoading2(true);
             try {
@@ -89,6 +47,7 @@ const Home2 = createScreen(
             }
             setIsLoading2(false);
         }, []);
+
         const {
             isLoading,
             data: careers,
@@ -96,13 +55,17 @@ const Home2 = createScreen(
             hasNextPage,
             isRefetching,
             refetch,
+            error,
         } = useGetCareers({ order: [{ isLiked: 'DESC' }] });
-        console.log('UserName', UserName);
+
         let Careers = careers?.pages;
-        const renderItem = ({ item, index }) => {
+
+        const renderItem = ({ item }) => {
             return item ? <Sectionhome data={item} /> : null;
         };
-        console.log('isLoading', isLoading);
+
+        console.log({ Careers });
+
         return (
             <SafeAreaView style={styles.Home2}>
                 <MLoading
@@ -148,7 +111,7 @@ const Home2 = createScreen(
                         // scrollInterpolator={scrollInterpolator}
                         // slideInterpolatedStyle={animatedStyles}
                         layout={'tinder'}
-                        layoutCardOffset={`18`}
+                        layoutCardOffset={18}
                         // scrollInterpolator={
                         //     scrollInterpolators[`scrollInterpolator${1}`]
                         // }

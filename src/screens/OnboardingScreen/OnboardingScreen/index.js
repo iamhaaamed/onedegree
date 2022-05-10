@@ -86,15 +86,15 @@ const intro6 = createScreen(
                 />
                 <PagerView
                     style={{
+                        flex: 1,
                         width: '100%',
-                        height: page == 0 ? scale(530) : scale(500),
                     }}
                     ref={viewPager}
                     initialPage={0}
                     onPageSelected={(e) => setPage(e.nativeEvent.position)}>
                     {data.map(({ imageBack, subtitle, imageUrl }, index) => {
                         return (
-                            <View>
+                            <View key={index}>
                                 <MImage
                                     imageSource={imageUrl}
                                     style={COMMON.imagevector1}

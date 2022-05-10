@@ -113,6 +113,7 @@ const SectionSignIn = (props) => {
         setIsLoading(false);
     };
     const onSuccessSignin = async (data) => {
+        console.log({ data });
         const status = data?.user_login?.status;
         if (status === 'SUCCESS') {
             console.log('kkkkk', data);

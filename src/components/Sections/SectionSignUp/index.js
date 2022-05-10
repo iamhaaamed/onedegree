@@ -1,64 +1,22 @@
-import React from 'react';
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    StyleSheet,
-    Image,
-    Alert,
-} from 'react-native';
-import { scale, verticalScale, height } from 'utils';
-import { useState } from 'react';
-import useTheme from 'hooks/useTheme';
-import { COLORS } from 'constants/common';
-import { useRef } from 'react';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as yup from 'yup';
 import { Formik } from 'formik';
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
+import useTheme from 'hooks/useTheme';
+import React, { useState } from 'react';
+import { useRegister } from 'hooks/auth';
+import { COLORS } from 'constants/common';
+import { authStore } from '../../../store';
+import { scale, verticalScale } from 'utils';
 import auth from '@react-native-firebase/auth';
-import thirdPartyAuthService from 'services/thirdPartyAuthService/thirdPartyAuthService';
-import { SectionRowSocialCenter } from 'components/Sections';
 import { navigate } from 'navigation/methods';
 import { showMessage } from 'react-native-flash-message';
-import { useRegister } from 'hooks/auth';
-import { authStore } from '../../../store';
+import { SectionRowSocialCenter } from 'components/Sections';
+import { MButton, MInput, MLoading, MText } from 'components/common';
+import { Alert, StyleSheet, TouchableOpacity, View } from 'react-native';
+import thirdPartyAuthService from 'services/thirdPartyAuthService/thirdPartyAuthService';
+
 const SectionSignUp = (props) => {
     const { style } = props;
-    const {
-        LAYOUT,
-        GUTTERS,
-        TYPOGRAPHY,
-        IMAGES,
-        COMMON,
-        CONSTANTS,
-    } = useTheme();
+    const { COMMON } = useTheme();
     const [isLoading, setIsLoading] = useState(false);
     const setUserName = authStore((state) => state.setUserName);
     const { mutate: signupMutate } = useRegister();
@@ -73,6 +31,7 @@ const SectionSignUp = (props) => {
             .max(12, 'Must be 12 characters or less')
             .required('Invalid password'),
     });
+
     const googleSignup = async () => {
         const {
             thirdPartyAccessToken,

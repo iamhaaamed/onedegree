@@ -9,6 +9,7 @@ import { StyleSheet } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { scale } from 'utils';
 import { authStore } from '../../../store';
+import graphQLClient from '../../../graphql/graphQLClient';
 
 const SplashScreen = createScreen(
     () => {
@@ -28,6 +29,7 @@ const SplashScreen = createScreen(
             // navigation.dispatch(StackActions.replace('AuthStack'));
             setTimeout(() => {
                 if (token) {
+                    graphQLClient.setHeader('authorization', 'Bearer ' + token);
                     navigation.dispatch(StackActions.replace('MainStack'));
                 } else if (isOnboardingViewed) {
                     navigation.dispatch(StackActions.replace('AuthStack'));

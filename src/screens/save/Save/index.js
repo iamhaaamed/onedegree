@@ -1,72 +1,45 @@
-import React from 'react';
-import { useRef, useEffect } from 'react';
 import useTheme from 'hooks/useTheme';
-import { useState } from 'react';
-import { StyleSheet, ScrollView, FlatList } from 'react-native';
+import { COLORS } from 'constants/common';
+import { useGetCareers } from 'hooks/save';
+import { scale, verticalScale } from 'utils';
+import { navigate } from 'navigation/methods';
+import { useDebounce } from 'hooks/useDebounce';
+import React, { useRef, useState } from 'react';
+import { createScreen } from 'components/elements';
+import ActionSheet from 'react-native-actions-sheet';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {
+    MText,
+    MInput,
+    MButton,
+    MLoading,
+    MImageBackground,
+} from 'components/common';
+import {
+    Container,
+    SectionTop01,
+    SectionModalRemoveSave,
+} from 'components/Sections';
 import {
     View,
-    Image,
-    Text,
+    FlatList,
+    ScrollView,
+    StyleSheet,
     TouchableOpacity,
     ActivityIndicator,
 } from 'react-native';
-import { createScreen } from 'components/elements';
-import { COLORS } from 'constants/common';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { scale, verticalScale, height } from 'utils';
-import LinearGradient from 'react-native-linear-gradient';
-import { DateTimePickerMod } from 'components/common/MDateTimePicker';
-import ActionSheet from 'react-native-actions-sheet';
-import {
-    DrawerItem,
-    DrawerItemList,
-    DrawerContentScrollView,
-    DrawerToggleButton,
-} from '@react-navigation/drawer';
 
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
-import {
-    SectionTop01,
-    SectionModalRemoveSave,
-    Container,
-} from 'components/Sections';
-import { useGetCareers } from 'hooks/save';
-import { navigate } from 'navigation/methods';
 const Save = createScreen(
     () => {
-        const {
-            LAYOUT,
-            GUTTERS,
-            TYPOGRAPHY,
-            IMAGES,
-            COMMON,
-            CONSTANTS,
-        } = useTheme();
+        const { COMMON } = useTheme();
         const [CareerId, setCareerId] = useState();
+
+        // ? search term state
+        const [searchTerm, setSearchTerm] = useState('');
+
+        // ? debouncing search term with delay
+        const debouncedSearchTerm = useDebounce(searchTerm, 500);
+
         const {
             isLoading,
             data: careers,
@@ -74,29 +47,34 @@ const Save = createScreen(
             hasNextPage,
             isRefetching,
             refetch,
-        } = useGetCareers({ where: { isLiked: { eq: true } } });
+        } = useGetCareers({
+            where: {
+                isLiked: { eq: true },
+                career: { title: { eq: debouncedSearchTerm } },
+            },
+        });
 
         const refActionSheet = useRef(null);
+
         const showActionSheet = (item) => {
             if (refActionSheet.current) {
                 refActionSheet.current?.setModalVisible();
             }
         };
-        {
-            console.log('e!!!!', careers);
-        }
+
         const renderFooter = () => {
             return hasNextPage ? (
                 <ActivityIndicator size={scale(50)} color={COLORS.Color323} />
             ) : null;
         };
+
         return (
             <Container style={styles.Save1}>
                 <MLoading
-                    isLoading={isLoading}
                     size="large"
-                    color={COLORS.Color323}
+                    isLoading={isLoading}
                     style={{ top: '50%' }}
+                    color={COLORS.Color323}
                 />
                 <ScrollView>
                     <SectionTop01
@@ -105,11 +83,12 @@ const Save = createScreen(
                     />
                     <View style={COMMON.SectionPaddingSave15}>
                         <MInput
-                            containerStyle={COMMON.Input6}
                             placeholder=" Search"
-                            textStyle={COMMON.TextsInput7}
-                            backgroundColor={COLORS.white}
                             height={verticalScale(51)}
+                            textStyle={COMMON.TextsInput7}
+                            containerStyle={COMMON.Input6}
+                            backgroundColor={COLORS.white}
+                            onChangeText={(text) => setSearchTerm(text)}
                             iconLeft={{
                                 name: 'magnify',
                                 color: COLORS.Color565,

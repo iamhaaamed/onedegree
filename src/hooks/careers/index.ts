@@ -1,13 +1,15 @@
 import {
-    useInfiniteQuery,
-    useMutation,
     useQuery,
+    useMutation,
     useQueryClient,
+    useInfiniteQuery,
 } from 'react-query';
 import graphQLClient from '../../graphql/graphQLClient';
-import { GET_CAREERS, GET_LIKE_CAREES } from '../../graphql/careers/queries';
 import { USER_UNLIKE, USER_LIKE } from '../../graphql/careers/mutations';
+import { GET_CAREERS, GET_LIKE_CAREES } from '../../graphql/careers/queries';
+
 const PAGE_SIZE = 10;
+
 const useGetCareers = ({
     order,
     where,
