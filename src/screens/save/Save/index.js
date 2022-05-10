@@ -50,9 +50,15 @@ const Save = createScreen(
         } = useGetCareers({
             where: {
                 isLiked: { eq: true },
-                career: { title: { eq: debouncedSearchTerm } },
+                ...(debouncedSearchTerm.length && {
+                    career: {
+                        title: { contains: debouncedSearchTerm },
+                    },
+                }),
             },
         });
+
+        console.log({ careers });
 
         const refActionSheet = useRef(null);
 

@@ -127,6 +127,7 @@ const Sectionhome = (props) => {
                         (item, index) =>
                             index < 3 && (
                                 <View
+                                    key={index}
                                     style={[
                                         COMMON.RowItem,
                                         COMMON.RowItemSectionhome71,

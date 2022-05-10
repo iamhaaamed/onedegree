@@ -1,12 +1,9 @@
 import React from 'react';
-import { useRef } from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
 import useTheme from 'hooks/useTheme';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
 import { COLORS } from 'constants/common';
-import { verticalScale, scale } from 'utils';
-import { MStatusBar, MButton, MText, MSwitch } from 'components/common';
+import { scale, verticalScale } from 'utils';
+import { StyleSheet, View } from 'react-native';
+import { MSwitch, MText } from 'components/common';
 
 const SectionHolder11 = (props) => {
     const { style } = props;
@@ -27,16 +24,12 @@ const SectionHolder11 = (props) => {
                     alignItems: 'flex-start',
                     justifyContent: 'center',
                 }}>
-                <MText textStyle={COMMON.TxtSectionText13}>
-                    {' '}
-                    Notification{' '}
-                </MText>
+                <MText textStyle={COMMON.TxtSectionText13}>Notification</MText>
             </View>
             <View style={{ width: '15%' }}>
                 <MSwitch
-                    style={COMMON.SwitchOn7}
-                    onBgColor={COLORS.Color289}
-                    offBgColor={COLORS.disabled}
+                    onBgColor="#EAEAEA"
+                    offBgColor="#EAEAEA"
                     onColor={COLORS.Color289}
                     offColor={COLORS.disabled}
                     isOn={true}

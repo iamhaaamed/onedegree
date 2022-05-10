@@ -124,8 +124,10 @@ export default function ({ COLORS }) {
             color: COLORS.Color672,
         },
         ButtonRect10: {
-            paddingBottom: verticalScale(14),
-            paddingTop: verticalScale(13),
+            paddingBottom: verticalScale(0),
+            paddingTop: verticalScale(0),
+            width: 32,
+            height: 32,
             paddingRight: 0,
             paddingLeft: 0,
             shadowColor: 'rgba(39,97,236,0.12)',
@@ -697,7 +699,7 @@ export default function ({ COLORS }) {
         TextsButton93: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            color: COLORS.Color289,
+            color: '#eaeaea',
         },
         ButtonRect92: {
             paddingBottom: verticalScale(11),
@@ -1595,10 +1597,9 @@ export default function ({ COLORS }) {
             height: scale(44),
         },
         ButtonRect62: {
-            paddingBottom: verticalScale(6),
-            paddingTop: verticalScale(6),
-            paddingRight: scale(7),
-            paddingLeft: scale(10),
+            marginHorizontal: 5,
+            paddingRight: scale(0),
+            paddingLeft: scale(0),
             backgroundColor: COLORS.white,
             display: 'flex',
             alignItems: 'center',

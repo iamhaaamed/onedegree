@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
         elevation: 1,
         // opacity: 0.78,
         width: '100%',
-        height: verticalScale(56),
+        // height: verticalScale(56),
     },
 });
 export default SectionTophome;

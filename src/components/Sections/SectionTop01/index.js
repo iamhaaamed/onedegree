@@ -1,47 +1,13 @@
 import React from 'react';
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    StyleSheet,
-    Image,
-} from 'react-native';
-import { scale, verticalScale, height } from 'utils';
-import { useState } from 'react';
 import useTheme from 'hooks/useTheme';
 import { COLORS } from 'constants/common';
-import { useRef } from 'react';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
+import { scale, verticalScale } from 'utils';
+import { StyleSheet, View } from 'react-native';
+import { MButton, MText } from 'components/common';
 import { goBack, navigate } from 'navigation/methods';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 const SectionTop01 = (props) => {
     const { style, title, rightView, noIcon, programDetails } = props;
     const {
@@ -99,8 +65,8 @@ const SectionTop01 = (props) => {
 };
 const styles = StyleSheet.create({
     SectionTop01: {
-        paddingBottom: verticalScale(11),
-        paddingTop: verticalScale(11),
+        // paddingBottom: verticalScale(11),
+        // paddingTop: verticalScale(11),
         paddingRight: scale(12),
         paddingLeft: scale(5),
         backgroundColor: COLORS.Color611,
