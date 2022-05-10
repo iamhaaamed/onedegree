@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, ActivityIndicator, View } from 'react-native';
-import LottieView from 'lottie-react-native';
+// import LottieView from 'lottie-react-native';
 
 /**
  * @typedef {{size: 'small || large' }}
@@ -16,7 +16,7 @@ const MLoading = ({ size, color, animationProps, isLoading, style }) => {
         <View style={[styles.container, style]}>
             {!!animationProps ? (
                 <View>
-                    <LottieView
+                    {/* <LottieView
                         ref={animation}
                         loop={!!animationProps.loop}
                         style={{
@@ -24,7 +24,7 @@ const MLoading = ({ size, color, animationProps, isLoading, style }) => {
                             height: animationProps.height,
                         }}
                         source={animationProps.source}
-                    />
+                    /> */}
                 </View>
             ) : (
                 <View style={{ zIndex: 2000 }}>
