@@ -96,12 +96,12 @@ const question6 = createScreen(
                                             mutate(
                                                 {
                                                     point: [
-                                                        parseInt(
+                                                        parseFloat(
                                                             response?.data
                                                                 ?.output[0]
                                                                 ?.latitude,
                                                         ),
-                                                        parseInt(
+                                                        parseFloat(
                                                             response?.data
                                                                 ?.output[0]
                                                                 ?.longitude,
@@ -114,7 +114,8 @@ const question6 = createScreen(
                                                     age: 1,
                                                     genders: 'MALE',
                                                     ethnicity: 'ONE',
-                                                    educationLevel: 'ONE',
+                                                    educationLevel:
+                                                        'Primary Education',
                                                     howFarAreYouWillingToTravelToGetCertified:
                                                         'REMOTE_ONLY',
                                                     whereDidYouHearAboutOnedegreeCareers:

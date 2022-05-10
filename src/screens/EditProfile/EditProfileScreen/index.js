@@ -9,7 +9,7 @@ import { createScreen } from 'components/elements';
 import { COLORS } from 'constants/common';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { scale, verticalScale, height } from 'utils';
+import { scale, verticalScale, height, toPascalCase } from 'utils';
 import LinearGradient from 'react-native-linear-gradient';
 import { DateTimePickerMod } from 'components/common/MDateTimePicker';
 import { Container, ProfileTab } from 'components/Sections';
@@ -45,10 +45,12 @@ import {
     MSlider,
     MView,
 } from 'components/common';
+import { useUpdateProfile } from 'hooks/profile';
 import { SectionTop01 } from 'components/Sections';
 import { SectionInfo } from 'components/Sections';
+import { async } from 'validate.js';
 const EditProfile = createScreen(
-    () => {
+    ({ route }) => {
         const {
             LAYOUT,
             GUTTERS,
@@ -57,36 +59,118 @@ const EditProfile = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
-        const [selectedItem, setSelectedItem] = useState(null);
-        const clickCounter = useRef(0);
-        const onPress = () => {
-            console.log(`Clicked! ${clickCounter.current}`);
-            clickCounter.current = clickCounter.current + 1;
+        console.log('9999999999999', route?.params);
+        const userName = route?.params?.UserName.split(' ');
+        console.log(userName);
+        const Info = route?.params;
+        const [UserImage, setUserImage] = useState(Info?.user?.imageAddress);
+        const [IsLoading, setIsLoading] = useState(false);
+
+        const [UserInfo, setUserInfo] = useState({
+            firstName: userName[0],
+            lastName: userName[1],
+            location: Info?.StateName,
+            age: Info?.user?.age,
+            genders: Info?.user?.genders,
+            latitude: Info?.user?.latitude,
+            longitude: Info?.user?.longitude,
+            industry: Info?.user?.industry,
+            educationLevel: Info?.user?.educationLevel.toString(),
+            currentIncome: Info?.user?.currentIncome,
+            isNotificationEnabled: Info?.user?.isNotificationEnabled,
+            ethnicity: Info?.user?.ethnicity,
+            amount: Info?.user?.amount,
+            amountType: Info?.user?.amountType,
+            howFarAreYouWillingToTravelToGetCertified:
+                Info?.user?.howFarAreYouWillingToTravelToGetCertified,
+            whereDidYouHearAboutOnedegreeCareers:
+                Info?.user?.whereDidYouHearAboutOnedegreeCareers,
+        });
+        console.log('3333333333', UserInfo);
+        const { isLoading, mutate } = useUpdateProfile();
+        const onPress = async () => {
+            mutate(
+                {
+                    point: [
+                        parseFloat(UserInfo?.latitude),
+                        parseFloat(UserInfo?.longitude),
+                    ],
+                    industry: UserInfo?.industry,
+                    currentIncome: parseFloat(UserInfo?.currentIncome),
+                    isNotificationEnabled: UserInfo?.isNotificationEnabled,
+                    imageAddress: UserImage,
+                    age: parseInt(UserInfo?.age),
+                    genders: UserInfo?.genders,
+                    ethnicity: 'ONE',
+                    educationLevel: UserInfo?.educationLevel,
+                    howFarAreYouWillingToTravelToGetCertified:
+                        UserInfo?.howFarAreYouWillingToTravelToGetCertified,
+                    whereDidYouHearAboutOnedegreeCareers:
+                        UserInfo?.whereDidYouHearAboutOnedegreeCareers,
+                    amount: UserInfo?.amount,
+                    amountType: UserInfo?.amountType,
+                },
+                {
+                    onSuccess: (data) => {
+                        console.log('666666', data);
+                        if (data?.user_updateProfile?.status == 'SUCCESS')
+                            navigate('MyProfile');
+                    },
+                },
+            );
         };
 
         return (
             <SafeAreaView style={styles.Profile4}>
+                <MLoading
+                    size="large"
+                    color={COLORS.Color323}
+                    isLoading={IsLoading || isLoading}
+                />
                 <ScrollView>
                     <SectionTop01 title="Profile" rightView />
 
                     <View style={COMMON.SectionPaddingProfile421}>
-                        <MImage
-                            imageSource={IMAGES.image7104}
-                            style={COMMON.image22}
-                            customWidth={scale(326)}
-                            customHeight={scale(94)}
-                        />
-                        <MButton
-                            // onPress={() => navigate('MyProfile')}
-                            style={COMMON.tabStyle}
-                            containerStyle={COMMON.editPic}
-                            icon={{
-                                name: 'edit',
-                                color: COLORS.white,
-                                size: scale(20),
-                                Component: MaterialCommunityIcons,
-                            }}
-                        />
+                        <MImagePicker
+                            getImage={(image) => setUserImage(image)}
+                            closeOverlay={(x) => setIsLoading(x)}>
+                            {({ chooseImage, captureImage }) => (
+                                <>
+                                    {UserImage ? (
+                                        <MImage
+                                            imageSource={{ uri: UserImage }}
+                                            style={COMMON.image22}
+                                            customWidth={scale(326)}
+                                            customHeight={scale(94)}
+                                        />
+                                    ) : (
+                                        <View
+                                            style={[
+                                                COMMON.image22,
+                                                styles.emptyImage,
+                                            ]}>
+                                            <MIcon
+                                                name={'account'}
+                                                color={COLORS.Color267}
+                                                size={scale(30)}
+                                            />
+                                        </View>
+                                    )}
+
+                                    <MButton
+                                        onPress={chooseImage}
+                                        style={COMMON.tabStyle}
+                                        containerStyle={COMMON.editPic}
+                                        icon={{
+                                            name: 'edit',
+                                            color: COLORS.white,
+                                            size: scale(20),
+                                            Component: MaterialCommunityIcons,
+                                        }}
+                                    />
+                                </>
+                            )}
+                        </MImagePicker>
                         <MText
                             textStyle={[
                                 COMMON.TxtSectionSignIn271,
@@ -97,10 +181,14 @@ const EditProfile = createScreen(
                         <MInput
                             inputStyle={COMMON.InputRect86}
                             containerStyle={COMMON.Input85}
-                            placeholder="Don "
+                            // placeholder={
+                            //     UserInfo?.firstName ? UserInfo?.firstName : ''
+                            // }
                             placeholderColor={COLORS.Color280}
-                            // onChangeText={handleChange('email')}
-                            // error={errors && errors.email}
+                            onChangeText={(FName) =>
+                                setUserInfo({ ...UserInfo, firstName: FName })
+                            }
+                            value={UserInfo?.firstName}
                             textStyle={COMMON.TextsInput29}
                             backgroundColor={COLORS.Color963}
                             height={verticalScale(53)}
@@ -111,9 +199,14 @@ const EditProfile = createScreen(
                         <MInput
                             inputStyle={COMMON.InputRect86}
                             containerStyle={COMMON.Input85}
-                            placeholder="Don "
+                            // placeholder={
+                            //     UserInfo?.lastName ? UserInfo?.lastName : ''
+                            // }
                             placeholderColor={COLORS.Color280}
-                            // onChangeText={handleChange('email')}
+                            onChangeText={(LName) =>
+                                setUserInfo({ ...UserInfo, lastName: LName })
+                            }
+                            value={UserInfo?.lastName}
                             // error={errors && errors.email}
                             textStyle={COMMON.TextsInput29}
                             backgroundColor={COLORS.Color963}
@@ -125,9 +218,12 @@ const EditProfile = createScreen(
                         <MInput
                             inputStyle={COMMON.InputRect86}
                             containerStyle={COMMON.Input85}
-                            placeholder="New York "
+                            // placeholder={UserInfo?.location}
                             placeholderColor={COLORS.Color280}
-                            // onChangeText={handleChange('email')}
+                            onChangeText={(loc) =>
+                                setUserInfo({ ...UserInfo, location: loc })
+                            }
+                            value={UserInfo?.location}
                             // error={errors && errors.email}
                             textStyle={COMMON.TextsInput29}
                             backgroundColor={COLORS.Color963}
@@ -138,12 +234,15 @@ const EditProfile = createScreen(
                         </MText>
                         <MView style={COMMON.DropDown10}>
                             <MDropDown
-                                data={CONSTANTS.dropDown}
+                                data={CONSTANTS.gender}
                                 getSelectedItem={(item) =>
-                                    setSelectedItem(item)
+                                    setUserInfo({
+                                        ...UserInfo,
+                                        genders: item?.value,
+                                    })
                                 }
                                 placeholderObject={{
-                                    label: 'Male',
+                                    label: toPascalCase(UserInfo?.genders),
                                 }} //change label
                                 defaultAndroidMode={false}
                                 icon={{
@@ -171,49 +270,37 @@ const EditProfile = createScreen(
                         <MText textStyle={COMMON.TxtSectionSignIn271}>
                             Age
                         </MText>
-                        <MView style={COMMON.DropDown10}>
-                            <MDropDown
-                                mb={verticalScale(24)}
-                                data={CONSTANTS.dropDown}
-                                getSelectedItem={(item) =>
-                                    setSelectedItem(item)
-                                }
-                                placeholderObject={{ label: '22' }} //change label
-                                defaultAndroidMode={false}
-                                icon={{
-                                    name: 'keyboard-arrow-down',
-                                    color: COLORS.Color424,
-                                    Component: MaterialCommunityIcons,
-                                }}
-                                style={{
-                                    container: {
-                                        elevation: 1,
-                                        backgroundColor: COLORS.white,
-                                        borderRadius: 8,
-                                        shadowColor: 'rgba(140,140,140,0.16)',
-                                        shadowOpacity: 0.5,
-                                        shadowOffset: { width: 0, height: 0 },
-                                    },
+                        <MInput
+                            inputStyle={COMMON.InputRect86}
+                            containerStyle={COMMON.Input85}
+                            // placeholder={UserInfo?.age?.toString()}
+                            placeholderColor={COLORS.Color280}
+                            onChangeText={(age) =>
+                                setUserInfo({ ...UserInfo, age: age })
+                            }
+                            value={UserInfo?.age.toString()}
+                            // error={errors && errors.email}
+                            keyboardType="number-pad"
+                            textStyle={COMMON.TextsInput29}
+                            backgroundColor={COLORS.Color963}
+                            height={verticalScale(53)}
+                        />
 
-                                    inputAndroid: COMMON.TextsDropDown6,
-                                    inputIOS: COMMON.TextsDropDown6,
-                                    inputAndroidContainer: COMMON.DropDownRect5,
-                                    inputIOSContainer: COMMON.DropDownRect5,
-                                }}
-                            />
-                        </MView>
                         <MText textStyle={COMMON.TxtSectionSignIn271}>
                             Education Level{' '}
                         </MText>
                         <MView style={COMMON.DropDown10}>
                             <MDropDown
                                 mb={verticalScale(24)}
-                                data={CONSTANTS.dropDown}
-                                getSelectedItem={(item) =>
-                                    setSelectedItem(item)
-                                }
+                                data={CONSTANTS.educationLevel}
+                                getSelectedItem={(item) => {
+                                    setUserInfo({
+                                        ...UserInfo,
+                                        educationLevel: item?.value,
+                                    });
+                                }}
                                 placeholderObject={{
-                                    label: 'Associate Degree',
+                                    label: UserInfo?.educationLevel.toString(),
                                 }} //change label
                                 defaultAndroidMode={false}
                                 icon={{
@@ -244,13 +331,17 @@ const EditProfile = createScreen(
                         <MInput
                             inputStyle={COMMON.InputRect86}
                             containerStyle={COMMON.Input85}
-                            placeholder="$2000"
+                            // placeholder={UserInfo?.currentIncome}
                             placeholderColor={COLORS.Color280}
-                            // onChangeText={handleChange('email')}
+                            onChangeText={(x) =>
+                                setUserInfo({ ...UserInfo, currentIncome: x })
+                            }
+                            value={UserInfo?.currentIncome.toString()}
                             // error={errors && errors.email}
                             textStyle={COMMON.TextsInput29}
                             backgroundColor={COLORS.Color963}
                             height={verticalScale(53)}
+                            dolorSign={'$'}
                         />
                         <MButton
                             onPress={onPress}
@@ -292,6 +383,11 @@ const styles = StyleSheet.create({
     Profile4: {
         backgroundColor: COLORS.Color596,
         height: '100%',
+    },
+    emptyImage: {
+        backgroundColor: COLORS.Color321,
+        justifyContent: 'center',
+        borderRadius: 1000,
     },
 });
 

@@ -44,12 +44,12 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
-import { useLogin } from 'hooks/auth';
+import { useGetProfile } from 'hooks/profile';
 import { SectionTop01 } from 'components/Sections';
 import { SectionInfo } from 'components/Sections';
 import { showMessage } from 'react-native-flash-message';
 import { authStore } from '../../../store';
-
+import axios from 'axios';
 const ProfileScreen = createScreen(
     () => {
         const {
@@ -61,21 +61,39 @@ const ProfileScreen = createScreen(
             CONSTANTS,
         } = useTheme();
         const [user, setUser] = useState();
+        const [StateName, setStateName] = useState('');
+        console.log('sssssssssssss', StateName);
         const [isLoading2, setIsLoading2] = useState(false);
-        const { isLoading, mutate } = useLogin();
+        const { isLoading, data } = useGetProfile();
+        console.log(
+            'ddddddddddddd',
+            data,
+            `https://geocode.xyz/${data?.user_login?.result?.latitude},${data?.user_login?.result?.longitude}?json=1`,
+        );
         const { UserName } = authStore((state) => state);
         useEffect(() => {
             setIsLoading2(true);
+            setUser(data?.user_login?.result);
             try {
-                mutate(
-                    {},
-                    {
-                        onSuccess: (data) => {
-                            if (data?.user_login?.status == 'SUCCESS')
-                                setUser(data?.user_login?.result);
-                        },
-                    },
-                );
+                axios
+                    .get(
+                        `https://geocode.xyz/${data?.user_login?.result?.latitude},${data?.user_login?.result?.longitude}?json=1`,
+                    )
+                    .then(function (response) {
+                        console.log('///////////', response);
+                        if (response?.data) {
+                            setStateName(response?.data?.statename);
+                        }
+                    })
+                    .catch(function (error) {
+                        showMessage({
+                            message: `Something went wrong: ${error.message}`,
+                            type: 'danger',
+                        });
+                    })
+                    .then(function () {
+                        // always executed
+                    });
             } catch (e) {
                 console.log(e, 'e!!!!');
                 if (e === 'NOT_FOUND') {
@@ -85,14 +103,52 @@ const ProfileScreen = createScreen(
                     });
                 }
             }
+            // try {
+            //     mutate(
+            //         {},
+            //         {
+            //             onSuccess: async (data) => {
+            //                 if (data?.user_login?.status == 'SUCCESS')
+            //                     setUser(data?.user_login?.result);
+            //                 console.log(
+            //                     '22222222222',
+            //                     `https://geocode.xyz/${data?.user_login?.result?.longitude},${data?.user_login?.result?.latitude}?json=1`,
+            //                 );
+            //                 axios
+            //                     .get(
+            //                         `https://geocode.xyz/${data?.user_login?.result?.longitude},${data?.user_login?.result?.latitude}?json=1`,
+            //                     )
+            //                     .then(function (response) {
+            //                         console.log('///////////', response);
+            //                         if (response?.data) {
+            //                             setStateName(response?.data?.statename);
+            //                         }
+            //                     })
+            //                     .catch(function (error) {
+            //                         showMessage({
+            //                             message: `Something went wrong: ${error.message}`,
+            //                             type: 'danger',
+            //                         });
+            //                     })
+            //                     .then(function () {
+            //                         // always executed
+            //                     });
+            //             },
+            //         },
+            //     );
+            // } catch (e) {
+            //     console.log(e, 'e!!!!');
+            //     if (e === 'NOT_FOUND') {
+            //         showMessage({
+            //             message: 'You are not registered!',
+            //             type: 'danger',
+            //         });
+            //     }
+            // }
             setIsLoading2(false);
-        }, []);
-        const clickCounter = useRef(0);
-        const onPress = () => {
-            console.log(`Clicked! ${clickCounter.current}`);
-            clickCounter.current = clickCounter.current + 1;
-        };
-        console.log('uuuuuuuuuu', user);
+        }, [data]);
+
+        // https://geocode.xyz/35.7219,51.3347?json=1
         //         fetch('https://maps.googleapis.com/maps/api/geocode/json?address=' + myLat + ',' + myLon + '&key=' + myApiKey)
         //         .then((response) => response.json())
         //         .then((responseJson) => {
@@ -133,7 +189,13 @@ const ProfileScreen = createScreen(
                                 : UserName}
                         </MText>
                         <MButton
-                            onPress={() => navigate('EditProfile')}
+                            onPress={() =>
+                                navigate('EditProfile', {
+                                    user,
+                                    StateName,
+                                    UserName,
+                                })
+                            }
                             style={COMMON.ButtonRect25}
                             containerStyle={COMMON.Button24}
                             text="Complete Profile"
@@ -143,7 +205,7 @@ const ProfileScreen = createScreen(
                         <SectionInfo
                             style={COMMON.EleProfile430}
                             title="Location"
-                            data="New York"
+                            data={StateName || user?.location || 'New York'}
                         />
                         <SectionInfo
                             style={COMMON.EleProfile430}
@@ -171,7 +233,13 @@ const ProfileScreen = createScreen(
                             data={user?.currentIncome || ' '}
                         />
                         <MButton
-                            onPress={onPress}
+                            onPress={() =>
+                                navigate('EditProfile', {
+                                    user,
+                                    StateName,
+                                    UserName,
+                                })
+                            }
                             style={COMMON.ButtonRect36}
                             containerStyle={COMMON.Button35}
                             text="Edit"

@@ -2417,7 +2417,7 @@ export default function ({ COLORS }) {
             justifyContent: 'center',
             alignItems: 'center',
             alignSelf: 'center',
-            top: '-6%',
+            top: '-28%',
             left: '10%',
             borderWidth: 2,
             borderColor: COLORS.white,

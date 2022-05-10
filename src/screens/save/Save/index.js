@@ -83,7 +83,7 @@ const Save = createScreen(
             }
         };
         {
-            console.log('e!!!!', hasNextPage);
+            console.log('e!!!!', careers);
         }
         const renderFooter = () => {
             return hasNextPage ? (

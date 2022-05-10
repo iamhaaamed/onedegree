@@ -15,6 +15,46 @@ export default {
             value: 'hockey',
         },
     ],
+    gender: [
+        {
+            label: 'Male',
+            value: 'MALE',
+        },
+        {
+            label: 'Female',
+            value: 'FEMALE',
+        },
+    ],
+    educationLevel: [
+        {
+            label: 'No Schooling',
+            value: 'No Schooling',
+        },
+        {
+            label: 'Primary Education',
+            value: 'Primary Education',
+        },
+        {
+            label: 'Lower Secondary Education',
+            value: 'Lower Secondary Education',
+        },
+        {
+            label: 'Upper Secondary Education',
+            value: 'Upper Secondary Education',
+        },
+        {
+            label: 'Bachelors Degree',
+            value: 'Bachelors Degree',
+        },
+        {
+            label: 'Masters Degree',
+            value: 'Masters Degree',
+        },
+        {
+            label: 'Doctoral Degree',
+            value: 'Doctoral Degree',
+        },
+    ],
     flatList: [
         {
             id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',

@@ -179,10 +179,10 @@ const Sectionhome = (props) => {
                                     },
                                 });
                         }}
-                        style={[
-                            COMMON.ButtonRect920,
-                            { paddingHorizontal: 10 },
-                        ]}
+                        // style={[
+                        //     COMMON.ButtonRect920,
+                        //     { paddingHorizontal: 10 },
+                        // ]}
                         containerStyle={[COMMON.Button910]}
                         color={COLORS.white}
                         iconLeft={{
@@ -195,10 +195,10 @@ const Sectionhome = (props) => {
                 <View style={{ width: '50%' }}>
                     <MButton
                         onPress={() => navigate('MoreInfo', { data, Like })}
-                        style={[
-                            COMMON.ButtonRect920,
-                            { paddingHorizontal: 20 },
-                        ]}
+                        // style={[
+                        //     COMMON.ButtonRect920,
+                        //     { paddingHorizontal: 20 },
+                        // ]}
                         containerStyle={[
                             COMMON.Button910,
                             {
