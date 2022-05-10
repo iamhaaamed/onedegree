@@ -11,6 +11,8 @@ const useLogin = () => {
     return useMutation(
         async (_data: any) => {
             const idToken = await auth().currentUser?.getIdToken();
+            console.log('....................', idToken);
+
             if (idToken) {
                 graphQLClient.setHeader('authorization', 'Bearer ' + idToken);
             }
@@ -32,6 +34,11 @@ const useRegister = () => {
     const { setUserId } = authStore((state) => state);
     return useMutation(
         async (_data: any) => {
+            const idToken = await auth().currentUser?.getIdToken();
+            console.log('.../////////////.......', idToken);
+            if (idToken) {
+                graphQLClient.setHeader('authorization', 'Bearer ' + idToken);
+            }
             return graphQLClient.request(SIGNUP);
         },
         {

@@ -49,6 +49,7 @@ import { navigate } from 'navigation/methods';
 import { StackActions, useNavigation } from '@react-navigation/native';
 import * as yup from 'yup';
 import { Formik } from 'formik';
+import { async } from 'validate.js';
 const SectionSignIn = (props) => {
     const { style } = props;
     const {
@@ -126,6 +127,7 @@ const SectionSignIn = (props) => {
         }
     };
     const signinWithEmail = async (data) => {
+        console.log('data', data);
         try {
             try {
                 await auth().signInWithEmailAndPassword(
@@ -158,8 +160,24 @@ const SectionSignIn = (props) => {
             console.log(err);
         }
     };
-    const onSubmit = (data) => {
-        signinWithEmail(data);
+    const onSubmit = async (data) => {
+        try {
+            setIsLoading(true);
+            if (data) {
+                await signinWithEmail(data);
+            }
+
+            mutate(
+                {},
+                {
+                    onSuccess: onSuccessSignin,
+                },
+            );
+        } catch (e) {
+            console.log(e, 'e');
+        } finally {
+            setIsLoading(false);
+        }
     };
     async function doAppleLogin() {
         const {
