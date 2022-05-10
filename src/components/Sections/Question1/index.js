@@ -67,13 +67,12 @@ const Question1 = (props) => {
         'Technology',
         'Not sure',
     ];
-    const [All, setAll] = useState(false);
-    const [isChecked, setIsChecked] = useState([]);
-    const [IndustryArray, setIndustryArray] = useState([]);
+    const [IndustryArray, setIndustryArray] = useState(
+        answer?.split(',') || [],
+    );
     useEffect(() => {
         setAnswer(IndustryArray);
     }, [IndustryArray]);
-    const handleDirection = (item) => {};
     return (
         <>
             <MText textStyle={COMMON.Txtquestion259}>

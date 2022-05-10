@@ -15,6 +15,40 @@ export default {
             value: 'hockey',
         },
     ],
+    hearAbout: [
+        {
+            label: 'Craigslist',
+            value: 'CRAIGSLIST',
+        },
+        {
+            label: 'Direct Referral',
+            value: 'DIRECT_REFERRAL',
+        },
+        {
+            label: 'FaceBook',
+            value: 'FACEBOOK',
+        },
+        {
+            label: 'Instagram',
+            value: 'INSTAGRAM',
+        },
+        {
+            label: 'Linked In',
+            value: 'LINKED_IN',
+        },
+        {
+            label: 'Reddit',
+            value: 'REDDIT',
+        },
+        {
+            label: 'Tik Tok',
+            value: 'TIK_TOK ',
+        },
+        {
+            label: 'Other',
+            value: 'OTHER',
+        },
+    ],
     gender: [
         {
             label: 'Male',

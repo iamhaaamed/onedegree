@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import useTheme from 'hooks/useTheme';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -8,7 +8,7 @@ import { verticalScale, scale } from 'utils';
 import { MStatusBar, MButton, MText, MDropDown } from 'components/common';
 import { navigate } from 'navigation/methods';
 const Question5 = (props) => {
-    const { style, title, answer, page } = props;
+    const { style, title, answer, page, OnHear } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -19,7 +19,10 @@ const Question5 = (props) => {
     } = useTheme();
 
     const [selectedItem, setSelectedItem] = useState(null);
-
+    useEffect(() => {
+        if (selectedItem) OnHear(selectedItem);
+        console.log('selectedItem', selectedItem);
+    }, [selectedItem]);
     return (
         <>
             <MText textStyle={COMMON.Txtquestion6104}>
@@ -28,7 +31,7 @@ const Question5 = (props) => {
             <View style={COMMON.SectionPaddingProfile421}>
                 <View style={COMMON.DropDown4}>
                     <MDropDown
-                        data={CONSTANTS.dropDown}
+                        data={CONSTANTS.hearAbout}
                         getSelectedItem={(item) => setSelectedItem(item)}
                         placeholderObject={{ label: 'Craigslist' }} //change label
                         defaultAndroidMode={false}

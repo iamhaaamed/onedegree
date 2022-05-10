@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRef } from 'react';
+import { useState } from 'react';
 import { StyleSheet, View, ScrollView, FlatList } from 'react-native';
 import useTheme from 'hooks/useTheme';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -14,9 +14,9 @@ import {
 } from 'components/Sections';
 import { createScreen } from 'components/elements';
 import { COLORS } from 'constants/common';
-import { verticalScale, scale } from 'utils';
+import { verticalScale, scale, toPascalCase } from 'utils';
 import { MStatusBar, MButton, MText } from 'components/common';
-
+import { useGetProfile } from 'hooks/profile';
 const Question = createScreen(
     () => {
         const {
@@ -27,15 +27,18 @@ const Question = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
-        const DATA = [
+        const { isLoading, data } = useGetProfile();
+        console.log('ddddddddddddd', data);
+
+        const [DATA, setDATA] = useState([
             {
                 title: 'What Industries Are You Interested In?',
-                answer: 'Aviation',
+                answer: data?.user_login?.result?.industry,
                 code: 1,
             },
             {
                 title: 'How Much Do You Want To Make?',
-                answer: 'Hourly ',
+                answer: toPascalCase(data?.user_login?.result?.amountType),
                 code: 2,
             },
             {
@@ -50,17 +53,22 @@ const Question = createScreen(
             // },
             {
                 title: 'How Far Are You Willing To Travel To Get Certified?',
-                answer: 'Over An Hour',
+                answer: toPascalCase(
+                    data?.user_login?.result
+                        ?.howFarAreYouWillingToTravelToGetCertified,
+                ),
                 code: 4,
             },
             {
                 title: 'Where Did You Hear About Onedegree Careers?',
-                answer: 'Direct Referral (Family/Friends)',
+                answer:
+                    data?.user_login?.result
+                        ?.whereDidYouHearAboutOnedegreeCareersTextForOther,
                 code: 5,
             },
-        ];
+        ]);
         return (
-            <Container style={styles.Question1674}>
+            <Container style={styles.Question1674} isLoading={isLoading}>
                 <ScrollView>
                     <SectionTop01 title="Questions" rightView />
                     <View style={COMMON.SectionPaddingSave15}>

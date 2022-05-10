@@ -29,7 +29,10 @@ const SectionItemQuestion = (props) => {
                 <View style={{ width: '10%', justifyContent: 'flex-end' }}>
                     <MButton
                         onPress={() =>
-                            navigate('ProfileQuestion5', { code: code })
+                            navigate('ProfileQuestion5', {
+                                code: code,
+                                answer: answer,
+                            })
                         }
                         style={COMMON.ButtonRect8}
                         color={COLORS.white}

@@ -72,37 +72,40 @@ const ProfileScreen = createScreen(
         );
         const { UserName } = authStore((state) => state);
         useEffect(() => {
-            setIsLoading2(true);
-            setUser(data?.user_login?.result);
-            try {
-                axios
-                    .get(
-                        `https://geocode.xyz/${data?.user_login?.result?.latitude},${data?.user_login?.result?.longitude}?json=1`,
-                    )
-                    .then(function (response) {
-                        console.log('///////////', response);
-                        if (response?.data) {
-                            setStateName(response?.data?.statename);
-                        }
-                    })
-                    .catch(function (error) {
+            if (data) {
+                setIsLoading2(true);
+                setUser(data?.user_login?.result);
+                try {
+                    axios
+                        .get(
+                            `https://geocode.xyz/${data?.user_login?.result?.latitude},${data?.user_login?.result?.longitude}?json=1`,
+                        )
+                        .then(function (response) {
+                            console.log('///////////', response);
+                            if (response?.data) {
+                                setStateName(response?.data?.statename);
+                            }
+                        })
+                        .catch(function (error) {
+                            showMessage({
+                                message: `Something went wrong: ${error.message}`,
+                                type: 'danger',
+                            });
+                        })
+                        .then(function () {
+                            // always executed
+                        });
+                } catch (e) {
+                    console.log(e, 'e!!!!');
+                    if (e === 'NOT_FOUND') {
                         showMessage({
-                            message: `Something went wrong: ${error.message}`,
+                            message: 'You are not registered!',
                             type: 'danger',
                         });
-                    })
-                    .then(function () {
-                        // always executed
-                    });
-            } catch (e) {
-                console.log(e, 'e!!!!');
-                if (e === 'NOT_FOUND') {
-                    showMessage({
-                        message: 'You are not registered!',
-                        type: 'danger',
-                    });
+                    }
                 }
             }
+
             // try {
             //     mutate(
             //         {},
