@@ -41,6 +41,11 @@ const App = () => {
                         'Bearer ' + idToken,
                     );
                     setToken(idToken);
+                } else {
+                    showMessage({
+                        message: 'please login first',
+                        type: 'danger',
+                    });
                 }
             } else {
                 graphQLClient.setHeader('authorization', '');
