@@ -66,7 +66,6 @@ const SectionVerification = (props) => {
         try {
             await auth().signInWithEmailAndPassword(email, password);
             const checkDone = auth().currentUser?.emailVerified;
-            console.log('6666', checkDone);
             if (checkDone) {
                 completeRegistrationWithEmailPassword();
             } else {

@@ -1,53 +1,15 @@
-import React, { useEffect } from 'react';
-import { useRef } from 'react';
-import useTheme from 'hooks/useTheme';
-import { useState } from 'react';
-import { StyleSheet, ScrollView, FlatList } from 'react-native';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
-import { createScreen } from 'components/elements';
+import { MCheckBox, MInput, MText } from 'components/common';
 import { COLORS } from 'constants/common';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { scale, verticalScale, height, width } from 'utils';
-import LinearGradient from 'react-native-linear-gradient';
-import { DateTimePickerMod } from 'components/common/MDateTimePicker';
-import {
-    DrawerItem,
-    DrawerItemList,
-    DrawerContentScrollView,
-    DrawerToggleButton,
-} from '@react-navigation/drawer';
-
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
-import { navigate } from 'navigation/methods';
-import { SectionTop, Qustion1 } from 'components/Sections';
-import * as yup from 'yup';
 import { Formik } from 'formik';
+import useTheme from 'hooks/useTheme';
+import React, { useEffect, useState } from 'react';
+import { FlatList, StyleSheet, View } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { scale, toPascalCase, verticalScale } from 'utils';
+import * as yup from 'yup';
+
 const Question2 = (props) => {
-    const { style, title, answer, page, onComplete } = props;
+    const { style, title, answer, page, onComplete, answerAmount } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -56,12 +18,10 @@ const Question2 = (props) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
-
     const [isChecked, setIsChecked] = useState();
     // const [ExteraView, setView] = useState(false);
-    const [Dolor, setDolor] = useState('$');
-    const [Type, setType] = useState();
-    const [Amount, setAmount] = useState('');
+    const [Type, setType] = useState(toPascalCase(answer));
+    const [Amount, setAmount] = useState(answerAmount?.toString() || '');
     const TypesArray = ['Hourly', 'Monthly', 'Annually'];
 
     const handleDirection = (item, i) => {
@@ -76,7 +36,6 @@ const Question2 = (props) => {
             .required('Invalid Amount'),
     });
     const onSubmit = (data) => {
-        console.log(';;;;;;;;;;;;', data);
         onComplete({ type: data?.type, amount: data?.amount });
     };
     useEffect(() => {
@@ -167,6 +126,7 @@ const Question2 = (props) => {
                                                         : 'chevron-down'
                                                 }
                                                 isChecked={
+                                                    Type == item ||
                                                     isChecked == index
                                                         ? true
                                                         : false
@@ -193,7 +153,7 @@ const Question2 = (props) => {
                                                     containerStyle={
                                                         COMMON.Input124
                                                     }
-                                                    placeholder="Please enter Amount"
+                                                    // placeholder="Please enter Amount"
                                                     error={
                                                         errors && errors.amount
                                                     }
@@ -210,6 +170,7 @@ const Question2 = (props) => {
                                                     backgroundColor={
                                                         COLORS.Color963
                                                     }
+                                                    value={Amount}
                                                     keyboardType="number-pad"
                                                     height={verticalScale(48)}
                                                     // iconRight={{

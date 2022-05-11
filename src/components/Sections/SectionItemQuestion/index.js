@@ -9,7 +9,7 @@ import { MStatusBar, MButton, MText } from 'components/common';
 import { navigate } from 'navigation/methods';
 
 const SectionItemQuestion = (props) => {
-    const { style, title, answer, code } = props;
+    const { style, title, answer, code, answerAmount } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -18,7 +18,6 @@ const SectionItemQuestion = (props) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
-
     return (
         <View {...props} style={[styles.SectionItem, style]}>
             <View style={[COMMON.RowItem]}>

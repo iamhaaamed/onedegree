@@ -65,21 +65,17 @@ const ProfileQuestion5 = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
-
         const { isLoading, data } = useGetProfile();
-        const [Data, setData] = useState(data);
-        console.log('99999', Data);
         const [isChecked, setAnswers] = useState();
         const [ZipCode, setZipCode] = useState();
         const [userInput, setUserInput] = useState();
         const [Hear, setHear] = useState(
-            Data?.user_login?.result
+            data?.user_login?.result
                 ?.whereDidYouHearAboutOnedegreeCareersTextForOther,
         );
         const [Travel, setTravel] = useState(
-            Data?.user_login?.result?.howFarAreYouWillingToTravelToGetCertified,
+            data?.user_login?.result?.howFarAreYouWillingToTravelToGetCertified,
         );
-
         const { isLoading: loadingUpdate, mutate } = useUpdateProfile();
         const Complete = (data) => {
             if (data.amount && data.type) setUserInput(data);
@@ -96,9 +92,7 @@ const ProfileQuestion5 = createScreen(
         }
         const onPress = async (code) => {
             if (code == 1) {
-                console.log('1');
                 let String = callMyMethod(isChecked);
-                console.log('String', String);
                 mutate(
                     {
                         point: [
@@ -128,14 +122,12 @@ const ProfileQuestion5 = createScreen(
                     },
                     {
                         onSuccess: (data) => {
-                            console.log('666666', data);
                             if (data?.user_updateProfile?.status == 'SUCCESS')
                                 navigate('Question');
                         },
                     },
                 );
             } else if (code == 2) {
-                console.log('2');
                 mutate(
                     {
                         point: [
@@ -170,20 +162,17 @@ const ProfileQuestion5 = createScreen(
                     },
                     {
                         onSuccess: (data) => {
-                            console.log('666666', data);
                             if (data?.user_updateProfile?.status == 'SUCCESS')
                                 navigate('Question');
                         },
                     },
                 );
             } else if (code == 3) {
-                console.log('3');
                 const getLatLang = `https://api.promaptools.com/service/us/zip-lat-lng/get/?zip=${ZipCode}&key=17o8dysaCDrgv1c`;
                 if (ZipCode)
                     axios
                         .get(getLatLang)
                         .then(function (response) {
-                            console.log(response?.data?.output);
                             if (response?.data?.output[0]) {
                                 mutate(
                                     {
@@ -231,7 +220,6 @@ const ProfileQuestion5 = createScreen(
                                     },
                                     {
                                         onSuccess: (data) => {
-                                            console.log('666666', data);
                                             if (
                                                 data?.user_updateProfile
                                                     ?.status == 'SUCCESS'
@@ -252,7 +240,6 @@ const ProfileQuestion5 = createScreen(
                             // always executed
                         });
             } else if (code == 4) {
-                console.log('4');
                 mutate(
                     {
                         point: [
@@ -272,13 +259,13 @@ const ProfileQuestion5 = createScreen(
                         educationLevel:
                             data?.user_login?.result?.educationLevel,
                         howFarAreYouWillingToTravelToGetCertified:
-                            Travel == 'Over an hour'
+                            Travel == 'Over An Hour'
                                 ? 'OVER_AN_HOUR'
-                                : Travel == 'Up to 1 hour'
+                                : Travel == 'Up To1 Hour'
                                 ? 'UP_TO1_HOUR'
-                                : Travel == 'Up to 45 minutes'
+                                : Travel == 'Up To45 Minutes'
                                 ? 'UP_TO45_MINUTES'
-                                : Travel == 'Up to 20 minutes'
+                                : Travel == 'Up To20 Minutes'
                                 ? 'UP_TO20_MINUTES'
                                 : 'REMOTE_ONLY',
                         whereDidYouHearAboutOnedegreeCareers:
@@ -289,7 +276,6 @@ const ProfileQuestion5 = createScreen(
                     },
                     {
                         onSuccess: (data) => {
-                            console.log('666666', data);
                             if (data?.user_updateProfile?.status == 'SUCCESS')
                                 navigate('Question');
                         },
@@ -323,7 +309,6 @@ const ProfileQuestion5 = createScreen(
                     },
                     {
                         onSuccess: (data) => {
-                            console.log('666666', data);
                             if (data?.user_updateProfile?.status == 'SUCCESS')
                                 navigate('Question');
                         },
@@ -336,14 +321,15 @@ const ProfileQuestion5 = createScreen(
                     return (
                         <Question1
                             setAnswer={(value) => setAnswers(value)}
-                            answer={Data?.user_login?.result?.industry}
+                            answer={data?.user_login?.result?.industry}
                         />
                     );
                 case 2:
                     return (
                         <Question2
                             onComplete={(data) => Complete(data)}
-                            answer={Data?.user_login?.result?.amountType}
+                            answer={data?.user_login?.result?.amountType}
+                            answerAmount={data?.user_login?.result?.amount}
                         />
                     );
                 case 3:
@@ -357,7 +343,7 @@ const ProfileQuestion5 = createScreen(
                     return (
                         <Question4
                             answer={
-                                Data?.user_login?.result
+                                data?.user_login?.result
                                     ?.howFarAreYouWillingToTravelToGetCertified
                             }
                             onTravel={(data) => setTravel(data)}
@@ -367,7 +353,7 @@ const ProfileQuestion5 = createScreen(
                     return (
                         <Question5
                             answer={
-                                Data?.user_login?.result
+                                data?.user_login?.result
                                     ?.whereDidYouHearAboutOnedegreeCareers
                             }
                             OnHear={(data) => setHear(data?.value)}
@@ -387,7 +373,7 @@ const ProfileQuestion5 = createScreen(
                     <SectionTop01 title="Questions" />
                     <View
                         style={[
-                            COMMON.SectionPaddingSave15,
+                            // COMMON.SectionPaddingSave15,
                             { marginTop: scale(30) },
                         ]}>
                         {SelectQuestion()}

@@ -60,11 +60,6 @@ const Search = createScreen(
                 refActionSheet.current?.setModalVisible();
             }
         };
-        const clickCounter = useRef(0);
-        const onPress = () => {
-            console.log(`Clicked! ${clickCounter.current}`);
-            clickCounter.current = clickCounter.current + 1;
-        };
 
         return (
             <Container style={styles.Search}>

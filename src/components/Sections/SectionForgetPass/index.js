@@ -64,14 +64,11 @@ const SectionForgetPass = (props) => {
             .required('Invalid email address'),
     });
     const onSubmitForgotPassword = async (data) => {
-        console.log(data);
-
         setIsLoading(true);
         try {
             await auth()
                 .sendPasswordResetEmail(data.email)
                 .then((result) => {
-                    console.log(result, 'result');
                     setIsLoading(false);
                     navigate('VerifyEmail');
                 });

@@ -60,43 +60,42 @@ const ProfileScreen = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
+        const { isLoading, data } = useGetProfile();
         const [user, setUser] = useState();
         const [StateName, setStateName] = useState('');
         const [isLoading2, setIsLoading2] = useState(false);
-        const { isLoading, data } = useGetProfile();
 
+        console.log('u:   ', user);
         const { UserName } = authStore((state) => state);
         useEffect(() => {
-            if (data?.user_login?.result) {
-                console.log(
-                    'ddddddddddddd',
-                    data,
-                    `https://geocode.xyz/${data?.user_login?.result?.latitude},${data?.user_login?.result?.longitude}?json=1`,
-                );
-                setIsLoading2(true);
-                setUser(data?.user_login?.result);
+            console.log(
+                'ddddddddddddd',
+                data,
+                `https://geocode.xyz/${data?.user_login?.result?.latitude},${data?.user_login?.result?.longitude}?json=1`,
+            );
+            setIsLoading2(true);
+            setUser(data?.user_login?.result);
 
-                axios
-                    .get(
-                        `https://geocode.xyz/${data?.user_login?.result?.latitude},${data?.user_login?.result?.longitude}?json=1`,
-                    )
-                    .then(function (response) {
-                        console.log('///////////', response);
-                        if (response?.data) {
-                            setStateName(response?.data?.statename);
-                        }
-                    })
-                    .catch(function (error) {
-                        console.log('///////////', error);
-                        // showMessage({
-                        //     message: `Something went wrong: ${error.message}`,
-                        //     type: 'danger',
-                        // });
-                    })
-                    .then(function () {
-                        // always executed
-                    });
-            }
+            axios
+                .get(
+                    `https://geocode.xyz/${data?.user_login?.result?.latitude},${data?.user_login?.result?.longitude}?json=1`,
+                )
+                .then(function (response) {
+                    console.log('///////////', response);
+                    if (response?.data) {
+                        setStateName(response?.data?.statename);
+                    }
+                })
+                .catch(function (error) {
+                    console.log('///////////', error);
+                    // showMessage({
+                    //     message: `Something went wrong: ${error.message}`,
+                    //     type: 'danger',
+                    // });
+                })
+                .then(function () {
+                    // always executed
+                });
 
             // try {
             //     mutate(
@@ -152,7 +151,7 @@ const ProfileScreen = createScreen(
         return (
             <SafeAreaView style={styles.Profile4}>
                 <MLoading
-                    isLoading={isLoading}
+                    isLoading={isLoading || isLoading2}
                     size="large"
                     color={COLORS.Color323}
                     style={{ top: '50%' }}

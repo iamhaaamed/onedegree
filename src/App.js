@@ -44,7 +44,7 @@ const App = () => {
                 }
             } else {
                 graphQLClient.setHeader('authorization', '');
-                AsyncStorage.clear();
+                // AsyncStorage.clear();
                 queryClient.clear();
             }
             if (initializing) {

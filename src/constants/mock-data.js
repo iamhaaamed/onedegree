@@ -61,20 +61,20 @@ export default {
     ],
     educationLevel: [
         {
-            label: 'No Schooling',
-            value: 'No Schooling',
+            label: 'Some High School',
+            value: 'Some High School',
         },
         {
-            label: 'Primary Education',
-            value: 'Primary Education',
+            label: 'High School Graduate',
+            value: 'High School Graduate',
         },
         {
-            label: 'Lower Secondary Education',
-            value: 'Lower Secondary Education',
+            label: 'Some College',
+            value: 'Some College',
         },
         {
-            label: 'Upper Secondary Education',
-            value: 'Upper Secondary Education',
+            label: 'College Degree',
+            value: 'College Degree',
         },
         {
             label: 'Bachelors Degree',

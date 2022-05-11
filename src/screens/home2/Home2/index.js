@@ -37,7 +37,6 @@ const Home2 = createScreen(
                     },
                 );
             } catch (e) {
-                console.log(e, 'e!!!!');
                 if (e === 'NOT_FOUND') {
                     showMessage({
                         message: 'You are not registered!',
@@ -63,8 +62,6 @@ const Home2 = createScreen(
         const renderItem = ({ item }) => {
             return item ? <Sectionhome data={item} /> : null;
         };
-
-        console.log({ Careers });
 
         return (
             <SafeAreaView style={styles.Home2}>

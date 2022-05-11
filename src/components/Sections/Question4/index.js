@@ -7,7 +7,7 @@ import { createScreen } from 'components/elements';
 import { COLORS } from 'constants/common';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { scale, verticalScale, height } from 'utils';
+import { scale, verticalScale, height, toPascalCase } from 'utils';
 import LinearGradient from 'react-native-linear-gradient';
 import { DateTimePickerMod } from 'components/common/MDateTimePicker';
 import {
@@ -53,24 +53,24 @@ const Question4 = (props) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
-    const [Type, setType] = useState();
-    const [isChecked, setIsChecked] = useState(false);
+    const [Type, setType] = useState(toPascalCase(answer));
+    const [isChecked, setIsChecked] = useState();
     useEffect(() => {
         if (Type) onTravel(Type);
     }, [Type]);
     const TypesArray = [
-        'Over an hour',
-        'Up to 1 hour',
-        'Up to 45 minutes',
-        'Up to 20 minutes',
-        'Remote only',
+        'Over An Hour',
+        'Up To1 Hour',
+        'Up To45 Minutes',
+        'Up To20 Minutes',
+        'Remote Only',
     ];
     const handleDirection = (item, i) => {
         setType(item);
         setIsChecked(i);
     };
     return (
-        <>
+        <View style={COMMON.SectionPaddingquestion7120}>
             <MText textStyle={COMMON.TxtQuestion540}>
                 How far are you willing to travel to get certified?{' '}
             </MText>
@@ -78,7 +78,9 @@ const Question4 = (props) => {
                 data={TypesArray}
                 renderItem={({ item, index }) => (
                     <MCheckBox
-                        isChecked={isChecked == index ? true : false}
+                        isChecked={
+                            Type == item || isChecked == index ? true : false
+                        }
                         setIsChecked={() => {
                             handleDirection(item, index);
                         }}
@@ -88,7 +90,7 @@ const Question4 = (props) => {
                 )}
                 keyExtractor={(index) => index.toString()}
             />
-        </>
+        </View>
     );
 };
 const styles = StyleSheet.create({

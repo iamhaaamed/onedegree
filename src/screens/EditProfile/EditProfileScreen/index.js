@@ -48,7 +48,7 @@ import {
 import { useUpdateProfile } from 'hooks/profile';
 import { SectionTop01 } from 'components/Sections';
 import { SectionInfo } from 'components/Sections';
-import { async } from 'validate.js';
+import { authStore } from '../../../store';
 import { showMessage } from 'react-native-flash-message';
 const EditProfile = createScreen(
     ({ route }) => {
@@ -60,9 +60,9 @@ const EditProfile = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
-        console.log('9999999999999', route?.params);
+        const setUserName = authStore((state) => state.setUserName);
         const userName = route?.params?.UserName.split(' ');
-        console.log(userName);
+
         const Info = route?.params;
         const [UserImage, setUserImage] = useState(Info?.user?.imageAddress);
         const [IsLoading, setIsLoading] = useState(false);
@@ -87,7 +87,6 @@ const EditProfile = createScreen(
             whereDidYouHearAboutOnedegreeCareers:
                 Info?.user?.whereDidYouHearAboutOnedegreeCareers,
         });
-        console.log('3333333333', UserInfo);
         const { isLoading, mutate } = useUpdateProfile();
         const onPress = async () => {
             mutate(
@@ -96,6 +95,8 @@ const EditProfile = createScreen(
                         parseFloat(UserInfo?.latitude),
                         parseFloat(UserInfo?.longitude),
                     ],
+                    firstName: UserInfo?.firstName,
+                    lastName: UserInfo?.lastName,
                     industry: UserInfo?.industry,
                     currentIncome: parseFloat(UserInfo?.currentIncome),
                     isNotificationEnabled: UserInfo?.isNotificationEnabled,
@@ -113,13 +114,16 @@ const EditProfile = createScreen(
                 },
                 {
                     onSuccess: (data) => {
-                        console.log('666666', data);
-                        if (data?.user_updateProfile?.status == 'SUCCESS')
+                        if (data?.user_updateProfile?.status == 'SUCCESS') {
+                            setUserName(
+                                `${data?.user_updateProfile?.result?.firstName} ${data?.user_updateProfile?.result?.lastName}`,
+                            );
                             showMessage({
                                 message: `Profile updated successfully`,
                                 type: 'success',
                             });
-                        navigate('MyProfile');
+                            navigate('MyProfile');
+                        }
                     },
                 },
             );
@@ -286,6 +290,7 @@ const EditProfile = createScreen(
                             value={UserInfo?.age.toString()}
                             // error={errors && errors.email}
                             keyboardType="number-pad"
+                            maxLength={2}
                             textStyle={COMMON.TextsInput29}
                             backgroundColor={COLORS.Color963}
                             height={verticalScale(53)}
@@ -347,6 +352,7 @@ const EditProfile = createScreen(
                             backgroundColor={COLORS.Color963}
                             height={verticalScale(53)}
                             dolorSign={'USD'}
+                            keyboardType="number-pad"
                         />
                         <MButton
                             onPress={onPress}

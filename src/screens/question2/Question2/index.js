@@ -56,7 +56,6 @@ const question2 = createScreen(
             CONSTANTS,
         } = useTheme();
         const [Answers, setAnswers] = useState();
-        console.log('Answers', Answers);
         function callMyMethod(array) {
             let string = '';
             array.forEach(function (counter, currentIndex) {
@@ -78,9 +77,9 @@ const question2 = createScreen(
                         customHeight={scale(84)}
                     />
 
-                    <View style={COMMON.SectionPaddingquestion258}>
-                        <Question1 setAnswer={(value) => setAnswers(value)} />
-                    </View>
+                    {/* <View style={COMMON.SectionPaddingquestion258}> */}
+                    <Question1 setAnswer={(value) => setAnswers(value)} />
+                    {/* </View> */}
                     <MButton
                         onPress={() => {
                             if (Answers && Answers?.length > 0) {

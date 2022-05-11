@@ -16,8 +16,6 @@ const useGetPrograms = ({
     order?: any;
     options?: any;
 }) => {
-    console.log('wwwwwwwwwwwww', where);
-
     const res = useInfiniteQuery(
         ['getPrograms', where],
         async ({ pageParam = 0 }) => {

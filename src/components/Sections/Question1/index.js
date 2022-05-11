@@ -75,52 +75,54 @@ const Question1 = (props) => {
     }, [IndustryArray]);
     return (
         <>
-            <MText textStyle={COMMON.Txtquestion259}>
-                What industries are you interested in?{' '}
-            </MText>
-            <MCheckBox
-                iconContainerStyle={{ borderRadius: 5 }}
-                isChecked={IndustryArray.length === options.length}
-                setIsChecked={() => {
-                    if (IndustryArray.length === options.length) {
-                        setIndustryArray([]);
-                    } else {
-                        setIndustryArray(options);
-                    }
-                }}
-                style={COMMON.CheckBox61}>
-                <MText textStyle={COMMON.TextsCheckBox62}>
-                    Select all that apply
+            <View style={COMMON.SectionPaddingquestion7120}>
+                <MText textStyle={COMMON.Txtquestion259}>
+                    What industries are you interested in?{' '}
                 </MText>
-            </MCheckBox>
-            <FlatList
-                data={options}
-                renderItem={({ item, index }) => (
-                    <MCheckBox
-                        iconContainerStyle={{ borderRadius: 5 }}
-                        isChecked={IndustryArray.includes(item)}
-                        setIsChecked={() => {
-                            if (IndustryArray.includes(item)) {
-                                setIndustryArray((prev) =>
-                                    prev.filter((a) => a !== item),
-                                );
-                            } else {
-                                setIndustryArray((prev) => [...prev, item]);
-                            }
-                        }}
-                        style={COMMON.CheckBox61}>
-                        <MText
-                            textStyle={
-                                index == 8
-                                    ? COMMON.TextsCheckBox78
-                                    : COMMON.TextsCheckBox62
-                            }>
-                            {item}
-                        </MText>
-                    </MCheckBox>
-                )}
-                keyExtractor={(item, index) => index.toString()}
-            />
+                <MCheckBox
+                    iconContainerStyle={{ borderRadius: 5 }}
+                    isChecked={IndustryArray.length === options.length}
+                    setIsChecked={() => {
+                        if (IndustryArray.length === options.length) {
+                            setIndustryArray([]);
+                        } else {
+                            setIndustryArray(options);
+                        }
+                    }}
+                    style={COMMON.CheckBox61}>
+                    <MText textStyle={COMMON.TextsCheckBox62}>
+                        Select all that apply
+                    </MText>
+                </MCheckBox>
+                <FlatList
+                    data={options}
+                    renderItem={({ item, index }) => (
+                        <MCheckBox
+                            iconContainerStyle={{ borderRadius: 5 }}
+                            isChecked={IndustryArray.includes(item)}
+                            setIsChecked={() => {
+                                if (IndustryArray.includes(item)) {
+                                    setIndustryArray((prev) =>
+                                        prev.filter((a) => a !== item),
+                                    );
+                                } else {
+                                    setIndustryArray((prev) => [...prev, item]);
+                                }
+                            }}
+                            style={COMMON.CheckBox61}>
+                            <MText
+                                textStyle={
+                                    index == 8
+                                        ? COMMON.TextsCheckBox78
+                                        : COMMON.TextsCheckBox62
+                                }>
+                                {item}
+                            </MText>
+                        </MCheckBox>
+                    )}
+                    keyExtractor={(item, index) => index.toString()}
+                />
+            </View>
         </>
     );
 };

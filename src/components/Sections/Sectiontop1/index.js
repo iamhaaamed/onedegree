@@ -51,12 +51,6 @@ const Sectiontop1 = (props) => {
         CONSTANTS,
     } = useTheme();
 
-    const clickCounter = useRef(0);
-    const onPress = () => {
-        console.log(`Clicked! ${clickCounter.current}`);
-        clickCounter.current = clickCounter.current + 1;
-    };
-
     return (
         <View style={[styles.Sectiontop1, style]}>
             <View style={COMMON.SectionPaddingSectiontop1140}>

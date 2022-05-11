@@ -58,8 +58,6 @@ const Save = createScreen(
             },
         });
 
-        console.log({ careers });
-
         const refActionSheet = useRef(null);
 
         const showActionSheet = (item) => {

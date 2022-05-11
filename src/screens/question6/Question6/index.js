@@ -59,7 +59,6 @@ const question6 = createScreen(
             CONSTANTS,
         } = useTheme();
         const { isLoading, mutate } = useUpdateProfile();
-        console.log('route', route?.params);
         const [ZipCode, setZipCode] = useState();
         console.log('zzzzzzzzz', ZipCode);
         const getLatLang = `https://api.promaptools.com/service/us/zip-lat-lng/get/?zip=${ZipCode}&key=17o8dysaCDrgv1c`;
@@ -81,9 +80,9 @@ const question6 = createScreen(
                         customHeight={scale(82)}
                     />
 
-                    <View style={COMMON.SectionPaddingquestion6103}>
-                        <Question3 setZipCode={(data) => setZipCode(data)} />
-                    </View>
+                    {/* <View style={COMMON.SectionPaddingquestion6103}> */}
+                    <Question3 setZipCode={(data) => setZipCode(data)} />
+                    {/* </View> */}
                     <SectionRowCenter
                         backPress={() => goBack()}
                         nextPress={async () => {
@@ -137,10 +136,6 @@ const question6 = createScreen(
                                                 },
                                                 {
                                                     onSuccess: (data) => {
-                                                        console.log(
-                                                            '666666',
-                                                            data,
-                                                        );
                                                         if (
                                                             data
                                                                 ?.user_updateProfile
