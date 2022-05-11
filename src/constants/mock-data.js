@@ -42,7 +42,7 @@ export default {
         },
         {
             label: 'Tik Tok',
-            value: 'TIK_TOK ',
+            value: 'TIK_TOK',
         },
         {
             label: 'Other',

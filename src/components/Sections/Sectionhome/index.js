@@ -72,14 +72,16 @@ const Sectionhome = (props) => {
     const { mutate: UnLikeMutate } = useUnlikeCareer();
 
     return (
-        <View style={[styles.Sectionhome, style]}>
+        <View style={[styles.Sectionhome, style, { marginHorizontal: 24 }]}>
             <MImage
                 imageSource={{ uri: data?.career?.imageAddress }}
                 style={COMMON.image68}
                 // customWidth={scale(300)}
                 // customHeight={scale(136)}
             />
-            <MText textStyle={COMMON.TxtSectionhome70} numberOfLines={2}>
+            <MText
+                textStyle={[COMMON.TxtSectionhome70, { lineHeight: 24 }]}
+                numberOfLines={2}>
                 {data?.career?.title}
             </MText>
             <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
