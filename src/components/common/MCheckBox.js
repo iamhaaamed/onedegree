@@ -1,7 +1,8 @@
 import React from 'react';
-import { IconFallback } from 'utils';
+import { IconFallback, scale } from 'utils';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { COLORS } from 'constants/common';
 
 const MCheckBox = ({
     children,
@@ -19,7 +20,10 @@ const MCheckBox = ({
     deActiveBorderColor = '#707070',
     activeBackgroundColor = '#EF6038',
     deActiveBackgroundColor = '#fff',
+    hasArrow = false,
+    Arrow_Name,
     IconComponent = MaterialIcons,
+    IconComponentUp,
 }) => {
     const { Icon_Name, Icon_Component } = IconFallback(iconName, IconComponent);
 
@@ -71,6 +75,13 @@ const MCheckBox = ({
                             </Text>
                         </View>
                     ) : null}
+                    {hasArrow && (
+                        <Icon_Component
+                            name={Arrow_Name}
+                            size={scale(20)}
+                            color={COLORS?.lightText}
+                        />
+                    )}
                 </View>
             </TouchableOpacity>
         </React.Fragment>

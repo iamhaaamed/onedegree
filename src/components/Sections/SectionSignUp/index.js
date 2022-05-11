@@ -216,8 +216,8 @@ const SectionSignUp = (props) => {
                         <MButton
                             // onPress={() => navigate('Forgetpassword1')}
                             onPress={handleSubmit}
-                            style={COMMON.ButtonRect10}
-                            containerStyle={COMMON.Button9}
+                            style={COMMON.ButtonRect36}
+                            containerStyle={COMMON.Button35}
                             text="Sign Up "
                             textStyle={COMMON.TextsButton11}
                             gradient={{

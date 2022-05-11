@@ -77,9 +77,9 @@ const question7 = createScreen(
                         customHeight={scale(84)}
                     />
 
-                    <View style={COMMON.SectionPaddingquestion7120}>
-                        <Question2 onComplete={(data) => Complete(data)} />
-                    </View>
+                    {/* <View style={COMMON.SectionPaddingquestion7120}> */}
+                    <Question2 onComplete={(data) => Complete(data)} />
+                    {/* </View> */}
                     <SectionRowCenter
                         backPress={() => goBack()}
                         nextPress={() => {

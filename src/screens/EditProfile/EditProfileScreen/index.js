@@ -49,6 +49,7 @@ import { useUpdateProfile } from 'hooks/profile';
 import { SectionTop01 } from 'components/Sections';
 import { SectionInfo } from 'components/Sections';
 import { async } from 'validate.js';
+import { showMessage } from 'react-native-flash-message';
 const EditProfile = createScreen(
     ({ route }) => {
         const {
@@ -114,7 +115,11 @@ const EditProfile = createScreen(
                     onSuccess: (data) => {
                         console.log('666666', data);
                         if (data?.user_updateProfile?.status == 'SUCCESS')
-                            navigate('MyProfile');
+                            showMessage({
+                                message: `Profile updated successfully`,
+                                type: 'success',
+                            });
+                        navigate('MyProfile');
                     },
                 },
             );
@@ -329,7 +334,7 @@ const EditProfile = createScreen(
                             Current Income
                         </MText>
                         <MInput
-                            inputStyle={COMMON.InputRect86}
+                            inputStyle={COMMON.InputRect126}
                             containerStyle={COMMON.Input85}
                             // placeholder={UserInfo?.currentIncome}
                             placeholderColor={COLORS.Color280}
@@ -341,7 +346,7 @@ const EditProfile = createScreen(
                             textStyle={COMMON.TextsInput29}
                             backgroundColor={COLORS.Color963}
                             height={verticalScale(53)}
-                            dolorSign={'$'}
+                            dolorSign={'USD'}
                         />
                         <MButton
                             onPress={onPress}

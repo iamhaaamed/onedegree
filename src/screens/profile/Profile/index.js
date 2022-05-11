@@ -62,48 +62,40 @@ const ProfileScreen = createScreen(
         } = useTheme();
         const [user, setUser] = useState();
         const [StateName, setStateName] = useState('');
-        console.log('sssssssssssss', StateName);
         const [isLoading2, setIsLoading2] = useState(false);
         const { isLoading, data } = useGetProfile();
-        console.log(
-            'ddddddddddddd',
-            data,
-            `https://geocode.xyz/${data?.user_login?.result?.latitude},${data?.user_login?.result?.longitude}?json=1`,
-        );
+
         const { UserName } = authStore((state) => state);
         useEffect(() => {
-            if (data) {
+            if (data?.user_login?.result) {
+                console.log(
+                    'ddddddddddddd',
+                    data,
+                    `https://geocode.xyz/${data?.user_login?.result?.latitude},${data?.user_login?.result?.longitude}?json=1`,
+                );
                 setIsLoading2(true);
                 setUser(data?.user_login?.result);
-                try {
-                    axios
-                        .get(
-                            `https://geocode.xyz/${data?.user_login?.result?.latitude},${data?.user_login?.result?.longitude}?json=1`,
-                        )
-                        .then(function (response) {
-                            console.log('///////////', response);
-                            if (response?.data) {
-                                setStateName(response?.data?.statename);
-                            }
-                        })
-                        .catch(function (error) {
-                            showMessage({
-                                message: `Something went wrong: ${error.message}`,
-                                type: 'danger',
-                            });
-                        })
-                        .then(function () {
-                            // always executed
-                        });
-                } catch (e) {
-                    console.log(e, 'e!!!!');
-                    if (e === 'NOT_FOUND') {
-                        showMessage({
-                            message: 'You are not registered!',
-                            type: 'danger',
-                        });
-                    }
-                }
+
+                axios
+                    .get(
+                        `https://geocode.xyz/${data?.user_login?.result?.latitude},${data?.user_login?.result?.longitude}?json=1`,
+                    )
+                    .then(function (response) {
+                        console.log('///////////', response);
+                        if (response?.data) {
+                            setStateName(response?.data?.statename);
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log('///////////', error);
+                        // showMessage({
+                        //     message: `Something went wrong: ${error.message}`,
+                        //     type: 'danger',
+                        // });
+                    })
+                    .then(function () {
+                        // always executed
+                    });
             }
 
             // try {

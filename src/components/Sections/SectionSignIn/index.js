@@ -117,7 +117,7 @@ const SectionSignIn = (props) => {
         console.log({ data });
         const status = data?.user_login?.status;
         if (status === 'SUCCESS') {
-            console.log('kkkkk', data);
+            console.log('kkkkk', await auth().currentUser?.getIdToken());
             setToken(await auth().currentUser?.getIdToken());
             navigation.dispatch(StackActions.replace('MainStack'));
         } else {
@@ -167,7 +167,7 @@ const SectionSignIn = (props) => {
             if (data) {
                 await signinWithEmail(data);
             }
-
+            setToken(await auth().currentUser?.getIdToken());
             mutate(
                 {},
                 {

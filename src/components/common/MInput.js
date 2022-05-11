@@ -269,15 +269,7 @@ const MInput = ({
                             </MTouchable>
                         </View>
                     ) : null}
-                    {dolorSign && (
-                        <View style={styles.button}>
-                            <MText
-                                textStyle={styles.dolor}
-                                color={COLORS.textOnSecondary}>
-                                {dolorSign}
-                            </MText>
-                        </View>
-                    )}
+
                     {prefix && (
                         <View style={styles.prefix}>
                             <MText
@@ -288,6 +280,15 @@ const MInput = ({
                         </View>
                     )}
                 </View>
+                {dolorSign && (
+                    <View style={styles.button}>
+                        <MText
+                            textStyle={styles.dolor}
+                            color={COLORS.textOnSecondary}>
+                            {dolorSign}
+                        </MText>
+                    </View>
+                )}
                 {iconLeft && iconLeft.name ? (
                     <MIcon
                         size={iconLeft.size ?? scale(14)}
@@ -347,7 +348,7 @@ const styles = StyleSheet.create({
     },
     dolor: {
         alignSelf: 'center',
-        fontSize: scale(15),
+        fontSize: scale(13),
         paddingHorizontal: scale(10),
     },
     ltr: {
@@ -382,10 +383,17 @@ const styles = StyleSheet.create({
     },
     button: {
         zIndex: 2000,
-        position: 'absolute',
+        // position: 'absolute',
         right: 0,
-        padding: 10,
-        marginLeft: 5,
+        // paddingVertical: 11,
+        height: verticalScale(47),
+        alignSelf: 'center',
+        justifyContent: 'center',
+        width: scale(60),
+        // marginLeft: 5,
+        backgroundColor: '#E2E2E2',
+        borderTopLeftRadius: scale(12),
+        borderBottomLeftRadius: scale(12),
     },
     button2: {
         zIndex: 2000,

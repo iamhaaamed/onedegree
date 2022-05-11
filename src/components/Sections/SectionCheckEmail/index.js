@@ -80,14 +80,14 @@ const SectionCheckEmail = (props) => {
                     end: { x: 1.014054298400879, y: 0.17686034739017487 },
                 }}
             />
-            <MButton
+            {/* <MButton
                 onPress={() => navigate('Hiquestion2')}
                 style={COMMON.ButtonRect92}
                 containerStyle={COMMON.Button91}
                 text="Skip, I’ll confirm later"
                 textStyle={COMMON.TextsButton93}
                 transparent
-            />
+            /> */}
             <TouchableOpacity
                 style={styles.signInBtn}
                 onPress={() => navigate('Signup')}>

@@ -8,7 +8,7 @@ import { createScreen } from 'components/elements';
 import { COLORS } from 'constants/common';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { scale, verticalScale, height } from 'utils';
+import { scale, verticalScale, height, width } from 'utils';
 import LinearGradient from 'react-native-linear-gradient';
 import { DateTimePickerMod } from 'components/common/MDateTimePicker';
 import {
@@ -88,11 +88,15 @@ const Question2 = (props) => {
     }, [Type, Amount]);
     return (
         <>
-            <MText textStyle={COMMON.Txtquestion7121}>
+            <MText
+                textStyle={[
+                    COMMON.Txtquestion7121,
+                    COMMON.SectionPaddingquestion7120,
+                ]}>
                 How much do you want to make?{' '}
             </MText>
             <View style={COMMON.SectionPaddingquestion7122}>
-                <MText textStyle={COMMON.Txtquestion7123}>Amount </MText>
+                {/* <MText textStyle={COMMON.Txtquestion7123}>Amount </MText> */}
 
                 <Formik
                     validationSchema={ValidationSchema}
@@ -125,53 +129,110 @@ const Question2 = (props) => {
                                     </MText>
                                 </View>
                             )} */}
-                            <MInput
-                                inputStyle={COMMON.InputRect126}
-                                containerStyle={COMMON.Input124}
-                                placeholder="Please enter Amount"
-                                error={errors && errors.amount}
-                                placeholderColor={COLORS.Color267}
-                                textStyle={COMMON.TextsInput125}
-                                onChangeText={(text) => {
-                                    handleChange('amount');
-                                    setAmount(text);
-                                }}
-                                backgroundColor={COLORS.Color963}
-                                keyboardType="number-pad"
-                                height={verticalScale(48)}
-                                // iconRight={{
-                                //     name: 'chevron-down',
-                                //     color: COLORS.Color267,
-                                //     onPress: () => setView(!ExteraView),
-                                //     size: scale(20),
-                                // }}
-                                dolorSign={'USD'}
-                            />
 
-                            <MText textStyle={COMMON.Txtquestion7127}>
+                            <MText
+                                textStyle={[
+                                    COMMON.Txtquestion7127,
+                                    COMMON.SectionPaddingquestion7120,
+                                ]}>
                                 Type *{' '}
                             </MText>
                             <FlatList
                                 data={TypesArray}
                                 renderItem={({ item, index }) => (
-                                    <MCheckBox
-                                        isChecked={
-                                            isChecked == index ? true : false
-                                        }
-                                        setIsChecked={() => {
-                                            handleDirection(item, index);
-                                        }}
-                                        style={COMMON.CheckBox128}>
-                                        <MText
-                                            textStyle={COMMON.TextsCheckBox129}>
-                                            {item}
-                                        </MText>
-                                    </MCheckBox>
+                                    <View
+                                        style={{
+                                            borderTopWidth: 0.5,
+                                            borderBottomWidth: 0.25,
+                                            borderColor: COLORS.placeholder,
+                                        }}>
+                                        <View
+                                            style={[
+                                                COMMON.SectionPaddingquestion7120,
+                                                isChecked == index && {
+                                                    paddingBottom: scale(10),
+                                                },
+                                            ]}>
+                                            <MCheckBox
+                                                hasArrow={true}
+                                                IconComponent={
+                                                    MaterialCommunityIcons
+                                                }
+                                                labelContainer={{
+                                                    width: scale(250),
+                                                }}
+                                                Arrow_Name={
+                                                    isChecked == index
+                                                        ? 'chevron-up'
+                                                        : 'chevron-down'
+                                                }
+                                                isChecked={
+                                                    isChecked == index
+                                                        ? true
+                                                        : false
+                                                }
+                                                setIsChecked={() => {
+                                                    handleDirection(
+                                                        item,
+                                                        index,
+                                                    );
+                                                }}
+                                                style={COMMON.CheckBox128}>
+                                                <MText
+                                                    textStyle={
+                                                        COMMON.TextsCheckBox129
+                                                    }>
+                                                    {item}
+                                                </MText>
+                                            </MCheckBox>
+                                            {isChecked == index && (
+                                                <MInput
+                                                    inputStyle={
+                                                        COMMON.InputRect126
+                                                    }
+                                                    containerStyle={
+                                                        COMMON.Input124
+                                                    }
+                                                    placeholder="Please enter Amount"
+                                                    error={
+                                                        errors && errors.amount
+                                                    }
+                                                    placeholderColor={
+                                                        COLORS.Color267
+                                                    }
+                                                    textStyle={
+                                                        COMMON.TextsInput125
+                                                    }
+                                                    onChangeText={(text) => {
+                                                        handleChange('amount');
+                                                        setAmount(text);
+                                                    }}
+                                                    backgroundColor={
+                                                        COLORS.Color963
+                                                    }
+                                                    keyboardType="number-pad"
+                                                    height={verticalScale(48)}
+                                                    // iconRight={{
+                                                    //     name: 'chevron-down',
+                                                    //     color: COLORS.Color267,
+                                                    //     onPress: () => setView(!ExteraView),
+                                                    //     size: scale(20),
+                                                    // }}
+
+                                                    dolorSign={'USD'}
+                                                />
+                                            )}
+                                        </View>
+                                    </View>
                                 )}
                                 keyExtractor={(index) => index.toString()}
                             />
                             {!Type && (
-                                <MText textStyle={styles.error}>
+                                <MText
+                                    textStyle={[
+                                        styles.error,
+                                        COMMON.SectionPaddingquestion7120,
+                                    ]}>
                                     {/* {errors && errors.type} */}
                                     Select one of types
                                 </MText>

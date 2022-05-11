@@ -65,7 +65,8 @@ const Question3 = (props) => {
     const ValidationSchema = yup.object().shape({
         amount: yup
             .number()
-            .min(5, 'Must be 5 characters or more')
+            .min(5, 'Must be 5 characters')
+            .max(5, 'Must be 5 characters')
             .required('Invalid Zip Code'),
     });
     return (
@@ -96,6 +97,7 @@ const Question3 = (props) => {
                             backgroundColor={COLORS.Color963}
                             height={verticalScale(48)}
                             keyboardType="numeric"
+                            maxLength={5}
                         />
                         {!ZipCode && (
                             <MText textStyle={styles.error}>

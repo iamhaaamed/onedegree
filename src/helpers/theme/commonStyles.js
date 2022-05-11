@@ -147,7 +147,7 @@ export default function ({ COLORS }) {
             height: verticalScale(52),
         },
         RowItemSectionSignUp12: {
-            marginBottom: verticalScale(26),
+            marginBottom: verticalScale(10),
         },
         LineSectionSignUp13: {
             borderColor: COLORS.Color206,
@@ -352,7 +352,7 @@ export default function ({ COLORS }) {
             height: verticalScale(52),
         },
         RowItemSectionSignIn38: {
-            marginBottom: verticalScale(26),
+            marginBottom: verticalScale(10),
         },
         LineSectionSignIn39: {
             borderColor: COLORS.Color206,
@@ -699,7 +699,7 @@ export default function ({ COLORS }) {
         TextsButton93: {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            color: '#eaeaea',
+            color: '#EF5B31',
         },
         ButtonRect92: {
             paddingBottom: verticalScale(11),
@@ -975,10 +975,10 @@ export default function ({ COLORS }) {
             shadowColor: 'rgba(140,140,140,0.16)',
             shadowOffset: { width: 0, height: 0 },
             shadowRadius: 28,
-            borderTopLeftRadius: 12,
+            borderTopLeftRadius: 0,
             borderTopRightRadius: 12,
             borderBottomRightRadius: 12,
-            borderBottomLeftRadius: 12,
+            borderBottomLeftRadius: 0,
         },
         Input124: {
             width: '100%',
@@ -989,8 +989,8 @@ export default function ({ COLORS }) {
             borderBottomLeftRadius: 12,
         },
         Txtquestion7127: {
-            marginTop: verticalScale(25),
-            marginBottom: verticalScale(25),
+            marginTop: '-8%',
+            marginBottom: verticalScale(0),
             fontSize: verticalScale(17),
             fontFamily: 'Muli',
             fontWeight: 'bold',

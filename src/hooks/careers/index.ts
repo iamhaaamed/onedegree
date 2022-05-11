@@ -68,6 +68,7 @@ const useLikeCareer = () => {
             onSuccess: (data) => {
                 if (data.career_like?.status === 'SUCCESS') {
                     queryClient.invalidateQueries('LikeCareers');
+                    queryClient.invalidateQueries('saveCareers');
                 }
             },
         },
@@ -85,6 +86,7 @@ const useUnlikeCareer = () => {
             onSuccess: (data) => {
                 if (data.career_unlike?.status === 'SUCCESS') {
                     queryClient.invalidateQueries('LikeCareers');
+                    queryClient.invalidateQueries('saveCareers');
                 }
             },
         },

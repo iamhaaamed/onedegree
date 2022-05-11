@@ -1,4 +1,5 @@
 import auth from '@react-native-firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import AppNavigator from 'navigation/AppNavigator';
@@ -8,6 +9,7 @@ import FlashMessage, { showMessage } from 'react-native-flash-message';
 import { enableScreens } from 'react-native-screens';
 import { QueryCache, QueryClient, QueryClientProvider } from 'react-query';
 import graphQLClient from '../src/graphql/graphQLClient';
+import { authStore } from './store';
 let queryClient: QueryClient;
 console.warn = () => null;
 GoogleSignin.configure({
@@ -24,6 +26,9 @@ GoogleSignin.configure({
 enableScreens();
 
 const App = () => {
+    const { token } = authStore((state) => state);
+    const setToken = authStore((state) => state.setToken);
+    console.log('tttttttt', token);
     const [initializing, setInitializing] = useState(true);
     const handleUser = useCallback(
         async (user) => {
@@ -35,9 +40,11 @@ const App = () => {
                         'authorization',
                         'Bearer ' + idToken,
                     );
+                    setToken(idToken);
                 }
             } else {
                 graphQLClient.setHeader('authorization', '');
+                AsyncStorage.clear();
                 queryClient.clear();
             }
             if (initializing) {
@@ -94,3 +101,4 @@ const App = () => {
 };
 
 export default App;
+export { queryClient };

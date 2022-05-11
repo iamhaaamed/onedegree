@@ -28,7 +28,7 @@ const Question = createScreen(
             CONSTANTS,
         } = useTheme();
         const { isLoading, data } = useGetProfile();
-        console.log('ddddddddddddd', data);
+        console.log('ddddddddddddd////', data);
 
         const [DATA, setDATA] = useState([
             {
@@ -61,9 +61,10 @@ const Question = createScreen(
             },
             {
                 title: 'Where Did You Hear About Onedegree Careers?',
-                answer:
+                answer: toPascalCase(
                     data?.user_login?.result
-                        ?.whereDidYouHearAboutOnedegreeCareersTextForOther,
+                        ?.whereDidYouHearAboutOnedegreeCareers,
+                ),
                 code: 5,
             },
         ]);
