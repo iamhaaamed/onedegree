@@ -1,40 +1,27 @@
 import React from 'react';
-import { useRef } from 'react';
-import { StyleSheet, View, ScrollView, TouchableOpacity } from 'react-native';
+import { scale } from 'utils';
 import useTheme from 'hooks/useTheme';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { COLORS } from 'constants/common';
-import { verticalScale, scale } from 'utils';
-import { MStatusBar, MButton, MText, MImage } from 'components/common';
-import { navigate } from 'navigation/methods';
+import { MImage, MText } from 'components/common';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { StackActions, useNavigation } from '@react-navigation/native';
+
 const SectionItem20 = (props) => {
     const { style, data } = props;
-    const {
-        LAYOUT,
-        GUTTERS,
-        TYPOGRAPHY,
-        IMAGES,
-        COMMON,
-        CONSTANTS,
-    } = useTheme();
+    const { COMMON } = useTheme();
     const navigation = useNavigation();
+
     return (
         <TouchableOpacity
             style={[styles.SectionItem, style]}
             activeOpacity={0.9}
-            onPress={
-                () => {
-                    navigation.dispatch(
-                        StackActions.replace('ProgramDetails', {
-                            programId: data?.id,
-                        }),
-                    );
-                }
-                // navigate('ProgramDetails', {
-                //     programId: data?.id,
-                // })
-            }>
+            onPress={() => {
+                navigation.dispatch(
+                    StackActions.replace('ProgramDetails', {
+                        programId: data?.id,
+                    }),
+                );
+            }}>
             <MImage
                 imageSource={{ uri: data?.imageAddrss }}
                 style={COMMON.image26}
@@ -76,7 +63,7 @@ const styles = StyleSheet.create({
         elevation: 1,
         width: '99.5%',
         alignSelf: 'center',
-        // height: verticalScale(121),
+        paddingBottom: 14,
         borderTopLeftRadius: 21,
         borderTopRightRadius: 21,
         borderBottomRightRadius: 21,

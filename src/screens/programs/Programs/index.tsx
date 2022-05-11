@@ -1,42 +1,23 @@
-import React from 'react';
-import { useRef } from 'react';
-import {
-    StyleSheet,
-    View,
-    ScrollView,
-    FlatList,
-    ActivityIndicator,
-} from 'react-native';
 import useTheme from 'hooks/useTheme';
+import React, { useRef } from 'react';
+import { COLORS } from 'constants/common';
+import { scale, verticalScale } from 'utils';
+import { useGetPrograms } from 'hooks/programs';
+import { createScreen } from 'components/elements';
+import { MButton, MInput } from 'components/common';
+import ActionSheet from 'react-native-actions-sheet';
+import { ActivityIndicator, FlatList, StyleSheet, View } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
-    SectionTop01,
-    SectionItem,
     Container,
     ProgramFilter,
+    SectionItem,
+    SectionTop01,
 } from 'components/Sections';
-import { createScreen } from 'components/elements';
-import { COLORS } from 'constants/common';
-import { verticalScale, scale, height } from 'utils';
-import {
-    MStatusBar,
-    MInput,
-    MButton,
-    MImage,
-    MFlatList,
-} from 'components/common';
-import { useGetPrograms } from 'hooks/programs';
-import ActionSheet from 'react-native-actions-sheet';
+
 const Programs = createScreen(
     () => {
-        const {
-            LAYOUT,
-            GUTTERS,
-            TYPOGRAPHY,
-            IMAGES,
-            COMMON,
-            CONSTANTS,
-        } = useTheme();
+        const { COMMON } = useTheme();
 
         const refActionSheet = useRef(null);
         const showActionSheet = () => {
@@ -53,11 +34,13 @@ const Programs = createScreen(
             refetch,
         } = useGetPrograms({});
         let Programs = programs?.pages;
+
         const renderFooter = () => {
             return hasNextPage ? (
                 <ActivityIndicator size={scale(50)} color={COLORS.Color323} />
             ) : null;
         };
+
         return (
             <Container style={styles.Programs276}>
                 <SectionTop01 title="Training Programs" noIcon />

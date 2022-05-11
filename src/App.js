@@ -1,17 +1,18 @@
-import auth from '@react-native-firebase/auth';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import AppNavigator from 'navigation/AppNavigator';
-import React, { useCallback, useEffect, useState } from 'react';
-import Config from 'react-native-config';
-import FlashMessage, { showMessage } from 'react-native-flash-message';
-import { enableScreens } from 'react-native-screens';
-import { QueryCache, QueryClient, QueryClientProvider } from 'react-query';
-import graphQLClient from '../src/graphql/graphQLClient';
 import { authStore } from './store';
+import { LogBox } from 'react-native';
+import Config from 'react-native-config';
+import auth from '@react-native-firebase/auth';
+import AppNavigator from 'navigation/AppNavigator';
+import { enableScreens } from 'react-native-screens';
+import graphQLClient from '../src/graphql/graphQLClient';
+import React, { useCallback, useEffect, useState } from 'react';
+import FlashMessage, { showMessage } from 'react-native-flash-message';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { QueryCache, QueryClient, QueryClientProvider } from 'react-query';
 let queryClient: QueryClient;
-console.warn = () => null;
+
+LogBox.ignoreAllLogs(true);
+
 GoogleSignin.configure({
     scopes: ['profile', 'email'], // what API you want to access on behalf of the user, default is email and profile
     webClientId: Config.GOOGLE_WEB_CLIENT_ID, // client ID of type WEB for your server (needed to verify user ID and offline access)
@@ -23,6 +24,7 @@ GoogleSignin.configure({
     iosClientId: Config.GOOGLE_IOS_CLIENT_ID, // [iOS] optional, if you want to specify the client ID of type iOS (otherwise, it is taken from GoogleService-Info.plist)
     googleServicePlistPath: '', // [iOS] optional, if you renamed your GoogleService-Info file, new name here, e.g. GoogleService-Info-Staging
 });
+
 enableScreens();
 
 const App = () => {

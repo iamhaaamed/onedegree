@@ -1,46 +1,11 @@
 import React from 'react';
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    StyleSheet,
-    Image,
-    ImageBackground,
-} from 'react-native';
-import { scale, verticalScale, height } from 'utils';
-import { useState } from 'react';
+import { scale } from 'utils';
 import useTheme from 'hooks/useTheme';
 import { COLORS } from 'constants/common';
-import { useRef } from 'react';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
+import { MButton } from 'components/common';
+import { Platform, StyleSheet, View } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
 const SectionRowSocialCenter = (props) => {
     const {
         style,
@@ -51,32 +16,25 @@ const SectionRowSocialCenter = (props) => {
         doAppleLogin,
         FacebookSignIn,
     } = props;
-    const {
-        LAYOUT,
-        GUTTERS,
-        TYPOGRAPHY,
-        IMAGES,
-        COMMON,
-        CONSTANTS,
-    } = useTheme();
+    const { IMAGES, COMMON } = useTheme();
 
     return (
         <View style={[styles.SectionRowSocialCenter, style]}>
-            <MButton
-                onPress={doAppleRegister || doAppleLogin}
-                // style={COMMON.ButtonRect21}
-                containerStyle={styles.centerIcon}
-                color={COLORS.transparent}
-                icon={{
-                    name: 'apple',
-                    color: COLORS.textOnSecondary,
-                    size: scale(30),
-                    Component: MaterialCommunityIcons,
-                }}
-            />
+            {Platform.OS == 'ios' && (
+                <MButton
+                    onPress={doAppleRegister || doAppleLogin}
+                    containerStyle={styles.centerIcon}
+                    color={COLORS.transparent}
+                    icon={{
+                        name: 'apple',
+                        color: COLORS.textOnSecondary,
+                        size: scale(30),
+                        Component: MaterialCommunityIcons,
+                    }}
+                />
+            )}
             <MButton
                 onPress={FacebookSignUp || FacebookSignIn}
-                // style={COMMON.ButtonRect19}
                 containerStyle={styles.centerIcon}
                 color={COLORS.transparent}
                 icon={{
@@ -96,11 +54,6 @@ const SectionRowSocialCenter = (props) => {
                     imageStyle: styles.googleIcon,
                     resizeMode: 'cover',
                 }}
-                // icon={{
-                //     name: 'google',
-                //     color: COLORS.Color963,
-                //     Component: MaterialCommunityIcons,
-                // }}
             />
         </View>
     );

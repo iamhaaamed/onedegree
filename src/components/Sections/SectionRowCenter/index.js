@@ -7,16 +7,10 @@ import { scale, verticalScale } from 'utils';
 
 const SectionRowCenter = (props) => {
     const { style, nextPress, backPress, intro, questions, TextStyle } = props;
-    const {
-        LAYOUT,
-        GUTTERS,
-        TYPOGRAPHY,
-        IMAGES,
-        COMMON,
-        CONSTANTS,
-    } = useTheme();
-    const [isHovered, setIsHovered] = useState(false);
+    const { COMMON } = useTheme();
+    // const [isHovered, setIsHovered] = useState(false);
     const [isBack, setIsBack] = useState(false);
+
     return (
         <View style={[styles.SectionRowCenter, style]}>
             <MButton
@@ -37,7 +31,7 @@ const SectionRowCenter = (props) => {
                 containerStyle={[COMMON.Button113, { borderRadius: 8 }]}
                 text="Back"
                 // type={intro ? 'highlight' : 'none'}
-                underlayColor={intro ? COLORS.Color276 : 'tarnsparent'}
+                underlayColor={intro ? COLORS.Color276 : 'transparent'}
                 textStyle={[
                     COMMON.TextsButton115,
                     intro && { color: COLORS.white },
@@ -46,14 +40,14 @@ const SectionRowCenter = (props) => {
             />
             <MButton
                 onPress={nextPress}
-                onPressIn={() => setIsHovered(true)}
-                onPressOut={() => setIsHovered(false)}
+                // onPressIn={() => setIsHovered(true)}
+                // onPressOut={() => setIsHovered(false)}
                 style={[
                     COMMON.ButtonRect111,
-                    intro && { backgroundColor: COLORS.transparent },
+                    intro && { backgroundColor: 'white' },
                 ]}
-                type={intro ? 'highlight' : 'opacity'}
-                underlayColor={intro ? COLORS.white : 'tarnsparent'}
+                type="opacity"
+                underlayColor={intro ? COLORS.white : 'transparent'}
                 containerStyle={[
                     COMMON.Button110,
                     { borderRadius: 12, width: '50%' },
@@ -62,7 +56,7 @@ const SectionRowCenter = (props) => {
                 textStyle={[
                     COMMON.TextsButton112,
                     intro && {
-                        color: isHovered ? COLORS.Color323 : COLORS.white,
+                        color: COLORS.Color323,
                     },
                 ]}
                 gradient={
@@ -87,7 +81,7 @@ const SectionRowCenter = (props) => {
 const styles = StyleSheet.create({
     SectionRowCenter: {
         // paddingBottom: verticalScale(27),
-        paddingTop: verticalScale(27),
+        // paddingTop: verticalScale(27),
         paddingRight: scale(32),
         paddingLeft: scale(32),
         alignItems: 'center',

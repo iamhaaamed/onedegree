@@ -1,36 +1,29 @@
 import React from 'react';
-import { useRef } from 'react';
-import {
-    StyleSheet,
-    View,
-    ScrollView,
-    Linking,
-    FlatList,
-    ActivityIndicator,
-} from 'react-native';
 import useTheme from 'hooks/useTheme';
+import { COLORS } from 'constants/common';
+import { scale, verticalScale } from 'utils';
+import { createScreen } from 'components/elements';
+import { MButton, MImage, MText } from 'components/common';
+import { useGetOneProgram, useGetPrograms } from 'hooks/programs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
-    SectionTop01,
-    SectionText,
-    SectionItem,
     Container,
+    SectionItem,
+    SectionText,
+    SectionTop01,
 } from 'components/Sections';
-import { createScreen } from 'components/elements';
-import { COLORS } from 'constants/common';
-import { verticalScale, scale } from 'utils';
-import { MStatusBar, MButton, MText, MImage } from 'components/common';
-import { useGetOneProgram, useGetPrograms } from 'hooks/programs';
+import {
+    View,
+    Linking,
+    FlatList,
+    ScrollView,
+    StyleSheet,
+    ActivityIndicator,
+} from 'react-native';
+
 const ProgramDetails = createScreen(
     ({ route }) => {
-        const {
-            LAYOUT,
-            GUTTERS,
-            TYPOGRAPHY,
-            IMAGES,
-            COMMON,
-            CONSTANTS,
-        } = useTheme();
+        const { COMMON } = useTheme();
         const { isLoading, data: program } = useGetOneProgram(
             route?.params?.programId,
         );
@@ -52,11 +45,13 @@ const ProgramDetails = createScreen(
             //     enabled: !!programDetails,
             // },
         });
+
         const renderFooter = () => {
             return hasNextPage ? (
                 <ActivityIndicator size={scale(50)} color={COLORS.Color323} />
             ) : null;
         };
+
         return (
             <Container style={styles.Programdetail2881}>
                 <ScrollView showsVerticalScrollIndicator={false}>
@@ -82,13 +77,9 @@ const ProgramDetails = createScreen(
                         <SectionText data={programDetails} />
                         <FlatList
                             data={programs?.pages}
-                            style={
-                                {
-                                    // height: verticalScale(800),
-                                    // backgroundColor: 'red',
-                                    // marginBottom: '10%',
-                                }
-                            }
+                            style={{
+                                marginTop: verticalScale(24),
+                            }}
                             showsVerticalScrollIndicator={false}
                             renderItem={({ item }) =>
                                 item?.id == programDetails?.id ? null : (

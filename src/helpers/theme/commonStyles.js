@@ -92,7 +92,6 @@ export default function ({ COLORS }) {
             borderBottomLeftRadius: 12,
         },
         Input3: {
-            marginBottom: verticalScale(16),
             width: '100%',
             // height: verticalScale(48),
             borderTopLeftRadius: 12,
@@ -108,7 +107,7 @@ export default function ({ COLORS }) {
         },
 
         Input6: {
-            marginBottom: verticalScale(25),
+            marginBottom: verticalScale(14),
             width: '100%',
             height: verticalScale(48),
             borderTopLeftRadius: 12,
@@ -147,7 +146,7 @@ export default function ({ COLORS }) {
             height: verticalScale(52),
         },
         RowItemSectionSignUp12: {
-            marginBottom: verticalScale(10),
+            marginBottom: verticalScale(5),
         },
         LineSectionSignUp13: {
             borderColor: COLORS.Color206,
@@ -227,7 +226,6 @@ export default function ({ COLORS }) {
         TxtSectionSignUp24: {
             fontSize: verticalScale(14),
             fontFamily: 'Muli',
-            lineHeight: verticalScale(15),
             color: COLORS.Color525,
         },
         image25: {
@@ -316,10 +314,10 @@ export default function ({ COLORS }) {
             borderBottomLeftRadius: 12,
         },
         TxtSectionSignIn34: {
-            marginBottom: verticalScale(24),
+            marginBottom: verticalScale(8),
+            marginTop: verticalScale(10),
             fontSize: verticalScale(15),
             fontFamily: 'Muli',
-            lineHeight: verticalScale(16),
             color: COLORS.Color525,
         },
         TextsButton37: {
@@ -345,6 +343,7 @@ export default function ({ COLORS }) {
             borderBottomLeftRadius: 12,
         },
         Button35: {
+            marginTop: verticalScale(36),
             marginBottom: verticalScale(29),
             width: '100%',
             alignSelf: 'center',
@@ -352,7 +351,7 @@ export default function ({ COLORS }) {
             height: verticalScale(52),
         },
         RowItemSectionSignIn38: {
-            marginBottom: verticalScale(10),
+            marginBottom: verticalScale(5),
         },
         LineSectionSignIn39: {
             borderColor: COLORS.Color206,
@@ -382,7 +381,6 @@ export default function ({ COLORS }) {
         TxtSectionSignIn44: {
             fontSize: verticalScale(14),
             fontFamily: 'Muli',
-            lineHeight: verticalScale(15),
             color: COLORS.Color525,
         },
         image45: {
@@ -655,7 +653,6 @@ export default function ({ COLORS }) {
             borderBottomLeftRadius: 12,
         },
         Input85: {
-            marginBottom: verticalScale(10),
             width: '100%',
             height: verticalScale(48),
             borderTopLeftRadius: 12,
@@ -1188,23 +1185,25 @@ export default function ({ COLORS }) {
         imagevector1: {
             marginBottom: verticalScale(5),
             width: '100%',
-            height: scale(232),
+            height: verticalScale(232),
         },
         imagevector2: {
             marginTop: '95%',
             width: '100%',
-            height: scale(450),
+            height: verticalScale(550),
             alignSelf: 'center',
             position: 'absolute',
         },
         SectionPaddingintro62: {
-            paddingBottom: verticalScale(32),
-            paddingTop: verticalScale(0),
+            // paddingBottom: verticalScale(28),
+            // paddingTop: verticalScale(0),
+            bottom: 24,
             width: '100%',
+            position: 'absolute',
         },
         Txtintro63: {
             // marginBottom: verticalScale(42),
-            marginTop: verticalScale(100),
+            // marginTop: verticalScale(100),
             alignSelf: 'center',
             textAlign: 'center',
             fontSize: verticalScale(20),
@@ -1239,6 +1238,14 @@ export default function ({ COLORS }) {
             width: scale(314),
             height: verticalScale(52),
             alignSelf: 'center',
+            shadowColor: '#000',
+            shadowOffset: {
+                width: 0,
+                height: 2,
+            },
+            shadowOpacity: 0.23,
+            shadowRadius: 2.62,
+            elevation: 4,
         },
         Textsbutton6: {
             fontSize: verticalScale(16),
@@ -1311,11 +1318,10 @@ export default function ({ COLORS }) {
             marginBottom: verticalScale(30),
         },
         SectionPaddingSearch5: {
-            paddingBottom: verticalScale(0),
+            paddingBottom: verticalScale(32),
             paddingTop: verticalScale(0),
             paddingRight: scale(32),
             paddingLeft: scale(32),
-            marginBottom: verticalScale(410),
         },
         RowItemSearch6: {
             marginBottom: verticalScale(5),
@@ -1375,11 +1381,7 @@ export default function ({ COLORS }) {
             borderBottomLeftRadius: 12,
         },
         SectionPaddingSearch12: {
-            paddingBottom: verticalScale(16),
-            paddingTop: verticalScale(16),
-            // paddingRight: scale(16),
-            // paddingLeft: scale(16),
-            marginBottom: verticalScale(16),
+            paddingVertical: 8,
         },
         image14: {
             borderWidth: 1,
@@ -1647,12 +1649,12 @@ export default function ({ COLORS }) {
             justifyContent: 'center',
         },
         RowItemSectionhome71: {
-            marginBottom: verticalScale(14),
+            marginBottom: verticalScale(12),
         },
         TxtSectionhome72: {
             fontSize: verticalScale(14),
             fontFamily: 'Muli',
-            lineHeight: verticalScale(24),
+            // lineHeight: verticalScale(24),
             color: COLORS.Color726,
         },
         TxtSectionhome80: {
@@ -1679,7 +1681,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(15),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: verticalScale(24),
+            // lineHeight: verticalScale(24),
             color: COLORS.Color726,
         },
         TxtSectionhome732: {
@@ -1748,7 +1750,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(19),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: verticalScale(24),
+            lineHeight: verticalScale(28),
             color: COLORS.Color726,
         },
         TxtMoreInfo213: {
@@ -2101,10 +2103,9 @@ export default function ({ COLORS }) {
             borderBottomLeftRadius: 10,
         },
         TxtSave112: {
-            fontSize: verticalScale(16),
+            fontSize: verticalScale(14),
             fontFamily: 'Muli',
             fontWeight: 'bold',
-            lineHeight: verticalScale(23),
             color: COLORS.white,
         },
         ButtonRect14: {
@@ -2125,7 +2126,9 @@ export default function ({ COLORS }) {
         },
         Button13: {
             width: scale(32),
-            height: verticalScale(32),
+            height: scale(32),
+            alignItems: 'center',
+            justifyContent: 'center',
         },
         TxtSectionText13: {
             fontSize: verticalScale(16),

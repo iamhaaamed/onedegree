@@ -1,48 +1,18 @@
-import React from 'react';
 import {
-    View,
-    Text,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    StyleSheet,
-    Image,
-    ScrollView,
-} from 'react-native';
-import { scale, verticalScale, height } from 'utils';
-import { useState } from 'react';
+    MView,
+    MText,
+    MButton,
+    MSlider,
+    MCheckBox,
+    MDropDown,
+} from 'components/common';
 import useTheme from 'hooks/useTheme';
+import React, { useState } from 'react';
 import { COLORS } from 'constants/common';
-import { useRef } from 'react';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
+import { scale, verticalScale } from 'utils';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-    MView,
-} from 'components/common';
-import { SectionRowCenter } from 'components/Sections';
 const SearchFilter = (props) => {
     const { style, user, showModal } = props;
     const {
@@ -61,7 +31,6 @@ const SearchFilter = (props) => {
     const [multiSliderValue, setMultiSliderValue] = React.useState([70, 85]);
     return (
         <MView style={[COMMON.ModalRect1, COMMON.Modal0]}>
-            <View style={styles.line} />
             <ScrollView
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={{
@@ -461,17 +430,7 @@ const SearchFilter = (props) => {
     );
 };
 const styles = StyleSheet.create({
-    line: {
-        width: '30%',
-        alignSelf: 'center',
-        backgroundColor: COLORS.Color321,
-        padding: 2,
-        borderRadius: 5,
-        marginBottom: scale(30),
-        marginTop: '-5%',
-    },
     center: {
-        // right: '10%',
         flexDirection: 'row',
         marginTop: '10%',
     },

@@ -124,15 +124,13 @@ const Save = createScreen(
                                         imageSource={{
                                             uri: item?.career?.imageAddress,
                                         }}
-                                        style={COMMON.image10}
-                                        // customWidth={scale(154)}
-                                        // customHeight={scale(150)}
-                                    >
+                                        style={COMMON.image10}>
                                         <View
                                             style={{
-                                                width: '95%',
-                                                alignSelf: 'center',
+                                                left: 10,
                                                 top: '80%',
+                                                width: '70%',
+                                                alignSelf: 'flex-start',
                                             }}>
                                             <MText
                                                 textStyle={COMMON.TxtSave112}
@@ -142,9 +140,8 @@ const Save = createScreen(
                                         </View>
                                         <View
                                             style={{
-                                                width: '25%',
+                                                top: '75%',
                                                 alignSelf: 'flex-end',
-                                                top: '70%',
                                             }}>
                                             <MButton
                                                 onPress={() => {

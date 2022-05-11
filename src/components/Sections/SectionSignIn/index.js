@@ -1,65 +1,23 @@
-import React from 'react';
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    StyleSheet,
-    Image,
-} from 'react-native';
-import { scale, verticalScale, height } from 'utils';
-import { useState } from 'react';
-import useTheme from 'hooks/useTheme';
-import { COLORS } from 'constants/common';
-import { useRef } from 'react';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import thirdPartyAuthService from 'services/thirdPartyAuthService/thirdPartyAuthService';
-import { showMessage } from 'react-native-flash-message';
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
-import auth from '@react-native-firebase/auth';
-import { useLogin } from 'hooks/auth';
-import { SectionRowSocialCenter } from 'components/Sections';
-import { authStore } from '../../../store';
-import { navigate } from 'navigation/methods';
-import { StackActions, useNavigation } from '@react-navigation/native';
 import * as yup from 'yup';
 import { Formik } from 'formik';
-import { async } from 'validate.js';
+import useTheme from 'hooks/useTheme';
+import { useLogin } from 'hooks/auth';
+import React, { useState } from 'react';
+import { COLORS } from 'constants/common';
+import { authStore } from '../../../store';
+import { scale, verticalScale } from 'utils';
+import auth from '@react-native-firebase/auth';
+import { navigate } from 'navigation/methods';
+import { showMessage } from 'react-native-flash-message';
+import { SectionRowSocialCenter } from 'components/Sections';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { MButton, MInput, MLoading, MText } from 'components/common';
+import { StackActions, useNavigation } from '@react-navigation/native';
+import thirdPartyAuthService from 'services/thirdPartyAuthService/thirdPartyAuthService';
+
 const SectionSignIn = (props) => {
     const { style } = props;
-    const {
-        LAYOUT,
-        GUTTERS,
-        TYPOGRAPHY,
-        IMAGES,
-        COMMON,
-        CONSTANTS,
-    } = useTheme();
+    const { COMMON } = useTheme();
 
     const navigation = useNavigation();
     const setToken = authStore((state) => state.setToken);
@@ -248,18 +206,10 @@ const SectionSignIn = (props) => {
                         <MText
                             textStyle={COMMON.TxtSectionSignIn34}
                             onPress={() => navigate('Forgetpassword')}>
-                            Forgot Password{' '}
+                            Forgot Password
                         </MText>
                         <MButton
-                            onPress={
-                                handleSubmit
-                                // () => {
-                                // setToken('12345');
-                                // navigation.dispatch(
-                                //     StackActions.replace('MainStack'),
-                                // );
-                                // }
-                            }
+                            onPress={handleSubmit}
                             style={COMMON.ButtonRect36}
                             containerStyle={COMMON.Button35}
                             text="Sign In "
@@ -322,7 +272,7 @@ const SectionSignIn = (props) => {
 };
 const styles = StyleSheet.create({
     SectionSignIn: {
-        paddingBottom: verticalScale(0),
+        paddingBottom: verticalScale(28),
         paddingTop: verticalScale(0),
         paddingRight: scale(32),
         paddingLeft: scale(32),

@@ -69,21 +69,22 @@ const intro6 = createScreen(
         ];
         return (
             <Container style={styles.intro6}>
-                {/* <ScrollView> */}
                 <MImage
                     imageSource={IMAGES.image7436}
                     style={COMMON.imagelogo0}
                     customWidth={'100%'}
                     customHeight={scale(52)}
                 />
-                <MImage
-                    imageSource={
-                        page == 1 ? IMAGES.imageBack1 : IMAGES.imageBack2
-                    }
-                    style={COMMON.imagevector2}
-                    customWidth={'90%'}
-                    customHeight={scale(400)}
-                />
+                {page != 0 && (
+                    <MImage
+                        imageSource={
+                            page == 1 ? IMAGES.imageBack1 : IMAGES.imageBack2
+                        }
+                        style={COMMON.imagevector2}
+                        customWidth={'90%'}
+                        customHeight={scale(400)}
+                    />
+                )}
                 <PagerView
                     style={{
                         flex: 1,
@@ -97,14 +98,21 @@ const intro6 = createScreen(
                             <View key={index}>
                                 <MImage
                                     imageSource={imageUrl}
+                                    resizeMode={'contain'}
                                     style={COMMON.imagevector1}
-                                    resizeMode={index == 2 ? 'contain' : null}
-                                    customWidth={scale(390)}
-                                    customHeight={scale(232)}
                                 />
 
                                 <View style={COMMON.SectionPaddingintro62}>
-                                    <MText textStyle={COMMON.Txtintro63}>
+                                    <MText
+                                        textStyle={[
+                                            COMMON.Txtintro63,
+                                            {
+                                                color:
+                                                    page == 0
+                                                        ? 'black'
+                                                        : 'white',
+                                            },
+                                        ]}>
                                         {subtitle}
                                     </MText>
                                 </View>
@@ -123,11 +131,11 @@ const intro6 = createScreen(
                         text="Get started"
                         textStyle={COMMON.Textsbutton6}
                         color={COLORS.Color611}
-                        iconSide
-                        iconTop={{
-                            name: 'arrow-forward-sharp',
-                            color: COLORS.Color378,
-                        }}
+                        // iconSide
+                        // iconTop={{
+                        //     name: 'arrow-forward-sharp',
+                        //     color: COLORS.Color378,
+                        // }}
                     />
                 ) : (
                     <SectionRowCenter
@@ -138,7 +146,6 @@ const intro6 = createScreen(
                                 onPressDone();
                             }
                         }}
-                        // TextStyle={TextStyle}
                         backPress={() => move(viewPager, page, -1)}
                         intro
                     />
@@ -146,16 +153,18 @@ const intro6 = createScreen(
                 <View
                     style={{
                         flexDirection: 'row',
-                        justifyContent: 'center',
                         paddingVertical: 10,
+                        justifyContent: 'center',
                     }}>
-                    {data.map((_, index: number) => (
+                    {data.map((_, index) => (
                         <View
                             key={index}
                             style={{
                                 backgroundColor:
                                     index === page
-                                        ? COLORS.white
+                                        ? page == 0
+                                            ? '#ccc'
+                                            : COLORS.white
                                         : 'transparent',
                                 width: scale(10),
                                 height: scale(10),
@@ -163,6 +172,8 @@ const intro6 = createScreen(
                                 borderColor:
                                     index === page
                                         ? 'transparent'
+                                        : page == 0
+                                        ? '#ccc'
                                         : COLORS.white,
                                 borderWidth: index === page ? 0 : 0.5,
                                 marginHorizontal: scale(10),
@@ -170,7 +181,6 @@ const intro6 = createScreen(
                         />
                     ))}
                 </View>
-                {/* </ScrollView> */}
             </Container>
         );
     },

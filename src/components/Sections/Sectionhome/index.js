@@ -1,162 +1,125 @@
-import React, { useEffect } from 'react';
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    StyleSheet,
-    Image,
-} from 'react-native';
-import {
-    scale,
-    verticalScale,
-    height,
-    toPascalCase,
-    convertMiles,
-} from 'utils';
-import { useState } from 'react';
 import useTheme from 'hooks/useTheme';
 import { COLORS } from 'constants/common';
-import { useRef } from 'react';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
+import { navigate } from 'navigation/methods';
+import { StyleSheet, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { convertMiles, scale, toPascalCase } from 'utils';
+import { MButton, MImage, MText } from 'components/common';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
-    useGetLikeCareers,
     useLikeCareer,
     useUnlikeCareer,
+    useGetLikeCareers,
 } from 'hooks/careers';
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
-import { navigate } from 'navigation/methods';
+
 const Sectionhome = (props) => {
     const { style, data } = props;
-    const {
-        LAYOUT,
-        GUTTERS,
-        TYPOGRAPHY,
-        IMAGES,
-        COMMON,
-        CONSTANTS,
-    } = useTheme();
+    const { COMMON } = useTheme();
     const [Like, setLike] = useState(false);
+
     const { data: LikeCareers } = useGetLikeCareers({
         careerId: data?.career?.id,
     });
+
     useEffect(() => {
         if (LikeCareers?.career_getUserLikeCareer?.result) setLike(true);
     }, [LikeCareers]);
+
     const { mutate: LikeMutate } = useLikeCareer();
     const { mutate: UnLikeMutate } = useUnlikeCareer();
 
     return (
-        <View style={[styles.Sectionhome, style, { marginHorizontal: 24 }]}>
+        <View style={[styles.Sectionhome, style]}>
             <MImage
                 imageSource={{ uri: data?.career?.imageAddress }}
                 style={COMMON.image68}
-                // customWidth={scale(300)}
-                // customHeight={scale(136)}
             />
-            <MText
-                textStyle={[COMMON.TxtSectionhome70, { lineHeight: 24 }]}
-                numberOfLines={2}>
-                {data?.career?.title}
-            </MText>
-            <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
-                <View style={{ width: '60%' }}>
-                    <MText textStyle={COMMON.TxtSectionhome72}>
-                        Possible Yearly Income{' '}
-                    </MText>
+            <View style={{ paddingHorizontal: 14 }}>
+                <MText
+                    numberOfLines={2}
+                    textStyle={[COMMON.TxtSectionhome70, { lineHeight: 24 }]}>
+                    {data?.career?.title}
+                </MText>
+                <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
+                    <View style={{ width: '70%' }}>
+                        <MText textStyle={COMMON.TxtSectionhome72}>
+                            Possible Yearly Income{' '}
+                        </MText>
+                    </View>
+                    <View style={{ width: '30%' }}>
+                        <MText textStyle={COMMON.TxtSectionhome73}>
+                            ${data?.career?.possibleYearlyIncome}{' '}
+                        </MText>
+                    </View>
                 </View>
-                <View style={{ width: '40%' }}>
-                    <MText textStyle={COMMON.TxtSectionhome73}>
-                        ${data?.career?.possibleYearlyIncome}{' '}
-                    </MText>
+                <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
+                    <View style={{ width: '45%' }}>
+                        <MText textStyle={COMMON.TxtSectionhome72}>
+                            Training Time{' '}
+                        </MText>
+                    </View>
+                    <View style={{ width: '55%' }}>
+                        <MText textStyle={COMMON.TxtSectionhome73}>
+                            {toPascalCase(data?.career?.trainingTime)}
+                        </MText>
+                    </View>
                 </View>
-            </View>
-            <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
-                <View style={{ width: '37%' }}>
-                    <MText textStyle={COMMON.TxtSectionhome72}>
-                        Training Time{' '}
-                    </MText>
+                <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
+                    <View style={{ width: '45%' }}>
+                        <MText textStyle={COMMON.TxtSectionhome72}>
+                            Social Impact{' '}
+                        </MText>
+                    </View>
+                    <View style={{ width: '55%' }}>
+                        <MText textStyle={COMMON.TxtSectionhome73}>
+                            {toPascalCase(data?.career?.socialImpact)}
+                        </MText>
+                    </View>
                 </View>
-                <View style={{ width: '63%' }}>
-                    <MText textStyle={COMMON.TxtSectionhome73}>
-                        {toPascalCase(data?.career?.trainingTime)}
-                    </MText>
-                </View>
-            </View>
-            <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
-                <View style={{ width: '36%' }}>
-                    <MText textStyle={COMMON.TxtSectionhome72}>
-                        Social Impact{' '}
-                    </MText>
-                </View>
-                <View style={{ width: '64%' }}>
-                    <MText textStyle={COMMON.TxtSectionhome73}>
-                        {toPascalCase(data?.career?.socialImpact)}
-                    </MText>
-                </View>
-            </View>
-            {data?.programVm?.length > 0 && (
-                <>
-                    <MText textStyle={COMMON.TxtSectionhome80}>
-                        Top Training Programs{' '}
-                    </MText>
-                    {data?.programVm?.map(
-                        (item, index) =>
-                            index < 3 && (
-                                <View
-                                    key={index}
-                                    style={[
-                                        COMMON.RowItem,
-                                        COMMON.RowItemSectionhome71,
-                                    ]}>
+                {data?.programVm?.length > 0 && (
+                    <>
+                        <MText textStyle={COMMON.TxtSectionhome80}>
+                            Top Training Programs{' '}
+                        </MText>
+                        {data?.programVm?.map(
+                            (item, index) =>
+                                index < 3 && (
                                     <View
-                                        style={{
-                                            width: '50%',
-                                        }}>
-                                        <MText
-                                            textStyle={COMMON.TxtSectionhome82}>
-                                            {item?.programs?.title}
-                                        </MText>
+                                        key={index}
+                                        style={[
+                                            COMMON.RowItem,
+                                            COMMON.RowItemSectionhome71,
+                                        ]}>
+                                        <View
+                                            style={{
+                                                width: '50%',
+                                            }}>
+                                            <MText
+                                                textStyle={
+                                                    COMMON.TxtSectionhome82
+                                                }>
+                                                {item?.programs?.title}
+                                            </MText>
+                                        </View>
+                                        <View style={{ width: '50%' }}>
+                                            <MText
+                                                textStyle={
+                                                    COMMON.TxtSectionhome83
+                                                }>
+                                                {parseFloat(
+                                                    convertMiles(
+                                                        item?.distance,
+                                                    ),
+                                                ).toFixed(2)}{' '}
+                                                miles{' '}
+                                            </MText>
+                                        </View>
                                     </View>
-                                    <View style={{ width: '50%' }}>
-                                        <MText
-                                            textStyle={COMMON.TxtSectionhome83}>
-                                            {parseFloat(
-                                                convertMiles(item?.distance),
-                                            ).toFixed(2)}{' '}
-                                            miles{' '}
-                                        </MText>
-                                    </View>
-                                </View>
-                            ),
-                    )}
-                </>
-            )}
+                                ),
+                        )}
+                    </>
+                )}
+            </View>
             <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
                 <View style={{ width: '50%' }}>
                     <MButton
@@ -182,10 +145,6 @@ const Sectionhome = (props) => {
                                     },
                                 });
                         }}
-                        // style={[
-                        //     COMMON.ButtonRect920,
-                        //     { paddingHorizontal: 10 },
-                        // ]}
                         containerStyle={[COMMON.Button910]}
                         color={COLORS.white}
                         iconLeft={{
@@ -198,10 +157,6 @@ const Sectionhome = (props) => {
                 <View style={{ width: '50%' }}>
                     <MButton
                         onPress={() => navigate('MoreInfo', { data, Like })}
-                        // style={[
-                        //     COMMON.ButtonRect920,
-                        //     { paddingHorizontal: 20 },
-                        // ]}
                         containerStyle={[
                             COMMON.Button910,
                             {
@@ -224,9 +179,9 @@ const Sectionhome = (props) => {
 };
 const styles = StyleSheet.create({
     Sectionhome: {
+        paddingHorizontal: 10,
         backgroundColor: COLORS.white,
         shadowColor: 'rgba(140,140,140,0.18)',
-        paddingHorizontal: 10,
         shadowOffset: { width: 0, height: 15 },
         shadowRadius: 29,
         elevation: 1,

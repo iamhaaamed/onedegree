@@ -214,7 +214,6 @@ const SectionSignUp = (props) => {
                             height={verticalScale(48)}
                         />
                         <MButton
-                            // onPress={() => navigate('Forgetpassword1')}
                             onPress={handleSubmit}
                             style={COMMON.ButtonRect36}
                             containerStyle={COMMON.Button35}
@@ -278,7 +277,7 @@ const SectionSignUp = (props) => {
 };
 const styles = StyleSheet.create({
     SectionSignUp: {
-        paddingBottom: verticalScale(0),
+        paddingBottom: verticalScale(28),
         paddingTop: verticalScale(0),
         paddingRight: scale(32),
         paddingLeft: scale(32),

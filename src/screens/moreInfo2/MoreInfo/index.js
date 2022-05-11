@@ -1,73 +1,28 @@
-import React from 'react';
-import { useRef } from 'react';
 import useTheme from 'hooks/useTheme';
-import { useState } from 'react';
-import { StyleSheet, ScrollView, SafeAreaView } from 'react-native';
-import { View, Image, Text, TouchableOpacity, Share } from 'react-native';
-import { createScreen } from 'components/elements';
+import React, { useState } from 'react';
 import { COLORS } from 'constants/common';
-import ActionSheet from 'react-native-actions-sheet';
+import { navigate } from 'navigation/methods';
+import { createScreen } from 'components/elements';
+import { SectionRow, SectionTop01 } from 'components/Sections';
+import { useLikeCareer, useUnlikeCareer } from 'hooks/careers';
+import { MButton, MImage, MText, MVideo } from 'components/common';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {
+    View,
+    Share,
+    ScrollView,
+    StyleSheet,
+    SafeAreaView,
+} from 'react-native';
 import {
     scale,
-    verticalScale,
-    height,
     toPascalCase,
     convertFirstCharacterAllWordsToUppercase,
 } from 'utils';
-import LinearGradient from 'react-native-linear-gradient';
-import { DateTimePickerMod } from 'components/common/MDateTimePicker';
-import {
-    DrawerItem,
-    DrawerItemList,
-    DrawerContentScrollView,
-    DrawerToggleButton,
-} from '@react-navigation/drawer';
 
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-    MVideo,
-} from 'components/common';
-import { Container, SectionTop01 } from 'components/Sections';
-import { SectionRow, SectionModalRemoveSave } from 'components/Sections';
-import { navigate } from 'navigation/methods';
-import {
-    useGetLikeCareers,
-    useLikeCareer,
-    useUnlikeCareer,
-} from 'hooks/careers';
 const MoreInfo = createScreen(
     ({ route }) => {
-        const {
-            LAYOUT,
-            GUTTERS,
-            TYPOGRAPHY,
-            IMAGES,
-            COMMON,
-            CONSTANTS,
-        } = useTheme();
+        const { COMMON } = useTheme();
         const [Like, setLike] = useState(route?.params?.Like);
         const Info = route?.params?.data;
 
