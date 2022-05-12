@@ -43,7 +43,9 @@ const Question5 = (props) => {
                         style={{
                             container: {
                                 elevation: 1,
-                                backgroundColor: COLORS.white,
+                                backgroundColor: COLORS?.white,
+                                width: scale(320),
+                                alignSelf: 'center',
                                 borderRadius: 8,
                                 shadowColor: 'rgba(140,140,140,0.16)',
                                 shadowOpacity: 0.5,

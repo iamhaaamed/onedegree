@@ -76,6 +76,7 @@ const EditProfile = createScreen(
             latitude: Info?.user?.latitude,
             longitude: Info?.user?.longitude,
             industry: Info?.user?.industry,
+            zipCode: Info?.user?.zipCode,
             educationLevel: Info?.user?.educationLevel,
             currentIncome: Info?.user?.currentIncome,
             isNotificationEnabled: Info?.user?.isNotificationEnabled,
@@ -105,6 +106,7 @@ const EditProfile = createScreen(
                     genders: UserInfo?.genders,
                     ethnicity: 'ONE',
                     city: UserInfo?.location,
+                    zipCode: UserInfo?.zipCode,
                     educationLevel: UserInfo?.educationLevel,
                     howFarAreYouWillingToTravelToGetCertified:
                         UserInfo?.howFarAreYouWillingToTravelToGetCertified,

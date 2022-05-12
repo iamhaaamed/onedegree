@@ -86,8 +86,9 @@ const Question3 = (props) => {
                             <MInput
                                 inputStyle={COMMON.InputRect108}
                                 containerStyle={COMMON.Input106}
-                                placeholder="Please enter ZIP Code"
-                                value={answer}
+                                placeholder={
+                                    answer ? answer : 'Please enter ZIP Code'
+                                }
                                 error={errors && errors.amount}
                                 placeholderColor={COLORS.Color267}
                                 onChangeText={(text) => {

@@ -395,6 +395,10 @@ const ProfileQuestion5 = createScreen(
                         {SelectQuestion()}
                     </View>
                     <SectionRowCenter
+                        style={
+                            route?.params?.code !== 1 &&
+                            route?.params?.code !== 5 && { marginTop: '30%' }
+                        }
                         backPress={() => goBack()}
                         questions
                         nextPress={() => onPress(route?.params?.code)}
