@@ -67,6 +67,7 @@ const Question3 = (props) => {
             .max(5, 'Must be 5 characters')
             .required('Invalid Zip Code'),
     });
+    console.log('aaaaaaaa', answer);
     return (
         <>
             <View style={COMMON.SectionPaddingquestion7120}>
@@ -86,6 +87,7 @@ const Question3 = (props) => {
                                 inputStyle={COMMON.InputRect108}
                                 containerStyle={COMMON.Input106}
                                 placeholder="Please enter ZIP Code"
+                                value={answer}
                                 error={errors && errors.amount}
                                 placeholderColor={COLORS.Color267}
                                 onChangeText={(text) => {

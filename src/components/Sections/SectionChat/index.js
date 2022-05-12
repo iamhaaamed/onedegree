@@ -64,7 +64,7 @@ const SectionChat = (props) => {
                     user ? styles.SectionChat2 : styles.SectionChat,
                     style,
                 ]}>
-                <MText textStyle={COMMON.TxtSectionChat33}>
+                <MText textStyle={[COMMON.TxtSectionChat33]}>
                     complete your profile{' '}
                 </MText>
             </View>
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 21,
         borderBottomRightRadius: 21,
         borderBottomLeftRadius: 0,
+        justifyContent: 'center',
     },
     SectionChat2: {
         paddingBottom: verticalScale(13),
@@ -115,6 +116,7 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 21,
         borderBottomRightRadius: 0,
         borderBottomLeftRadius: 21,
+        justifyContent: 'center',
     },
 });
 export default SectionChat;

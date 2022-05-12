@@ -3,7 +3,14 @@ import { useRef } from 'react';
 import useTheme from 'hooks/useTheme';
 import { useState } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
+import {
+    View,
+    Image,
+    Text,
+    TouchableOpacity,
+    FlatList,
+    ActivityIndicator,
+} from 'react-native';
 import { createScreen } from 'components/elements';
 import { COLORS } from 'constants/common';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -44,6 +51,7 @@ import {
 } from 'components/common';
 import { Container, SectionTop01 } from 'components/Sections';
 import { SectionEvent } from 'components/Sections';
+import { useGetNotifications } from 'hooks/notification';
 const Notification1 = createScreen(
     ({ navigation }) => {
         const {
@@ -54,23 +62,68 @@ const Notification1 = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
-
-        useLayoutEffect(() => {
-            navigation.setOptions({ tabBarStyle: { display: 'none' } });
-        }, [navigation]);
-
+        const {
+            isLoading,
+            data: notificationsData,
+            fetchNextPage,
+            hasNextPage,
+            isRefetching,
+            refetch,
+        } = useGetNotifications({
+            where: {
+                isReaded: { eq: false },
+            },
+            order: [{ createdAt: 'DESC' }],
+        });
+        const renderFooter = () => {
+            return hasNextPage ? (
+                <ActivityIndicator size={scale(50)} color={COLORS.Color323} />
+            ) : null;
+        };
         return (
-            <Container style={styles.Notification1}>
-                <ScrollView>
-                    <SectionTop01
-                        style={COMMON.EleNotification122}
-                        title={'Notification'}
-                    />
-                    <View style={COMMON.SectionPaddingNotification123}>
-                        <SectionEvent style={COMMON.EleNotification128} />
-                        <SectionEvent />
-                    </View>
-                </ScrollView>
+            <Container style={styles.Search}>
+                <SectionTop01
+                    style={COMMON.EleSearch4}
+                    title={'Notification'}
+                />
+                <MLoading
+                    size="large"
+                    isLoading={isLoading}
+                    style={{ top: '50%' }}
+                    color={COLORS.Color323}
+                />
+                <View style={COMMON.SectionPaddingSearch5}>
+                    {notificationsData?.pages?.length > 0 ? (
+                        <FlatList
+                            onRefresh={refetch}
+                            data={notificationsData?.pages}
+                            refreshing={isRefetching}
+                            showsVerticalScrollIndicator={false}
+                            renderItem={({ item, index }) => (
+                                <SectionEvent data={item} />
+                            )}
+                            keyExtractor={(item, index) =>
+                                item?.id
+                                    ? item?.id?.toString()
+                                    : index.toString()
+                            }
+                            ListFooterComponent={renderFooter}
+                            ListFooterComponentStyle={{
+                                height: verticalScale(50),
+                            }}
+                            onEndReachedThreshold={0.9}
+                            onEndReached={() => {
+                                if (hasNextPage) {
+                                    fetchNextPage();
+                                }
+                            }}
+                        />
+                    ) : (
+                        <MText textStyle={styles.emptyTxt}>
+                            You did not receive message
+                        </MText>
+                    )}
+                </View>
             </Container>
         );
     },
@@ -83,7 +136,15 @@ const Notification1 = createScreen(
 const styles = StyleSheet.create({
     Notification1: {
         backgroundColor: COLORS.Color197,
-        height: '100%',
+        flex: 1,
+    },
+    emptyTxt: {
+        fontSize: verticalScale(15),
+        fontFamily: 'Muli',
+        lineHeight: verticalScale(24),
+        color: COLORS.Color786,
+        alignSelf: 'center',
+        top: '60%',
     },
 });
 export default Notification1;

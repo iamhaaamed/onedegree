@@ -64,7 +64,7 @@ const MInput = ({
     skeletonOptions,
     iconRight,
     iconLeft,
-    dolorSign,
+    dolorSign = false,
     ...props
 }) => {
     const { COLORS, TYPOGRAPHY } = useTheme();
@@ -254,7 +254,7 @@ const MInput = ({
 
                     {iconRight && iconRight.name ? (
                         <View
-                            style={dolorSign ? styles.button2 : styles.button}>
+                            style={dolorSign ? styles.button : styles.button2}>
                             <MTouchable
                                 type="native"
                                 onPress={iconRight.onPress}

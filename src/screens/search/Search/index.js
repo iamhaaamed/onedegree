@@ -8,8 +8,15 @@ import { createScreen } from 'components/elements';
 import ActionSheet from 'react-native-actions-sheet';
 import { Container, SearchFilter, SectionTop01 } from 'components/Sections';
 import { MButton, MImage, MInput, MLoading, MText } from 'components/common';
-import { View, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
+import {
+    View,
+    FlatList,
+    StyleSheet,
+    ActivityIndicator,
+    TouchableOpacity,
+} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { navigate } from 'navigation/methods';
 
 const Search = createScreen(
     () => {
@@ -67,11 +74,11 @@ const Search = createScreen(
                 />
                 <View style={COMMON.SectionPaddingSearch5}>
                     <View style={[COMMON.RowItem, COMMON.RowItemSearch6]}>
-                        <View style={{ width: '80%' }}>
+                        <View style={{ width: '85%' }}>
                             <MInput
                                 onChangeText={(text) => setSearchTerm(text)}
                                 containerStyle={COMMON.InputRect9}
-                                placeholder=" Search"
+                                placeholder="Search"
                                 textStyle={COMMON.TextsInput8}
                                 backgroundColor={COLORS.white}
                                 height={verticalScale(51)}
@@ -103,7 +110,15 @@ const Search = createScreen(
                         refreshing={isRefetching}
                         showsVerticalScrollIndicator={false}
                         renderItem={({ item, index }) => (
-                            <View style={COMMON.SectionPaddingSearch12}>
+                            <TouchableOpacity
+                                style={COMMON.SectionPaddingSearch12}
+                                activeOpacity={1}
+                                onPress={() =>
+                                    navigate('MoreInfo', {
+                                        data: item,
+                                        Like: item?.isLiked,
+                                    })
+                                }>
                                 <View
                                     style={[
                                         COMMON.RowItem,
@@ -154,7 +169,7 @@ const Search = createScreen(
                                         </MText>
                                     </View>
                                 </View>
-                            </View>
+                            </TouchableOpacity>
                         )}
                         keyExtractor={(item, index) =>
                             item?.id ? item?.id?.toString() : index.toString()
@@ -172,13 +187,13 @@ const Search = createScreen(
                     />
                 </View>
                 <ActionSheet
-                    gestureEnabled
-                    indicatorStyle={{
-                        width: '30%',
-                        marginTop: 16,
-                        borderRadius: 5,
-                        backgroundColor: COLORS.Color321,
-                    }}
+                    // gestureEnabled
+                    // indicatorStyle={{
+                    //     width: '30%',
+                    //     marginTop: 16,
+                    //     borderRadius: 5,
+                    //     backgroundColor: COLORS.Color321,
+                    // }}
                     ref={refActionSheet}
                     containerStyle={styles.action}>
                     <SearchFilter

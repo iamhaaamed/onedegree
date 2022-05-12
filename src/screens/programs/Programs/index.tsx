@@ -1,11 +1,12 @@
 import useTheme from 'hooks/useTheme';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { COLORS } from 'constants/common';
 import { scale, verticalScale } from 'utils';
 import { useGetPrograms } from 'hooks/programs';
 import { createScreen } from 'components/elements';
-import { MButton, MInput } from 'components/common';
+import { MButton, MInput, MLoading } from 'components/common';
 import ActionSheet from 'react-native-actions-sheet';
+import { useDebounce } from 'hooks/useDebounce';
 import { ActivityIndicator, FlatList, StyleSheet, View } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
@@ -25,6 +26,11 @@ const Programs = createScreen(
                 refActionSheet.current?.setModalVisible();
             }
         };
+        // ? search term state
+        const [searchTerm, setSearchTerm] = useState('');
+
+        // ? debouncing search term with delay
+        const debouncedSearchTerm = useDebounce(searchTerm, 500);
         const {
             isLoading,
             data: programs,
@@ -32,7 +38,13 @@ const Programs = createScreen(
             hasNextPage,
             isRefetching,
             refetch,
-        } = useGetPrograms({});
+        } = useGetPrograms({
+            ...(debouncedSearchTerm.length && {
+                where: {
+                    title: { contains: debouncedSearchTerm },
+                },
+            }),
+        });
         let Programs = programs?.pages;
 
         const renderFooter = () => {
@@ -43,6 +55,12 @@ const Programs = createScreen(
 
         return (
             <Container style={styles.Programs276}>
+                <MLoading
+                    size="large"
+                    isLoading={isLoading}
+                    style={{ top: '50%' }}
+                    color={COLORS.Color323}
+                />
                 <SectionTop01 title="Training Programs" noIcon />
                 <View
                     style={[
@@ -52,6 +70,7 @@ const Programs = createScreen(
                     <View style={[COMMON.RowItem]}>
                         <View style={{ width: '80%' }}>
                             <MInput
+                                onChangeText={(text) => setSearchTerm(text)}
                                 // style={COMMON.InputRect23}
                                 containerStyle={COMMON.Input21}
                                 placeholder=" Search"
@@ -88,8 +107,8 @@ const Programs = createScreen(
                             maxHeight: verticalScale(630),
                         }}
                         showsVerticalScrollIndicator={false}
-                        // refreshing={isRefetching}
-                        // onRefresh={refetch}
+                        refreshing={isRefetching}
+                        onRefresh={refetch}
                         renderItem={({ item }) => <SectionItem data={item} />}
                         keyExtractor={(item, index) =>
                             item?.id ? item?.id?.toString() : index.toString()

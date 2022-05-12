@@ -70,13 +70,13 @@ const EditProfile = createScreen(
         const [UserInfo, setUserInfo] = useState({
             firstName: userName[0],
             lastName: userName[1],
-            location: Info?.StateName,
+            location: Info?.user?.city,
             age: Info?.user?.age,
             genders: Info?.user?.genders,
             latitude: Info?.user?.latitude,
             longitude: Info?.user?.longitude,
             industry: Info?.user?.industry,
-            educationLevel: Info?.user?.educationLevel.toString(),
+            educationLevel: Info?.user?.educationLevel,
             currentIncome: Info?.user?.currentIncome,
             isNotificationEnabled: Info?.user?.isNotificationEnabled,
             ethnicity: Info?.user?.ethnicity,
@@ -104,6 +104,7 @@ const EditProfile = createScreen(
                     age: parseInt(UserInfo?.age),
                     genders: UserInfo?.genders,
                     ethnicity: 'ONE',
+                    city: UserInfo?.location,
                     educationLevel: UserInfo?.educationLevel,
                     howFarAreYouWillingToTravelToGetCertified:
                         UserInfo?.howFarAreYouWillingToTravelToGetCertified,
@@ -114,6 +115,7 @@ const EditProfile = createScreen(
                 },
                 {
                     onSuccess: (data) => {
+                        console.log('ddddddddd', data);
                         if (data?.user_updateProfile?.status == 'SUCCESS') {
                             setUserName(
                                 `${data?.user_updateProfile?.result?.firstName} ${data?.user_updateProfile?.result?.lastName}`,
@@ -310,7 +312,7 @@ const EditProfile = createScreen(
                                     });
                                 }}
                                 placeholderObject={{
-                                    label: UserInfo?.educationLevel.toString(),
+                                    label: UserInfo?.educationLevel,
                                 }} //change label
                                 defaultAndroidMode={false}
                                 icon={{

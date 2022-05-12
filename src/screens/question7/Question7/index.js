@@ -68,29 +68,30 @@ const question7 = createScreen(
         };
         return (
             <Container style={styles.question7}>
-                <ScrollView>
-                    <SectionTop />
-                    <MImage
-                        imageSource={IMAGES.image6696}
-                        style={COMMON.Image119}
-                        customWidth={scale(390)}
-                        customHeight={scale(84)}
-                    />
+                {/* <ScrollView> */}
+                <SectionTop />
+                <MImage
+                    imageSource={IMAGES.image6696}
+                    style={COMMON.Image119}
+                    customWidth={scale(390)}
+                    customHeight={scale(84)}
+                />
 
-                    {/* <View style={COMMON.SectionPaddingquestion7120}> */}
-                    <Question2 onComplete={(data) => Complete(data)} />
-                    {/* </View> */}
-                    <SectionRowCenter
-                        backPress={() => goBack()}
-                        nextPress={() => {
-                            if (userInput)
-                                navigate('Question6', {
-                                    userInput,
-                                    ...route?.params,
-                                });
-                        }}
-                    />
-                </ScrollView>
+                {/* <View style={COMMON.SectionPaddingquestion7120}> */}
+                <Question2 onComplete={(data) => Complete(data)} />
+                {/* </View> */}
+                <SectionRowCenter
+                    style={{ top: '20%' }}
+                    backPress={() => goBack()}
+                    nextPress={() => {
+                        if (userInput)
+                            navigate('Question6', {
+                                userInput,
+                                ...route?.params,
+                            });
+                    }}
+                />
+                {/* </ScrollView> */}
             </Container>
         );
     },
@@ -103,7 +104,7 @@ const question7 = createScreen(
 const styles = StyleSheet.create({
     question7: {
         backgroundColor: COLORS.Color963,
-        height: '100%',
+        flex: 1,
     },
 });
 export default question7;

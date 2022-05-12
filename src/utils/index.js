@@ -4,3 +4,4 @@ export { toPascalCase } from './toPascalCase';
 export { convertMiles } from './convertMiles';
 export { convertFirstCharacterAllWordsToUppercase } from './upperCase';
 export { UploadImage } from './UploadImage';
+export { getDateXDaysAgo } from './getDateXDaysAgo';

@@ -281,6 +281,7 @@ const styles = StyleSheet.create({
     signInBtn: {
         alignSelf: 'center',
         paddingBottom: 10,
+        marginTop: '-4%',
         flexDirection: 'row',
     },
 });

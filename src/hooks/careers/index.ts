@@ -69,6 +69,7 @@ const useLikeCareer = () => {
                 if (data.career_like?.status === 'SUCCESS') {
                     queryClient.invalidateQueries('LikeCareers');
                     queryClient.invalidateQueries('saveCareers');
+                    queryClient.invalidateQueries('getCareers');
                 }
             },
         },
@@ -87,6 +88,7 @@ const useUnlikeCareer = () => {
                 if (data.career_unlike?.status === 'SUCCESS') {
                     queryClient.invalidateQueries('LikeCareers');
                     queryClient.invalidateQueries('saveCareers');
+                    queryClient.invalidateQueries('getCareers');
                 }
             },
         },

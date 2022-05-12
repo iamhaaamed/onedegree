@@ -80,11 +80,9 @@ const Save = createScreen(
                     style={{ top: '50%' }}
                     color={COLORS.Color323}
                 />
-                <ScrollView>
-                    <SectionTop01
-                        style={COMMON.EleSave14}
-                        title="Saved Careers"
-                    />
+
+                <SectionTop01 style={COMMON.EleSave14} title="Saved Careers" />
+                <View style={styles.view}>
                     <View style={COMMON.SectionPaddingSave15}>
                         <MInput
                             placeholder=" Search"
@@ -102,6 +100,7 @@ const Save = createScreen(
                         />
                         <FlatList
                             numColumns={2}
+                            showsVerticalScrollIndicator={false}
                             data={careers?.pages}
                             style={{ width: '100%' }}
                             refreshing={isRefetching}
@@ -180,17 +179,17 @@ const Save = createScreen(
                             }}
                         />
                     </View>
-                    <ActionSheet
-                        ref={refActionSheet}
-                        containerStyle={styles.action}>
-                        <SectionModalRemoveSave
-                            CareerId={CareerId}
-                            showModal={() =>
-                                refActionSheet.current?.setModalVisible()
-                            }
-                        />
-                    </ActionSheet>
-                </ScrollView>
+                </View>
+                <ActionSheet
+                    ref={refActionSheet}
+                    containerStyle={styles.action}>
+                    <SectionModalRemoveSave
+                        CareerId={CareerId}
+                        showModal={() =>
+                            refActionSheet.current?.setModalVisible()
+                        }
+                    />
+                </ActionSheet>
             </Container>
         );
     },
@@ -203,7 +202,10 @@ const Save = createScreen(
 const styles = StyleSheet.create({
     Save1: {
         backgroundColor: COLORS.Color197,
-        height: '100%',
+        flex: 1,
+    },
+    view: {
+        height: scale(610),
     },
     action: {
         borderTopLeftRadius: scale(30),

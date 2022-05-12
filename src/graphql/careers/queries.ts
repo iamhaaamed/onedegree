@@ -31,69 +31,6 @@ export const GET_CAREERS = gql`
                         tenYearGrowth
                         typeOfWork
                         otherPerks
-                        programs {
-                            isActive
-                            createdAt
-                            title
-                            programCost
-                            lengthOfProgram
-                            longitude
-                            latitude
-                            imageAddrss
-                            link
-                            jobPlacementRate
-                            careerId
-                            userId
-                            id
-                            isDeleted
-                        }
-                        userLikeCareers {
-                            createdAt
-                            careerId
-                            userId
-                            id
-                            isDeleted
-                        }
-                        conversations {
-                            subject
-                            careerId
-                            programId
-                            isChatWithCareer
-                            firstUserId
-                            secondUserId
-                            firstUnreadCount
-                            secondUnreadCount
-                            latestMessageDate
-                            id
-                            isDeleted
-                        }
-                        user {
-                            isActive
-                            createdAt
-                            email
-                            lastSeen
-                            userTypes
-                            isNotificationEnabled
-                            imageAddress
-                            firstName
-                            lastName
-                            longitude
-                            latitude
-                            age
-                            ethnicity
-                            educationLevel
-                            currentIncome
-                            industry
-                            amount
-                            amountType
-                            whereDoYouWantToWork
-                            howFarAreYouWillingToTravelToGetCertified
-                            whereDidYouHearAboutOnedegreeCareers
-                            whereDidYouHearAboutOnedegreeCareersTextForOther
-                            externalId
-                            id
-                            isDeleted
-                        }
                         userId
                         id
                         isDeleted

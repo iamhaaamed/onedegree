@@ -147,7 +147,7 @@ const SectionForgetPass = (props) => {
             <TouchableOpacity
                 style={styles.signUpBtn}
                 onPress={() => navigate('Signup')}>
-                <MText textStyle={{ fontSize: scale(12), marginTop: -1 }}>
+                <MText textStyle={{ fontSize: scale(12), marginTop: '-4%' }}>
                     Not A Member?{' '}
                 </MText>
                 <MText textStyle={COMMON.TxtSectionForgetPass53}>

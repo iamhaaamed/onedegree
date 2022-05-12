@@ -14,6 +14,8 @@ export const UPDATE_USERPROFILE = gql`
                 firstName
                 lastName
                 age
+                city
+                zipCode
                 ethnicity
                 educationLevel
                 currentIncome

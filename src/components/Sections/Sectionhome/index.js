@@ -134,9 +134,11 @@ const Sectionhome = (props) => {
                                             setLike(false);
                                     },
                                 });
-                            else
+                            else {
+                                console.log('1');
                                 LikeMutate(data?.career?.id, {
                                     onSuccess: (data) => {
+                                        console.log('dd', data);
                                         if (
                                             data?.career_like?.status ==
                                             'SUCCESS'
@@ -144,6 +146,7 @@ const Sectionhome = (props) => {
                                             setLike(true);
                                     },
                                 });
+                            }
                         }}
                         containerStyle={[COMMON.Button910]}
                         color={COLORS.white}

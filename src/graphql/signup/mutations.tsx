@@ -34,6 +34,8 @@ export const SIGNIN = gql`
                 latitude
                 genders
                 age
+                city
+                zipCode
                 ethnicity
                 educationLevel
                 currentIncome

@@ -2262,6 +2262,7 @@ export default function ({ COLORS }) {
             fontFamily: 'Muli',
             fontWeight: 'bold',
             color: COLORS.Color726,
+            marginTop: 2,
         },
         ButtonRect12: {
             paddingHorizontal: 0,

@@ -36,13 +36,14 @@ const App = () => {
         async (user) => {
             if (user) {
                 const idToken = await auth().currentUser?.getIdToken();
-                console.log('tokennn:', idToken);
+                console.log('tokennn:', user);
                 if (idToken) {
                     graphQLClient.setHeader(
                         'authorization',
                         'Bearer ' + idToken,
                     );
                     setToken(idToken);
+                    queryClient.invalidateQueries();
                 } else {
                     showMessage({
                         message: 'please login first',
@@ -90,15 +91,24 @@ const App = () => {
                         first[0][Object.keys(first[0])[0]].status ===
                             'AUTHENTICATION_FAILED')
                 ) {
+                    console.log('status', status);
                     try {
                         await auth().signOut();
                     } catch (error) {
                         console.log('errrrr', error);
+                        showMessage({
+                            message: 'please login first',
+                            type: 'danger',
+                        });
+                        setToken(null);
                     }
                 }
             },
         }),
     });
+    if (initializing) {
+        return null;
+    }
     return (
         <QueryClientProvider client={queryClient}>
             <AppNavigator />

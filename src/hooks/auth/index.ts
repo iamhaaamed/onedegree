@@ -24,6 +24,8 @@ const useLogin = () => {
                 if (data.user_login?.status === 'SUCCESS') {
                     setUserId(data.user_login?.result?.id);
                     queryClient.invalidateQueries('getMyProfile');
+                    queryClient.invalidateQueries('notifications');
+                    queryClient.invalidateQueries('messages');
                 }
             },
         },

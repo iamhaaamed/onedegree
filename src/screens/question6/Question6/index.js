@@ -66,102 +66,104 @@ const question6 = createScreen(
         console.log('laaaaa', getLatLang);
         return (
             <Container style={styles.question6}>
-                <ScrollView>
-                    <MLoading
-                        size="large"
-                        color={COLORS.Color323}
-                        isLoading={isLoading}
-                    />
-                    <SectionTop />
-                    <MImage
-                        imageSource={IMAGES.image2773}
-                        style={COMMON.Image102}
-                        customWidth={scale(381)}
-                        customHeight={scale(82)}
-                    />
+                {/* <ScrollView> */}
+                <MLoading
+                    size="large"
+                    color={COLORS.Color323}
+                    isLoading={isLoading}
+                />
+                <SectionTop />
+                <MImage
+                    imageSource={IMAGES.image2773}
+                    style={COMMON.Image102}
+                    customWidth={scale(381)}
+                    customHeight={scale(82)}
+                />
 
-                    {/* <View style={COMMON.SectionPaddingquestion6103}> */}
-                    <Question3 setZipCode={(data) => setZipCode(data)} />
-                    {/* </View> */}
-                    <SectionRowCenter
-                        backPress={() => goBack()}
-                        nextPress={async () => {
-                            if (ZipCode)
-                                axios
-                                    .get(getLatLang)
-                                    .then(function (response) {
-                                        console.log(response?.data?.output);
-                                        if (response?.data?.output[0]) {
-                                            mutate(
-                                                {
-                                                    point: [
-                                                        parseFloat(
-                                                            response?.data
-                                                                ?.output[0]
-                                                                ?.latitude,
-                                                        ),
-                                                        parseFloat(
-                                                            response?.data
-                                                                ?.output[0]
-                                                                ?.longitude,
-                                                        ),
-                                                    ],
-                                                    industry:
-                                                        route?.params?.Answers,
-                                                    currentIncome: 10,
-                                                    isNotificationEnabled: true,
-                                                    age: 1,
-                                                    genders: 'MALE',
-                                                    ethnicity: 'ONE',
-                                                    educationLevel:
-                                                        'Primary Education',
-                                                    howFarAreYouWillingToTravelToGetCertified:
-                                                        'REMOTE_ONLY',
-                                                    whereDidYouHearAboutOnedegreeCareers:
-                                                        'CRAIGSLIST',
-                                                    amount: parseFloat(
-                                                        route?.params?.userInput
-                                                            ?.amount,
+                {/* <View style={COMMON.SectionPaddingquestion6103}> */}
+                <Question3 setZipCode={(data) => setZipCode(data)} />
+                {/* </View> */}
+                <SectionRowCenter
+                    style={{ top: '20%' }}
+                    backPress={() => goBack()}
+                    nextPress={async () => {
+                        if (ZipCode)
+                            axios
+                                .get(getLatLang)
+                                .then(function (response) {
+                                    console.log(response?.data?.output);
+                                    if (response?.data?.output[0]) {
+                                        var zip = response?.data?.output[0]?.zip?.toString();
+                                        mutate(
+                                            {
+                                                point: [
+                                                    parseFloat(
+                                                        response?.data
+                                                            ?.output[0]
+                                                            ?.latitude,
                                                     ),
-                                                    amountType:
-                                                        route?.params?.userInput
-                                                            ?.type == 'Hourly'
-                                                            ? 'HOURLY'
-                                                            : route?.params
-                                                                  ?.userInput
-                                                                  ?.type ==
-                                                              'Monthly'
-                                                            ? 'MONTHLY'
-                                                            : 'ANNUALLY',
+                                                    parseFloat(
+                                                        response?.data
+                                                            ?.output[0]
+                                                            ?.longitude,
+                                                    ),
+                                                ],
+                                                zipCode: zip,
+                                                industry:
+                                                    route?.params?.Answers,
+                                                currentIncome: 10,
+                                                isNotificationEnabled: true,
+                                                age: 1,
+                                                genders: 'MALE',
+                                                ethnicity: 'ONE',
+                                                educationLevel:
+                                                    'Primary Education',
+                                                howFarAreYouWillingToTravelToGetCertified:
+                                                    'REMOTE_ONLY',
+                                                whereDidYouHearAboutOnedegreeCareers:
+                                                    'CRAIGSLIST',
+                                                amount: parseFloat(
+                                                    route?.params?.userInput
+                                                        ?.amount,
+                                                ),
+                                                amountType:
+                                                    route?.params?.userInput
+                                                        ?.type == 'Hourly'
+                                                        ? 'HOURLY'
+                                                        : route?.params
+                                                              ?.userInput
+                                                              ?.type ==
+                                                          'Monthly'
+                                                        ? 'MONTHLY'
+                                                        : 'ANNUALLY',
+                                            },
+                                            {
+                                                onSuccess: (data) => {
+                                                    if (
+                                                        data?.user_updateProfile
+                                                            ?.status ==
+                                                        'SUCCESS'
+                                                    )
+                                                        navigate(
+                                                            'Gettingstarted3',
+                                                        );
                                                 },
-                                                {
-                                                    onSuccess: (data) => {
-                                                        if (
-                                                            data
-                                                                ?.user_updateProfile
-                                                                ?.status ==
-                                                            'SUCCESS'
-                                                        )
-                                                            navigate(
-                                                                'Gettingstarted3',
-                                                            );
-                                                    },
-                                                },
-                                            );
-                                        }
-                                    })
-                                    .catch(function (error) {
-                                        showMessage({
-                                            message: `Something went wrong: ${error.message}`,
-                                            type: 'danger',
-                                        });
-                                    })
-                                    .then(function () {
-                                        // always executed
+                                            },
+                                        );
+                                    }
+                                })
+                                .catch(function (error) {
+                                    showMessage({
+                                        message: `Something went wrong: ${error.message}`,
+                                        type: 'danger',
                                     });
-                        }}
-                    />
-                </ScrollView>
+                                })
+                                .then(function () {
+                                    // always executed
+                                });
+                    }}
+                />
+                {/* </ScrollView> */}
             </Container>
         );
     },

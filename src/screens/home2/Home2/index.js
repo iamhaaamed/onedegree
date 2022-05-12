@@ -55,7 +55,7 @@ const Home2 = createScreen(
             isRefetching,
             refetch,
             error,
-        } = useGetCareers({ order: [{ isLiked: 'DESC' }] });
+        } = useGetCareers({});
 
         let Careers = careers?.pages;
 

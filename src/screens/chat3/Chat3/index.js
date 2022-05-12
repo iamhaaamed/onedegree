@@ -109,7 +109,7 @@ const Chat3 = createScreen(
                                 color: COLORS.Color700,
                                 style: {
                                     alignSelf: 'flex-end',
-                                    right: -15,
+                                    right: '-100%',
                                     paddingLeft: 10,
                                 },
                                 size: scale(25),

@@ -31,6 +31,7 @@ const SearchFilter = (props) => {
     const [multiSliderValue, setMultiSliderValue] = React.useState([70, 85]);
     return (
         <MView style={[COMMON.ModalRect1, COMMON.Modal0]}>
+            <View style={styles.line} />
             <ScrollView
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={{
@@ -454,6 +455,15 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.Color323,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    line: {
+        width: '30%',
+        alignSelf: 'center',
+        backgroundColor: COLORS.Color321,
+        padding: 2,
+        borderRadius: 5,
+        marginBottom: scale(30),
+        marginTop: '-5%',
     },
 });
 export default SearchFilter;

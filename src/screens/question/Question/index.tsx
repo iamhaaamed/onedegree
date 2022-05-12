@@ -43,7 +43,7 @@ const Question = createScreen(
                 },
                 {
                     title: 'Where Do You Currently Live',
-                    answer: 'Enter Zipcode',
+                    answer: data?.user_login?.result?.city,
                     code: 3,
                 },
                 // {

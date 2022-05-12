@@ -65,10 +65,12 @@ const ProfileQuestion5 = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
+
         const { isLoading, data } = useGetProfile();
         const [isChecked, setAnswers] = useState();
         const [ZipCode, setZipCode] = useState();
         const [userInput, setUserInput] = useState();
+        console.log('.........', data?.user_login?.result);
         const [Hear, setHear] = useState(
             data?.user_login?.result
                 ?.whereDidYouHearAboutOnedegreeCareersTextForOther,
@@ -99,6 +101,8 @@ const ProfileQuestion5 = createScreen(
                             parseFloat(data?.user_login?.result?.latitude),
                             parseFloat(data?.user_login?.result?.longitude),
                         ],
+                        city: data?.user_login?.result?.city,
+                        zipCode: data?.user_login?.result?.zipCode,
                         industry: String,
                         currentIncome: parseFloat(
                             data?.user_login?.result?.currentIncome,
@@ -138,6 +142,8 @@ const ProfileQuestion5 = createScreen(
                         currentIncome: parseFloat(
                             data?.user_login?.result?.currentIncome,
                         ),
+                        city: data?.user_login?.result?.city,
+                        zipCode: data?.user_login?.result?.zipCode,
                         isNotificationEnabled:
                             data?.user_login?.result?.isNotificationEnabled,
                         // imageAddress: UserImage,
@@ -174,6 +180,10 @@ const ProfileQuestion5 = createScreen(
                         .get(getLatLang)
                         .then(function (response) {
                             if (response?.data?.output[0]) {
+                                console.log(
+                                    'rrrrrrrrrrr',
+                                    response?.data?.output[0],
+                                );
                                 mutate(
                                     {
                                         point: [
@@ -186,12 +196,14 @@ const ProfileQuestion5 = createScreen(
                                                     ?.longitude,
                                             ),
                                         ],
+                                        zipCode: response?.data?.output[0]?.zip.toString(),
                                         industry:
                                             data?.user_login?.result?.industry,
                                         currentIncome: parseFloat(
                                             data?.user_login?.result
                                                 ?.currentIncome,
                                         ),
+                                        city: data?.user_login?.result?.city,
                                         isNotificationEnabled:
                                             data?.user_login?.result
                                                 ?.isNotificationEnabled,
@@ -250,6 +262,8 @@ const ProfileQuestion5 = createScreen(
                         currentIncome: parseFloat(
                             data?.user_login?.result?.currentIncome,
                         ),
+                        city: data?.user_login?.result?.city,
+                        zipCode: data?.user_login?.result?.zipCode,
                         isNotificationEnabled:
                             data?.user_login?.result?.isNotificationEnabled,
                         // imageAddress: UserImage,
@@ -288,6 +302,8 @@ const ProfileQuestion5 = createScreen(
                             parseFloat(data?.user_login?.result?.latitude),
                             parseFloat(data?.user_login?.result?.longitude),
                         ],
+                        city: data?.user_login?.result?.city,
+                        zipCode: data?.user_login?.result?.zipCode,
                         industry: data?.user_login?.result?.industry,
                         currentIncome: parseFloat(
                             data?.user_login?.result?.currentIncome,
@@ -336,7 +352,7 @@ const ProfileQuestion5 = createScreen(
                     return (
                         <Question3
                             setZipCode={(data) => setZipCode(data)}
-                            answer={route?.params?.answer}
+                            answer={data?.user_login?.result?.zipCode}
                         />
                     );
                 case 4:

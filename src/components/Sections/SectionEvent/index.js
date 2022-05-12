@@ -1,47 +1,13 @@
-import React from 'react';
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    StyleSheet,
-    Image,
-} from 'react-native';
-import { scale, verticalScale, height } from 'utils';
-import { useState } from 'react';
-import useTheme from 'hooks/useTheme';
+import { MIcon, MText } from 'components/common';
 import { COLORS } from 'constants/common';
-import { useRef } from 'react';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
+import useTheme from 'hooks/useTheme';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
+import { getDateXDaysAgo, scale, verticalScale } from 'utils';
 
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
 const SectionEvent = (props) => {
-    const { style } = props;
+    const { style, data } = props;
     const {
         LAYOUT,
         GUTTERS,
@@ -51,14 +17,9 @@ const SectionEvent = (props) => {
         CONSTANTS,
     } = useTheme();
 
-    const clickCounter = useRef(0);
-    const onPress = () => {
-        console.log(`Clicked! ${clickCounter.current}`);
-        clickCounter.current = clickCounter.current + 1;
-    };
-
     return (
-        <View style={[styles.SectionEvent, style]}>
+        <View
+            style={[styles.SectionEvent, style, COMMON.SectionPaddingSearch12]}>
             <View style={[COMMON.RowItem, COMMON.RowItemSectionEvent24]}>
                 <View
                     style={{
@@ -72,13 +33,16 @@ const SectionEvent = (props) => {
                     />
                 </View>
                 <View style={{ width: '90%' }}>
-                    <MText textStyle={COMMON.TxtSectionEvent25}> Event </MText>
+                    <MText textStyle={COMMON.TxtSectionEvent25}>
+                        {data?.title}
+                    </MText>
                 </View>
             </View>
             <MText textStyle={COMMON.TxtSectionEvent26}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do{' '}
+                {data?.description}
             </MText>
             <MText textStyle={COMMON.TxtSectionEvent27}>
+                {/* {getDateXDaysAgo(data?.createdAt)} */}
                 11 days ago - 11:35 Am{' '}
             </MText>
         </View>
@@ -96,6 +60,7 @@ const styles = StyleSheet.create({
         shadowRadius: 29,
         // opacity: 0.78,
         elevation: 1,
+        marginVertical: verticalScale(10),
         width: '100%',
         // height: verticalScale(144),
         borderTopLeftRadius: 21,

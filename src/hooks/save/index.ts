@@ -29,6 +29,8 @@ const useGetCareers = ({
         },
         {
             getNextPageParam: (lastPage: any, allPages: any) => {
+                console.log('.........', lastPage?.career_getCareers?.result);
+
                 if (
                     lastPage?.career_getCareers?.result?.pageInfo?.hasNextPage
                 ) {
