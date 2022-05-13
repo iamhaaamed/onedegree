@@ -275,12 +275,12 @@ const ProfileQuestion5 = createScreen(
                         howFarAreYouWillingToTravelToGetCertified:
                             Travel == 'Over An Hour'
                                 ? 'OVER_AN_HOUR'
-                                : Travel == 'Up To1 Hour'
-                                ? 'UP_TO1_HOUR'
-                                : Travel == 'Up To45 Minutes'
-                                ? 'UP_TO45_MINUTES'
-                                : Travel == 'Up To20 Minutes'
-                                ? 'UP_TO20_MINUTES'
+                                : Travel == 'Up To 1 Hour'
+                                ? 'UP_TO_1_HOUR'
+                                : Travel == 'Up To 45 Minutes'
+                                ? 'UP_TO_45_MINUTES'
+                                : Travel == 'Up To 20 Minutes'
+                                ? 'UP_TO_20_MINUTES'
                                 : 'REMOTE_ONLY',
                         whereDidYouHearAboutOnedegreeCareers:
                             data?.user_login?.result

@@ -25,7 +25,7 @@ const Container = ({ style, children, isLoading, loadingOnPage }) => {
         </SafeAreaView>
     );
 };
-export default Container;
+export default React.memo(Container);
 const styles = StyleSheet.create({
     view: {
         width: '100%',

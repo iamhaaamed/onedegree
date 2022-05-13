@@ -137,4 +137,4 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 });
-export default SectionCheckEmail;
+export default React.memo(SectionCheckEmail);

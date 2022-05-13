@@ -119,4 +119,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 });
-export default SectionChat;
+export default React.memo(SectionChat);

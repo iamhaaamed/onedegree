@@ -30,11 +30,19 @@ export const GET_NOTIFICATIONS = gql`
     }
 `;
 
-export const GET_UNREAD_NOTIFICATION_EXISTS = gql`
-    query notification_getUnreadNotificationExists {
-        notification_getUnreadNotificationExists {
+export const READ_NOTIFICATION = gql`
+    mutation {
+        notification_readAllNotifications(          
+        )  {
+            result() {
+                items {
+                    title
+                    isReaded
+
+                    id
+                }
+            }
             status
-            result
         }
     }
 `;

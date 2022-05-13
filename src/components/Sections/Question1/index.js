@@ -132,4 +132,4 @@ const styles = StyleSheet.create({
         height: '100%',
     },
 });
-export default Question1;
+export default React.memo(Question1);

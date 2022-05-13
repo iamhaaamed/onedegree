@@ -71,4 +71,4 @@ const styles = StyleSheet.create({
         marginVertical: scale(10),
     },
 });
-export default SectionItem20;
+export default React.memo(SectionItem20);

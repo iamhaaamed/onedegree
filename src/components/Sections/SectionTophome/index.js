@@ -1,47 +1,13 @@
-import React, { useEffect } from 'react';
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    StyleSheet,
-    Image,
-} from 'react-native';
-import { scale, verticalScale, height } from 'utils';
-import { useState } from 'react';
-import useTheme from 'hooks/useTheme';
+import { MButton, MImage } from 'components/common';
 import { COLORS } from 'constants/common';
-import { useRef } from 'react';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
+import useTheme from 'hooks/useTheme';
 import { navigate } from 'navigation/methods';
-
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { scale, verticalScale } from 'utils';
+import { useGetNotifications } from 'hooks/notification';
 const SectionTophome = (props) => {
     const { style } = props;
     const {
@@ -52,7 +18,18 @@ const SectionTophome = (props) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
-
+    const {
+        isLoading,
+        data: notificationsData,
+        fetchNextPage,
+        hasNextPage,
+        isRefetching,
+        refetch,
+    } = useGetNotifications({
+        where: {
+            isReaded: { eq: false },
+        },
+    });
     return (
         <View style={[styles.SectionTophome, style]}>
             <View style={COMMON.RowItem}>
@@ -77,6 +54,19 @@ const SectionTophome = (props) => {
                             Component: MaterialCommunityIcons,
                         }}
                     />
+                    {notificationsData?.pages?.length > 0 && (
+                        <View
+                            style={{
+                                width: scale(10),
+                                height: scale(10),
+                                borderRadius: 5,
+                                backgroundColor: COLORS.Color323,
+                                position: 'absolute',
+                                top: scale(10),
+                                left: scale(7),
+                            }}
+                        />
+                    )}
                 </View>
                 <View style={{ width: '10%' }}>
                     <MButton
@@ -112,4 +102,4 @@ const styles = StyleSheet.create({
         // height: verticalScale(56),
     },
 });
-export default SectionTophome;
+export default React.memo(SectionTophome);

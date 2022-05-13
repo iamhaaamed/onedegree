@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { useRef } from 'react';
 import useTheme from 'hooks/useTheme';
 import { useState } from 'react';
@@ -51,7 +51,8 @@ import {
 } from 'components/common';
 import { Container, SectionTop01 } from 'components/Sections';
 import { SectionEvent } from 'components/Sections';
-import { useGetNotifications } from 'hooks/notification';
+import { useGetNotifications, useReadNotification } from 'hooks/notification';
+
 const Notification1 = createScreen(
     ({ navigation }) => {
         const {
@@ -62,6 +63,7 @@ const Notification1 = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
+        const { mutate } = useReadNotification();
         const {
             isLoading,
             data: notificationsData,
@@ -80,6 +82,16 @@ const Notification1 = createScreen(
                 <ActivityIndicator size={scale(50)} color={COLORS.Color323} />
             ) : null;
         };
+        useEffect(() => {
+            mutate(
+                {},
+                {
+                    onSuccess: (data) => {
+                        console.log('0000', data);
+                    },
+                },
+            );
+        }, []);
         return (
             <Container style={styles.Search}>
                 <SectionTop01

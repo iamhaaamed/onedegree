@@ -67,4 +67,4 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
 });
-export default SectionText1;
+export default React.memo(SectionText1);

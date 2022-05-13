@@ -1,48 +1,11 @@
-import React from 'react';
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    StyleSheet,
-    Image,
-} from 'react-native';
-import { scale, verticalScale, height } from 'utils';
-import { useState } from 'react';
-import useTheme from 'hooks/useTheme';
-import { COLORS } from 'constants/common';
-import { useRef } from 'react';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
-import { navigate } from 'navigation/methods';
-import { authStore } from '../../../store';
 import { StackActions, useNavigation } from '@react-navigation/native';
+import { MButton, MText } from 'components/common';
+import { COLORS } from 'constants/common';
+import useTheme from 'hooks/useTheme';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { scale, verticalScale } from 'utils';
+
 const SectionStart = (props) => {
     const { style } = props;
     const {
@@ -93,4 +56,4 @@ const styles = StyleSheet.create({
         width: '100%',
     },
 });
-export default SectionStart;
+export default React.memo(SectionStart);

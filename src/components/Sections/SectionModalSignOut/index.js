@@ -141,4 +141,4 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
 });
-export default SectionModal;
+export default React.memo(SectionModal);

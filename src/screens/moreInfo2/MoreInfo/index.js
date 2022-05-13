@@ -18,6 +18,7 @@ import {
     scale,
     toPascalCase,
     convertFirstCharacterAllWordsToUppercase,
+    getDateXDaysAgo,
 } from 'utils';
 
 const MoreInfo = createScreen(
@@ -25,7 +26,6 @@ const MoreInfo = createScreen(
         const { COMMON } = useTheme();
         const [Like, setLike] = useState(route?.params?.Like);
         const Info = route?.params?.data;
-
         const { mutate: LikeMutate } = useLikeCareer();
         const { mutate: UnLikeMutate } = useUnlikeCareer();
         const OnShare = async (data) => {

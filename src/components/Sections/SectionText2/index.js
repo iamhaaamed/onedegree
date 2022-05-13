@@ -60,4 +60,4 @@ const styles = StyleSheet.create({
         borderRadius: 12,
     },
 });
-export default SectionText2;
+export default React.memo(SectionText2);

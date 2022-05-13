@@ -60,9 +60,9 @@ const Question4 = (props) => {
     }, [Type]);
     const TypesArray = [
         'Over An Hour',
-        'Up To1 Hour',
-        'Up To45 Minutes',
-        'Up To20 Minutes',
+        'Up To 1 Hour',
+        'Up To 45 Minutes',
+        'Up To 20 Minutes',
         'Remote Only',
     ];
     const handleDirection = (item, i) => {
@@ -99,4 +99,4 @@ const styles = StyleSheet.create({
         height: '100%',
     },
 });
-export default Question4;
+export default React.memo(Question4);

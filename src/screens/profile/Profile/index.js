@@ -1,55 +1,15 @@
-import { navigate } from 'navigation/methods';
-import React from 'react';
-import { useRef, useEffect } from 'react';
-import useTheme from 'hooks/useTheme';
-import { useState } from 'react';
-import { StyleSheet, ScrollView, SafeAreaView } from 'react-native';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
+import { MButton, MIcon, MImage, MLoading, MText } from 'components/common';
 import { createScreen } from 'components/elements';
+import { ProfileTab, SectionInfo, SectionTop01 } from 'components/Sections';
 import { COLORS } from 'constants/common';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { scale, verticalScale, height, toPascalCase } from 'utils';
-import LinearGradient from 'react-native-linear-gradient';
-import { DateTimePickerMod } from 'components/common/MDateTimePicker';
-import { Container, ProfileTab } from 'components/Sections';
-import {
-    DrawerItem,
-    DrawerItemList,
-    DrawerContentScrollView,
-    DrawerToggleButton,
-} from '@react-navigation/drawer';
-
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
 import { useGetProfile } from 'hooks/profile';
-import { SectionTop01 } from 'components/Sections';
-import { SectionInfo } from 'components/Sections';
-import { showMessage } from 'react-native-flash-message';
+import useTheme from 'hooks/useTheme';
+import { navigate } from 'navigation/methods';
+import React, { useEffect, useState } from 'react';
+import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { scale, toPascalCase } from 'utils';
 import { authStore } from '../../../store';
-import axios from 'axios';
+
 const ProfileScreen = createScreen(
     () => {
         const {
@@ -68,8 +28,8 @@ const ProfileScreen = createScreen(
         console.log('u:   ', user);
         const { UserName } = authStore((state) => state);
         useEffect(() => {
-            setIsLoading2(true);
             setUser(data?.user_login?.result);
+            setIsLoading2(true);
 
             // axios
             //     .get(

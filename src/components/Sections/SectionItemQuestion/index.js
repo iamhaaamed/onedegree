@@ -66,4 +66,4 @@ const styles = StyleSheet.create({
         marginVertical: 5,
     },
 });
-export default SectionItemQuestion;
+export default React.memo(SectionItemQuestion);

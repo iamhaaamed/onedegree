@@ -1,47 +1,13 @@
-import React, { useRef } from 'react';
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    StyleSheet,
-    Image,
-} from 'react-native';
-import { scale, verticalScale, height } from 'utils';
-import { useState } from 'react';
-import useTheme from 'hooks/useTheme';
+import { MIcon, MText } from 'components/common';
 import { COLORS } from 'constants/common';
+import useTheme from 'hooks/useTheme';
+import React, { useRef } from 'react';
+import { StyleSheet, View } from 'react-native';
 import ActionSheet from 'react-native-actions-sheet';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
-import { navigate } from 'navigation/methods';
+import { scale, verticalScale } from 'utils';
 import { SectionModal } from '..';
+
 const SectionRow = (props) => {
     const { style, title, data, infoIcon, textStyle } = props;
     const {
@@ -111,4 +77,4 @@ const styles = StyleSheet.create({
         borderTopRightRadius: scale(30),
     },
 });
-export default SectionRow;
+export default React.memo(SectionRow);

@@ -1,45 +1,10 @@
-import React from 'react';
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    StyleSheet,
-    Image,
-} from 'react-native';
-import { scale, verticalScale, height } from 'utils';
-import { useState } from 'react';
-import useTheme from 'hooks/useTheme';
+import { MButton, MText } from 'components/common';
 import { COLORS } from 'constants/common';
-import { useRef } from 'react';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import useTheme from 'hooks/useTheme';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { scale, verticalScale } from 'utils';
 
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
 const SectionModal = (props) => {
     const { style, showModal } = props;
     const {
@@ -117,4 +82,4 @@ const styles = StyleSheet.create({
         marginBottom: scale(30),
     },
 });
-export default SectionModal;
+export default React.memo(SectionModal);

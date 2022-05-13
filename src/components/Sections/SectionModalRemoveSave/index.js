@@ -1,47 +1,12 @@
-import React from 'react';
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    StyleSheet,
-    Image,
-} from 'react-native';
-import { scale, verticalScale, height } from 'utils';
-import { useState } from 'react';
-import useTheme from 'hooks/useTheme';
+import { MButton, MText } from 'components/common';
 import { COLORS } from 'constants/common';
-import { useRef } from 'react';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
-import { useGetLikeCareers, useLikeCareer, useUnlikeCareer } from 'hooks/save';
+import { useUnlikeCareer } from 'hooks/save';
+import useTheme from 'hooks/useTheme';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import { showMessage } from 'react-native-flash-message';
+import { scale, verticalScale } from 'utils';
+
 const SectionModalRemoveSave = (props) => {
     const { style, showModal, nextPress, backPress, CareerId } = props;
     const {
@@ -131,4 +96,4 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
 });
-export default SectionModalRemoveSave;
+export default React.memo(SectionModalRemoveSave);

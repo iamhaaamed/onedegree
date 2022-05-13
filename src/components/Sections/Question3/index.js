@@ -1,51 +1,12 @@
-import React from 'react';
-import { useEffect } from 'react';
-import useTheme from 'hooks/useTheme';
-import { useState } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
-import { createScreen } from 'components/elements';
+import { MInput, MText } from 'components/common';
 import { COLORS } from 'constants/common';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { scale, verticalScale, height } from 'utils';
-import LinearGradient from 'react-native-linear-gradient';
-import { DateTimePickerMod } from 'components/common/MDateTimePicker';
-import {
-    DrawerItem,
-    DrawerItemList,
-    DrawerContentScrollView,
-    DrawerToggleButton,
-} from '@react-navigation/drawer';
-
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
-import { navigate } from 'navigation/methods';
-import { SectionTop, Qustion1 } from 'components/Sections';
-import * as yup from 'yup';
 import { Formik } from 'formik';
+import useTheme from 'hooks/useTheme';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { scale, verticalScale } from 'utils';
+import * as yup from 'yup';
+
 const Question3 = (props) => {
     const { style, title, answer, page, setZipCode } = props;
     const {
@@ -131,4 +92,4 @@ const styles = StyleSheet.create({
         // paddingBottom: scale(10),
     },
 });
-export default Question3;
+export default React.memo(Question3);

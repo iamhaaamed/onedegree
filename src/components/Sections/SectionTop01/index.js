@@ -87,4 +87,4 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
 });
-export default SectionTop01;
+export default React.memo(SectionTop01);

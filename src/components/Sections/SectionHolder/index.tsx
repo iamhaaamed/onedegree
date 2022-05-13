@@ -54,4 +54,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 });
-export default SectionHolder11;
+export default React.memo(SectionHolder11);

@@ -1,55 +1,27 @@
-import { navigate } from 'navigation/methods';
-import React from 'react';
-import { useRef } from 'react';
-import useTheme from 'hooks/useTheme';
-import { useState } from 'react';
-import { StyleSheet, ScrollView, SafeAreaView } from 'react-native';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
-import { createScreen } from 'components/elements';
-import { COLORS } from 'constants/common';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { scale, verticalScale, height, toPascalCase } from 'utils';
-import LinearGradient from 'react-native-linear-gradient';
-import { DateTimePickerMod } from 'components/common/MDateTimePicker';
-import { Container, ProfileTab } from 'components/Sections';
 import {
-    DrawerItem,
-    DrawerItemList,
-    DrawerContentScrollView,
-    DrawerToggleButton,
-} from '@react-navigation/drawer';
-
-import {
-    MIcon,
-    MText,
-    MTouchable,
     MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
     MDropDown,
-    MOnboarding,
-    MDateTimePicker,
+    MIcon,
+    MImage,
     MImagePicker,
+    MInput,
     MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
+    MText,
     MView,
 } from 'components/common';
-import { useUpdateProfile } from 'hooks/profile';
+import { createScreen } from 'components/elements';
 import { SectionTop01 } from 'components/Sections';
-import { SectionInfo } from 'components/Sections';
-import { authStore } from '../../../store';
+import { COLORS } from 'constants/common';
+import { useUpdateProfile } from 'hooks/profile';
+import useTheme from 'hooks/useTheme';
+import { navigate } from 'navigation/methods';
+import React, { useState } from 'react';
+import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import { showMessage } from 'react-native-flash-message';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { scale, toPascalCase, verticalScale } from 'utils';
+import { authStore } from '../../../store';
+
 const EditProfile = createScreen(
     ({ route }) => {
         const {
@@ -104,7 +76,7 @@ const EditProfile = createScreen(
                     imageAddress: UserImage,
                     age: parseInt(UserInfo?.age),
                     genders: UserInfo?.genders,
-                    ethnicity: 'ONE',
+                    ethnicity: UserInfo?.ethnicity,
                     city: UserInfo?.location,
                     zipCode: UserInfo?.zipCode,
                     educationLevel: UserInfo?.educationLevel,
@@ -299,7 +271,45 @@ const EditProfile = createScreen(
                             backgroundColor={COLORS.Color963}
                             height={verticalScale(53)}
                         />
+                        <MText textStyle={COMMON.TxtSectionSignIn271}>
+                            Ethnicity{' '}
+                        </MText>
+                        <MView style={COMMON.DropDown10}>
+                            <MDropDown
+                                mb={verticalScale(24)}
+                                data={CONSTANTS.ethnicity}
+                                getSelectedItem={(item) => {
+                                    setUserInfo({
+                                        ...UserInfo,
+                                        ethnicity: item?.value,
+                                    });
+                                }}
+                                placeholderObject={{
+                                    label: UserInfo?.ethnicity,
+                                }} //change label
+                                defaultAndroidMode={false}
+                                icon={{
+                                    name: 'keyboard-arrow-down',
+                                    color: COLORS.Color424,
+                                    Component: MaterialCommunityIcons,
+                                }}
+                                style={{
+                                    container: {
+                                        elevation: 1,
+                                        backgroundColor: COLORS.white,
+                                        borderRadius: 8,
+                                        shadowColor: 'rgba(140,140,140,0.16)',
+                                        shadowOpacity: 0.5,
+                                        shadowOffset: { width: 0, height: 0 },
+                                    },
 
+                                    inputAndroid: COMMON.TextsDropDown6,
+                                    inputIOS: COMMON.TextsDropDown6,
+                                    inputAndroidContainer: COMMON.DropDownRect5,
+                                    inputIOSContainer: COMMON.DropDownRect5,
+                                }}
+                            />
+                        </MView>
                         <MText textStyle={COMMON.TxtSectionSignIn271}>
                             Education Level{' '}
                         </MText>

@@ -108,4 +108,4 @@ const styles = StyleSheet.create({
         height: verticalScale(56),
     },
 });
-export default SectionTopchat;
+export default React.memo(SectionTopchat);

@@ -9,7 +9,7 @@ import graphQLClient from '../../graphql/graphQLClient';
 
 import {
     GET_NOTIFICATIONS,
-    GET_UNREAD_NOTIFICATION_EXISTS,
+    READ_NOTIFICATION,
 } from '../../graphql/notification/queries';
 const PAGE_SIZE = 10;
 export const useGetNotifications = ({
@@ -55,22 +55,17 @@ export const useGetNotifications = ({
     );
 };
 
-export const useGetUnreadNotificationExists = ({
-    options = {},
-}: {
-    options?: any;
-}) => {
-    const res = useQuery(
-        ['unreadNotification'],
-        async () => {
-            return graphQLClient.request(GET_UNREAD_NOTIFICATION_EXISTS);
+export const useReadNotification = () => {
+    return useMutation(
+        async (_data: any) => {
+            return graphQLClient.request(READ_NOTIFICATION, {});
         },
-        { ...options },
+        // {
+        //     onSuccess: (data: any) => {
+        //         if (data.user_signUp?.status === 'SUCCESS') {
+        //             setUserId(data.user_signUp?.result?.id);
+        //         }
+        //     },
+        // },
     );
-
-    return {
-        ...res,
-        unreadNotificationExists:
-            res?.data?.notification_getUnreadNotificationExists?.result,
-    };
 };

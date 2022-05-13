@@ -209,4 +209,4 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 });
-export default SectionVerification;
+export default React.memo(SectionVerification);

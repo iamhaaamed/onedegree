@@ -73,4 +73,4 @@ const styles = StyleSheet.create({
         height: verticalScale(56),
     },
 });
-export default SectionTop;
+export default React.memo(SectionTop);

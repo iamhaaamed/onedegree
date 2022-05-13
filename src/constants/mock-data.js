@@ -49,6 +49,40 @@ export default {
             value: 'OTHER',
         },
     ],
+    ethnicity: [
+        {
+            label: 'Caucasian',
+            value: 'Caucasian',
+        },
+        {
+            label: 'Asian',
+            value: 'Asian',
+        },
+        {
+            label: 'Hispanic',
+            value: 'Hispanic',
+        },
+        {
+            label: 'African American',
+            value: 'African American',
+        },
+        {
+            label: 'Native American',
+            value: 'Native American',
+        },
+        {
+            label: 'Pacific Islander',
+            value: 'Pacific Islander',
+        },
+        {
+            label: 'middle easter',
+            value: 'middle easter',
+        },
+        {
+            label: 'other',
+            value: 'other',
+        },
+    ],
     gender: [
         {
             label: 'Male',

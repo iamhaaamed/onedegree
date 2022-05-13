@@ -293,4 +293,4 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
 });
-export default SectionSignUp;
+export default React.memo(SectionSignUp);

@@ -3,7 +3,7 @@ import { COLORS } from 'constants/common';
 import useTheme from 'hooks/useTheme';
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { scale, verticalScale } from 'utils';
+import { scale } from 'utils';
 
 const SectionRowCenter = (props) => {
     const { style, nextPress, backPress, intro, questions, TextStyle } = props;
@@ -91,4 +91,4 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
 });
-export default SectionRowCenter;
+export default React.memo(SectionRowCenter);

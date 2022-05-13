@@ -196,4 +196,4 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 21,
     },
 });
-export default Sectionhome;
+export default React.memo(Sectionhome);

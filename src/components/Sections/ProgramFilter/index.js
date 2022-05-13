@@ -1,48 +1,11 @@
-import React from 'react';
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    StyleSheet,
-    Image,
-    ScrollView,
-} from 'react-native';
-import { scale, verticalScale, height } from 'utils';
-import { useState } from 'react';
-import useTheme from 'hooks/useTheme';
+import { MButton, MDropDown, MSlider, MText, MView } from 'components/common';
 import { COLORS } from 'constants/common';
-import { useRef } from 'react';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
+import useTheme from 'hooks/useTheme';
+import React, { useState } from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { scale, verticalScale } from 'utils';
 
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-    MView,
-} from 'components/common';
-import { SectionRowCenter } from 'components/Sections';
 const ProgramFilter = (props) => {
     const { style, user, showModal } = props;
     const {
@@ -286,4 +249,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 });
-export default ProgramFilter;
+export default React.memo(ProgramFilter);

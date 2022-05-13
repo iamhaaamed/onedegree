@@ -58,4 +58,4 @@ const styles = StyleSheet.create({
         height: scale(200),
     },
 });
-export default SectionText357;
+export default React.memo(SectionText357);

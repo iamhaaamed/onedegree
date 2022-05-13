@@ -80,4 +80,4 @@ const styles = StyleSheet.create({
         marginLeft: 10,
     },
 });
-export default SectionRowSocialCenter;
+export default React.memo(SectionRowSocialCenter);

@@ -1,19 +1,32 @@
+import Moment from 'moment';
+const monthNames = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+];
+
 export const getDateXDaysAgo = (numOfDays) => {
     if (numOfDays) {
         var date = new Date(numOfDays);
-        var today = new Date();
 
-        // var x = date.toDateString();
-        // var createdOn = new Date(x);
-        // var time = date.toISOString().split`T`[1].split`.`[0];
-        console.log('....0', today);
-        // const daysAgo = new Date(date.getTime());
+        var x = date.toDateString();
+        var arr = x?.split(' ');
 
-        // daysAgo.setDate(date.getDate() - numOfDays);
+        let number = monthNames.indexOf(arr[1]) + 1;
 
-        // daysAgo.setHours(0, 0, 0, 0);
+        var result = date.toISOString().split`T`[1].split`.`[0];
 
-        // return daysAgo;
+        var daysAgo = Moment([arr[3], parseInt(number), arr[2]]).fromNow(true);
+        return `${daysAgo} Ago - ${result}`;
     }
     //     var today = new Date();
     // var createdOn = new Date(d.created_at);

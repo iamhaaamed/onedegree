@@ -1,19 +1,19 @@
-import * as yup from 'yup';
-import { Formik } from 'formik';
-import useTheme from 'hooks/useTheme';
-import { useLogin } from 'hooks/auth';
-import React, { useState } from 'react';
-import { COLORS } from 'constants/common';
-import { authStore } from '../../../store';
-import { scale, verticalScale } from 'utils';
 import auth from '@react-native-firebase/auth';
-import { navigate } from 'navigation/methods';
-import { showMessage } from 'react-native-flash-message';
-import { SectionRowSocialCenter } from 'components/Sections';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { MButton, MInput, MLoading, MText } from 'components/common';
 import { StackActions, useNavigation } from '@react-navigation/native';
+import { MButton, MInput, MLoading, MText } from 'components/common';
+import { SectionRowSocialCenter } from 'components/Sections';
+import { COLORS } from 'constants/common';
+import { Formik } from 'formik';
+import { useLogin } from 'hooks/auth';
+import useTheme from 'hooks/useTheme';
+import { navigate } from 'navigation/methods';
+import React, { useState } from 'react';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { showMessage } from 'react-native-flash-message';
 import thirdPartyAuthService from 'services/thirdPartyAuthService/thirdPartyAuthService';
+import { scale, verticalScale } from 'utils';
+import * as yup from 'yup';
+import { authStore } from '../../../store';
 
 const SectionSignIn = (props) => {
     const { style } = props;
@@ -289,4 +289,4 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
 });
-export default SectionSignIn;
+export default React.memo(SectionSignIn);

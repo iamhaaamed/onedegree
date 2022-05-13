@@ -1,17 +1,17 @@
 import {
-    MView,
-    MText,
     MButton,
-    MSlider,
     MCheckBox,
     MDropDown,
+    MSlider,
+    MText,
+    MView,
 } from 'components/common';
+import { COLORS } from 'constants/common';
 import useTheme from 'hooks/useTheme';
 import React, { useState } from 'react';
-import { COLORS } from 'constants/common';
-import { scale, verticalScale } from 'utils';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { scale, verticalScale } from 'utils';
 
 const SearchFilter = (props) => {
     const { style, user, showModal } = props;
@@ -466,4 +466,4 @@ const styles = StyleSheet.create({
         marginTop: '-5%',
     },
 });
-export default SearchFilter;
+export default React.memo(SearchFilter);

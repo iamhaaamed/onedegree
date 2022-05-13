@@ -42,8 +42,8 @@ const SectionEvent = (props) => {
                 {data?.description}
             </MText>
             <MText textStyle={COMMON.TxtSectionEvent27}>
-                {/* {getDateXDaysAgo(data?.createdAt)} */}
-                11 days ago - 11:35 Am{' '}
+                {getDateXDaysAgo(data?.createdAt)}
+                {/* 11 days ago - 11:35 Am{' '} */}
             </MText>
         </View>
     );
@@ -69,4 +69,4 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 21,
     },
 });
-export default SectionEvent;
+export default React.memo(SectionEvent);

@@ -92,4 +92,4 @@ const styles = StyleSheet.create({
         width: '100%',
     },
 });
-export default SectionText;
+export default React.memo(SectionText);

@@ -240,4 +240,4 @@ const styles = StyleSheet.create({
         // paddingBottom: scale(10),
     },
 });
-export default Question2;
+export default React.memo(Question2);

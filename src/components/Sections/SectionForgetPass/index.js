@@ -172,4 +172,4 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
 });
-export default SectionForgetPass;
+export default React.memo(SectionForgetPass);
