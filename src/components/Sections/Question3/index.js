@@ -110,7 +110,8 @@ const Question3 = (props) => {
                     )}
                 </Formik>
                 <MText textStyle={COMMON.Txtquestion6109}>
-                    Entering the zip code will help us to training programs !{' '}
+                    Your Zip Code Will Help Us Recommend Training Programs Near
+                    You!{' '}
                 </MText>
             </View>
         </>

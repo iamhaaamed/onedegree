@@ -9,7 +9,6 @@ const MImage = ({ imageSource, style, resizeMode }) => {
             borderRadius={style?.borderRadius ?? null}
             blurRadius={style?.blurRadius ?? null}
             source={imageSource}
-            re
         />
     );
 };

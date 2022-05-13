@@ -21,6 +21,7 @@ const SectionSignIn = (props) => {
 
     const navigation = useNavigation();
     const setToken = authStore((state) => state.setToken);
+    const setAnswerQuestion = authStore((state) => state.setAnswerQuestion);
     const setUserName = authStore((state) => state.setUserName);
     const [isLoading, setIsLoading] = useState(false);
     const { mutate } = useLogin();
@@ -77,6 +78,7 @@ const SectionSignIn = (props) => {
         if (status === 'SUCCESS') {
             console.log('kkkkk', await auth().currentUser?.getIdToken());
             setToken(await auth().currentUser?.getIdToken());
+            setAnswerQuestion(true);
             navigation.dispatch(StackActions.replace('MainStack'));
         } else {
             showMessage({
@@ -97,6 +99,7 @@ const SectionSignIn = (props) => {
                 console.log('6666', checkDone);
                 if (checkDone) {
                     setToken(await auth().currentUser?.getIdToken());
+                    setAnswerQuestion(true);
                     navigation.dispatch(StackActions.replace('MainStack'));
                 } else {
                     showMessage({
@@ -126,6 +129,7 @@ const SectionSignIn = (props) => {
                 await signinWithEmail(data);
             }
             setToken(await auth().currentUser?.getIdToken());
+            setAnswerQuestion(true);
             mutate(
                 {},
                 {

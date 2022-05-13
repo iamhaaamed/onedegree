@@ -55,6 +55,9 @@ const SectionModal = (props) => {
     } = useTheme();
     const navigation = useNavigation();
     const setToken = authStore((state) => state.setToken);
+    const setAnswerQuestion = authStore((state) => state.setAnswerQuestion);
+    const setPassword = authStore((state) => state.setPassword);
+    const setEmail = authStore((state) => state.setEmail);
     return (
         <View style={[styles.SectionModal, style]}>
             <View style={styles.line} />
@@ -76,6 +79,9 @@ const SectionModal = (props) => {
                                 );
                             } catch (error) {
                                 setToken(null);
+                                setAnswerQuestion(false);
+                                setEmail(null);
+                                setPassword(null);
                                 navigation.dispatch(
                                     StackActions.replace('AuthStack'),
                                 );

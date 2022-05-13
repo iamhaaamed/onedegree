@@ -48,7 +48,9 @@ import { useRegister } from 'hooks/auth';
 import auth from '@react-native-firebase/auth';
 import { showMessage } from 'react-native-flash-message';
 import { goBack, navigate } from 'navigation/methods';
-const CELL_COUNT = 6;
+
+import { authStore } from '../../../store';
+import { SectionVerify } from '..';
 const SectionVerification = (props) => {
     const { style, email, password } = props;
     const {
@@ -61,10 +63,15 @@ const SectionVerification = (props) => {
     } = useTheme();
     const [isLoading, setIsLoading] = useState(false);
     const { mutate } = useRegister();
+    const { Email, Password } = authStore((state) => state);
+    const setVerify = authStore((state) => state.setVerify);
     const onVerifyEmail = async () => {
         setIsLoading(true);
         try {
-            await auth().signInWithEmailAndPassword(email, password);
+            await auth().signInWithEmailAndPassword(
+                email ? email : Email,
+                password ? password : Password,
+            );
             const checkDone = auth().currentUser?.emailVerified;
             if (checkDone) {
                 completeRegistrationWithEmailPassword();
@@ -83,6 +90,7 @@ const SectionVerification = (props) => {
         mutate(undefined, {
             onSuccess: (data) => {
                 if (data?.user_signUp?.status === 'SUCCESS') {
+                    setVerify(true);
                     navigate('Hiquestion2');
                 } else {
                     showMessage({

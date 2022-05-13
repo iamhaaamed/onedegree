@@ -19,6 +19,8 @@ const SectionSignUp = (props) => {
     const { COMMON } = useTheme();
     const [isLoading, setIsLoading] = useState(false);
     const setUserName = authStore((state) => state.setUserName);
+    const setPassword = authStore((state) => state.setPassword);
+    const setEmail = authStore((state) => state.setEmail);
     const { mutate: signupMutate } = useRegister();
     const ValidationSchema = yup.object().shape({
         email: yup
@@ -104,6 +106,8 @@ const SectionSignUp = (props) => {
                                 {
                                     text: 'Got it',
                                     onPress: async () => {
+                                        setEmail(email);
+                                        setPassword(password);
                                         navigate('CheckEmail', {
                                             password,
                                             email,

@@ -1,53 +1,21 @@
-import React from 'react';
-import { useRef } from 'react';
-import useTheme from 'hooks/useTheme';
-import { useState } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
-import { createScreen } from 'components/elements';
-import { COLORS } from 'constants/common';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { scale, verticalScale, height } from 'utils';
-import LinearGradient from 'react-native-linear-gradient';
-import { DateTimePickerMod } from 'components/common/MDateTimePicker';
-import { goBack, navigate } from 'navigation/methods';
-import {
-    DrawerItem,
-    DrawerItemList,
-    DrawerContentScrollView,
-    DrawerToggleButton,
-} from '@react-navigation/drawer';
 import axios from 'axios';
+import { MImage, MLoading } from 'components/common';
+import { createScreen } from 'components/elements';
 import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
-import { Container, SectionTop } from 'components/Sections';
-import { SectionRowCenter, Question3 } from 'components/Sections';
+    Container,
+    Question3,
+    SectionRowCenter,
+    SectionTop,
+} from 'components/Sections';
+import { COLORS } from 'constants/common';
 import { useUpdateProfile } from 'hooks/profile';
-import { async } from 'validate.js';
+import useTheme from 'hooks/useTheme';
+import { goBack, navigate } from 'navigation/methods';
+import React, { useState } from 'react';
+import { StyleSheet } from 'react-native';
 import { showMessage } from 'react-native-flash-message';
+import { scale } from 'utils';
+import { authStore } from '../../../store';
 const question6 = createScreen(
     ({ route }) => {
         const {
@@ -60,7 +28,7 @@ const question6 = createScreen(
         } = useTheme();
         const { isLoading, mutate } = useUpdateProfile();
         const [ZipCode, setZipCode] = useState();
-        console.log('zzzzzzzzz', ZipCode);
+        const setAnswerQuestion = authStore((state) => state.setAnswerQuestion);
         const getLatLang = `https://api.promaptools.com/service/us/zip-lat-lng/get/?zip=${ZipCode}&key=17o8dysaCDrgv1c`;
         //  `https://maps.googleapis.com/maps/api/geocode/json?address=${ZipCode}&key=AIzaSyAq_L_4FurpQGeFM20SxCXpAAkggk3knhU&region=us`;
         console.log('laaaaa', getLatLang);
@@ -143,10 +111,12 @@ const question6 = createScreen(
                                                         data?.user_updateProfile
                                                             ?.status ==
                                                         'SUCCESS'
-                                                    )
+                                                    ) {
+                                                        setAnswerQuestion(true);
                                                         navigate(
                                                             'Gettingstarted3',
                                                         );
+                                                    }
                                                 },
                                             },
                                         );
@@ -154,7 +124,7 @@ const question6 = createScreen(
                                 })
                                 .catch(function (error) {
                                     showMessage({
-                                        message: `Something went wrong: ${error.message}`,
+                                        message: `Something went wrong: Zip Code Not Valid`,
                                         type: 'danger',
                                     });
                                 })

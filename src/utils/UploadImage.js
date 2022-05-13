@@ -6,13 +6,13 @@ import RNFetchBlob from 'rn-fetch-blob';
 const sasContainerUri = 'https://apsonedegreestorage.blob.core.windows.net';
 const container = 'images';
 const sasToken =
-    'sp=r&st=2022-05-09T07:08:29Z&se=2032-05-09T15:08:29Z&spr=https&sv=2020-08-04&sr=c&sig=XGkhLFkLvjcTlCkC9tKuS6DJ%2BEGzuBY3tONkz1%2BFnIY%3D';
+    'sp=racwdli&st=2022-05-12T11:46:03Z&se=2032-05-12T19:46:03Z&spr=https&sv=2020-08-04&sr=c&sig=N9%2FPcIOJp1pcQuYmM8UkY6LO9rdmIRCU9RdWiApmIFE%3D';
 
 export const UploadImage = async (response) => {
     console.log('rrrrrrrrrrrr', response);
     try {
-        var customBlobName = uuid.v4();
-        const assetPath = `${sasContainerUri}/${container}?${customBlobName}`;
+        // var customBlobName = uuid.v4();
+        const assetPath = `${sasContainerUri}/${container}`;
         return new Promise(async (resolve, reject) => {
             try {
                 const sourceUrl =
@@ -21,7 +21,7 @@ export const UploadImage = async (response) => {
                     Platform.OS === 'ios'
                         ? sourceUrl.replace('file://', '/')
                         : sourceUrl;
-                console.log('////////////', localUri);
+                console.log('////////////', response.type);
                 const res = await RNFetchBlob.fetch(
                     'PUT',
                     `${assetPath}?${sasToken}`,

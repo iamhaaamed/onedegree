@@ -79,7 +79,7 @@ const Question1 = (props) => {
                 <MText textStyle={COMMON.Txtquestion259}>
                     What industries are you interested in?{' '}
                 </MText>
-                <MCheckBox
+                {/* <MCheckBox
                     iconContainerStyle={{ borderRadius: 5 }}
                     isChecked={IndustryArray.length === options.length}
                     setIsChecked={() => {
@@ -89,11 +89,11 @@ const Question1 = (props) => {
                             setIndustryArray(options);
                         }
                     }}
-                    style={COMMON.CheckBox61}>
-                    <MText textStyle={COMMON.TextsCheckBox62}>
-                        Select all that apply
-                    </MText>
-                </MCheckBox>
+                    style={COMMON.CheckBox61}> */}
+                <MText textStyle={COMMON.TextsCheckBox62}>
+                    Select all that apply
+                </MText>
+                {/* </MCheckBox> */}
                 <FlatList
                     data={options}
                     renderItem={({ item, index }) => (

@@ -451,6 +451,7 @@ export default function ({ COLORS }) {
         Button50: {
             marginBottom: verticalScale(23),
             width: '100%',
+            alignSelf: 'center',
             height: verticalScale(51),
         },
         TxtSectionForgetPass53: {
@@ -636,7 +637,7 @@ export default function ({ COLORS }) {
             marginBottom: verticalScale(14),
             fontSize: verticalScale(15),
             fontFamily: 'Muli',
-            lineHeight: verticalScale(16),
+            lineHeight: verticalScale(24),
             color: COLORS.Color726,
         },
         InputRect86: {
@@ -736,6 +737,7 @@ export default function ({ COLORS }) {
             marginBottom: verticalScale(19),
             fontSize: verticalScale(14),
             fontFamily: 'Muli',
+            // textAlign: 'justify',
             lineHeight: verticalScale(26),
             color: COLORS.Color726,
         },
@@ -1211,7 +1213,7 @@ export default function ({ COLORS }) {
             fontWeight: 'bold',
             paddingRight: scale(24),
             paddingLeft: scale(24),
-            lineHeight: verticalScale(50),
+            lineHeight: verticalScale(48),
             color: COLORS.white,
         },
         buttonRect5: {

@@ -61,7 +61,8 @@ const Hiquestion2 = createScreen(
                     imageSource={IMAGES.image3013}
                     style={COMMON.image94}
                     customWidth={scale(390)}
-                    customHeight={scale(455)}
+                    customHeight={scale(440)}
+                    resizeMode="contain"
                 />
                 <MImage
                     imageSource={IMAGES.hiBack}

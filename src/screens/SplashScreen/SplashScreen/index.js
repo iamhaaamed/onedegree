@@ -21,16 +21,32 @@ const SplashScreen = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
-        const { isOnboardingViewed, token } = authStore((state) => state);
+        const { isOnboardingViewed, token, AnswerQuestion, verify } = authStore(
+            (state) => state,
+        );
 
         const navigation = useNavigation();
-
+        console.log(AnswerQuestion);
         useEffect(() => {
             // navigation.dispatch(StackActions.replace('AuthStack'));
             setTimeout(() => {
                 if (token) {
                     graphQLClient.setHeader('authorization', 'Bearer ' + token);
-                    navigation.dispatch(StackActions.replace('MainStack'));
+                    if (AnswerQuestion && verify)
+                        navigation.dispatch(StackActions.replace('MainStack'));
+                    else if (verify) {
+                        navigation.dispatch(
+                            StackActions.replace('AuthStack', {
+                                screen: 'Hiquestion2',
+                            }),
+                        );
+                    } else {
+                        navigation.dispatch(
+                            StackActions.replace('AuthStack', {
+                                screen: 'Forgetpassword1',
+                            }),
+                        );
+                    }
                 } else if (isOnboardingViewed) {
                     navigation.dispatch(StackActions.replace('AuthStack'));
                 } else {
