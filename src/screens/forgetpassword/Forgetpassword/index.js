@@ -1,48 +1,12 @@
-import React from 'react';
-import { useRef } from 'react';
-import useTheme from 'hooks/useTheme';
-import { useState } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
+import { MImage } from 'components/common';
 import { createScreen } from 'components/elements';
-import { COLORS } from 'constants/common';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { scale, verticalScale, height } from 'utils';
-import LinearGradient from 'react-native-linear-gradient';
-import { DateTimePickerMod } from 'components/common/MDateTimePicker';
-import {
-    DrawerItem,
-    DrawerItemList,
-    DrawerContentScrollView,
-    DrawerToggleButton,
-} from '@react-navigation/drawer';
-
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
 import { Container, SectionForgetPass } from 'components/Sections';
+import { COLORS } from 'constants/common';
+import useTheme from 'hooks/useTheme';
+import React from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { scale } from 'utils';
+
 const Forgetpassword = createScreen(
     () => {
         const {
@@ -56,16 +20,19 @@ const Forgetpassword = createScreen(
 
         return (
             <Container style={styles.Forgetpassword}>
-                <ScrollView>
+                {/* <ScrollView> */}
+                <View style={styles.image}>
                     <MImage
                         imageSource={IMAGES.image6296}
                         style={COMMON.image45}
-                        customWidth={scale(390)}
-                        customHeight={scale(530)}
+                        resizeMode="contain"
                     />
+                </View>
 
+                <View>
                     <SectionForgetPass />
-                </ScrollView>
+                </View>
+                {/* </ScrollView> */}
             </Container>
         );
     },
@@ -79,6 +46,10 @@ const styles = StyleSheet.create({
     Forgetpassword: {
         backgroundColor: COLORS.Color596,
         height: '100%',
+        flex: 1,
+    },
+    image: {
+        flex: 1,
     },
 });
 export default Forgetpassword;

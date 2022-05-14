@@ -1,4 +1,4 @@
-import { MInput, MText } from 'components/common';
+import { MIcon, MInput, MText } from 'components/common';
 import { COLORS } from 'constants/common';
 import { Formik } from 'formik';
 import useTheme from 'hooks/useTheme';
@@ -70,10 +70,13 @@ const Question3 = (props) => {
                         </>
                     )}
                 </Formik>
-                <MText textStyle={COMMON.Txtquestion6109}>
-                    Your Zip Code Will Help Us Recommend Training Programs Near
-                    You!{' '}
-                </MText>
+                <View style={COMMON.flexRow}>
+                    <MIcon name="info" size={32} />
+                    <MText textStyle={COMMON.Txtquestion6109}>
+                        Your Zip Code Will Help Us Recommend Training Programs
+                        Near You!{' '}
+                    </MText>
+                </View>
             </View>
         </>
     );

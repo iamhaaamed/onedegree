@@ -1,56 +1,15 @@
-import React, { useState } from 'react';
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    StyleSheet,
-    Image,
-} from 'react-native';
-import { scale, verticalScale, height } from 'utils';
-import useTheme from 'hooks/useTheme';
-import { COLORS } from 'constants/common';
-import { useRef } from 'react';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {
-    CodeField,
-    Cursor,
-    useBlurOnFulfill,
-    useClearByFocusCell,
-} from 'react-native-confirmation-code-field';
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
-import { useRegister } from 'hooks/auth';
 import auth from '@react-native-firebase/auth';
+import { MButton, MLoading, MText } from 'components/common';
+import { COLORS } from 'constants/common';
+import { useRegister } from 'hooks/auth';
+import useTheme from 'hooks/useTheme';
+import { navigate } from 'navigation/methods';
+import React, { useState } from 'react';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { showMessage } from 'react-native-flash-message';
-import { goBack, navigate } from 'navigation/methods';
-
+import { scale, verticalScale } from 'utils';
 import { authStore } from '../../../store';
-import { SectionVerify } from '..';
+
 const SectionVerification = (props) => {
     const { style, email, password } = props;
     const {

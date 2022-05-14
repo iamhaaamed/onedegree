@@ -164,7 +164,6 @@ const styles = StyleSheet.create({
         paddingRight: scale(32),
         paddingLeft: scale(32),
         width: '100%',
-        marginTop: -50,
     },
     signUpBtn: {
         alignSelf: 'center',

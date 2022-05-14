@@ -74,7 +74,7 @@ const Home2 = createScreen(
                 <SectionTophome style={COMMON.EleHome265} />
                 <View style={COMMON.SectionPaddingHome266}>
                     <MText textStyle={COMMON.TxtHome267}>
-                        Hello,{UserName ? UserName : user?.email} !
+                        Hello,{UserName ? UserName : user?.email}!
                     </MText>
                     <Carousel
                         // ref={(c) => {

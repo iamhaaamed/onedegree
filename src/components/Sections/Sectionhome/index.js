@@ -3,6 +3,7 @@ import { COLORS } from 'constants/common';
 import { navigate } from 'navigation/methods';
 import { StyleSheet, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
+import { IconButton } from 'components/common/IconButton';
 import { convertMiles, scale, toPascalCase } from 'utils';
 import { MButton, MImage, MText } from 'components/common';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -120,66 +121,49 @@ const Sectionhome = (props) => {
                     </>
                 )}
             </View>
-            <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>
-                <View style={{ width: '50%' }}>
-                    <MButton
-                        onPress={() => {
-                            if (Like)
-                                UnLikeMutate(data?.career?.id, {
-                                    onSuccess: (data) => {
-                                        if (
-                                            data?.career_unlike?.status ==
-                                            'SUCCESS'
-                                        )
-                                            setLike(false);
-                                    },
-                                });
-                            else {
-                                console.log('1');
-                                LikeMutate(data?.career?.id, {
-                                    onSuccess: (data) => {
-                                        console.log('dd', data);
-                                        if (
-                                            data?.career_like?.status ==
-                                            'SUCCESS'
-                                        )
-                                            setLike(true);
-                                    },
-                                });
-                            }
-                        }}
-                        containerStyle={[COMMON.Button910]}
-                        color={COLORS.white}
-                        iconLeft={{
-                            name: Like ? 'heart' : 'heart-outline',
-                            color: COLORS.Color134,
-                            Component: MaterialCommunityIcons,
-                        }}
-                    />
-                </View>
-                <View style={{ width: '50%' }}>
-                    <MButton
-                        onPress={() => navigate('MoreInfo', { data, Like })}
-                        containerStyle={[
-                            COMMON.Button910,
-                            {
-                                alignSelf: 'flex-end',
-                                height: scale(30),
-                            },
-                        ]}
-                        color={COLORS.white}
-                        iconRight={{
-                            name: 'alert-circle-outline',
-                            color: COLORS.Color424,
-                            onPress: () => navigate('MoreInfo', { data, Like }),
-                            Component: MaterialCommunityIcons,
-                        }}
-                    />
-                </View>
+            <View
+                style={[
+                    COMMON.RowItem,
+                    COMMON.RowItemSectionhome71,
+                    { paddingHorizontal: 8 },
+                ]}>
+                <IconButton
+                    iconSize={32}
+                    iconColor={COLORS.Color134}
+                    iconComponent={MaterialCommunityIcons}
+                    iconName={Like ? 'heart' : 'heart-outline'}
+                    onPress={() => {
+                        if (Like)
+                            UnLikeMutate(data?.career?.id, {
+                                onSuccess: (data) => {
+                                    if (
+                                        data?.career_unlike?.status == 'SUCCESS'
+                                    )
+                                        setLike(false);
+                                },
+                            });
+                        else {
+                            LikeMutate(data?.career?.id, {
+                                onSuccess: (data) => {
+                                    if (data?.career_like?.status == 'SUCCESS')
+                                        setLike(true);
+                                },
+                            });
+                        }
+                    }}
+                />
+                <IconButton
+                    iconSize={32}
+                    iconColor={COLORS.Color424}
+                    iconName={'alert-circle-outline'}
+                    iconComponent={MaterialCommunityIcons}
+                    onPress={() => navigate('MoreInfo', { data, Like })}
+                />
             </View>
         </View>
     );
 };
+
 const styles = StyleSheet.create({
     Sectionhome: {
         paddingHorizontal: 10,

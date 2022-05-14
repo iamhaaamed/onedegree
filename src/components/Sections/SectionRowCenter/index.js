@@ -9,19 +9,19 @@ const SectionRowCenter = (props) => {
     const { style, nextPress, backPress, intro, questions, TextStyle } = props;
     const { COMMON } = useTheme();
     // const [isHovered, setIsHovered] = useState(false);
-    const [isBack, setIsBack] = useState(false);
+    // const [isBack, setIsBack] = useState(false);
 
     return (
         <View style={[styles.SectionRowCenter, style]}>
             <MButton
                 onPress={backPress}
-                onPressIn={() => setIsBack(true)}
-                onPressOut={() => setIsBack(false)}
+                // onPressIn={() => setIsBack(true)}
+                // onPressOut={() => setIsBack(false)}
                 style={
                     intro
                         ? [
                               COMMON.ButtonRect1142,
-                              isBack && {
+                              {
                                   backgroundColor:
                                       'rgba(255,255,255,0.1607843137254902 )',
                               },

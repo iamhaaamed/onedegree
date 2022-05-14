@@ -77,7 +77,7 @@ const SectionTophome = (props) => {
                         iconLeft={{
                             name: 'chatbubble-outline',
                             color: COLORS.Color424,
-                            size: scale(23),
+                            size: scale(24),
                             Component: Ionicons,
                         }}
                     />

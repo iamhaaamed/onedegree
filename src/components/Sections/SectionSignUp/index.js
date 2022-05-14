@@ -21,6 +21,7 @@ const SectionSignUp = (props) => {
     const setUserName = authStore((state) => state.setUserName);
     const setPassword = authStore((state) => state.setPassword);
     const setEmail = authStore((state) => state.setEmail);
+    const setVerify = authStore((state) => state.setVerify);
     const { mutate: signupMutate } = useRegister();
     const ValidationSchema = yup.object().shape({
         email: yup
@@ -72,6 +73,7 @@ const SectionSignUp = (props) => {
         console.log('dddddd', data);
         const status = data.user_signUp?.status;
         if (data.user_signUp?.status === 'SUCCESS') {
+            setVerify(true);
             navigate('Hiquestion2');
         } else {
             showMessage({
@@ -272,7 +274,7 @@ const SectionSignUp = (props) => {
                         COMMON.TxtSectionSignIn44,
                         { color: COLORS.lightText },
                     ]}>
-                    Not A Member?{' '}
+                    Have An Account?{' '}
                 </MText>
                 <MText textStyle={COMMON.TxtSectionSignUp24}>Sign In </MText>
             </TouchableOpacity>

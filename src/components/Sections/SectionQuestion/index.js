@@ -4,7 +4,7 @@ import useTheme from 'hooks/useTheme';
 import { navigate } from 'navigation/methods';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { scale, verticalScale } from 'utils';
+import { scale } from 'utils';
 
 const SectionQuestion = (props) => {
     const { style } = props;
@@ -48,12 +48,9 @@ const SectionQuestion = (props) => {
 };
 const styles = StyleSheet.create({
     SectionQuestion: {
-        paddingBottom: verticalScale(0),
-        paddingTop: verticalScale(0),
         paddingRight: scale(32),
         paddingLeft: scale(32),
         width: '100%',
-        top: '-4%',
     },
 });
 export default React.memo(SectionQuestion);

@@ -242,7 +242,7 @@ export default function ({ COLORS }) {
         },
         TxtSectionSignIn27: {
             marginBottom: verticalScale(15),
-            fontSize: verticalScale(17),
+            fontSize: verticalScale(16),
             fontFamily: 'Muli',
             lineHeight: verticalScale(24),
             color: COLORS.Color726,
@@ -384,12 +384,14 @@ export default function ({ COLORS }) {
             color: COLORS.Color525,
         },
         image45: {
-            marginBottom: verticalScale(32),
-            shadowColor: 'rgba(140,140,140,0.16)',
-            shadowOffset: { width: 0, height: 0 },
-            shadowRadius: 28,
-            width: scale(390),
-            height: scale(530),
+            // marginBottom: verticalScale(32),
+            // shadowColor: 'rgba(140,140,140,0.16)',
+            // shadowOffset: { width: 0, height: 0 },
+            // shadowRadius: 28,
+            // width: scale(390),
+            // height: scale(530),
+            width: 'auto',
+            height: '100%',
         },
         TxtSectionForgetPass46: {
             marginBottom: verticalScale(16),
@@ -637,7 +639,7 @@ export default function ({ COLORS }) {
             marginBottom: verticalScale(14),
             fontSize: verticalScale(15),
             fontFamily: 'Muli',
-            lineHeight: verticalScale(24),
+            // lineHeight: verticalScale(24),
             color: COLORS.Color726,
         },
         InputRect86: {
@@ -723,8 +725,8 @@ export default function ({ COLORS }) {
         },
         image94: {
             marginBottom: verticalScale(78),
-            width: scale(390),
-            height: scale(455),
+            width: scale(380),
+            height: scale(445),
         },
         TxtSectionQuestion95: {
             marginBottom: verticalScale(16),
@@ -769,7 +771,8 @@ export default function ({ COLORS }) {
             height: verticalScale(51),
         },
         EleHiquestion2100: {
-            marginBottom: verticalScale(32),
+            position: 'absolute',
+            bottom: verticalScale(32),
         },
         TxtSectionTop101: {
             alignSelf: 'center',
@@ -800,7 +803,7 @@ export default function ({ COLORS }) {
             color: COLORS.Color209,
         },
         Txtquestion6105: {
-            marginBottom: verticalScale(16),
+            // marginBottom: verticalScale(16),
             fontSize: verticalScale(17),
             fontFamily: 'Muli',
             fontWeight: 'bold',
@@ -839,7 +842,7 @@ export default function ({ COLORS }) {
         },
         Txtquestion6109: {
             alignSelf: 'center',
-            textAlign: 'center',
+            marginLeft: 5,
             fontSize: verticalScale(17),
             fontFamily: 'Muli',
             lineHeight: verticalScale(30),
@@ -1190,10 +1193,11 @@ export default function ({ COLORS }) {
             height: verticalScale(232),
         },
         imagevector2: {
-            marginTop: '95%',
+            // marginTop: '95%',
             width: '100%',
             height: verticalScale(550),
             alignSelf: 'center',
+            bottom: -100,
             position: 'absolute',
         },
         SectionPaddingintro62: {
@@ -1222,10 +1226,15 @@ export default function ({ COLORS }) {
             paddingRight: 0,
             paddingLeft: 0,
             backgroundColor: COLORS.Color611,
-            shadowColor: 'rgba(39,97,236,0.12)',
-            shadowOffset: { width: 0, height: 0 },
-            shadowRadius: 18,
-            elevation: 1,
+            shadowColor: 'rgba(39,97,236,0.3)',
+            shadowOffset: {
+                width: 0,
+                height: 0,
+            },
+            shadowOpacity: 0.41,
+            shadowRadius: 11,
+
+            elevation: 14,
             display: 'flex',
             alignItems: 'center',
             textAlign: 'center',
@@ -1775,6 +1784,7 @@ export default function ({ COLORS }) {
             alignSelf: 'center',
             paddingRight: scale(32),
             paddingLeft: scale(32),
+            backgroundColor: 'white',
         },
         image19: {
             width: scale(326),
@@ -1855,6 +1865,7 @@ export default function ({ COLORS }) {
             marginBottom: verticalScale(100),
             fontSize: verticalScale(15),
             fontFamily: 'Muli',
+            textAlign: 'justify',
             lineHeight: verticalScale(29),
             color: COLORS.Color726,
         },
@@ -2077,7 +2088,7 @@ export default function ({ COLORS }) {
             width: scale(390),
             height: scale(340),
             position: 'absolute',
-            bottom: 0,
+            bottom: -30,
         },
         EleSave14: {
             marginBottom: verticalScale(25),

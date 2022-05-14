@@ -385,7 +385,7 @@ const ProfileQuestion5 = createScreen(
                     color={COLORS.Color323}
                     style={{ top: '50%' }}
                 />
-                <ScrollView>
+                <ScrollView contentContainerStyle={{ flex: 1 }}>
                     <SectionTop01 title="Questions" />
                     <View
                         style={[
@@ -395,10 +395,10 @@ const ProfileQuestion5 = createScreen(
                         {SelectQuestion()}
                     </View>
                     <SectionRowCenter
-                        style={
-                            route?.params?.code !== 1 &&
-                            route?.params?.code !== 5 && { marginTop: '30%' }
-                        }
+                        style={{
+                            position: 'absolute',
+                            bottom: verticalScale(32),
+                        }}
                         backPress={() => goBack()}
                         questions
                         nextPress={() => onPress(route?.params?.code)}

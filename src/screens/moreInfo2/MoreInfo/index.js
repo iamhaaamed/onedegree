@@ -61,8 +61,8 @@ const MoreInfo = createScreen(
                             <View
                                 style={{
                                     height: '50%',
-                                    backgroundColor: COLORS.backMainIcon,
                                     width: '150%',
+                                    backgroundColor: '#eef2f9',
                                     alignSelf: 'center',
                                     zIndex: -2,
                                 }}
@@ -174,7 +174,7 @@ const MoreInfo = createScreen(
                         <SectionRow
                             title="Months To Pay Off"
                             infoIcon
-                            data={Info?.career?.monthsToPayOffNumber}
+                            data={Info?.career?.monthsToPayOffNumber + 'Years'}
                         />
                         <SectionRow
                             style={{ backgroundColor: COLORS.backMore }}
@@ -199,7 +199,7 @@ const MoreInfo = createScreen(
                         <SectionRow
                             style={{ backgroundColor: COLORS.backMore }}
                             title="10-Year Growth"
-                            data={Info?.career?.tenYearGrowth}
+                            data={Info?.career?.tenYearGrowth + '%'}
                         />
                         <SectionRow
                             title="Type Of Work"
