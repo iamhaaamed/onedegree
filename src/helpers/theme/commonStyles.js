@@ -1947,6 +1947,12 @@ export default function ({ COLORS }) {
             borderRadius: 100,
             alignSelf: 'center',
         },
+        image222: {
+            width: scale(100),
+            height: scale(100),
+            borderRadius: 100,
+            alignSelf: 'center',
+        },
         TxtProfile423: {
             marginBottom: verticalScale(24),
             alignSelf: 'center',

@@ -83,7 +83,7 @@ const question6 = createScreen(
                                                 isNotificationEnabled: true,
                                                 age: 1,
                                                 genders: 'MALE',
-                                                ethnicity: 'ONE',
+                                                ethnicity: 'Native American',
                                                 educationLevel:
                                                     'Primary Education',
                                                 howFarAreYouWillingToTravelToGetCertified:

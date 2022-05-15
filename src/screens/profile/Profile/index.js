@@ -6,9 +6,10 @@ import { useGetProfile } from 'hooks/profile';
 import useTheme from 'hooks/useTheme';
 import { navigate } from 'navigation/methods';
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
-import { scale, toPascalCase } from 'utils';
+import { SafeAreaView, ScrollView, StyleSheet, View, Text } from 'react-native';
+import { scale, toPascalCase, verticalScale } from 'utils';
 import { authStore } from '../../../store';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
 const ProfileScreen = createScreen(
     () => {
@@ -24,7 +25,8 @@ const ProfileScreen = createScreen(
         const [user, setUser] = useState();
         const [StateName, setStateName] = useState('');
         const [isLoading2, setIsLoading2] = useState(false);
-
+        const [points, setPoints] = useState(8);
+        const MAX_POINTS = 13;
         console.log('u:   ', user);
         const { UserName } = authStore((state) => state);
         useEffect(() => {
@@ -61,6 +63,7 @@ const ProfileScreen = createScreen(
         //         .then((responseJson) => {
         //             console.log('ADDRESS GEOCODE is BACK!! => ' + JSON.stringify(responseJson));
         // })
+        const fill = (points / MAX_POINTS) * 100;
         return (
             <SafeAreaView style={styles.Profile4}>
                 <MLoading
@@ -72,24 +75,51 @@ const ProfileScreen = createScreen(
                 <ScrollView>
                     <SectionTop01 title="Profile" noIcon rightView />
                     <ProfileTab page="profilePage" />
-                    <View style={COMMON.SectionPaddingProfile421}>
-                        {user?.imageAddress ? (
-                            <MImage
-                                imageSource={{ uri: user?.imageAddress }}
-                                style={COMMON.image22}
-                                customWidth={scale(326)}
-                                customHeight={scale(94)}
-                            />
-                        ) : (
-                            <View style={[COMMON.image22, styles.emptyImage]}>
-                                <MIcon
-                                    name={'account'}
-                                    color={COLORS.Color267}
-                                    size={scale(30)}
-                                />
-                            </View>
-                        )}
 
+                    <View style={COMMON.SectionPaddingProfile421}>
+                        <AnimatedCircularProgress
+                            size={scale(130)}
+                            width={4}
+                            fill={fill}
+                            padding={10}
+                            rotation={360}
+                            dashedBackground="yellow"
+                            style={{
+                                alignSelf: 'center',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                marginVertical: verticalScale(20),
+                            }}
+                            tintColor="#84CC17"
+                            backgroundColor={COLORS.transparent}>
+                            {(fill) => (
+                                <>
+                                    {user?.imageAddress ? (
+                                        <MImage
+                                            imageSource={{
+                                                uri: user?.imageAddress,
+                                            }}
+                                            style={COMMON.image222}
+                                            customWidth={scale(326)}
+                                            customHeight={scale(94)}
+                                        />
+                                    ) : (
+                                        <View
+                                            style={[
+                                                COMMON.image22,
+                                                styles.emptyImage,
+                                            ]}>
+                                            <MIcon
+                                                name={'account'}
+                                                color={COLORS.Color267}
+                                                size={scale(30)}
+                                            />
+                                        </View>
+                                    )}
+                                </>
+                            )}
+                        </AnimatedCircularProgress>
+                        <Text style={styles.persent}>{parseInt(fill)}%</Text>
                         <MText textStyle={COMMON.TxtProfile423}>
                             {user?.firstName
                                 ? `${user?.firstName} ${user?.lastName}`
@@ -190,6 +220,13 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.Color321,
         justifyContent: 'center',
         borderRadius: 1000,
+    },
+    persent: {
+        color: '#84CC17',
+        alignSelf: 'center',
+        fontFamily: 'Muli',
+        marginTop: '-5%',
+        marginBottom: '5%',
     },
 });
 

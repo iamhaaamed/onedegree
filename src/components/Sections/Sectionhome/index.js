@@ -125,7 +125,10 @@ const Sectionhome = (props) => {
                 style={[
                     COMMON.RowItem,
                     COMMON.RowItemSectionhome71,
-                    { paddingHorizontal: 8 },
+                    {
+                        paddingHorizontal: 8,
+                        marginVertical: -5,
+                    },
                 ]}>
                 <IconButton
                     iconSize={32}
