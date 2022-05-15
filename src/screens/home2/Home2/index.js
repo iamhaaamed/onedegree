@@ -5,15 +5,16 @@ import { COLORS } from 'constants/common';
 import { authStore } from '../../../store';
 import { useGetCareers } from 'hooks/careers';
 import Carousel from 'react-native-snap-carousel';
-import React, { useEffect, useState } from 'react';
 import { createScreen } from 'components/elements';
 import { MLoading, MText } from 'components/common';
 import { showMessage } from 'react-native-flash-message';
+import React, { useEffect, useRef, useState } from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { Sectionhome, SectionTophome } from 'components/Sections';
 
 const Home2 = createScreen(
     () => {
+        const sliderRef = useRef();
         const { COMMON } = useTheme();
         const [
             onEndReachedCalledDuringMomentum,
@@ -73,23 +74,24 @@ const Home2 = createScreen(
                 />
                 <SectionTophome style={COMMON.EleHome265} />
                 <View style={COMMON.SectionPaddingHome266}>
-                    <MText textStyle={COMMON.TxtHome267}>
-                        Hello,{UserName ? UserName : user?.email}!
-                    </MText>
+                    {sliderRef &&
+                    sliderRef.current &&
+                    sliderRef.current.currentIndex == 0 ? (
+                        <MText textStyle={COMMON.TxtHome267}>
+                            Hello,{UserName ? UserName : user?.email}!
+                        </MText>
+                    ) : (
+                        <MText textStyle={COMMON.TxtHome267}> </MText>
+                    )}
                     <Carousel
-                        // ref={(c) => {
-                        //     this.carousel = c;
-                        // }}
+                        ref={sliderRef}
                         enableSnap={true}
                         enableMomentum={true}
                         data={Careers}
-                        // refreshing={isRefetching}
-                        // onRefresh={refetch}
                         renderItem={({ item, index }) =>
                             renderItem({ item, index })
                         }
                         lockScrollWhileSnapping
-                        // sliderWidth={scale(320)}
                         itemWidth={scale(300)}
                         itemHeight={scale(500)}
                         sliderHeight={scale(570)}
@@ -99,35 +101,15 @@ const Home2 = createScreen(
                             alignItems: 'center',
                             marginTop: '-5%',
                         }}
-                        // inactiveSlideShift={100}
                         onSnapToItem={() => {
                             if (hasNextPage) {
                                 fetchNextPage();
                             }
                         }}
-                        // scrollInterpolator={scrollInterpolator}
-                        // slideInterpolatedStyle={animatedStyles}
                         layout={'tinder'}
                         layoutCardOffset={18}
-                        // scrollInterpolator={
-                        //     scrollInterpolators[`scrollInterpolator${1}`]
-                        // }
-                        // slideInterpolatedStyle={
-                        //     animatedStyles[`animatedStyles${1}`]
-                        // }
                         useScrollView={true}
                         vertical={true}
-                        // onEndReachedThreshold={0.9}
-                        // onEndReached={() => {
-                        //     if (hasNextPage) {
-                        //         fetchNextPage();
-                        //     }
-                        // }}
-                        // activeAnimationOptions={{
-                        //     friction: 4,
-                        //     tension: 40,
-                        // }}
-                        // keyExtractor={(item, index) => index.toString()}
                         onMomentumScrollBegin={() => {
                             setonEndReachedCalledDuringMomentum(false);
                         }}

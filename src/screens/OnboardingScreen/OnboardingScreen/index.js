@@ -60,12 +60,12 @@ const intro6 = createScreen(
                 subtitle:
                     'We Connect You To The Best Training Programs In Your Area So You Can Confidently Pursue Your New Career.',
             },
-            {
-                imageUrl: IMAGES.intro4,
-                imageBack: IMAGES.imageBack1,
-                subtitle:
-                    'We Connect You To The Best Training Programs In Your Area So You Can Confidently Pursue Your New Career.',
-            },
+            // {
+            //     imageUrl: IMAGES.intro4,
+            //     imageBack: IMAGES.imageBack1,
+            //     subtitle:
+            //         'We Connect You To The Best Training Programs In Your Area So You Can Confidently Pursue Your New Career.',
+            // },
         ];
         return (
             <Container style={styles.intro6}>

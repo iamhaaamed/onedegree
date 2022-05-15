@@ -1,35 +1,27 @@
+import React from 'react';
+import useTheme from 'hooks/useTheme';
+import { COLORS } from 'constants/common';
 import { MImage } from 'components/common';
+import { View, StyleSheet } from 'react-native';
 import { createScreen } from 'components/elements';
 import { Container, SectionSignIn } from 'components/Sections';
-import { COLORS } from 'constants/common';
-import useTheme from 'hooks/useTheme';
-import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
-import { scale } from 'utils';
 
 const Signin = createScreen(
     () => {
-        const {
-            LAYOUT,
-            GUTTERS,
-            TYPOGRAPHY,
-            IMAGES,
-            COMMON,
-            CONSTANTS,
-        } = useTheme();
+        const { IMAGES, COMMON } = useTheme();
 
         return (
             <Container style={styles.Signin}>
-                <ScrollView>
+                <View style={{ flex: 1 }}>
                     <MImage
-                        imageSource={IMAGES.image7352}
+                        resizeMode="contain"
                         style={COMMON.image25}
-                        customWidth={scale(390)}
-                        customHeight={scale(302)}
+                        imageSource={IMAGES.image7352}
                     />
-
+                </View>
+                <View>
                     <SectionSignIn />
-                </ScrollView>
+                </View>
             </Container>
         );
     },

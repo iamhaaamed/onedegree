@@ -78,31 +78,39 @@ const ProfileScreen = createScreen(
 
                     <View style={COMMON.SectionPaddingProfile421}>
                         <AnimatedCircularProgress
-                            size={scale(130)}
                             width={4}
                             fill={fill}
                             padding={10}
                             rotation={360}
+                            size={scale(100)}
                             dashedBackground="yellow"
                             style={{
                                 alignSelf: 'center',
-                                justifyContent: 'center',
                                 alignItems: 'center',
+                                justifyContent: 'center',
                                 marginVertical: verticalScale(20),
+                                transform: [{ rotateY: '180deg' }],
                             }}
                             tintColor="#84CC17"
                             backgroundColor={COLORS.transparent}>
                             {(fill) => (
                                 <>
                                     {user?.imageAddress ? (
-                                        <MImage
-                                            imageSource={{
-                                                uri: user?.imageAddress,
-                                            }}
-                                            style={COMMON.image222}
-                                            customWidth={scale(326)}
-                                            customHeight={scale(94)}
-                                        />
+                                        <View
+                                            style={{
+                                                width: '85%',
+                                                height: '85%',
+                                                transform: [
+                                                    { rotateY: '180deg' },
+                                                ],
+                                            }}>
+                                            <MImage
+                                                imageSource={{
+                                                    uri: user?.imageAddress,
+                                                }}
+                                                style={COMMON.image222}
+                                            />
+                                        </View>
                                     ) : (
                                         <View
                                             style={[

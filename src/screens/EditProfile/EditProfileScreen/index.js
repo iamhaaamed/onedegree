@@ -120,18 +120,25 @@ const EditProfile = createScreen(
                             getImage={(image) => setUserImage(image)}
                             closeOverlay={(x) => setIsLoading(x)}>
                             {({ chooseImage, captureImage }) => (
-                                <>
+                                <View
+                                    style={{
+                                        alignSelf: 'center',
+                                    }}>
                                     {UserImage ? (
-                                        <MImage
-                                            imageSource={{ uri: UserImage }}
-                                            style={COMMON.image22}
-                                            customWidth={scale(326)}
-                                            customHeight={scale(94)}
-                                        />
+                                        <View
+                                            style={{
+                                                overflow: 'hidden',
+                                                borderRadius: 100,
+                                            }}>
+                                            <MImage
+                                                imageSource={{ uri: UserImage }}
+                                                style={styles.imageWrapper}
+                                            />
+                                        </View>
                                     ) : (
                                         <View
                                             style={[
-                                                COMMON.image22,
+                                                styles.imageWrapper,
                                                 styles.emptyImage,
                                             ]}>
                                             <MIcon
@@ -153,7 +160,7 @@ const EditProfile = createScreen(
                                             Component: MaterialCommunityIcons,
                                         }}
                                     />
-                                </>
+                                </View>
                             )}
                         </MImagePicker>
                         <MText
@@ -263,7 +270,7 @@ const EditProfile = createScreen(
                             onChangeText={(age) =>
                                 setUserInfo({ ...UserInfo, age: age })
                             }
-                            value={UserInfo?.age.toString()}
+                            value={UserInfo?.age}
                             // error={errors && errors.email}
                             keyboardType="number-pad"
                             maxLength={2}
@@ -413,6 +420,10 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.Color321,
         justifyContent: 'center',
         borderRadius: 1000,
+    },
+    imageWrapper: {
+        width: scale(100),
+        height: scale(100),
     },
 });
 

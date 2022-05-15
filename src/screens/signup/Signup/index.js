@@ -1,11 +1,10 @@
 import React from 'react';
-import { scale } from 'utils';
 import useTheme from 'hooks/useTheme';
 import { COLORS } from 'constants/common';
 import { MImage } from 'components/common';
+import { View, StyleSheet } from 'react-native';
 import { createScreen } from 'components/elements';
 import { Container, SectionSignUp } from 'components/Sections';
-import { ScrollView, StyleSheet } from 'react-native';
 
 const Signup = createScreen(
     () => {
@@ -13,16 +12,15 @@ const Signup = createScreen(
 
         return (
             <Container style={styles.Signup}>
-                <ScrollView>
+                <View style={{ flex: 1 }}>
                     <MImage
-                        imageSource={IMAGES.image2228}
+                        resizeMode="contain"
                         style={COMMON.image0}
-                        customWidth={scale(390)}
-                        customHeight={scale(302)}
+                        imageSource={IMAGES.image2228}
                     />
+                </View>
 
-                    <SectionSignUp />
-                </ScrollView>
+                <SectionSignUp />
             </Container>
         );
     },

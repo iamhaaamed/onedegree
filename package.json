@@ -7,6 +7,7 @@
         "ios": "react-native run-ios",
         "start": "react-native start",
         "test": "jest",
+        "adb": "adb reverse tcp:8081 tcp:8081",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
         "build-and": "cd android && ./gradlew clean && ./gradlew assembleRelease && cd ../",
         "build-ios": "react-native run-ios --configuration Release",

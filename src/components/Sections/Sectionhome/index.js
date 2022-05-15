@@ -36,9 +36,7 @@ const Sectionhome = (props) => {
                 style={COMMON.image68}
             />
             <View style={{ paddingHorizontal: 14 }}>
-                <MText
-                    numberOfLines={2}
-                    textStyle={[COMMON.TxtSectionhome70, { lineHeight: 24 }]}>
+                <MText numberOfLines={2} textStyle={[COMMON.TxtSectionhome70]}>
                     {data?.career?.title}
                 </MText>
                 <View style={[COMMON.RowItem, COMMON.RowItemSectionhome71]}>

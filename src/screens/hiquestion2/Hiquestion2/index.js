@@ -9,14 +9,7 @@ import { scale } from 'utils';
 
 const Hiquestion2 = createScreen(
     () => {
-        const {
-            LAYOUT,
-            GUTTERS,
-            TYPOGRAPHY,
-            IMAGES,
-            COMMON,
-            CONSTANTS,
-        } = useTheme();
+        const { IMAGES, COMMON } = useTheme();
 
         return (
             <Container style={styles.Hiquestion2}>

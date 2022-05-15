@@ -81,6 +81,7 @@ const SectionModal = (props) => {
                                 setPassword(null);
                                 setVerify(false);
                                 setUserName(null);
+                                showModal(true);
                                 navigation.dispatch(
                                     StackActions.replace('AuthStack'),
                                 );
@@ -91,6 +92,7 @@ const SectionModal = (props) => {
                                 setPassword(null);
                                 setUserName(null);
                                 setVerify(false);
+                                showModal(true);
                                 navigation.dispatch(
                                     StackActions.replace('AuthStack'),
                                 );

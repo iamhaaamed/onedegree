@@ -1,13 +1,15 @@
 import useTheme from 'hooks/useTheme';
 import { COLORS } from 'constants/common';
-import { useGetCareers } from 'hooks/careers';
 import { scale, verticalScale } from 'utils';
+import { navigate } from 'navigation/methods';
+import { useGetCareers } from 'hooks/careers';
 import { useDebounce } from 'hooks/useDebounce';
 import React, { useRef, useState } from 'react';
 import { createScreen } from 'components/elements';
 import ActionSheet from 'react-native-actions-sheet';
 import { Container, SearchFilter, SectionTop01 } from 'components/Sections';
 import { MButton, MImage, MInput, MLoading, MText } from 'components/common';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
     View,
     FlatList,
@@ -15,8 +17,6 @@ import {
     ActivityIndicator,
     TouchableOpacity,
 } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { navigate } from 'navigation/methods';
 
 const Search = createScreen(
     () => {
@@ -109,6 +109,7 @@ const Search = createScreen(
                         data={careers?.pages}
                         refreshing={isRefetching}
                         showsVerticalScrollIndicator={false}
+                        contentContainerStyle={{ paddingBottom: 85 }}
                         renderItem={({ item, index }) => (
                             <TouchableOpacity
                                 style={COMMON.SectionPaddingSearch12}
@@ -187,13 +188,6 @@ const Search = createScreen(
                     />
                 </View>
                 <ActionSheet
-                    // gestureEnabled
-                    // indicatorStyle={{
-                    //     width: '30%',
-                    //     marginTop: 16,
-                    //     borderRadius: 5,
-                    //     backgroundColor: COLORS.Color321,
-                    // }}
                     ref={refActionSheet}
                     containerStyle={styles.action}>
                     <SearchFilter
