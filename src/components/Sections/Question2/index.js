@@ -99,12 +99,7 @@ const Question2 = (props) => {
                             <FlatList
                                 data={TypesArray}
                                 renderItem={({ item, index }) => (
-                                    <View
-                                        style={{
-                                            borderTopWidth: 0.5,
-                                            borderBottomWidth: 0.25,
-                                            borderColor: COLORS.placeholder,
-                                        }}>
+                                    <View>
                                         <View
                                             style={[
                                                 COMMON.SectionPaddingquestion7120,

@@ -9,6 +9,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import FlashMessage, { showMessage } from 'react-native-flash-message';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { QueryCache, QueryClient, QueryClientProvider } from 'react-query';
+import { ProfileQuestion5 } from 'screens';
 let queryClient: QueryClient;
 
 LogBox.ignoreAllLogs(true);

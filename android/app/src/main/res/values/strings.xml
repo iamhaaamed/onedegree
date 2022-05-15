@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">One Degree</string>
     <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">DO_NOT_ASK_JAVASCRIPT</string>
-<string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
-<string name="facebook_app_id">684155826131549</string>
-<string name="facebook_client_token">0a95297af55692bf1393051824f57438</string>
+    <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
+    <string name="facebook_app_id">684155826131549</string>
+    <string name="facebook_client_token">0a95297af55692bf1393051824f57438</string>
 </resources>
