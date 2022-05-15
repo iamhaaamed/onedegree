@@ -58,7 +58,18 @@ const SectionSignUp = (props) => {
             signupMutate(
                 {},
                 {
-                    onSuccess: onSuccessSignup,
+                    onSuccess: (data) => {
+                        const status = data.user_signUp?.status;
+                        if (data.user_signUp?.status === 'SUCCESS') {
+                            setVerify(true);
+                            navigate('Hiquestion2');
+                        } else {
+                            showMessage({
+                                message: status,
+                                type: 'danger',
+                            });
+                        }
+                    },
                 },
             );
         } catch (err) {
@@ -73,7 +84,7 @@ const SectionSignUp = (props) => {
         console.log('dddddd', data);
         const status = data.user_signUp?.status;
         if (data.user_signUp?.status === 'SUCCESS') {
-            setVerify(true);
+            // setVerify(true);
             navigate('Hiquestion2');
         } else {
             showMessage({

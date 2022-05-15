@@ -57,7 +57,9 @@ const SectionModal = (props) => {
     const setToken = authStore((state) => state.setToken);
     const setAnswerQuestion = authStore((state) => state.setAnswerQuestion);
     const setPassword = authStore((state) => state.setPassword);
+    const setVerify = authStore((state) => state.setVerify);
     const setEmail = authStore((state) => state.setEmail);
+    const setUserName = authStore((state) => state.setUserName);
     return (
         <View style={[styles.SectionModal, style]}>
             <View style={styles.line} />
@@ -74,6 +76,11 @@ const SectionModal = (props) => {
                                 await auth().signOut();
                                 GoogleSignin.revokeAccess();
                                 setToken(null);
+                                setAnswerQuestion(false);
+                                setEmail(null);
+                                setPassword(null);
+                                setVerify(false);
+                                setUserName(null);
                                 navigation.dispatch(
                                     StackActions.replace('AuthStack'),
                                 );
@@ -82,6 +89,8 @@ const SectionModal = (props) => {
                                 setAnswerQuestion(false);
                                 setEmail(null);
                                 setPassword(null);
+                                setUserName(null);
+                                setVerify(false);
                                 navigation.dispatch(
                                     StackActions.replace('AuthStack'),
                                 );
