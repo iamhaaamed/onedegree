@@ -17,7 +17,8 @@ const Question5 = (props) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
-    const [selectedItem, setSelectedItem] = useState(toPascalCase(answer));
+    const [selectedItem, setSelectedItem] = useState(answer);
+    console.log('uuuu///', selectedItem);
     useEffect(() => {
         if (selectedItem) OnHear(selectedItem);
     }, [selectedItem]);
@@ -30,10 +31,11 @@ const Question5 = (props) => {
                 <View style={COMMON.DropDown4}>
                     <MDropDown
                         data={CONSTANTS.hearAbout}
-                        getSelectedItem={(item) => setSelectedItem(item)}
-                        placeholderObject={{
-                            label: selectedItem ? selectedItem : 'Craigslist',
-                        }} //change label
+                        onValueChange={(item) => {
+                            setSelectedItem(item);
+                            console.log('uuuu', item);
+                        }}
+                        value={selectedItem ? selectedItem : 'Craigslist'} //change label
                         defaultAndroidMode={false}
                         icon={{
                             name: 'keyboard-arrow-down',

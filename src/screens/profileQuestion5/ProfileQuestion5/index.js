@@ -76,6 +76,7 @@ const ProfileQuestion5 = createScreen(
             data?.user_login?.result
                 ?.whereDidYouHearAboutOnedegreeCareersTextForOther,
         );
+        console.log('3333', Hear);
         const [Travel, setTravel] = useState(
             data?.user_login?.result?.howFarAreYouWillingToTravelToGetCertified,
         );
@@ -373,7 +374,7 @@ const ProfileQuestion5 = createScreen(
                                 data?.user_login?.result
                                     ?.whereDidYouHearAboutOnedegreeCareers
                             }
-                            OnHear={(data) => setHear(data?.value)}
+                            OnHear={(data) => setHear(data)}
                         />
                     );
             }

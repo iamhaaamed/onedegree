@@ -23,7 +23,11 @@ const SectionInfo = (props) => {
                     <MText textStyle={COMMON.TxtSectionInfo28}>{title}</MText>
                 </View>
                 <View style={{ width: '50%' }}>
-                    <MText textStyle={COMMON.TxtSectionInfo29}>{data} </MText>
+                    <MText
+                        textStyle={COMMON.TxtSectionInfo29}
+                        numberOfLines={2}>
+                        {data}{' '}
+                    </MText>
                 </View>
             </View>
         </View>
@@ -41,7 +45,7 @@ const styles = StyleSheet.create({
         shadowRadius: 28,
         elevation: 1,
         width: '100%',
-        height: verticalScale(60),
+        // height: verticalScale(60),
         borderTopLeftRadius: 12,
         borderTopRightRadius: 12,
         borderBottomRightRadius: 12,

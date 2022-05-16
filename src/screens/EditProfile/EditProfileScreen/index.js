@@ -227,15 +227,14 @@ const EditProfile = createScreen(
                         <MView style={COMMON.DropDown10}>
                             <MDropDown
                                 data={CONSTANTS.gender}
-                                getSelectedItem={(item) =>
+                                onValueChange={(item) => {
+                                    console.log('iiiiiiiiii', item);
                                     setUserInfo({
                                         ...UserInfo,
-                                        genders: item?.value,
-                                    })
-                                }
-                                placeholderObject={{
-                                    label: toPascalCase(UserInfo?.genders),
-                                }} //change label
+                                        genders: item,
+                                    });
+                                }}
+                                value={UserInfo?.genders} //change label
                                 defaultAndroidMode={false}
                                 icon={{
                                     name: 'keyboard-arrow-down',
@@ -285,15 +284,13 @@ const EditProfile = createScreen(
                             <MDropDown
                                 mb={verticalScale(24)}
                                 data={CONSTANTS.ethnicity}
-                                getSelectedItem={(item) => {
+                                onValueChange={(item) => {
                                     setUserInfo({
                                         ...UserInfo,
-                                        ethnicity: item?.value,
+                                        ethnicity: item,
                                     });
                                 }}
-                                placeholderObject={{
-                                    label: UserInfo?.ethnicity,
-                                }} //change label
+                                value={UserInfo?.ethnicity} //change label
                                 defaultAndroidMode={false}
                                 icon={{
                                     name: 'keyboard-arrow-down',
@@ -324,15 +321,13 @@ const EditProfile = createScreen(
                             <MDropDown
                                 mb={verticalScale(24)}
                                 data={CONSTANTS.educationLevel}
-                                getSelectedItem={(item) => {
+                                onValueChange={(item) => {
                                     setUserInfo({
                                         ...UserInfo,
-                                        educationLevel: item?.value,
+                                        educationLevel: item,
                                     });
                                 }}
-                                placeholderObject={{
-                                    label: UserInfo?.educationLevel,
-                                }} //change label
+                                value={UserInfo?.educationLevel.toString()} //change label
                                 defaultAndroidMode={false}
                                 icon={{
                                     name: 'keyboard-arrow-down',

@@ -36,6 +36,9 @@ const MDropDown = ({
     getSelectedItem,
     placeholderObject,
     defaultAndroidMode,
+    onValueChange,
+    placeholder,
+    value,
     Icon = defaultIcon,
     ...rest
 }) => {
@@ -45,7 +48,7 @@ const MDropDown = ({
         index: null,
     });
     const handleOnChange = (value, index) => {
-        setSelectedItem({ value, index });
+        // setSelectedItem({ value, index });
         getSelectedItem({ value, index });
     };
 
@@ -58,6 +61,21 @@ const MDropDown = ({
             )}
             <View style={style?.container}>
                 <RNPickerSelect
+                    onValueChange={(value) => onValueChange(value)}
+                    items={data}
+                    style={style}
+                    useNativeAndroidPickerStyle={
+                        !defaultAndroidMode ?? Platform.OS === 'android'
+                            ? false
+                            : true
+                    }
+                    Icon={Icon}
+                    placeholder={placeholder}
+                    // useNativeAndroidPickerStyle={false}
+                    value={value}
+                    {...rest}
+                />
+                {/* <RNPickerSelect
                     items={data}
                     disabled={disabled}
                     placeholder={placeholderObject}
@@ -70,10 +88,10 @@ const MDropDown = ({
                             : true
                     }
                     style={style}
-                    value={selectedItem.value}
+                    value={getSelectedItem.value}
                     Icon={Icon}
                     {...rest}
-                />
+                /> */}
             </View>
             {message && (
                 <MText textStyle={[styles.defaultMessage, messageStyle]}>

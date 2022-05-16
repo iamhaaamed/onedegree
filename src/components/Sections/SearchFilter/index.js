@@ -88,8 +88,8 @@ const SearchFilter = (props) => {
                     <MDropDown
                         mb={verticalScale(24)}
                         data={CONSTANTS.dropDown}
-                        getSelectedItem={(item) => setSelectedItem(item)}
-                        placeholderObject={{ label: '30 minutes' }} //change label
+                        onValueChange={(item) => setSelectedItem(item)}
+                        value={'30 minutes'} //change label
                         defaultAndroidMode={false}
                         textStyle={{ color: COLORS.Color185 }}
                         icon={{
@@ -124,8 +124,8 @@ const SearchFilter = (props) => {
                     <MDropDown
                         mb={verticalScale(24)}
                         data={CONSTANTS.dropDown}
-                        getSelectedItem={(item) => setSelectedItem(item)}
-                        placeholderObject={{ label: 'Ensure Good Health' }} //change label
+                        onValueChange={(item) => setSelectedItem(item)}
+                        value={'Ensure Good Health'} //change label
                         defaultAndroidMode={false}
                         icon={{
                             name: 'keyboard-arrow-down',
@@ -193,8 +193,8 @@ const SearchFilter = (props) => {
                     <MDropDown
                         mb={verticalScale(24)}
                         data={CONSTANTS.dropDown}
-                        getSelectedItem={(item) => setSelectedItem(item)}
-                        placeholderObject={{ label: '1 Month' }} //change label
+                        onValueChange={(item) => setSelectedItem(item)}
+                        value={'1 Month'} //change label
                         defaultAndroidMode={false}
                         icon={{
                             name: 'keyboard-arrow-down',
@@ -225,8 +225,8 @@ const SearchFilter = (props) => {
                     <MDropDown
                         mb={verticalScale(24)}
                         data={CONSTANTS.dropDown}
-                        getSelectedItem={(item) => setSelectedItem(item)}
-                        placeholderObject={{ label: '1 Hours' }} //change label
+                        onValueChange={(item) => setSelectedItem(item)}
+                        value={'1 Hours'} //change label
                         defaultAndroidMode={false}
                         icon={{
                             name: 'keyboard-arrow-down',
@@ -359,8 +359,8 @@ const SearchFilter = (props) => {
                     <MDropDown
                         mb={verticalScale(24)}
                         data={CONSTANTS.dropDown}
-                        getSelectedItem={(item) => setSelectedItem(item)}
-                        placeholderObject={{ label: 'Average' }} //change label
+                        onValueChange={(item) => setSelectedItem(item)}
+                        value={'Average'} //change label
                         defaultAndroidMode={false}
                         icon={{
                             name: 'keyboard-arrow-down',
@@ -391,8 +391,8 @@ const SearchFilter = (props) => {
                     <MDropDown
                         mb={verticalScale(32)}
                         data={CONSTANTS.dropDown}
-                        getSelectedItem={(item) => setSelectedItem(item)}
-                        placeholderObject={{ label: 'Hourly Wage' }} //change label
+                        onValueChange={(item) => setSelectedItem(item)}
+                        value={'Hourly Wage'} //change label
                         defaultAndroidMode={false}
                         icon={{
                             name: 'keyboard-arrow-down',
