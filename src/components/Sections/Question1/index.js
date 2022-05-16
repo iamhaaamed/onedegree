@@ -102,20 +102,19 @@ const Question1 = (props) => {
                             iconContainerStyle={{ borderRadius: 5 }}
                             isChecked={IndustryArray.includes(item)}
                             setIsChecked={() => {
-                                if (IndustryArray.includes(item)) {
-                                    setIndustryArray((prev) =>
-                                        prev.filter((a) => a !== item),
-                                    );
-                                } else if (IndustryArray.includes('Not Sure')) {
-                                    // let arr = IndustryArray;
-                                    // arr.splice('Not Sure');
-                                    // setIndustryArray(arr);
-                                    // setIndustryArray((prev) =>
-                                    //     prev.filter((a) => a !== 'Not Sure'),
-                                    // );
+                                if (IndustryArray.includes('Not Sure')) {
                                     setIndustryArray([]);
                                 } else {
-                                    setIndustryArray((prev) => [...prev, item]);
+                                    if (IndustryArray.includes(item)) {
+                                        setIndustryArray((prev) =>
+                                            prev.filter((a) => a !== item),
+                                        );
+                                    } else {
+                                        setIndustryArray((prev) => [
+                                            ...prev,
+                                            item,
+                                        ]);
+                                    }
                                 }
                             }}
                             style={COMMON.CheckBox61}>

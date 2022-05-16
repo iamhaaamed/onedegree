@@ -36,12 +36,16 @@ const ProfileScreen = createScreen(
             if (data?.user_login?.result?.latitude !== undefined) {
                 console.log(
                     '2222',
-                    `https://geocode.xyz/${data?.user_login?.result?.latitude},${data?.user_login?.result?.longitude}?json=1`,
+                    `https://geocode.xyz/${data?.user_login?.result?.longitude},${data?.user_login?.result?.latitude}?json=1`,
                 );
+                const latLang = `https://geocode.xyz/${data?.user_login?.result?.latitude},${data?.user_login?.result?.longitude}?json=1`;
+                // const params = {
+                //     // auth: 'your auth code',
+                //     locate: '58.41032,15.62162',
+                //     json: '1',
+                // };
                 axios
-                    .get(
-                        `https://geocode.xyz/${data?.user_login?.result?.latitude},${data?.user_login?.result?.longitude}?json=1`,
-                    )
+                    .get(latLang)
                     .then(function (response) {
                         console.log('///////////', response);
                         if (response?.data) {
