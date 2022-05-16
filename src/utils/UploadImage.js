@@ -30,7 +30,6 @@ export const UploadImage = async (response) => {
                 resolve({ ...res, uploadedUrl: res?.respInfo?.redirects?.[0] });
             }
         } catch (error) {
-            console.log(error, 'error');
             showMessage({
                 message: JSON.stringify(error),
                 type: 'danger',

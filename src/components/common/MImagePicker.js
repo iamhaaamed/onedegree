@@ -18,7 +18,7 @@ const MImagePicker = ({ children, getImage, closeOverlay }) => {
                 // If CAMERA Permission is granted
                 return granted === PermissionsAndroid.RESULTS.GRANTED;
             } catch (err) {
-                console.warn(err);
+                // console.warn(err);
                 return false;
             }
         } else return true;
@@ -36,7 +36,7 @@ const MImagePicker = ({ children, getImage, closeOverlay }) => {
                 // If WRITE_EXTERNAL_STORAGE Permission is granted
                 return granted === PermissionsAndroid.RESULTS.GRANTED;
             } catch (err) {
-                console.warn(err);
+                // console.warn(err);
                 alert('Write permission err', err);
             }
             return false;
@@ -98,10 +98,10 @@ const MImagePicker = ({ children, getImage, closeOverlay }) => {
             }
             let source = response;
             setPhoto(source);
-            console.log('res33333333333', response?.assets[0].uri);
+            // console.log('res33333333333', response?.assets[0].uri);
             setLoading(true);
             const uploadImg = await UploadImage(response?.assets[0]);
-            console.log('uploadImg,', uploadImg);
+            // console.log('uploadImg,', uploadImg);
             if (uploadImg) {
                 setLoading(false);
             }

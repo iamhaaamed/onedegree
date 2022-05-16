@@ -71,12 +71,12 @@ const ProfileQuestion5 = createScreen(
         const [isChecked, setAnswers] = useState();
         const [ZipCode, setZipCode] = useState();
         const [userInput, setUserInput] = useState();
-        console.log('.........', data?.user_login?.result);
+
         const [Hear, setHear] = useState(
             data?.user_login?.result
                 ?.whereDidYouHearAboutOnedegreeCareersTextForOther,
         );
-        console.log('3333', Hear);
+
         const [Travel, setTravel] = useState(
             data?.user_login?.result?.howFarAreYouWillingToTravelToGetCertified,
         );
@@ -182,10 +182,6 @@ const ProfileQuestion5 = createScreen(
                         .get(getLatLang)
                         .then(function (response) {
                             if (response?.data?.output[0]) {
-                                console.log(
-                                    'rrrrrrrrrrr',
-                                    response?.data?.output[0],
-                                );
                                 mutate(
                                     {
                                         point: [

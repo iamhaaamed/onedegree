@@ -8,9 +8,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 const MButtonShowcaseScreen = createScreen(
     (props) => {
         const { LAYOUT, GUTTERS, COLORS } = useTheme();
-        const onPress = () => {
-            console.log('clicked!');
-        };
+        const onPress = () => {};
         return (
             <View style={LAYOUT.fill}>
                 <View

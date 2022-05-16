@@ -18,10 +18,11 @@ const Question5 = (props) => {
         CONSTANTS,
     } = useTheme();
     const [selectedItem, setSelectedItem] = useState(answer);
-    console.log('uuuu///', selectedItem);
+
     useEffect(() => {
         if (selectedItem) OnHear(selectedItem);
     }, [selectedItem]);
+
     return (
         <View style={COMMON.SectionPaddingquestion7120}>
             <MText textStyle={COMMON.Txtquestion6104}>
@@ -33,7 +34,6 @@ const Question5 = (props) => {
                         data={CONSTANTS.hearAbout}
                         onValueChange={(item) => {
                             setSelectedItem(item);
-                            console.log('uuuu', item);
                         }}
                         value={selectedItem ? selectedItem : 'Craigslist'} //change label
                         defaultAndroidMode={false}

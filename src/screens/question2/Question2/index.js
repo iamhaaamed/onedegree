@@ -85,7 +85,6 @@ const question2 = createScreen(
                         onPress={() => {
                             if (Answers && Answers?.length > 0) {
                                 let String = callMyMethod(Answers);
-                                console.log('String', String);
                                 navigate('Question7', { Answers: String });
                             }
                         }}

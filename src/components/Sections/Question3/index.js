@@ -28,7 +28,7 @@ const Question3 = (props) => {
             .max(5, 'Must be 5 characters')
             .required('Invalid Zip Code'),
     });
-    console.log('aaaaaaaa', answer);
+    // console.log('aaaaaaaa', answer);
     return (
         <>
             <View style={COMMON.SectionPaddingquestion7120}>

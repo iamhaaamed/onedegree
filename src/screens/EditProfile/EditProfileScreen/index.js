@@ -9,6 +9,7 @@ import {
     MText,
     MView,
 } from 'components/common';
+import { useQueryClient } from 'react-query';
 import { createScreen } from 'components/elements';
 import { SectionTop01 } from 'components/Sections';
 import { COLORS } from 'constants/common';
@@ -32,6 +33,7 @@ const EditProfile = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
+        const queryClient = useQueryClient();
         const setUserName = authStore((state) => state.setUserName);
         const userName = route?.params?.UserName.split(' ');
 
@@ -89,8 +91,8 @@ const EditProfile = createScreen(
                 },
                 {
                     onSuccess: (data) => {
-                        console.log('ddddddddd', data);
                         if (data?.user_updateProfile?.status == 'SUCCESS') {
+                            queryClient.invalidateQueries('getMyProfile');
                             setUserName(
                                 `${data?.user_updateProfile?.result?.firstName} ${data?.user_updateProfile?.result?.lastName}`,
                             );
@@ -228,7 +230,6 @@ const EditProfile = createScreen(
                             <MDropDown
                                 data={CONSTANTS.gender}
                                 onValueChange={(item) => {
-                                    console.log('iiiiiiiiii', item);
                                     setUserInfo({
                                         ...UserInfo,
                                         genders: item,

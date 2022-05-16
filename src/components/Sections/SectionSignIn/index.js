@@ -44,11 +44,11 @@ const SectionSignIn = (props) => {
             firebaseUser,
             success,
         } = await thirdPartyAuthService.loginWithGoogle();
-        console.log(firebaseIdToken, 'firebaseIdToken');
+
         if (success) {
-            console.log('thirdPartyAccessToken', thirdPartyAccessToken);
-            console.log('firebaseIdToken', firebaseIdToken);
-            console.log('firebaseUser', firebaseUser?.displayName);
+            // console.log('thirdPartyAccessToken', thirdPartyAccessToken);
+            // console.log('firebaseIdToken', firebaseIdToken);
+            // console.log('firebaseUser', firebaseUser?.displayName);
             setUserName(firebaseUser?.displayName);
             onSigninWithSocial();
         }
@@ -63,7 +63,6 @@ const SectionSignIn = (props) => {
                 },
             );
         } catch (e) {
-            console.log(e, 'e!!!!');
             if (e === 'NOT_FOUND') {
                 showMessage({
                     message: 'You are not registered!',
@@ -74,10 +73,8 @@ const SectionSignIn = (props) => {
         setIsLoading(false);
     };
     const onSuccessSignin = async (data) => {
-        console.log({ data });
         const status = data?.user_login?.status;
         if (status === 'SUCCESS') {
-            console.log('kkkkk', await auth().currentUser?.getIdToken());
             setToken(await auth().currentUser?.getIdToken());
             setAnswerQuestion(true);
             setVerify(true);
@@ -90,7 +87,6 @@ const SectionSignIn = (props) => {
         }
     };
     const signinWithEmail = async (data) => {
-        console.log('data', data);
         try {
             try {
                 await auth().signInWithEmailAndPassword(
@@ -98,7 +94,6 @@ const SectionSignIn = (props) => {
                     data?.password,
                 );
                 const checkDone = auth().currentUser?.emailVerified;
-                console.log('6666', checkDone);
                 if (checkDone) {
                     setToken(await auth().currentUser?.getIdToken());
                     setAnswerQuestion(true);
@@ -111,8 +106,6 @@ const SectionSignIn = (props) => {
                     });
                 }
             } catch (error) {
-                console.log(error, 'error for get token');
-
                 const errorMessage = error?.message;
                 if (errorMessage) {
                     showMessage({
@@ -122,7 +115,7 @@ const SectionSignIn = (props) => {
                 }
             }
         } catch (err) {
-            console.log(err);
+            // console.log(err);
         }
     };
     const onSubmit = async (data) => {
@@ -141,7 +134,7 @@ const SectionSignIn = (props) => {
                 },
             );
         } catch (e) {
-            console.log(e, 'e');
+            // console.log(e, 'e');
         } finally {
             setIsLoading(false);
         }
@@ -155,16 +148,14 @@ const SectionSignIn = (props) => {
         } = await thirdPartyAuthService.loginWithApple();
 
         if (success) {
-            console.log('thirdPartyAccessToken', thirdPartyAccessToken);
-            console.log('firebaseIdToken', firebaseIdToken);
-            console.log('firebaseUser', firebaseUser);
+            // console.log('thirdPartyAccessToken', thirdPartyAccessToken);
+            // console.log('firebaseIdToken', firebaseIdToken);
+            // console.log('firebaseUser', firebaseUser);
             setUserName(firebaseUser?.displayName);
             onSigninWithSocial();
         }
     }
     const FacebookSignIn = async () => {
-        console.log('facebook222222222');
-
         const {
             firebaseIdToken,
             success,

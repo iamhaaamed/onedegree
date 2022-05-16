@@ -53,7 +53,6 @@ const CheckEmail = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
-        console.log('2222222', route.params);
         const { email, password } = route?.params || {};
         return (
             <Container style={styles.Forgetpassword1}>

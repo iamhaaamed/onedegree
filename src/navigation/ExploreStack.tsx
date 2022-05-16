@@ -42,7 +42,6 @@ export default function ExploreStack({
     const tabHiddenRoutes = ['ProgramDetails', 'ChatScreen'];
 
     if (tabHiddenRoutes.includes(getFocusedRouteNameFromRoute(route))) {
-        console.log(route);
         navigation.setOptions({ tabBarStyle: { display: 'none' } });
     } else {
         navigation.setOptions({ tabBarStyle: { display: 'flex' } });

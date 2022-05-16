@@ -41,7 +41,7 @@ const SectionVerification = (props) => {
                 });
             }
         } catch (err) {
-            console.log(err, 'verifyEmail*****', email, password);
+            // console.log(err, 'verifyEmail*****', email, password);
         }
         setIsLoading(false);
     };

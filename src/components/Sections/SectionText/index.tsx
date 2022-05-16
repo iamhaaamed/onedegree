@@ -18,7 +18,6 @@ const SectionText = (props) => {
         COMMON,
         CONSTANTS,
     } = useTheme();
-    console.log('dddd', data);
 
     return (
         <View {...props} style={[styles.SectionText, style]}>

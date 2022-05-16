@@ -60,8 +60,6 @@ const useLikeCareer = () => {
     const queryClient = useQueryClient();
     return useMutation(
         async (careerId) => {
-            console.log('sss', careerId);
-
             return await graphQLClient.request(USER_LIKE, {
                 careerId,
             });

@@ -31,13 +31,13 @@ enableScreens();
 const App = () => {
     const { token } = authStore((state) => state);
     const setToken = authStore((state) => state.setToken);
-    console.log('tttttttt', token);
+    // console.log('token', token);
     const [initializing, setInitializing] = useState(true);
     const handleUser = useCallback(
         async (user) => {
             if (user) {
                 const idToken = await auth().currentUser?.getIdToken();
-                console.log('tokennn:', user);
+                // console.log('user:', user);
                 if (idToken) {
                     graphQLClient.setHeader(
                         'authorization',
@@ -76,7 +76,7 @@ const App = () => {
         },
         queryCache: new QueryCache({
             onError: (error) => {
-                console.log(error);
+                // console.log(error);
                 showMessage({
                     message: `Something went wrong: ${error.message}`,
                     type: 'danger',
@@ -92,11 +92,11 @@ const App = () => {
                         first[0][Object.keys(first[0])[0]].status ===
                             'AUTHENTICATION_FAILED')
                 ) {
-                    console.log('status', status);
+                    // console.log('status', status);
                     try {
                         await auth().signOut();
                     } catch (error) {
-                        console.log('errrrr', error);
+                        // console.log('errrrr', error);
                         showMessage({
                             message: 'please login first',
                             type: 'danger',

@@ -27,17 +27,17 @@ const ProfileScreen = createScreen(
         const [isLoading2, setIsLoading2] = useState(false);
         const [points, setPoints] = useState(8);
         const MAX_POINTS = 13;
-        console.log('u:   ', user);
+
         const { UserName } = authStore((state) => state);
         useEffect(() => {
             setUser(data?.user_login?.result);
             setIsLoading2(true);
 
             if (data?.user_login?.result?.latitude !== undefined) {
-                console.log(
-                    '2222',
-                    `https://geocode.xyz/${data?.user_login?.result?.longitude},${data?.user_login?.result?.latitude}?json=1`,
-                );
+                // console.log(
+                //     '2222',
+                //     `https://geocode.xyz/${data?.user_login?.result?.longitude},${data?.user_login?.result?.latitude}?json=1`,
+                // );
                 const latLang = `https://geocode.xyz/${data?.user_login?.result?.latitude},${data?.user_login?.result?.longitude}?json=1`;
                 // const params = {
                 //     // auth: 'your auth code',
@@ -47,13 +47,13 @@ const ProfileScreen = createScreen(
                 axios
                     .get(latLang)
                     .then(function (response) {
-                        console.log('///////////', response);
+                        // console.log('///////////', response);
                         if (response?.data) {
                             setStateName(response?.data?.statename);
                         }
                     })
                     .catch(function (error) {
-                        console.log('///////////', error);
+                        // console.log('///////////', error);
                         // showMessage({
                         //     message: `Something went wrong: ${error.message}`,
                         //     type: 'danger',

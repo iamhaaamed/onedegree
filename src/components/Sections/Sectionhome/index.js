@@ -128,6 +128,7 @@ const Sectionhome = (props) => {
                         marginVertical: -5,
                         position: 'absolute',
                         bottom: 0,
+                        alignSelf: 'center',
                     },
                 ]}>
                 <IconButton

@@ -52,8 +52,6 @@ class ThirdPartyAuthService {
                 };
             }
         } catch (error) {
-            console.error(error);
-
             return {
                 success: false,
                 thirdPartyAccessToken: null,
@@ -103,8 +101,6 @@ class ThirdPartyAuthService {
                 firebaseUser: null,
             };
         } catch (error) {
-            console.error(error);
-
             return {
                 success: false,
                 thirdPartyAccessToken: null,
@@ -124,16 +120,13 @@ class ThirdPartyAuthService {
                 accessToken,
                 fullResult,
             } = await facebookAuthService.signIn();
-            console.log('accessTooooooooooken::: ', accessToken);
+
             email = fullResult.user?.id;
 
             if (!email) {
-                console.log('iiiiiiiiiii ', id);
                 throw new Error("Couldn't get user email address");
             }
-            console.log('====================================********');
-            console.log(email);
-            console.log('====================================');
+
             const {
                 idToken,
                 user,
@@ -141,9 +134,7 @@ class ThirdPartyAuthService {
                 'facebook',
                 accessToken,
             );
-            console.log('====================================idToken');
-            console.log(idToken);
-            console.log('====================================');
+
             if (!idToken || !user) {
                 return {
                     success: false,
@@ -160,7 +151,6 @@ class ThirdPartyAuthService {
                 firebaseUser: user,
             };
         } catch (error) {
-            console.error(error);
             // snackBarService.failed({}, `Something went wrong: ${error?.message ?? 'Please try Again'}`);
             return {
                 success: false,

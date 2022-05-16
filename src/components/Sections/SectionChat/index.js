@@ -53,7 +53,6 @@ const SectionChat = (props) => {
 
     const clickCounter = useRef(0);
     const onPress = () => {
-        console.log(`Clicked! ${clickCounter.current}`);
         clickCounter.current = clickCounter.current + 1;
     };
 

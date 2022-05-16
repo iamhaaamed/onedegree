@@ -73,7 +73,7 @@ const Question1 = (props) => {
     useEffect(() => {
         setAnswer(IndustryArray);
     }, [IndustryArray]);
-    console.log('////', IndustryArray);
+
     return (
         <>
             <View style={COMMON.SectionPaddingquestion7120}>

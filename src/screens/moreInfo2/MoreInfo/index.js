@@ -100,23 +100,14 @@ const MoreInfo = createScreen(
                                     }}>
                                     <MButton
                                         onPress={() => {
-                                            console.log('22222222222');
                                             if (Like)
                                                 UnLikeMutate(Info?.career?.id, {
                                                     onSuccess: (data) => {
-                                                        console.log(
-                                                            'ddd',
-                                                            data,
-                                                        );
                                                         if (
                                                             data?.career_unlike
                                                                 ?.status ==
                                                             'SUCCESS'
                                                         ) {
-                                                            console.log(
-                                                                '333333333333333',
-                                                                data,
-                                                            );
                                                             setLike(false);
                                                         }
                                                     },

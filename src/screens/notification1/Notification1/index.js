@@ -86,9 +86,7 @@ const Notification1 = createScreen(
             mutate(
                 {},
                 {
-                    onSuccess: (data) => {
-                        console.log('0000', data);
-                    },
+                    onSuccess: (data) => {},
                 },
             );
         }, []);

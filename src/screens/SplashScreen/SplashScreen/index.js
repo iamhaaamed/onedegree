@@ -26,7 +26,7 @@ const SplashScreen = createScreen(
         );
 
         const navigation = useNavigation();
-        console.log({ AnswerQuestion });
+
         useEffect(() => {
             // navigation.dispatch(StackActions.replace('AuthStack'));
             setTimeout(() => {

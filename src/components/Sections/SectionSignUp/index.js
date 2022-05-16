@@ -42,11 +42,10 @@ const SectionSignUp = (props) => {
             firebaseUser,
             success,
         } = await thirdPartyAuthService.loginWithGoogle();
-        console.log(success, 'success');
         if (success) {
-            console.log('thirdPartyAccessToken', thirdPartyAccessToken);
-            console.log('firebaseIdToken', firebaseIdToken);
-            console.log('firebaseUser', firebaseUser);
+            // console.log('thirdPartyAccessToken', thirdPartyAccessToken);
+            // console.log('firebaseIdToken', firebaseIdToken);
+            // console.log('firebaseUser', firebaseUser);
             setUserName(firebaseUser?.displayName);
             createUserWithSocial();
         }
@@ -81,7 +80,6 @@ const SectionSignUp = (props) => {
         setIsLoading(false);
     };
     const onSuccessSignup = (data) => {
-        console.log('dddddd', data);
         const status = data.user_signUp?.status;
         if (data.user_signUp?.status === 'SUCCESS') {
             // setVerify(true);
@@ -98,7 +96,6 @@ const SectionSignUp = (props) => {
     };
     const createUserOnPress = async (data) => {
         setIsLoading(true);
-        console.log('kkkk', data);
         const email = data?.email;
         const password = data?.password;
         try {
@@ -107,7 +104,6 @@ const SectionSignUp = (props) => {
                 .then(async () => {
                     await auth().currentUser?.sendEmailVerification();
                     const emailVerified = auth().currentUser?.emailVerified;
-                    console.log(emailVerified, 'emailVerified*****');
 
                     if (emailVerified) {
                         completeRegistrationWithEmailPassword();
@@ -138,8 +134,6 @@ const SectionSignUp = (props) => {
                     }
                 })
                 .catch((error) => {
-                    console.log(error, 'error');
-
                     const errorMessage = error?.message;
                     if (errorMessage) {
                         showMessage({
@@ -150,8 +144,6 @@ const SectionSignUp = (props) => {
                 });
             setIsLoading(false);
         } catch (err) {
-            console.log(err, 'err*****');
-
             setIsLoading(false);
         }
     };
@@ -170,11 +162,10 @@ const SectionSignUp = (props) => {
             firebaseUser,
             success,
         } = await thirdPartyAuthService.loginWithApple();
-        console.log(firebaseIdToken, 'firebaseIdToken');
         if (success) {
-            console.log('thirdPartyAccessToken', thirdPartyAccessToken);
-            console.log('firebaseIdToken', firebaseIdToken);
-            console.log('firebaseUser', firebaseUser);
+            // console.log('thirdPartyAccessToken', thirdPartyAccessToken);
+            // console.log('firebaseIdToken', firebaseIdToken);
+            // console.log('firebaseUser', firebaseUser);
             setUserName(firebaseUser?.displayName);
             createUserWithSocial();
         }

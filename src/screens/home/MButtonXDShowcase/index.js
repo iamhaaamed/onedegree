@@ -12,7 +12,6 @@ const MButtonXDShowcase = createScreen(
         const { LAYOUT, GUTTERS, COLORS, TYPOGRAPHY, IMAGES } = useTheme();
         const clickCounter = useRef(0);
         const onPress = () => {
-            console.log(`Clicked! ${clickCounter.current}`);
             clickCounter.current = clickCounter.current + 1;
         };
         return (

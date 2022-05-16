@@ -31,7 +31,6 @@ const question6 = createScreen(
         const setAnswerQuestion = authStore((state) => state.setAnswerQuestion);
         const getLatLang = `https://api.promaptools.com/service/us/zip-lat-lng/get/?zip=${ZipCode}&key=17o8dysaCDrgv1c`;
         //  `https://maps.googleapis.com/maps/api/geocode/json?address=${ZipCode}&key=AIzaSyAq_L_4FurpQGeFM20SxCXpAAkggk3knhU&region=us`;
-        console.log('laaaaa', getLatLang);
         return (
             <Container style={styles.question6}>
                 {/* <ScrollView> */}
@@ -63,7 +62,6 @@ const question6 = createScreen(
                             axios
                                 .get(getLatLang)
                                 .then(function (response) {
-                                    console.log(response?.data?.output);
                                     if (response?.data?.output[0]) {
                                         var zip = response?.data?.output[0]?.zip?.toString();
                                         mutate(

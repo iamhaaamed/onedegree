@@ -73,7 +73,6 @@ const SectionForgetPass = (props) => {
                     navigate('VerifyEmail');
                 });
         } catch (err) {
-            console.log(err?.message, 'err');
             showMessage({
                 message: err?.message.split(']')[1],
                 type: 'danger',
