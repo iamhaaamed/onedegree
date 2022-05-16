@@ -71,7 +71,11 @@ const Question3 = (props) => {
                     )}
                 </Formik>
                 <View style={COMMON.flexRow}>
-                    <MIcon name="info" size={32} />
+                    <MIcon
+                        name="info"
+                        size={32}
+                        style={{ alignSelf: 'flex-start' }}
+                    />
                     <MText textStyle={COMMON.Txtquestion6109}>
                         Your Zip Code Will Help Us Recommend Training Programs
                         Near You!{' '}

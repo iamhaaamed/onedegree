@@ -32,7 +32,9 @@ const ProgramFilter = (props) => {
                     justifyContent: 'center',
                     width: '100%',
                 }}>
-                <MText mb={verticalScale(12)} textStyle={COMMON.TxtModal2}>
+                <MText
+                    mb={verticalScale(12)}
+                    textStyle={[COMMON.TxtModal2, { marginTop: scale(8) }]}>
                     Type Of Training Program{' '}
                 </MText>
                 <MView style={COMMON.DropDown10}>
@@ -77,7 +79,6 @@ const ProgramFilter = (props) => {
                     Cost{' '}
                 </MText>
                 <MSlider
-                    mb={verticalScale(24)}
                     values={sliderValue}
                     onChange={setSliderValue}
                     min={0}
@@ -87,8 +88,14 @@ const ProgramFilter = (props) => {
                     markerContainerStyle={{
                         marginTop: -18,
                     }}
-                    containerStyle={[COMMON.Slider3, { marginTop: '7%' }]}
-                    trackStyle={COMMON.BottomBar5}
+                    containerStyle={[
+                        COMMON.Slider3,
+                        {
+                            marginTop: '7%',
+                            width: '100%',
+                        },
+                    ]}
+                    trackStyle={[COMMON.BottomBar5]}
                     unselectedStyle={COMMON.BottomBar563}
                     selectedStyle={COMMON.TopBar6}
                     customMarker={() => (
@@ -225,7 +232,8 @@ const styles = StyleSheet.create({
     view: {
         justifyContent: 'center',
         alignSelf: 'center',
-        maxHeight: scale(550),
+        maxHeight: scale(650),
+        alignItems: 'center',
     },
     TriangleShapeCSS: {
         width: 0,

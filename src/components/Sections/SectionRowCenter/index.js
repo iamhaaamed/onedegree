@@ -28,7 +28,7 @@ const SectionRowCenter = (props) => {
                           ]
                         : COMMON.ButtonRect114
                 }
-                containerStyle={[COMMON.Button113, { borderRadius: 8 }]}
+                containerStyle={[COMMON.Button113, { borderRadius: 12 }]}
                 text="Back"
                 // type={intro ? 'highlight' : 'none'}
                 underlayColor={intro ? COLORS.Color276 : 'transparent'}

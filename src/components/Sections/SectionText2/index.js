@@ -33,7 +33,10 @@ const SectionText2 = (props) => {
                 Terms & Conditions{' '}
             </MText>
             <MText
-                textStyle={COMMON.TxtSectionText13}
+                textStyle={[
+                    COMMON.TxtSectionText13,
+                    { marginTop: verticalScale(10) },
+                ]}
                 iconName="checkbox-blank-circle"
                 iconColor={COLORS.Color424}
                 iconSize={scale(13)}
@@ -56,7 +59,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 0 },
         shadowRadius: 28,
         width: '100%',
-        height: verticalScale(107),
+        // height: verticalScale(107),
         borderRadius: 12,
     },
 });

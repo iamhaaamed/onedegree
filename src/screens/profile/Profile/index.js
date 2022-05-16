@@ -89,7 +89,7 @@ const ProfileScreen = createScreen(
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 marginVertical: verticalScale(20),
-                                transform: [{ rotateY: '180deg' }],
+                                // transform: [{ rotateY: '180deg' }],
                             }}
                             tintColor="#84CC17"
                             backgroundColor={COLORS.transparent}>
@@ -100,9 +100,9 @@ const ProfileScreen = createScreen(
                                             style={{
                                                 width: '85%',
                                                 height: '85%',
-                                                transform: [
-                                                    { rotateY: '180deg' },
-                                                ],
+                                                // transform: [
+                                                //     { rotateY: '180deg' },
+                                                // ],
                                             }}>
                                             <MImage
                                                 imageSource={{

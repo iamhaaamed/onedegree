@@ -39,7 +39,7 @@ const SearchFilter = (props) => {
                     justifyContent: 'center',
                     width: '100%',
                 }}>
-                <MText textStyle={COMMON.TxtModal2}>
+                <MText textStyle={[COMMON.TxtModal2, { marginTop: scale(20) }]}>
                     Possible Yearly Income{' '}
                 </MText>
                 <MSlider
@@ -51,7 +51,13 @@ const SearchFilter = (props) => {
                     step={0.5}
                     enableLabel={false}
                     markerContainerStyle={{ marginTop: -18 }}
-                    containerStyle={[COMMON.Slider3, { marginTop: '7%' }]}
+                    containerStyle={[
+                        COMMON.Slider3,
+                        {
+                            marginTop: '7%',
+                            width: '100%',
+                        },
+                    ]}
                     trackStyle={COMMON.BottomBar5}
                     unselectedStyle={COMMON.BottomBar563}
                     selectedStyle={COMMON.TopBar6}
@@ -73,7 +79,9 @@ const SearchFilter = (props) => {
                         </View>
                     )}></MSlider>
 
-                <MText mb={verticalScale(12)} textStyle={COMMON.TxtModal2}>
+                <MText
+                    mb={verticalScale(12)}
+                    textStyle={[COMMON.TxtModal2, { marginTop: scale(8) }]}>
                     Training Time{' '}
                 </MText>
                 <MView style={COMMON.DropDown10}>
@@ -107,7 +115,9 @@ const SearchFilter = (props) => {
                         }}
                     />
                 </MView>
-                <MText mb={verticalScale(11)} textStyle={COMMON.TxtModal2}>
+                <MText
+                    mb={verticalScale(11)}
+                    textStyle={[COMMON.TxtModal2, { marginTop: scale(8) }]}>
                     Social Impact{' '}
                 </MText>
                 <MView style={COMMON.DropDown10}>
@@ -151,7 +161,10 @@ const SearchFilter = (props) => {
                     step={0.5}
                     enableLabel={false}
                     markerContainerStyle={{ marginTop: -18 }}
-                    containerStyle={[COMMON.Slider3, { marginTop: '7%' }]}
+                    containerStyle={[
+                        COMMON.Slider3,
+                        { marginTop: '7%', width: '100%' },
+                    ]}
                     trackStyle={COMMON.BottomBar5}
                     unselectedStyle={COMMON.BottomBar563}
                     selectedStyle={COMMON.TopBar6}
@@ -277,7 +290,10 @@ const SearchFilter = (props) => {
                     step={0.5}
                     enableLabel={false}
                     markerContainerStyle={{ marginTop: -18 }}
-                    containerStyle={[COMMON.Slider3, { marginTop: '7%' }]}
+                    containerStyle={[
+                        COMMON.Slider3,
+                        { marginTop: '7%', width: '100%' },
+                    ]}
                     trackStyle={COMMON.BottomBar5}
                     unselectedStyle={COMMON.BottomBar563}
                     selectedStyle={COMMON.TopBar6}
@@ -311,7 +327,10 @@ const SearchFilter = (props) => {
                     step={0.5}
                     enableLabel={false}
                     markerContainerStyle={{ marginTop: -18 }}
-                    containerStyle={[COMMON.Slider3, { marginTop: '7%' }]}
+                    containerStyle={[
+                        COMMON.Slider3,
+                        { marginTop: '7%', width: '100%' },
+                    ]}
                     trackStyle={COMMON.BottomBar5}
                     unselectedStyle={COMMON.BottomBar563}
                     selectedStyle={COMMON.TopBar6}
@@ -402,7 +421,7 @@ const SearchFilter = (props) => {
                     <MButton
                         onPress={() => showModal(true)}
                         style={COMMON.ButtonRect114}
-                        containerStyle={[COMMON.Button113, { elevation: 5 }]}
+                        containerStyle={[COMMON.Button113]}
                         text="Back"
                         textStyle={[COMMON.TextsButton115]}
                         color={COLORS.Color963}

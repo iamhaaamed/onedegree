@@ -92,10 +92,19 @@ const Home2 = createScreen(
                             renderItem({ item, index })
                         }
                         lockScrollWhileSnapping
+                        sliderWidth={scale(330)}
+                        // itemWidth={itemWidth}
                         itemWidth={scale(300)}
-                        itemHeight={scale(500)}
+                        // itemHeight={scale(500)}
                         sliderHeight={scale(570)}
-                        containerCustomStyle={styles.carouselContainer}
+                        containerCustomStyle={[
+                            styles.carouselContainer,
+                            sliderRef &&
+                                sliderRef.current &&
+                                sliderRef.current.currentIndex == 1 && {
+                                    marginTop: '-5%',
+                                },
+                        ]}
                         contentContainerCustomStyle={{
                             justifyContent: 'center',
                             alignItems: 'center',
@@ -108,8 +117,8 @@ const Home2 = createScreen(
                         }}
                         layout={'tinder'}
                         layoutCardOffset={18}
-                        useScrollView={true}
-                        vertical={true}
+                        // useScrollView={true}
+                        // vertical={true}
                         onMomentumScrollBegin={() => {
                             setonEndReachedCalledDuringMomentum(false);
                         }}
@@ -132,6 +141,7 @@ const styles = StyleSheet.create({
     carouselContainer: {
         alignSelf: 'center',
         width: scale(370),
+        height: scale(570),
     },
 });
 export default Home2;

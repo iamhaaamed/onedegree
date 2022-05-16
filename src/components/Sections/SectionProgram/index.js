@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
         elevation: 1,
         // opacity: 0.78,
         width: '100%',
+        marginVertical: scale(5),
         height: verticalScale(105),
         borderTopLeftRadius: 21,
         borderTopRightRadius: 21,

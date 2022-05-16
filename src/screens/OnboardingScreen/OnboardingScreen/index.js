@@ -55,13 +55,13 @@ const intro6 = createScreen(
                     'Our Unique Support Process Helps You Easily Pick A New Career Path And Avoid College Debt.',
             },
             {
-                imageUrl: IMAGES.intro3,
+                imageUrl: IMAGES.intro4,
                 imageBack: IMAGES.imageBack1,
                 subtitle:
                     'We Connect You To The Best Training Programs In Your Area So You Can Confidently Pursue Your New Career.',
             },
             // {
-            //     imageUrl: IMAGES.intro4,
+            //     imageUrl: IMAGES.intro3,
             //     imageBack: IMAGES.imageBack1,
             //     subtitle:
             //         'We Connect You To The Best Training Programs In Your Area So You Can Confidently Pursue Your New Career.',
@@ -75,16 +75,16 @@ const intro6 = createScreen(
                     customWidth={'100%'}
                     customHeight={scale(52)}
                 />
-                {page != 0 && (
-                    <MImage
-                        imageSource={
-                            page == 1 ? IMAGES.imageBack1 : IMAGES.imageBack2
-                        }
-                        style={COMMON.imagevector2}
-                        customWidth={'90%'}
-                        customHeight={scale(400)}
-                    />
-                )}
+                {/* {page != 0 && ( */}
+                <MImage
+                    imageSource={
+                        page == 2 ? IMAGES.imageBack2 : IMAGES.imageBack1
+                    }
+                    style={COMMON.imagevector2}
+                    customWidth={'90%'}
+                    customHeight={scale(400)}
+                />
+                {/* )} */}
                 <PagerView
                     style={{
                         flex: 1,
@@ -108,9 +108,10 @@ const intro6 = createScreen(
                                             COMMON.Txtintro63,
                                             {
                                                 color:
-                                                    page == 0
-                                                        ? 'black'
-                                                        : 'white',
+                                                    // page == 0
+                                                    //     ? 'black'
+                                                    // :
+                                                    'white',
                                             },
                                         ]}>
                                         {subtitle}
@@ -126,7 +127,7 @@ const intro6 = createScreen(
                         style={COMMON.buttonRect5}
                         containerStyle={[
                             COMMON.button4,
-                            { marginBottom: '2%' },
+                            { marginBottom: '5%' },
                         ]}
                         text="Get started"
                         textStyle={COMMON.Textsbutton6}
@@ -139,6 +140,7 @@ const intro6 = createScreen(
                     />
                 ) : (
                     <SectionRowCenter
+                        style={{ marginBottom: '5%' }}
                         nextPress={() => {
                             if (page !== data.length - 1) {
                                 move(viewPager, page, 1);
@@ -162,9 +164,10 @@ const intro6 = createScreen(
                             style={{
                                 backgroundColor:
                                     index === page
-                                        ? page == 0
-                                            ? '#ccc'
-                                            : COLORS.white
+                                        ? //  page == 0
+                                          //     ? '#ccc'
+                                          //     :
+                                          COLORS.white
                                         : 'transparent',
                                 width: scale(10),
                                 height: scale(10),

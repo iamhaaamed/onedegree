@@ -111,9 +111,9 @@ const Notification1 = createScreen(
                             data={notificationsData?.pages}
                             refreshing={isRefetching}
                             showsVerticalScrollIndicator={false}
-                            renderItem={({ item, index }) => (
-                                <SectionEvent data={item} />
-                            )}
+                            renderItem={({ item, index }) =>
+                                item ? <SectionEvent data={item} /> : null
+                            }
                             keyExtractor={(item, index) =>
                                 item?.id
                                     ? item?.id?.toString()

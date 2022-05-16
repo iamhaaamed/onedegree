@@ -75,13 +75,17 @@ const question7 = createScreen(
                     style={COMMON.Image119}
                     customWidth={scale(390)}
                     customHeight={scale(84)}
+                    resizeMode={'contain'}
                 />
 
                 {/* <View style={COMMON.SectionPaddingquestion7120}> */}
                 <Question2 onComplete={(data) => Complete(data)} />
                 {/* </View> */}
                 <SectionRowCenter
-                    style={{ top: '20%' }}
+                    style={{
+                        position: 'absolute',
+                        bottom: verticalScale(32),
+                    }}
                     backPress={() => goBack()}
                     nextPress={() => {
                         if (userInput)

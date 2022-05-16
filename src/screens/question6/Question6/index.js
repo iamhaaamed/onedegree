@@ -14,7 +14,7 @@ import { goBack, navigate } from 'navigation/methods';
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { showMessage } from 'react-native-flash-message';
-import { scale } from 'utils';
+import { scale, verticalScale } from 'utils';
 import { authStore } from '../../../store';
 const question6 = createScreen(
     ({ route }) => {
@@ -46,13 +46,17 @@ const question6 = createScreen(
                     style={COMMON.Image102}
                     customWidth={scale(381)}
                     customHeight={scale(82)}
+                    resizeMode={'contain'}
                 />
 
                 {/* <View style={COMMON.SectionPaddingquestion6103}> */}
                 <Question3 setZipCode={(data) => setZipCode(data)} />
                 {/* </View> */}
                 <SectionRowCenter
-                    style={{ top: '20%' }}
+                    style={{
+                        position: 'absolute',
+                        bottom: verticalScale(32),
+                    }}
                     backPress={() => goBack()}
                     nextPress={async () => {
                         if (ZipCode)

@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
         // opacity: 0.78,
         width: '90%',
         alignSelf: 'flex-end',
-        height: verticalScale(45),
+        // height: verticalScale(45),
         borderTopLeftRadius: 21,
         borderTopRightRadius: 21,
         borderBottomRightRadius: 0,

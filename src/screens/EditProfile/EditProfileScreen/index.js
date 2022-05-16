@@ -270,7 +270,7 @@ const EditProfile = createScreen(
                             onChangeText={(age) =>
                                 setUserInfo({ ...UserInfo, age: age })
                             }
-                            value={UserInfo?.age}
+                            value={UserInfo?.age.toString()}
                             // error={errors && errors.email}
                             keyboardType="number-pad"
                             maxLength={2}

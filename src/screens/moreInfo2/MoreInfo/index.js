@@ -174,6 +174,7 @@ const MoreInfo = createScreen(
                         <SectionRow
                             title="Months To Pay Off"
                             infoIcon
+                            textStyle={styles?.text}
                             data={Info?.career?.monthsToPayOffNumber + 'Years'}
                         />
                         <SectionRow
@@ -214,12 +215,14 @@ const MoreInfo = createScreen(
                             title="Other Perks"
                             data={toPascalCase(Info?.career?.otherPerks)}
                         />
-                        <View style={COMMON.SectionPaddingMoreInfo218}>
-                            <MVideo
-                                source={{ uri: Info?.career?.videoAddress }}
-                                style={COMMON.image19}
-                            />
-                        </View>
+                        {Info?.career?.videoAddress && (
+                            <View style={COMMON.SectionPaddingMoreInfo218}>
+                                <MVideo
+                                    source={{ uri: Info?.career?.videoAddress }}
+                                    style={COMMON.image19}
+                                />
+                            </View>
+                        )}
                     </View>
                     <View style={COMMON.SectionPaddingMoreInfo220}>
                         <MButton
@@ -268,10 +271,10 @@ const styles = StyleSheet.create({
         height: scale(200),
     },
     text: {
-        textAlign: 'left',
-        width: scale(250),
+        textAlign: 'right',
+        // maxWidth: scale(250),
         paddingHorizontal: 5,
-        alignSelf: 'center',
+        alignSelf: 'flex-start',
     },
 });
 export default MoreInfo;

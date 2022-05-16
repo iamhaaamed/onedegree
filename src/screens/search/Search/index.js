@@ -74,7 +74,7 @@ const Search = createScreen(
                 />
                 <View style={COMMON.SectionPaddingSearch5}>
                     <View style={[COMMON.RowItem, COMMON.RowItemSearch6]}>
-                        <View style={{ width: '85%' }}>
+                        <View style={{ width: '83%' }}>
                             <MInput
                                 onChangeText={(text) => setSearchTerm(text)}
                                 containerStyle={COMMON.InputRect9}
@@ -93,7 +93,7 @@ const Search = createScreen(
                         <View style={{ width: '20%' }}>
                             <MButton
                                 onPress={() => showActionSheet()}
-                                style={COMMON.ButtonRect11}
+                                style={COMMON.filterBtn}
                                 containerStyle={COMMON.Button10}
                                 color={COLORS.white}
                                 iconRight={{
@@ -110,68 +110,77 @@ const Search = createScreen(
                         refreshing={isRefetching}
                         showsVerticalScrollIndicator={false}
                         contentContainerStyle={{ paddingBottom: 85 }}
-                        renderItem={({ item, index }) => (
-                            <TouchableOpacity
-                                style={COMMON.SectionPaddingSearch12}
-                                activeOpacity={1}
-                                onPress={() =>
-                                    navigate('MoreInfo', {
-                                        data: item,
-                                        Like: item?.isLiked,
-                                    })
-                                }>
-                                <View
-                                    style={[
-                                        COMMON.RowItem,
-                                        COMMON.SectionEvent,
-                                    ]}>
-                                    <View style={{ width: '20%' }}>
-                                        <MImage
-                                            style={COMMON.image14}
-                                            imageSource={{
-                                                uri: item?.career?.imageAddress,
-                                            }}
-                                        />
-                                    </View>
+                        renderItem={({ item, index }) =>
+                            item ? (
+                                <TouchableOpacity
+                                    style={COMMON.SectionPaddingSearch12}
+                                    activeOpacity={1}
+                                    onPress={() =>
+                                        navigate('MoreInfo', {
+                                            data: item,
+                                            Like: item?.isLiked,
+                                        })
+                                    }>
                                     <View
-                                        style={{
-                                            width: '58%',
-                                            marginLeft: scale(10),
-                                        }}>
-                                        <MText
-                                            numberOfLines={1}
-                                            textStyle={COMMON.TxtSearch15}>
-                                            {item?.career?.title}
-                                        </MText>
-                                        <MText textStyle={COMMON.TxtSearch16}>
-                                            Possible Yearly Income{' '}
-                                        </MText>
+                                        style={[
+                                            COMMON.RowItem,
+                                            COMMON.SectionEvent,
+                                        ]}>
+                                        <View style={{ width: '20%' }}>
+                                            <MImage
+                                                style={COMMON.image14}
+                                                imageSource={{
+                                                    uri:
+                                                        item?.career
+                                                            ?.imageAddress,
+                                                }}
+                                            />
+                                        </View>
+                                        <View
+                                            style={{
+                                                width: '58%',
+                                                marginLeft: scale(10),
+                                            }}>
+                                            <MText
+                                                numberOfLines={1}
+                                                textStyle={COMMON.TxtSearch15}>
+                                                {item?.career?.title}
+                                            </MText>
+                                            <MText
+                                                textStyle={COMMON.TxtSearch16}>
+                                                Possible Yearly Income{' '}
+                                            </MText>
+                                        </View>
+                                        <View
+                                            style={{
+                                                alignItems: 'flex-end',
+                                                marginRight: scale(11),
+                                            }}>
+                                            <MButton
+                                                onPress={() => {}}
+                                                color={COLORS.white}
+                                                iconLeft={{
+                                                    size: scale(25),
+                                                    name: item?.isLiked
+                                                        ? 'heart'
+                                                        : 'heart-outline',
+                                                    color: COLORS.Color508,
+                                                    Component: MaterialCommunityIcons,
+                                                }}
+                                            />
+                                            <MText
+                                                textStyle={COMMON.TxtSearch17}>
+                                                $
+                                                {
+                                                    item?.career
+                                                        ?.possibleYearlyIncome
+                                                }
+                                            </MText>
+                                        </View>
                                     </View>
-                                    <View
-                                        style={{
-                                            alignItems: 'flex-end',
-                                            marginRight: scale(11),
-                                        }}>
-                                        <MButton
-                                            onPress={() => {}}
-                                            color={COLORS.white}
-                                            iconLeft={{
-                                                size: scale(25),
-                                                name: item?.isLiked
-                                                    ? 'heart'
-                                                    : 'heart-outline',
-                                                color: COLORS.Color508,
-                                                Component: MaterialCommunityIcons,
-                                            }}
-                                        />
-                                        <MText textStyle={COMMON.TxtSearch17}>
-                                            $
-                                            {item?.career?.possibleYearlyIncome}
-                                        </MText>
-                                    </View>
-                                </View>
-                            </TouchableOpacity>
-                        )}
+                                </TouchableOpacity>
+                            ) : null
+                        }
                         keyExtractor={(item, index) =>
                             item?.id ? item?.id?.toString() : index.toString()
                         }

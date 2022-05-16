@@ -73,8 +73,9 @@ const question2 = createScreen(
                     <MImage
                         imageSource={IMAGES.image2101}
                         style={COMMON.Image57}
-                        customWidth={scale(390)}
+                        customWidth={scale(250)}
                         customHeight={scale(84)}
+                        resizeMode={'contain'}
                     />
 
                     {/* <View style={COMMON.SectionPaddingquestion258}> */}

@@ -81,8 +81,9 @@ const Question = createScreen(
                 />
                 <ScrollView>
                     <SectionTop01 title="Questions" rightView />
+
+                    <ProfileTab style={{ marginBottom: 15 }} />
                     <View style={COMMON.SectionPaddingSave15}>
-                        <ProfileTab style={{ marginBottom: 15 }} />
                         <FlatList
                             data={DATA}
                             renderItem={({ item, index }) => (

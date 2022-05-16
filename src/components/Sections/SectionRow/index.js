@@ -36,15 +36,30 @@ const SectionRow = (props) => {
                     style={styles.info}
                 />
             )}
-            <MText
-                textStyle={[
-                    COMMON.TxtSectionRow17,
-                    textStyle,
-                    { maxWidth: scale(200) },
-                ]}
-                numberOfLines={2}>
-                {data}
-            </MText>
+            <View
+                style={
+                    textStyle
+                        ? {
+                              //   alignItems: 'flex-start',
+                              justifyContent: 'flex-start',
+                              alignContent: 'flex-start',
+                              alignItems: 'flex-start',
+                          }
+                        : {}
+                }>
+                <MText
+                    textStyle={[
+                        COMMON.TxtSectionRow17,
+                        textStyle,
+                        {
+                            // flex: 1,
+                            maxWidth: scale(200),
+                        },
+                    ]}
+                    numberOfLines={2}>
+                    {data}
+                </MText>
+            </View>
             <ActionSheet ref={refActionSheet} containerStyle={styles.action}>
                 <SectionModal
                     showModal={() => refActionSheet.current?.setModalVisible()}
@@ -66,7 +81,7 @@ const styles = StyleSheet.create({
         // height: verticalScale(63),
     },
     info: {
-        marginRight: '25%',
+        marginLeft: '-10%',
         marginTop: 1,
         padding: 5,
         width: scale(30),

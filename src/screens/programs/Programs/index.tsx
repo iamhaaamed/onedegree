@@ -109,7 +109,9 @@ const Programs = createScreen(
                         showsVerticalScrollIndicator={false}
                         refreshing={isRefetching}
                         onRefresh={refetch}
-                        renderItem={({ item }) => <SectionItem data={item} />}
+                        renderItem={({ item }) =>
+                            item ? <SectionItem data={item} /> : null
+                        }
                         keyExtractor={(item, index) =>
                             item?.id ? item?.id?.toString() : index.toString()
                         }

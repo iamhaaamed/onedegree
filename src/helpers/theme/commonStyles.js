@@ -478,8 +478,10 @@ export default function ({ COLORS }) {
             color: COLORS.Color209,
         },
         Image57: {
-            width: scale(390),
+            width: scale(250),
+            alignSelf: 'center',
             height: scale(84),
+            marginBottom: scale(20),
         },
         SectionPaddingquestion258: {
             paddingBottom: verticalScale(32),
@@ -893,10 +895,10 @@ export default function ({ COLORS }) {
             display: 'flex',
             alignItems: 'center',
             textAlign: 'center',
-            borderTopLeftRadius: 8,
-            borderTopRightRadius: 8,
-            borderBottomRightRadius: 8,
-            borderBottomLeftRadius: 8,
+            borderTopLeftRadius: 12,
+            borderTopRightRadius: 12,
+            borderBottomRightRadius: 12,
+            borderBottomLeftRadius: 12,
         },
         ButtonRect1142: {
             paddingBottom: verticalScale(12),
@@ -935,6 +937,7 @@ export default function ({ COLORS }) {
         Image119: {
             width: scale(390),
             height: scale(84),
+            marginBottom: scale(20),
         },
         SectionPaddingquestion7120: {
             paddingBottom: verticalScale(0),
@@ -1233,8 +1236,8 @@ export default function ({ COLORS }) {
             },
             shadowOpacity: 0.41,
             shadowRadius: 11,
-
-            elevation: 14,
+            height: verticalScale(51),
+            elevation: 1,
             display: 'flex',
             alignItems: 'center',
             textAlign: 'center',
@@ -1256,7 +1259,7 @@ export default function ({ COLORS }) {
             },
             shadowOpacity: 0.23,
             shadowRadius: 2.62,
-            elevation: 4,
+            // elevation: 1,
         },
         Textsbutton6: {
             fontSize: verticalScale(16),
@@ -1581,6 +1584,7 @@ export default function ({ COLORS }) {
             shadowOffset: { width: 0, height: 1 },
             shadowRadius: 17,
             elevation: 2,
+            height: verticalScale(51),
             display: 'flex',
             alignItems: 'center',
             flexDirection: 'row',
@@ -1999,7 +2003,7 @@ export default function ({ COLORS }) {
             // alignSelf: 'center',
             textAlign: 'center',
             borderRadius: 12,
-            height: verticalScale(51),
+            height: verticalScale(54),
         },
         Button24: {
             marginBottom: verticalScale(32),
@@ -2374,6 +2378,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
             color: COLORS.Color726,
+            marginVertical: verticalScale(10),
         },
         TxtModal222: {
             fontSize: verticalScale(12),
@@ -2386,12 +2391,15 @@ export default function ({ COLORS }) {
             alignItems: 'center',
             textAlign: 'center',
             alignSelf: 'flex-start',
-            justifyContent: 'center',
+            justifyContent: 'flex-start',
             width: '100%',
             height: verticalScale(38),
         },
         BottomBar5: {
             height: verticalScale(4),
+            width: '100%',
+            paddingHorizontal: 35,
+            // right: '10%',
             borderRadius: 6,
         },
         BottomBar563: {
