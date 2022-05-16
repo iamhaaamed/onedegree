@@ -10,7 +10,7 @@ import { SafeAreaView, ScrollView, StyleSheet, View, Text } from 'react-native';
 import { scale, toPascalCase, verticalScale } from 'utils';
 import { authStore } from '../../../store';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
-
+import axios from 'axios';
 const ProfileScreen = createScreen(
     () => {
         const {
@@ -33,27 +33,32 @@ const ProfileScreen = createScreen(
             setUser(data?.user_login?.result);
             setIsLoading2(true);
 
-            // axios
-            //     .get(
-            //         `https://geocode.xyz/${data?.user_login?.result?.latitude},${data?.user_login?.result?.longitude}?json=1`,
-            //     )
-            //     .then(function (response) {
-            //         console.log('///////////', response);
-            //         if (response?.data) {
-            //             setStateName(response?.data?.statename);
-            //         }
-            //     })
-            //     .catch(function (error) {
-            //         console.log('///////////', error);
-            //         // showMessage({
-            //         //     message: `Something went wrong: ${error.message}`,
-            //         //     type: 'danger',
-            //         // });
-            //     })
-            //     .then(function () {
-            //         // always executed
-            //     });
-
+            if (data?.user_login?.result?.latitude !== undefined) {
+                console.log(
+                    '2222',
+                    `https://geocode.xyz/${data?.user_login?.result?.latitude},${data?.user_login?.result?.longitude}?json=1`,
+                );
+                axios
+                    .get(
+                        `https://geocode.xyz/${data?.user_login?.result?.latitude},${data?.user_login?.result?.longitude}?json=1`,
+                    )
+                    .then(function (response) {
+                        console.log('///////////', response);
+                        if (response?.data) {
+                            setStateName(response?.data?.statename);
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log('///////////', error);
+                        // showMessage({
+                        //     message: `Something went wrong: ${error.message}`,
+                        //     type: 'danger',
+                        // });
+                    })
+                    .then(function () {
+                        // always executed
+                    });
+            }
             setIsLoading2(false);
         }, [data]);
 

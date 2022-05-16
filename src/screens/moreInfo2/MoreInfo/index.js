@@ -100,15 +100,25 @@ const MoreInfo = createScreen(
                                     }}>
                                     <MButton
                                         onPress={() => {
+                                            console.log('22222222222');
                                             if (Like)
                                                 UnLikeMutate(Info?.career?.id, {
                                                     onSuccess: (data) => {
+                                                        console.log(
+                                                            'ddd',
+                                                            data,
+                                                        );
                                                         if (
                                                             data?.career_unlike
                                                                 ?.status ==
                                                             'SUCCESS'
-                                                        )
+                                                        ) {
+                                                            console.log(
+                                                                '333333333333333',
+                                                                data,
+                                                            );
                                                             setLike(false);
+                                                        }
                                                     },
                                                 });
                                             else
@@ -175,7 +185,7 @@ const MoreInfo = createScreen(
                             title="Months To Pay Off"
                             infoIcon
                             textStyle={styles?.text}
-                            data={Info?.career?.monthsToPayOffNumber + 'Years'}
+                            data={Info?.career?.monthsToPayOffNumber + ' Years'}
                         />
                         <SectionRow
                             style={{ backgroundColor: COLORS.backMore }}

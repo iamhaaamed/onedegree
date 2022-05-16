@@ -65,7 +65,7 @@ const Question1 = (props) => {
         'Medical',
         'Service Industry',
         'Technology',
-        'Not sure',
+        // 'Not sure',
     ];
     const [IndustryArray, setIndustryArray] = useState(
         answer?.split(',') || [],
@@ -73,6 +73,7 @@ const Question1 = (props) => {
     useEffect(() => {
         setAnswer(IndustryArray);
     }, [IndustryArray]);
+    console.log('////', IndustryArray);
     return (
         <>
             <View style={COMMON.SectionPaddingquestion7120}>
@@ -105,6 +106,14 @@ const Question1 = (props) => {
                                     setIndustryArray((prev) =>
                                         prev.filter((a) => a !== item),
                                     );
+                                } else if (IndustryArray.includes('Not Sure')) {
+                                    // let arr = IndustryArray;
+                                    // arr.splice('Not Sure');
+                                    // setIndustryArray(arr);
+                                    // setIndustryArray((prev) =>
+                                    //     prev.filter((a) => a !== 'Not Sure'),
+                                    // );
+                                    setIndustryArray([]);
                                 } else {
                                     setIndustryArray((prev) => [...prev, item]);
                                 }
@@ -122,6 +131,22 @@ const Question1 = (props) => {
                     )}
                     keyExtractor={(item, index) => index.toString()}
                 />
+                <MCheckBox
+                    iconContainerStyle={{ borderRadius: 5 }}
+                    isChecked={
+                        IndustryArray.includes('Not Sure') ? true : false
+                    }
+                    setIsChecked={() => {
+                        // if (IndustryArray.includes('Not Sure')) {
+                        //     setIndustryArray([]);
+                        // } else {
+                        setIndustryArray(['Not Sure']);
+                        // }
+                    }}
+                    style={COMMON.CheckBox61}>
+                    {' '}
+                    <MText textStyle={COMMON.TextsCheckBox78}>Not Sure</MText>
+                </MCheckBox>
             </View>
         </>
     );

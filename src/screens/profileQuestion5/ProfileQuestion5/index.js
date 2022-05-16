@@ -42,6 +42,7 @@ import {
     MSnackbar,
     MSlider,
 } from 'components/common';
+import { showMessage } from 'react-native-flash-message';
 import {
     Question1,
     Question3,
@@ -244,7 +245,7 @@ const ProfileQuestion5 = createScreen(
                         })
                         .catch(function (error) {
                             showMessage({
-                                message: `Something went wrong: ${error.message}`,
+                                message: `Something went wrong:  Zip Code Not Valid`,
                                 type: 'danger',
                             });
                         })

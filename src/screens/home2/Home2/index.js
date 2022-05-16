@@ -78,7 +78,7 @@ const Home2 = createScreen(
                     sliderRef.current &&
                     sliderRef.current.currentIndex == 0 ? (
                         <MText textStyle={COMMON.TxtHome267}>
-                            Hello,{UserName ? UserName : user?.email}!
+                            Hello {UserName ? UserName : user?.email}!
                         </MText>
                     ) : (
                         <MText textStyle={COMMON.TxtHome267}> </MText>

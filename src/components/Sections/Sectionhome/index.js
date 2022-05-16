@@ -126,6 +126,8 @@ const Sectionhome = (props) => {
                     {
                         paddingHorizontal: 8,
                         marginVertical: -5,
+                        position: 'absolute',
+                        bottom: 0,
                     },
                 ]}>
                 <IconButton
@@ -179,6 +181,7 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 21,
         borderTopRightRadius: 21,
         borderTopLeftRadius: 21,
+        height: scale(545),
     },
 });
 export default React.memo(Sectionhome);
