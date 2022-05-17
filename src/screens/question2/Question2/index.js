@@ -5,7 +5,7 @@ import { COLORS } from 'constants/common';
 import { navigate } from 'navigation/methods';
 import { createScreen } from 'components/elements';
 import { MButton, MImage } from 'components/common';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { Container, Question1, SectionTop } from 'components/Sections';
 
 const question2 = createScreen(
@@ -31,19 +31,19 @@ const question2 = createScreen(
         }
         return (
             <Container style={styles.question2}>
-                <ScrollView>
-                    <SectionTop />
-                    <MImage
-                        imageSource={IMAGES.image2101}
-                        style={COMMON.Image57}
-                        customWidth={scale(250)}
-                        customHeight={scale(84)}
-                        resizeMode={'contain'}
-                    />
+                <SectionTop />
+                <MImage
+                    imageSource={IMAGES.image2101}
+                    style={COMMON.Image57}
+                    customWidth={scale(250)}
+                    customHeight={scale(84)}
+                    resizeMode={'contain'}
+                />
 
-                    {/* <View style={COMMON.SectionPaddingquestion258}> */}
+                <View style={{ flex: 1 }}>
                     <Question1 setAnswer={(value) => setAnswers(value)} />
-                    {/* </View> */}
+                </View>
+                <View>
                     <MButton
                         onPress={() => {
                             if (Answers && Answers?.length > 0) {
@@ -74,7 +74,7 @@ const question2 = createScreen(
                             },
                         }}
                     />
-                </ScrollView>
+                </View>
             </Container>
         );
     },
@@ -86,8 +86,8 @@ const question2 = createScreen(
 );
 const styles = StyleSheet.create({
     question2: {
+        flex: 1,
         backgroundColor: COLORS.Color963,
-        height: '100%',
     },
 });
 export default question2;

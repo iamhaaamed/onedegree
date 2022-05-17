@@ -940,10 +940,11 @@ export default function ({ COLORS }) {
             marginBottom: scale(20),
         },
         SectionPaddingquestion7120: {
-            paddingBottom: verticalScale(0),
+            // paddingBottom: verticalScale(85),
             paddingTop: verticalScale(0),
             paddingRight: scale(32),
             paddingLeft: scale(32),
+            flex: 1,
         },
         Txtquestion7121: {
             marginBottom: verticalScale(46),

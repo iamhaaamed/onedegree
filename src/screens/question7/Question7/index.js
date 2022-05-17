@@ -1,54 +1,17 @@
-import React from 'react';
-import { useRef } from 'react';
-import useTheme from 'hooks/useTheme';
-import { useState } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
+import { MImage } from 'components/common';
 import { createScreen } from 'components/elements';
-import { COLORS } from 'constants/common';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { scale, verticalScale, height } from 'utils';
-import LinearGradient from 'react-native-linear-gradient';
-import { DateTimePickerMod } from 'components/common/MDateTimePicker';
 import {
-    DrawerItem,
-    DrawerItemList,
-    DrawerContentScrollView,
-    DrawerToggleButton,
-} from '@react-navigation/drawer';
-
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
-import {
+    Container,
+    Question2,
     SectionRowCenter,
     SectionTop,
-    Question2,
-    Container,
 } from 'components/Sections';
+import { COLORS } from 'constants/common';
+import useTheme from 'hooks/useTheme';
 import { goBack, navigate } from 'navigation/methods';
+import React, { useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { scale, verticalScale } from 'utils';
 
 const question7 = createScreen(
     ({ route }) => {
@@ -84,23 +47,21 @@ const question7 = createScreen(
                     resizeMode={'contain'}
                 />
 
-                {/* <View style={COMMON.SectionPaddingquestion7120}> */}
-                <Question2 onComplete={(data) => Complete(data)} />
-                {/* </View> */}
-                <SectionRowCenter
-                    style={{
-                        position: 'absolute',
-                        bottom: verticalScale(32),
-                    }}
-                    backPress={() => goBack()}
-                    nextPress={() => {
-                        if (userInput)
-                            navigate('Question6', {
-                                userInput,
-                                ...route?.params,
-                            });
-                    }}
-                />
+                <View style={{ flex: 1 }}>
+                    <Question2 onComplete={(data) => Complete(data)} />
+                </View>
+                <View style={{ paddingBottom: 20 }}>
+                    <SectionRowCenter
+                        backPress={() => goBack()}
+                        nextPress={() => {
+                            if (userInput)
+                                navigate('Question6', {
+                                    userInput,
+                                    ...route?.params,
+                                });
+                        }}
+                    />
+                </View>
                 {/* </ScrollView> */}
             </Container>
         );
