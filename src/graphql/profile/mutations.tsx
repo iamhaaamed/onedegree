@@ -20,7 +20,9 @@ export const UPDATE_USERPROFILE = gql`
                 educationLevel
                 currentIncome
                 industry
-                amount
+                hourlyAmount
+                monthlyAmount
+                annuallyAmount
                 amountType
                 whereDoYouWantToWork
                 howFarAreYouWillingToTravelToGetCertified

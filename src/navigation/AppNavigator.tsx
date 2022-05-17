@@ -1,5 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+    TransitionPresets,
+    createStackNavigator,
+} from '@react-navigation/stack';
 // import {queryClient} from 'App';
 import React, { useEffect } from 'react';
 import { StatusBar } from 'react-native';
@@ -37,7 +40,10 @@ export default function AppNavigator() {
                     backgroundColor={'transparent'}
                 />
 
-                <Stack.Navigator>
+                <Stack.Navigator
+                    screenOptions={{
+                        ...TransitionPresets.ScaleFromCenterAndroid,
+                    }}>
                     <Stack.Screen
                         options={{ headerShown: false }}
                         name="Splash"

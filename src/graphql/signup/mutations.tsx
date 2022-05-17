@@ -40,7 +40,9 @@ export const SIGNIN = gql`
                 educationLevel
                 currentIncome
                 industry
-                amount
+                hourlyAmount
+                monthlyAmount
+                annuallyAmount
                 amountType
                 whereDoYouWantToWork
                 howFarAreYouWillingToTravelToGetCertified

@@ -1,17 +1,19 @@
-import { getFocusedRouteNameFromRoute, Route } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import React, { useLayoutEffect } from 'react';
-
 import {
-    ProfileScreen,
-    SettingsScreen,
-    TermsOfService,
+    EditProfile,
+    FAQScreen,
     PrivacyPolicy,
     ProfileQuestion5,
-    FAQScreen,
+    ProfileScreen,
     Question,
-    EditProfile,
+    SettingsScreen,
+    TermsOfService,
 } from 'screens';
+import {
+    createStackNavigator,
+    TransitionPresets,
+} from '@react-navigation/stack';
+import React, { useLayoutEffect } from 'react';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 const Stack = createStackNavigator();
 
@@ -100,6 +102,7 @@ export default function ProfileStack({
         <Stack.Navigator
             screenOptions={{
                 headerTitleAlign: 'center',
+                ...TransitionPresets.ScaleFromCenterAndroid,
             }}>
             {screens.map((x) => (
                 <Stack.Screen

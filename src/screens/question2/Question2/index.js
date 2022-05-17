@@ -1,50 +1,13 @@
-import React from 'react';
-import { useRef } from 'react';
+import { scale } from 'utils';
 import useTheme from 'hooks/useTheme';
-import { useState } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
-import { createScreen } from 'components/elements';
+import React, { useState } from 'react';
 import { COLORS } from 'constants/common';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { scale, verticalScale, height } from 'utils';
-import LinearGradient from 'react-native-linear-gradient';
-import { DateTimePickerMod } from 'components/common/MDateTimePicker';
-import {
-    DrawerItem,
-    DrawerItemList,
-    DrawerContentScrollView,
-    DrawerToggleButton,
-} from '@react-navigation/drawer';
-
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
 import { navigate } from 'navigation/methods';
-import { SectionTop, Question1, Container } from 'components/Sections';
-import { useUpdateProfile } from 'hooks/profile';
+import { createScreen } from 'components/elements';
+import { MButton, MImage } from 'components/common';
+import { ScrollView, StyleSheet } from 'react-native';
+import { Container, Question1, SectionTop } from 'components/Sections';
+
 const question2 = createScreen(
     () => {
         const {

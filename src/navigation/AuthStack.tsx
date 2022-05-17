@@ -1,4 +1,7 @@
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+    createStackNavigator,
+    TransitionPresets,
+} from '@react-navigation/stack';
 import React from 'react';
 import {
     CheckEmail,
@@ -105,6 +108,7 @@ export default function AuthStack() {
         <Stack.Navigator
             screenOptions={{
                 headerTitleAlign: 'center',
+                ...TransitionPresets.ScaleFromCenterAndroid,
             }}>
             {screens.map((s) => (
                 <Stack.Screen key={s.name} {...s} />

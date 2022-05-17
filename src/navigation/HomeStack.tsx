@@ -1,9 +1,11 @@
-import { createStackNavigator } from '@react-navigation/stack';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import {
+    createStackNavigator,
+    TransitionPresets,
+} from '@react-navigation/stack';
 import React, { useLayoutEffect } from 'react';
-import { View } from 'react-native';
+import { Chat2, Chat3, Home2, MoreInfo, Notification1 } from 'screens';
 
-import { MoreInfo, Notification1, Chat2, Chat3, Home2 } from 'screens';
 const Stack = createStackNavigator();
 
 export type HomeStackParamList = {
@@ -70,6 +72,7 @@ export default function HomeStack({
         <Stack.Navigator
             screenOptions={{
                 headerTitleAlign: 'center',
+                ...TransitionPresets.ScaleFromCenterAndroid,
             }}>
             {screens.map((x) => (
                 <Stack.Screen

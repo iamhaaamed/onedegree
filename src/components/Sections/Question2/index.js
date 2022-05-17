@@ -1,27 +1,31 @@
-import { MCheckBox, MInput, MText } from 'components/common';
-import { COLORS } from 'constants/common';
+import * as yup from 'yup';
 import { Formik } from 'formik';
 import useTheme from 'hooks/useTheme';
+import { COLORS } from 'constants/common';
 import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { scale, toPascalCase, verticalScale } from 'utils';
-import * as yup from 'yup';
+import { MCheckBox, MInput, MText } from 'components/common';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Question2 = (props) => {
-    const { style, title, answer, page, onComplete, answerAmount } = props;
-    const {
-        LAYOUT,
-        GUTTERS,
-        TYPOGRAPHY,
-        IMAGES,
-        COMMON,
-        CONSTANTS,
-    } = useTheme();
+    const { answer, onComplete } = props;
+    const { COMMON } = useTheme();
+
     const [isChecked, setIsChecked] = useState();
-    // const [ExteraView, setView] = useState(false);
+
     const [Type, setType] = useState(toPascalCase(answer));
-    const [Amount, setAmount] = useState(answerAmount?.toString() || '');
+
+    const [hourlyAmount, setHourlyAmount] = useState(
+        props.hourlyAmount?.toString() || '',
+    );
+    const [monthlyAmount, setMonthlyAmount] = useState(
+        props.monthlyAmount?.toString() || '',
+    );
+    const [annuallyAmount, setAnnuallyAmount] = useState(
+        props.annuallyAmount?.toString() || '',
+    );
+
     const TypesArray = ['Hourly', 'Monthly', 'Annually'];
 
     const handleDirection = (item, i) => {
@@ -35,16 +39,37 @@ const Question2 = (props) => {
             .min(2, 'Must be 2 characters or more')
             .required('Invalid Amount'),
     });
+
     const onSubmit = (data) => {
         onComplete({ type: data?.type, amount: data?.amount });
     };
+
     useEffect(() => {
-        if ((Amount, Type))
+        if ((hourlyAmount, monthlyAmount, annuallyAmount, Type))
             onComplete({
                 type: Type,
-                amount: Amount,
+                hourlyAmount,
+                monthlyAmount,
+                annuallyAmount,
             });
-    }, [Type, Amount]);
+    }, [Type, hourlyAmount, monthlyAmount, annuallyAmount]);
+
+    const onChange = (val, i) => {
+        switch (i) {
+            case 0:
+                setHourlyAmount(val);
+                break;
+            case 1:
+                setMonthlyAmount(val);
+                break;
+            case 2:
+                setAnnuallyAmount(val);
+                break;
+            default:
+                break;
+        }
+    };
+
     return (
         <>
             <MText
@@ -55,8 +80,6 @@ const Question2 = (props) => {
                 How much do you want to make?{' '}
             </MText>
             <View style={COMMON.SectionPaddingquestion7122}>
-                {/* <MText textStyle={COMMON.Txtquestion7123}>Amount </MText> */}
-
                 <Formik
                     validationSchema={ValidationSchema}
                     initialValues={{ amount: '', type: '' }}
@@ -65,30 +88,6 @@ const Question2 = (props) => {
                     {({ handleChange, handleSubmit, values, errors }) => (
                         <>
                             {handleSubmit}
-                            {/* {ExteraView && (
-                                <View style={styles.exteraView}>
-                                    <MText
-                                        textStyle={styles.dolor}
-                                        onPress={() => {
-                                            setDolor(Dolor == '£' ? '€' : '£');
-                                            setView(false);
-                                        }}>
-                                        {Dolor == '£' ? '€' : '£'}
-                                    </MText>
-                                    <MText
-                                        textStyle={[
-                                            styles.dolor,
-                                            { marginTop: 20 },
-                                        ]}
-                                        onPress={() => {
-                                            setDolor(Dolor == '$' ? '€' : '$');
-                                            setView(false);
-                                        }}>
-                                        {Dolor == '$' ? '€' : '$'}
-                                    </MText>
-                                </View>
-                            )} */}
-
                             <MText
                                 textStyle={[
                                     COMMON.Txtquestion7127,
@@ -148,7 +147,6 @@ const Question2 = (props) => {
                                                     containerStyle={
                                                         COMMON.Input124
                                                     }
-                                                    // placeholder="Please enter Amount"
                                                     error={
                                                         errors && errors.amount
                                                     }
@@ -160,21 +158,21 @@ const Question2 = (props) => {
                                                     }
                                                     onChangeText={(text) => {
                                                         handleChange('amount');
-                                                        setAmount(text);
+                                                        // setAmount(text);
+                                                        onChange(text, index);
                                                     }}
                                                     backgroundColor={
                                                         COLORS.Color963
                                                     }
-                                                    value={Amount}
+                                                    value={
+                                                        index == 0
+                                                            ? hourlyAmount
+                                                            : index == 1
+                                                            ? monthlyAmount
+                                                            : annuallyAmount
+                                                    }
                                                     keyboardType="number-pad"
                                                     height={verticalScale(48)}
-                                                    // iconRight={{
-                                                    //     name: 'chevron-down',
-                                                    //     color: COLORS.Color267,
-                                                    //     onPress: () => setView(!ExteraView),
-                                                    //     size: scale(20),
-                                                    // }}
-
                                                     dolorSign={'USD'}
                                                 />
                                             )}
@@ -232,7 +230,6 @@ const styles = StyleSheet.create({
         marginBottom: scale(12),
         fontSize: verticalScale(14),
         fontFamily: 'Muli',
-        // paddingBottom: scale(10),
     },
 });
 export default React.memo(Question2);

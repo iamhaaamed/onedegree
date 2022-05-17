@@ -1,72 +1,29 @@
-import React from 'react';
-import { useRef } from 'react';
+import axios from 'axios';
 import useTheme from 'hooks/useTheme';
-import { useState } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
-import { createScreen } from 'components/elements';
+import React, { useState } from 'react';
 import { COLORS } from 'constants/common';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { scale, verticalScale, height } from 'utils';
-import LinearGradient from 'react-native-linear-gradient';
-import { DateTimePickerMod } from 'components/common/MDateTimePicker';
-import {
-    DrawerItem,
-    DrawerItemList,
-    DrawerContentScrollView,
-    DrawerToggleButton,
-} from '@react-navigation/drawer';
-
-import {
-    MIcon,
-    MText,
-    MTouchable,
-    MButton,
-    MInput,
-    MImageBackground,
-    MImage,
-    MStatusBar,
-    MSwitch,
-    MCheckBox,
-    MFlatList,
-    MChip,
-    MDropDown,
-    MOnboarding,
-    MDateTimePicker,
-    MImagePicker,
-    MLoading,
-    MModal,
-    MTab,
-    MAccordion,
-    MSnackbar,
-    MSlider,
-} from 'components/common';
+import { MLoading } from 'components/common';
+import { scale, verticalScale } from 'utils';
+import { createScreen } from 'components/elements';
+import { goBack, navigate } from 'navigation/methods';
 import { showMessage } from 'react-native-flash-message';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { useGetProfile, useUpdateProfile } from 'hooks/profile';
 import {
+    Container,
     Question1,
-    Question3,
-    SectionTop01,
     Question2,
-    SectionRowCenter,
+    Question3,
     Question4,
     Question5,
-    Container,
+    SectionTop01,
+    SectionRowCenter,
 } from 'components/Sections';
-import { useGetProfile, useUpdateProfile } from 'hooks/profile';
-import { goBack, navigate } from 'navigation/methods';
-import axios from 'axios';
+import { useQueryClient } from 'react-query';
+
 const ProfileQuestion5 = createScreen(
     ({ navigation, route }) => {
-        const {
-            LAYOUT,
-            GUTTERS,
-            TYPOGRAPHY,
-            IMAGES,
-            COMMON,
-            CONSTANTS,
-        } = useTheme();
-
+        const queryClient = useQueryClient();
         const { isLoading, data } = useGetProfile();
         const [isChecked, setAnswers] = useState();
         const [ZipCode, setZipCode] = useState();
@@ -81,9 +38,17 @@ const ProfileQuestion5 = createScreen(
             data?.user_login?.result?.howFarAreYouWillingToTravelToGetCertified,
         );
         const { isLoading: loadingUpdate, mutate } = useUpdateProfile();
+
         const Complete = (data) => {
-            if (data.amount && data.type) setUserInput(data);
+            if (
+                (data.hourlyAmount ||
+                    data.monthlyAmount ||
+                    data.annuallyAmount) &&
+                data.type
+            )
+                setUserInput(data);
         };
+
         function callMyMethod(array) {
             let string = '';
             array.forEach(function (counter, currentIndex) {
@@ -123,13 +88,18 @@ const ProfileQuestion5 = createScreen(
                         whereDidYouHearAboutOnedegreeCareers:
                             data?.user_login?.result
                                 ?.whereDidYouHearAboutOnedegreeCareers,
-                        amount: data?.user_login?.result?.amount,
+                        hourlyAmount: data?.user_login?.result?.hourlyAmount,
+                        monthlyAmount: data?.user_login?.result?.monthlyAmount,
+                        annuallyAmount:
+                            data?.user_login?.result?.annuallyAmount,
                         amountType: data?.user_login?.result?.amountType,
                     },
                     {
                         onSuccess: (data) => {
-                            if (data?.user_updateProfile?.status == 'SUCCESS')
+                            if (data?.user_updateProfile?.status == 'SUCCESS') {
+                                queryClient.invalidateQueries('getMyProfile');
                                 navigate('Question');
+                            }
                         },
                     },
                 );
@@ -160,7 +130,9 @@ const ProfileQuestion5 = createScreen(
                         whereDidYouHearAboutOnedegreeCareers:
                             data?.user_login?.result
                                 ?.whereDidYouHearAboutOnedegreeCareers,
-                        amount: parseFloat(userInput?.amount),
+                        hourlyAmount: parseFloat(userInput?.hourlyAmount),
+                        monthlyAmount: parseFloat(userInput?.monthlyAmount),
+                        annuallyAmount: parseFloat(userInput?.annuallyAmount),
                         amountType:
                             userInput?.type == 'Hourly'
                                 ? 'HOURLY'
@@ -170,8 +142,10 @@ const ProfileQuestion5 = createScreen(
                     },
                     {
                         onSuccess: (data) => {
-                            if (data?.user_updateProfile?.status == 'SUCCESS')
+                            if (data?.user_updateProfile?.status == 'SUCCESS') {
+                                queryClient.invalidateQueries('getMyProfile');
                                 navigate('Question');
+                            }
                         },
                     },
                 );
@@ -222,8 +196,15 @@ const ProfileQuestion5 = createScreen(
                                         whereDidYouHearAboutOnedegreeCareers:
                                             data?.user_login?.result
                                                 ?.whereDidYouHearAboutOnedegreeCareers,
-                                        amount:
-                                            data?.user_login?.result?.amount,
+                                        hourlyAmount:
+                                            data?.user_login?.result
+                                                ?.hourlyAmount,
+                                        monthlyAmount:
+                                            data?.user_login?.result
+                                                ?.monthlyAmount,
+                                        annuallyAmount:
+                                            data?.user_login?.result
+                                                ?.annuallyAmount,
                                         amountType:
                                             data?.user_login?.result
                                                 ?.amountType,
@@ -233,8 +214,12 @@ const ProfileQuestion5 = createScreen(
                                             if (
                                                 data?.user_updateProfile
                                                     ?.status == 'SUCCESS'
-                                            )
+                                            ) {
+                                                queryClient.invalidateQueries(
+                                                    'getMyProfile',
+                                                );
                                                 navigate('Question');
+                                            }
                                         },
                                     },
                                 );
@@ -283,13 +268,18 @@ const ProfileQuestion5 = createScreen(
                         whereDidYouHearAboutOnedegreeCareers:
                             data?.user_login?.result
                                 ?.whereDidYouHearAboutOnedegreeCareers,
-                        amount: data?.user_login?.result?.amount,
+                        hourlyAmount: data?.user_login?.result?.hourlyAmount,
+                        monthlyAmount: data?.user_login?.result?.monthlyAmount,
+                        annuallyAmount:
+                            data?.user_login?.result?.annuallyAmount,
                         amountType: data?.user_login?.result?.amountType,
                     },
                     {
                         onSuccess: (data) => {
-                            if (data?.user_updateProfile?.status == 'SUCCESS')
+                            if (data?.user_updateProfile?.status == 'SUCCESS') {
+                                queryClient.invalidateQueries('getMyProfile');
                                 navigate('Question');
+                            }
                         },
                     },
                 );
@@ -318,13 +308,18 @@ const ProfileQuestion5 = createScreen(
                             data?.user_login?.result
                                 ?.howFarAreYouWillingToTravelToGetCertified,
                         whereDidYouHearAboutOnedegreeCareers: Hear,
-                        amount: data?.user_login?.result?.amount,
+                        hourlyAmount: data?.user_login?.result?.hourlyAmount,
+                        monthlyAmount: data?.user_login?.result?.monthlyAmount,
+                        annuallyAmount:
+                            data?.user_login?.result?.annuallyAmount,
                         amountType: data?.user_login?.result?.amountType,
                     },
                     {
                         onSuccess: (data) => {
-                            if (data?.user_updateProfile?.status == 'SUCCESS')
+                            if (data?.user_updateProfile?.status == 'SUCCESS') {
+                                queryClient.invalidateQueries('getMyProfile');
                                 navigate('Question');
+                            }
                         },
                     },
                 );
@@ -343,7 +338,15 @@ const ProfileQuestion5 = createScreen(
                         <Question2
                             onComplete={(data) => Complete(data)}
                             answer={data?.user_login?.result?.amountType}
-                            answerAmount={data?.user_login?.result?.amount}
+                            hourlyAmount={
+                                data?.user_login?.result?.hourlyAmount
+                            }
+                            monthlyAmount={
+                                data?.user_login?.result?.monthlyAmount
+                            }
+                            annuallyAmount={
+                                data?.user_login?.result?.annuallyAmount
+                            }
                         />
                     );
                 case 3:

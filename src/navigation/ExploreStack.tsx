@@ -1,9 +1,10 @@
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+    createStackNavigator,
+    TransitionPresets,
+} from '@react-navigation/stack';
 import React from 'react';
 
-// import {ChevronBackButton} from '~/components';
-// import {DriveLength, DriveStyle, DriveType, Route} from '~/generated/graphql';
 import { Programs, ProgramDetails, Chat3 } from 'screens';
 
 const Stack = createStackNavigator();
@@ -51,6 +52,7 @@ export default function ExploreStack({
         <Stack.Navigator
             screenOptions={{
                 headerTitleAlign: 'center',
+                ...TransitionPresets.ScaleFromCenterAndroid,
             }}>
             {screens.map((x) => (
                 <Stack.Screen

@@ -1,9 +1,10 @@
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+    TransitionPresets,
+    createStackNavigator,
+} from '@react-navigation/stack';
+import { MoreInfo, Search } from 'screens';
 import React, { useLayoutEffect } from 'react';
-import { View } from 'react-native';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
-
-import { Search, MoreInfo } from 'screens';
 
 const Stack = createStackNavigator();
 
@@ -48,6 +49,7 @@ export default function SearchStack({
         <Stack.Navigator
             screenOptions={{
                 headerTitleAlign: 'center',
+                ...TransitionPresets.ScaleFromCenterAndroid,
             }}>
             {screens.map((x) => (
                 <Stack.Screen

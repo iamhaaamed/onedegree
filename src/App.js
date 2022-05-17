@@ -10,6 +10,7 @@ import FlashMessage, { showMessage } from 'react-native-flash-message';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { QueryCache, QueryClient, QueryClientProvider } from 'react-query';
 import { ProfileQuestion5 } from 'screens';
+import { SafeAreaView } from 'react-native-safe-area-context';
 let queryClient: QueryClient;
 
 LogBox.ignoreAllLogs(true);
@@ -111,10 +112,12 @@ const App = () => {
         return null;
     }
     return (
-        <QueryClientProvider client={queryClient}>
-            <AppNavigator />
-            <FlashMessage position="top" />
-        </QueryClientProvider>
+        <SafeAreaView style={{ flex: 1 }}>
+            <QueryClientProvider client={queryClient}>
+                <AppNavigator />
+                <FlashMessage position="top" />
+            </QueryClientProvider>
+        </SafeAreaView>
     );
 };
 

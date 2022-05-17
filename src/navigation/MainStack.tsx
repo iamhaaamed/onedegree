@@ -1,19 +1,21 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+    createStackNavigator,
+    TransitionPresets,
+} from '@react-navigation/stack';
+import { MIcon } from 'components/common';
 import { COLORS } from 'constants/common';
 import React from 'react';
-import { Text, View, StyleSheet, Platform } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Platform, StyleSheet, View } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import tabBarStore from '../store/tabBarStore';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { scale } from 'utils';
-
+import tabBarStore from '../store/tabBarStore';
 import ExploreStack from './ExploreStack';
-import SearchStack from './SearchStack';
+import FavoriteStack from './FavoriteStack';
 import HomeStack from './HomeStack';
 import ProfileStack from './ProfileStack';
-import FavoriteStack from './FavoriteStack';
-import { MIcon } from 'components/common';
+import SearchStack from './SearchStack';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -156,7 +158,8 @@ export type MainStackParamList = {
 
 const MainStack = () => {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator
+            screenOptions={{ ...TransitionPresets.ScaleFromCenterAndroid }}>
             <Stack.Screen
                 key={'MainTabs'}
                 name={'MainTabs'}
