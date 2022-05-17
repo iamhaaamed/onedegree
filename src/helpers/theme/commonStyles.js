@@ -1670,7 +1670,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(14),
             fontFamily: 'Muli',
             // lineHeight: verticalScale(24),
-            color: COLORS.Color726,
+            color: '#707070',
         },
         TxtSectionhome80: {
             marginBottom: verticalScale(16),
@@ -1696,6 +1696,8 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(15),
             fontFamily: 'Muli',
             fontWeight: 'bold',
+            alignSelf: 'flex-end',
+            textAlign: 'right',
             // lineHeight: verticalScale(24),
             color: COLORS.Color726,
         },
@@ -1773,14 +1775,14 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(18),
             fontFamily: 'Muli',
             lineHeight: verticalScale(29),
-            color: COLORS.Color726,
+            color: '#707070',
         },
         TxtMoreInfo214: {
             marginBottom: verticalScale(41),
             fontSize: verticalScale(17),
             fontFamily: 'Muli',
             lineHeight: verticalScale(29),
-            color: COLORS.Color726,
+            color: '#707070',
         },
         SectionPaddingMoreInfo218: {
             paddingBottom: verticalScale(48),
@@ -1837,7 +1839,7 @@ export default function ({ COLORS }) {
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
             lineHeight: verticalScale(29),
-            color: COLORS.Color726,
+            color: '#707070',
         },
         TxtSectionRow17: {
             alignSelf: 'flex-end',

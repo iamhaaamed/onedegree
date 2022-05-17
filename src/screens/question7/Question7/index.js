@@ -64,7 +64,13 @@ const question7 = createScreen(
         const [userInput, setUserInput] = useState();
 
         const Complete = (data) => {
-            if (data.amount && data.type) setUserInput(data);
+            console.log('dddd', data);
+            if (
+                data.annuallyAmount ||
+                data?.hourlyAmount ||
+                (data?.monthlyAmount && data.type)
+            )
+                setUserInput(data);
         };
         return (
             <Container style={styles.question7}>

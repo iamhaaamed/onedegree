@@ -26,6 +26,7 @@ const question6 = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
+        console.log('rrrrr', route.params.userInput);
         const { isLoading, mutate } = useUpdateProfile();
         const [ZipCode, setZipCode] = useState();
         const setAnswerQuestion = authStore((state) => state.setAnswerQuestion);
@@ -96,6 +97,21 @@ const question6 = createScreen(
                                                     route?.params?.userInput
                                                         ?.amount,
                                                 ),
+                                                hourlyAmount: parseFloat(
+                                                    route?.params?.userInput
+                                                        ?.hourlyAmount ||
+                                                        parseFloat(0),
+                                                ),
+                                                monthlyAmount:
+                                                    parseFloat(
+                                                        route?.params?.userInput
+                                                            ?.monthlyAmount,
+                                                    ) || parseFloat(0),
+                                                annuallyAmount:
+                                                    parseFloat(
+                                                        route?.params?.userInput
+                                                            ?.annuallyAmount,
+                                                    ) || parseFloat(0),
                                                 amountType:
                                                     route?.params?.userInput
                                                         ?.type == 'Hourly'

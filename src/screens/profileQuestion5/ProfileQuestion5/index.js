@@ -130,9 +130,15 @@ const ProfileQuestion5 = createScreen(
                         whereDidYouHearAboutOnedegreeCareers:
                             data?.user_login?.result
                                 ?.whereDidYouHearAboutOnedegreeCareers,
-                        hourlyAmount: parseFloat(userInput?.hourlyAmount),
-                        monthlyAmount: parseFloat(userInput?.monthlyAmount),
-                        annuallyAmount: parseFloat(userInput?.annuallyAmount),
+                        hourlyAmount:
+                            parseFloat(userInput?.hourlyAmount) ||
+                            parseFloat(0),
+                        monthlyAmount:
+                            parseFloat(userInput?.monthlyAmount) ||
+                            parseFloat(0),
+                        annuallyAmount:
+                            parseFloat(userInput?.annuallyAmount) ||
+                            parseFloat(0),
                         amountType:
                             userInput?.type == 'Hourly'
                                 ? 'HOURLY'
