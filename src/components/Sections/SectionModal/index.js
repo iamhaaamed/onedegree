@@ -23,7 +23,11 @@ const SectionModal = (props) => {
                 <MText textStyle={COMMON.TxtSectionModal52}>
                     Months To Pay Off{' '}
                 </MText>
-                <MText textStyle={COMMON.TxtSectionModal53}>
+                <MText
+                    textStyle={[
+                        COMMON.TxtSectionModal53,
+                        { textAlign: 'left' },
+                    ]}>
                     This Is The Number Of Months It Will Take To Pay Off Your
                     Certification If You Pay 20% Of Your Take Home Pay Towards
                     It. Example: If You Make $1000 Per Week And You Put $200

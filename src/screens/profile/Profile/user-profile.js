@@ -18,7 +18,7 @@ const UserProfile = createScreen(
         const { data } = useGetProfile();
         const [user, setUser] = useState();
         const [StateName, setStateName] = useState('');
-
+        console.log('sssss', StateName);
         const [isLoading2, setIsLoading2] = useState(false);
         const [points, setPoints] = useState(8);
         const MAX_POINTS = 13;
@@ -34,7 +34,7 @@ const UserProfile = createScreen(
                 //     '2222',
                 //     `https://geocode.xyz/${data?.user_login?.result?.longitude},${data?.user_login?.result?.latitude}?json=1`,
                 // );
-                const latLang = `https://geocode.xyz/${data?.user_login?.result?.longitude},${data?.user_login?.result?.latitude}?json=1&auth=917299173845068219122x24146`;
+                const latLang = `https://geocode.xyz/${data?.user_login?.result?.latitude},${data?.user_login?.result?.longitude}?json=1&auth=917299173845068219122x24146`;
                 // const params = {
                 //     // auth: 'your auth code',
                 //     locate: '58.41032,15.62162',
@@ -46,7 +46,10 @@ const UserProfile = createScreen(
                     .then(function (response) {
                         console.log('///////////', response?.data?.statename);
                         if (response?.data) {
-                            setStateName(response?.data?.statename);
+                            setStateName(
+                                response?.data?.statename ||
+                                    data?.user_login?.result?.city,
+                            );
                             setCityName(response?.data?.statename);
                         }
                     })

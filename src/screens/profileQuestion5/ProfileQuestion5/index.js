@@ -98,7 +98,7 @@ const ProfileQuestion5 = createScreen(
                         onSuccess: (data) => {
                             if (data?.user_updateProfile?.status == 'SUCCESS') {
                                 queryClient.invalidateQueries('getMyProfile');
-                                navigate('Question');
+                                navigate('MyProfile');
                             }
                         },
                     },
@@ -150,7 +150,7 @@ const ProfileQuestion5 = createScreen(
                         onSuccess: (data) => {
                             if (data?.user_updateProfile?.status == 'SUCCESS') {
                                 queryClient.invalidateQueries('getMyProfile');
-                                navigate('Question');
+                                navigate('MyProfile');
                             }
                         },
                     },
@@ -224,7 +224,7 @@ const ProfileQuestion5 = createScreen(
                                                 queryClient.invalidateQueries(
                                                     'getMyProfile',
                                                 );
-                                                navigate('Question');
+                                                navigate('MyProfile');
                                             }
                                         },
                                     },
@@ -284,7 +284,7 @@ const ProfileQuestion5 = createScreen(
                         onSuccess: (data) => {
                             if (data?.user_updateProfile?.status == 'SUCCESS') {
                                 queryClient.invalidateQueries('getMyProfile');
-                                navigate('Question');
+                                navigate('MyProfile');
                             }
                         },
                     },
@@ -324,7 +324,8 @@ const ProfileQuestion5 = createScreen(
                         onSuccess: (data) => {
                             if (data?.user_updateProfile?.status == 'SUCCESS') {
                                 queryClient.invalidateQueries('getMyProfile');
-                                navigate('Question');
+                                console.log('22');
+                                navigate('MyProfile');
                             }
                         },
                     },

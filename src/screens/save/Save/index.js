@@ -81,7 +81,11 @@ const Save = createScreen(
                     color={COLORS.Color323}
                 />
 
-                <SectionTop01 style={COMMON.EleSave14} title="Saved Careers" />
+                <SectionTop01
+                    style={COMMON.EleSave14}
+                    title="Saved Careers"
+                    noIcon
+                />
                 <View style={styles.view}>
                     <View
                         style={[

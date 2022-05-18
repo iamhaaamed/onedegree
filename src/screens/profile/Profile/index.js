@@ -82,6 +82,7 @@ const ProfileScreen = () => {
 
 const TabIcon = ({ active, index }) => (
     <>
+        {console.log('active', active)}
         {index == 0 ? (
             <MaterialCommunityIcons
                 size={scale(24)}

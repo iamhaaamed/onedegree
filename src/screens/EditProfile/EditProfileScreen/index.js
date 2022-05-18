@@ -41,7 +41,6 @@ const EditProfile = createScreen(
         const Info = route?.params;
         const [UserImage, setUserImage] = useState(Info?.user?.imageAddress);
         const [IsLoading, setIsLoading] = useState(false);
-
         const [UserInfo, setUserInfo] = useState({
             firstName: userName[0] || '',
             lastName: userName[1] || '',
