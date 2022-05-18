@@ -60,12 +60,15 @@ const useLikeCareer = () => {
     const queryClient = useQueryClient();
     return useMutation(
         async (careerId) => {
+            console.log('ddddd', careerId);
             return await graphQLClient.request(USER_LIKE, {
                 careerId,
             });
         },
         {
             onSuccess: (data) => {
+                console.log('dddd', data);
+
                 if (data.career_like?.status === 'SUCCESS') {
                     queryClient.invalidateQueries('LikeCareers');
                     queryClient.invalidateQueries('saveCareers');

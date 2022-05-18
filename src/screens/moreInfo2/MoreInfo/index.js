@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
     text: {
         textAlign: 'right',
         // maxWidth: scale(250),
-        paddingHorizontal: 5,
+        // paddingHorizontal: 5,
         alignSelf: 'flex-start',
     },
 });

@@ -38,6 +38,7 @@ const SectionItemQuestion = (props) => {
                         iconLeft={{
                             name: 'edit',
                             color: COLORS.Color888,
+                            style: { paddingVertical: scale(5) },
                             Component: MaterialCommunityIcons,
                         }}
                     />

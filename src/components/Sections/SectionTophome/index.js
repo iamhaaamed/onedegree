@@ -45,7 +45,10 @@ const SectionTophome = (props) => {
                     <MButton
                         onPress={() => navigate('Notification')}
                         style={COMMON.ButtonRect62}
-                        containerStyle={COMMON.Button61}
+                        containerStyle={[
+                            COMMON.Button61,
+                            { paddingVertical: scale(5) },
+                        ]}
                         color={COLORS.white}
                         iconRight={{
                             name: 'bell-outline',
@@ -72,7 +75,10 @@ const SectionTophome = (props) => {
                     <MButton
                         onPress={() => navigate('ChatList')}
                         style={COMMON.ButtonRect62}
-                        containerStyle={[COMMON.Button61, { width: scale(45) }]}
+                        containerStyle={[
+                            COMMON.Button61,
+                            { width: scale(45), paddingVertical: scale(5) },
+                        ]}
                         color={COLORS.white}
                         iconLeft={{
                             name: 'chatbubble-outline',

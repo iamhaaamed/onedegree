@@ -109,7 +109,9 @@ export default function ({ COLORS }) {
         Input6: {
             marginBottom: verticalScale(14),
             width: '100%',
+            justifyContent: 'center',
             height: verticalScale(48),
+            alignSelf: 'center',
             borderTopLeftRadius: 12,
             borderTopRightRadius: 12,
             borderBottomRightRadius: 12,
@@ -944,7 +946,7 @@ export default function ({ COLORS }) {
             paddingTop: verticalScale(0),
             paddingRight: scale(32),
             paddingLeft: scale(32),
-            flex: 1,
+            // flex: 1,
         },
         Txtquestion7121: {
             marginBottom: verticalScale(46),
@@ -1426,7 +1428,7 @@ export default function ({ COLORS }) {
         },
         TxtSearch17: {
             alignSelf: 'flex-end',
-            textAlign: 'right',
+            textAlign: 'left',
             fontSize: verticalScale(13),
             fontFamily: 'Muli',
             lineHeight: verticalScale(20),
@@ -1608,7 +1610,7 @@ export default function ({ COLORS }) {
             color: COLORS.Color375,
         },
         EleHome265: {
-            marginBottom: verticalScale(32),
+            marginBottom: verticalScale(15),
         },
         image60: {
             width: scale(148),
@@ -1637,7 +1639,7 @@ export default function ({ COLORS }) {
             marginBottom: verticalScale(67),
         },
         TxtHome267: {
-            marginBottom: verticalScale(0),
+            marginBottom: verticalScale(14),
             fontSize: verticalScale(24),
             fontFamily: 'Muli',
             fontWeight: 'bold',
@@ -1983,6 +1985,7 @@ export default function ({ COLORS }) {
             elevation: 2,
             display: 'flex',
             alignItems: 'center',
+            justifyContent: 'center',
             // alignSelf: 'center',
             textAlign: 'center',
             borderTopLeftRadius: 25,

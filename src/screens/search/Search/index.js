@@ -72,7 +72,11 @@ const Search = createScreen(
                     style={{ top: '50%' }}
                     color={COLORS.Color323}
                 />
-                <View style={COMMON.SectionPaddingSearch5}>
+                <View
+                    style={[
+                        COMMON.SectionPaddingSearch5,
+                        { marginTop: '-5%' },
+                    ]}>
                     <View style={[COMMON.RowItem, COMMON.RowItemSearch6]}>
                         <View style={{ width: '83%' }}>
                             <MInput
@@ -155,16 +159,22 @@ const Search = createScreen(
                                             style={{
                                                 alignItems: 'flex-end',
                                                 marginRight: scale(11),
+                                                // backgroundColor: 'red',
+                                                // width: '22%',
                                             }}>
                                             <MButton
                                                 onPress={() => {}}
                                                 color={COLORS.white}
+                                                style={{
+                                                    alignSelf: 'flex-end',
+                                                }}
                                                 iconLeft={{
                                                     size: scale(25),
                                                     name: item?.isLiked
                                                         ? 'heart'
                                                         : 'heart-outline',
                                                     color: COLORS.Color508,
+
                                                     Component: MaterialCommunityIcons,
                                                 }}
                                             />

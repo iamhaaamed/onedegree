@@ -40,9 +40,9 @@ const question2 = createScreen(
                     resizeMode={'contain'}
                 />
 
-                <View style={{ flex: 1 }}>
-                    <Question1 setAnswer={(value) => setAnswers(value)} />
-                </View>
+                {/* <View style={{ flex: 1 }}> */}
+                <Question1 setAnswer={(value) => setAnswers(value)} />
+                {/* </View> */}
                 <View>
                     <MButton
                         onPress={() => {

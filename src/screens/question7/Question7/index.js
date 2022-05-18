@@ -47,10 +47,10 @@ const question7 = createScreen(
                     resizeMode={'contain'}
                 />
 
-                <View style={{ flex: 1 }}>
-                    <Question2 onComplete={(data) => Complete(data)} />
-                </View>
-                <View style={{ paddingBottom: 20 }}>
+                {/* <View style={{ flex: 1 }}> */}
+                <Question2 onComplete={(data) => Complete(data)} />
+                {/* </View> */}
+                <View style={{ paddingBottom: 20, marginTop: '40%' }}>
                     <SectionRowCenter
                         backPress={() => goBack()}
                         nextPress={() => {

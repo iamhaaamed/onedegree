@@ -54,8 +54,7 @@ const question6 = createScreen(
                 {/* </View> */}
                 <SectionRowCenter
                     style={{
-                        position: 'absolute',
-                        bottom: verticalScale(32),
+                        marginTop: '40%',
                     }}
                     backPress={() => goBack()}
                     nextPress={async () => {
@@ -88,7 +87,7 @@ const question6 = createScreen(
                                                 genders: 'MALE',
                                                 ethnicity: 'Native American',
                                                 educationLevel:
-                                                    'Primary Education',
+                                                    'College Degree',
                                                 howFarAreYouWillingToTravelToGetCertified:
                                                     'REMOTE_ONLY',
                                                 whereDidYouHearAboutOnedegreeCareers:

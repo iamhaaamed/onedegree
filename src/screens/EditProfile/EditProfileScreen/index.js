@@ -55,7 +55,9 @@ const EditProfile = createScreen(
             currentIncome: Info?.user?.currentIncome,
             isNotificationEnabled: Info?.user?.isNotificationEnabled,
             ethnicity: Info?.user?.ethnicity,
-            amount: Info?.user?.amount,
+            hourlyAmount: Info?.user?.hourlyAmount,
+            monthlyAmount: Info?.user?.monthlyAmount,
+            annuallyAmount: Info?.user?.annuallyAmount,
             amountType: Info?.user?.amountType,
             howFarAreYouWillingToTravelToGetCertified:
                 Info?.user?.howFarAreYouWillingToTravelToGetCertified,
@@ -86,7 +88,9 @@ const EditProfile = createScreen(
                         UserInfo?.howFarAreYouWillingToTravelToGetCertified,
                     whereDidYouHearAboutOnedegreeCareers:
                         UserInfo?.whereDidYouHearAboutOnedegreeCareers,
-                    amount: UserInfo?.amount,
+                    annuallyAmount: UserInfo?.annuallyAmount,
+                    monthlyAmount: UserInfo?.monthlyAmount,
+                    hourlyAmount: UserInfo?.hourlyAmount,
                     amountType: UserInfo?.amountType,
                 },
                 {
@@ -318,6 +322,7 @@ const EditProfile = createScreen(
                         <MText textStyle={COMMON.TxtSectionSignIn271}>
                             Education Level{' '}
                         </MText>
+                        {console.log('....', UserInfo?.educationLevel)}
                         <MView style={COMMON.DropDown10}>
                             <MDropDown
                                 mb={verticalScale(24)}
@@ -328,7 +333,7 @@ const EditProfile = createScreen(
                                         educationLevel: item,
                                     });
                                 }}
-                                value={UserInfo?.educationLevel.toString()} //change label
+                                value={UserInfo?.educationLevel} //change label
                                 defaultAndroidMode={false}
                                 icon={{
                                     name: 'keyboard-arrow-down',

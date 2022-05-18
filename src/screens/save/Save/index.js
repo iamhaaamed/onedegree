@@ -57,7 +57,7 @@ const Save = createScreen(
                 }),
             },
         });
-
+        console.log('career', careers?.pages?.length);
         const refActionSheet = useRef(null);
 
         const showActionSheet = (item) => {
@@ -83,7 +83,11 @@ const Save = createScreen(
 
                 <SectionTop01 style={COMMON.EleSave14} title="Saved Careers" />
                 <View style={styles.view}>
-                    <View style={COMMON.SectionPaddingSave15}>
+                    <View
+                        style={[
+                            COMMON.SectionPaddingSave15,
+                            { marginTop: '-4%' },
+                        ]}>
                         <MInput
                             placeholder=" Search"
                             height={verticalScale(51)}
@@ -102,7 +106,10 @@ const Save = createScreen(
                             numColumns={2}
                             showsVerticalScrollIndicator={false}
                             data={careers?.pages}
-                            style={{ width: '100%' }}
+                            style={{
+                                width: '100%',
+                                alignSelf: 'center',
+                            }}
                             refreshing={isRefetching}
                             onRefresh={refetch}
                             renderItem={({ item, index }) => (
@@ -115,8 +122,9 @@ const Save = createScreen(
                                         })
                                     }
                                     style={{
-                                        width: '48%',
+                                        width: '47%',
                                         marginVertical: scale(20),
+
                                         marginHorizontal: 5,
                                     }}>
                                     <MImageBackground
@@ -205,7 +213,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     view: {
-        height: scale(610),
+        height: scale(600),
     },
     action: {
         borderTopLeftRadius: scale(30),
