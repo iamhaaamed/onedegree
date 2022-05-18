@@ -33,6 +33,7 @@ const EditProfile = createScreen(
             COMMON,
             CONSTANTS,
         } = useTheme();
+        console.log('..', route?.params?.StateName);
         const queryClient = useQueryClient();
         const setUserName = authStore((state) => state.setUserName);
         const userName = route?.params?.UserName.split(' ');
@@ -44,7 +45,7 @@ const EditProfile = createScreen(
         const [UserInfo, setUserInfo] = useState({
             firstName: userName[0],
             lastName: userName[1],
-            location: Info?.user?.city,
+            location: route?.params?.StateName,
             age: Info?.user?.age,
             genders: Info?.user?.genders,
             latitude: Info?.user?.latitude,

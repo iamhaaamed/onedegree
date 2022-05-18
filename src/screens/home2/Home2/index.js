@@ -56,7 +56,7 @@ const Home2 = createScreen(
             isRefetching,
             refetch,
             error,
-        } = useGetCareers({});
+        } = useGetCareers({ where: { career: { isActive: { eq: true } } } });
 
         let Careers = careers?.pages;
 

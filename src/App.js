@@ -32,7 +32,7 @@ enableScreens();
 const App = () => {
     const { token } = authStore((state) => state);
     const setToken = authStore((state) => state.setToken);
-    // console.log('token', token);
+    console.log('token', token);
     const [initializing, setInitializing] = useState(true);
     const handleUser = useCallback(
         async (user) => {

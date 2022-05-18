@@ -38,16 +38,17 @@ const ProfileScreen = createScreen(
                 //     '2222',
                 //     `https://geocode.xyz/${data?.user_login?.result?.longitude},${data?.user_login?.result?.latitude}?json=1`,
                 // );
-                const latLang = `https://geocode.xyz/${data?.user_login?.result?.latitude},${data?.user_login?.result?.longitude}?json=1`;
+                const latLang = `https://geocode.xyz/${data?.user_login?.result?.longitude},${data?.user_login?.result?.latitude}?json=1&auth=917299173845068219122x24146`;
                 // const params = {
                 //     // auth: 'your auth code',
                 //     locate: '58.41032,15.62162',
                 //     json: '1',
                 // };
+                console.log('laaaaaaaa', latLang);
                 axios
                     .get(latLang)
                     .then(function (response) {
-                        // console.log('///////////', response);
+                        console.log('///////////', response?.data?.statename);
                         if (response?.data) {
                             setStateName(response?.data?.statename);
                         }
@@ -159,7 +160,7 @@ const ProfileScreen = createScreen(
                         <SectionInfo
                             style={COMMON.EleProfile430}
                             title="Location"
-                            data={StateName || user?.city || 'New York'}
+                            data={StateName || user?.city}
                         />
                         <SectionInfo
                             style={COMMON.EleProfile430}

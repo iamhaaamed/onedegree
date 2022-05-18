@@ -36,14 +36,15 @@ const ProgramDetails = createScreen(
             isRefetching,
             refetch,
         } = useGetPrograms({
+            where: { isActive: { eq: true } },
             // where: {
             //     typeOfTrainingProgram: {
             //         eq: programDetails?.typeOfTrainingProgram,
             //     },
             // },
-            // options: {
-            //     enabled: !!programDetails,
-            // },
+            options: {
+                enabled: !!programDetails,
+            },
         });
 
         const renderFooter = () => {

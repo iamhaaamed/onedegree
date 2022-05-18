@@ -39,6 +39,7 @@ const Programs = createScreen(
             isRefetching,
             refetch,
         } = useGetPrograms({
+            where: { isActive: { eq: true } },
             ...(debouncedSearchTerm.length && {
                 where: {
                     title: { contains: debouncedSearchTerm },
