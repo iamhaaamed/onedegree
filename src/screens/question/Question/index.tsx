@@ -1,36 +1,18 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { StyleSheet, View, ScrollView, FlatList } from 'react-native';
-import useTheme from 'hooks/useTheme';
-import { authStore } from '../../../store';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {
-    SectionTop01,
-    SectionItemQuestion,
-    ProfileTab,
-    Question2,
-    Question1,
-    Question3,
-    Container,
-} from 'components/Sections';
-import { createScreen } from 'components/elements';
+// @ts-nocheck
 import { COLORS } from 'constants/common';
-import { verticalScale, scale, toPascalCase } from 'utils';
-import { MStatusBar, MButton, MText, MLoading } from 'components/common';
+import { authStore } from '../../../store';
 import { useGetProfile } from 'hooks/profile';
+import React, { useEffect, useState } from 'react';
+import { createScreen } from 'components/elements';
+import { FlatList, StyleSheet } from 'react-native';
+import { SectionItemQuestion } from 'components/Sections';
+import { scale, toPascalCase, verticalScale } from 'utils';
+
 const Question = createScreen(
     () => {
-        const {
-            LAYOUT,
-            GUTTERS,
-            TYPOGRAPHY,
-            IMAGES,
-            COMMON,
-            CONSTANTS,
-        } = useTheme();
+        const { data } = useGetProfile();
         const [DATA, setDATA] = useState([]);
         const { CityName } = authStore((state) => state);
-        const { isLoading, data } = useGetProfile();
         useEffect(() => {
             setDATA([
                 {
@@ -74,31 +56,20 @@ const Question = createScreen(
         }, [data]);
 
         return (
-            <Container style={styles.Question1674}>
-                <MLoading
-                    isLoading={isLoading}
-                    size="large"
-                    color={COLORS.Color323}
-                    style={{ top: '50%' }}
-                />
-                <ScrollView>
-                    <SectionTop01 title="Questions" rightView />
-
-                    <ProfileTab style={{ marginBottom: 15 }} />
-                    <View style={COMMON.SectionPaddingSave15}>
-                        <FlatList
-                            data={DATA}
-                            renderItem={({ item, index }) => (
-                                <SectionItemQuestion
-                                    title={item.title}
-                                    answer={item.answer}
-                                    code={item?.code}
-                                />
-                            )}
-                        />
-                    </View>
-                </ScrollView>
-            </Container>
+            <FlatList
+                data={DATA}
+                style={styles.Question1674}
+                keyExtractor={(item) => item.id}
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={{ paddingVertical: verticalScale(18) }}
+                renderItem={({ item }) => (
+                    <SectionItemQuestion
+                        code={item?.code}
+                        title={item.title}
+                        answer={item.answer}
+                    />
+                )}
+            />
         );
     },
     {
@@ -109,8 +80,9 @@ const Question = createScreen(
 );
 const styles = StyleSheet.create({
     Question1674: {
+        flex: 1,
+        paddingHorizontal: scale(32),
         backgroundColor: COLORS.Color197,
-        height: '100%',
     },
 });
 export default Question;

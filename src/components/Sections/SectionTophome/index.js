@@ -1,4 +1,4 @@
-import { MButton, MImage } from 'components/common';
+import { MButton, MImage, IconButton } from 'components/common';
 import { COLORS } from 'constants/common';
 import useTheme from 'hooks/useTheme';
 import { navigate } from 'navigation/methods';
@@ -8,6 +8,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { scale, verticalScale } from 'utils';
 import { useGetNotifications } from 'hooks/notification';
+
 const SectionTophome = (props) => {
     const { style } = props;
     const {
@@ -41,21 +42,12 @@ const SectionTophome = (props) => {
                         customHeight={scale(44)}
                     />
                 </View>
-                <View style={{ width: '12%' }}>
-                    <MButton
+                <View>
+                    <IconButton
+                        iconName="bell-outline"
+                        iconSize={scale(25)}
+                        iconColor={COLORS.Color424}
                         onPress={() => navigate('Notification')}
-                        style={COMMON.ButtonRect62}
-                        containerStyle={[
-                            COMMON.Button61,
-                            { paddingVertical: scale(5) },
-                        ]}
-                        color={COLORS.white}
-                        iconRight={{
-                            name: 'bell-outline',
-                            color: COLORS.Color424,
-                            size: scale(25),
-                            Component: MaterialCommunityIcons,
-                        }}
                     />
                     {notificationsData?.pages?.length > 0 && (
                         <View
@@ -71,21 +63,13 @@ const SectionTophome = (props) => {
                         />
                     )}
                 </View>
-                <View style={{ width: '10%' }}>
-                    <MButton
+                <View>
+                    <IconButton
+                        iconName="chatbubble-outline"
+                        iconSize={scale(25)}
+                        iconColor={COLORS.Color424}
+                        iconComponent={Ionicons}
                         onPress={() => navigate('ChatList')}
-                        style={COMMON.ButtonRect62}
-                        containerStyle={[
-                            COMMON.Button61,
-                            { width: scale(45), paddingVertical: scale(5) },
-                        ]}
-                        color={COLORS.white}
-                        iconLeft={{
-                            name: 'chatbubble-outline',
-                            color: COLORS.Color424,
-                            size: scale(24),
-                            Component: Ionicons,
-                        }}
                     />
                 </View>
             </View>

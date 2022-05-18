@@ -1,253 +1,232 @@
-import { MButton, MIcon, MImage, MLoading, MText } from 'components/common';
-import { createScreen } from 'components/elements';
-import { ProfileTab, SectionInfo, SectionTop01 } from 'components/Sections';
+import UserProfile from './user-profile';
 import { COLORS } from 'constants/common';
+import { Loading } from 'components/common';
+import { Question } from 'screens/question';
 import { useGetProfile } from 'hooks/profile';
-import useTheme from 'hooks/useTheme';
-import { navigate } from 'navigation/methods';
-import React, { useEffect, useState } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, View, Text } from 'react-native';
-import { scale, toPascalCase, verticalScale } from 'utils';
-import { authStore } from '../../../store';
-import { AnimatedCircularProgress } from 'react-native-circular-progress';
-import axios from 'axios';
-const ProfileScreen = createScreen(
-    () => {
-        const {
-            LAYOUT,
-            GUTTERS,
-            TYPOGRAPHY,
-            IMAGES,
-            COMMON,
-            CONSTANTS,
-        } = useTheme();
-        const { isLoading, data } = useGetProfile();
-        const [user, setUser] = useState();
-        const [StateName, setStateName] = useState('');
+import { scale, verticalScale } from 'utils';
+import { SectionTop01 } from 'components/Sections';
+import React, { useMemo, useRef, useState } from 'react';
+import LinearGradient from 'react-native-linear-gradient';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {
+    Text,
+    View,
+    Animated,
+    Dimensions,
+    ScrollView,
+    StyleSheet,
+    SafeAreaView,
+    TouchableOpacity,
+} from 'react-native';
 
-        const [isLoading2, setIsLoading2] = useState(false);
-        const [points, setPoints] = useState(8);
-        const MAX_POINTS = 13;
+const { width } = Dimensions.get('window');
 
-        const { UserName } = authStore((state) => state);
-        const setCityName = authStore((state) => state.setCityName);
-        useEffect(() => {
-            setUser(data?.user_login?.result);
-            setIsLoading2(true);
+const ProfileScreen = () => {
+    const PAGES = useMemo(() => ['Profile', 'Questions'], []);
 
-            if (data?.user_login?.result?.latitude !== undefined) {
-                // console.log(
-                //     '2222',
-                //     `https://geocode.xyz/${data?.user_login?.result?.longitude},${data?.user_login?.result?.latitude}?json=1`,
-                // );
-                const latLang = `https://geocode.xyz/${data?.user_login?.result?.longitude},${data?.user_login?.result?.latitude}?json=1&auth=917299173845068219122x24146`;
-                // const params = {
-                //     // auth: 'your auth code',
-                //     locate: '58.41032,15.62162',
-                //     json: '1',
-                // };
-                console.log('laaaaaaaa', latLang);
-                axios
-                    .get(latLang)
-                    .then(function (response) {
-                        console.log('///////////', response?.data?.statename);
-                        if (response?.data) {
-                            setStateName(response?.data?.statename);
-                            setCityName(response?.data?.statename);
-                        }
-                    })
-                    .catch(function (error) {
-                        // console.log('///////////', error);
-                        // showMessage({
-                        //     message: `Something went wrong: ${error.message}`,
-                        //     type: 'danger',
-                        // });
-                    })
-                    .then(function () {
-                        // always executed
-                    });
-            }
-            setIsLoading2(false);
-        }, [data]);
+    const scrollViewRef = useRef();
+    const [active, setActive] = useState(0);
+    const scrollX = useRef(new Animated.Value(0)).current;
 
-        // https://geocode.xyz/35.7219,51.3347?json=1
-        //         fetch('https://maps.googleapis.com/maps/api/geocode/json?address=' + myLat + ',' + myLon + '&key=' + myApiKey)
-        //         .then((response) => response.json())
-        //         .then((responseJson) => {
-        //             console.log('ADDRESS GEOCODE is BACK!! => ' + JSON.stringify(responseJson));
-        // })
-        const fill = (points / MAX_POINTS) * 100;
-        return (
-            <SafeAreaView style={styles.Profile4}>
-                <MLoading
-                    isLoading={isLoading || isLoading2}
-                    size="large"
-                    color={COLORS.Color323}
-                    style={{ top: '50%' }}
-                />
-                <ScrollView>
-                    <SectionTop01 title="Profile" noIcon rightView />
-                    <ProfileTab page="profilePage" />
+    const { isLoading } = useGetProfile();
 
-                    <View style={COMMON.SectionPaddingProfile421}>
-                        <AnimatedCircularProgress
-                            width={4}
-                            fill={fill}
-                            padding={10}
-                            rotation={360}
-                            size={scale(100)}
-                            dashedBackground="yellow"
-                            style={{
-                                alignSelf: 'center',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                marginVertical: verticalScale(20),
-                                // transform: [{ rotateY: '180deg' }],
-                            }}
-                            tintColor="#84CC17"
-                            backgroundColor={COLORS.transparent}>
-                            {(fill) => (
-                                <>
-                                    {user?.imageAddress ? (
-                                        <View
-                                            style={{
-                                                width: '85%',
-                                                height: '85%',
-                                                // transform: [
-                                                //     { rotateY: '180deg' },
-                                                // ],
-                                            }}>
-                                            <MImage
-                                                imageSource={{
-                                                    uri: user?.imageAddress,
-                                                }}
-                                                style={COMMON.image222}
-                                            />
-                                        </View>
-                                    ) : (
-                                        <View
-                                            style={[
-                                                COMMON.image22,
-                                                styles.emptyImage,
-                                            ]}>
-                                            <MIcon
-                                                name={'account'}
-                                                color={COLORS.Color267}
-                                                size={scale(30)}
-                                            />
-                                        </View>
-                                    )}
-                                </>
-                            )}
-                        </AnimatedCircularProgress>
-                        <Text style={styles.persent}>{parseInt(fill)}%</Text>
-                        <MText textStyle={COMMON.TxtProfile423}>
-                            {user?.firstName
-                                ? `${user?.firstName} ${user?.lastName}`
-                                : UserName}
-                        </MText>
-                        <MButton
-                            onPress={() =>
-                                navigate('EditProfile', {
-                                    user,
-                                    StateName,
-                                    UserName,
-                                })
-                            }
-                            style={COMMON.ButtonRect25}
-                            containerStyle={COMMON.Button24}
-                            text="Complete Profile"
-                            textStyle={COMMON.TextsButton26}
-                            color={COLORS.Color977}
-                        />
-                        <SectionInfo
-                            style={COMMON.EleProfile430}
-                            title="Location"
-                            data={StateName || user?.city}
-                        />
-                        <SectionInfo
-                            style={COMMON.EleProfile430}
-                            title="Age"
-                            data={user?.age || ' '}
-                        />
-                        <SectionInfo
-                            style={COMMON.EleProfile430}
-                            title="Ethnicity"
-                            data={user?.ethnicity || 'White'}
-                        />
-                        <SectionInfo
-                            style={COMMON.EleProfile430}
-                            title="Gender"
-                            data={toPascalCase(user?.genders) || 'Male'}
-                        />
-                        <SectionInfo
-                            style={COMMON.EleProfile430}
-                            title="Education Level "
-                            data={user?.educationLevel || ' '}
-                        />
-                        <SectionInfo
-                            style={COMMON.EleProfile430}
-                            title="Current Income"
-                            data={user?.currentIncome || ' '}
-                        />
-                        <MButton
-                            onPress={() =>
-                                navigate('EditProfile', {
-                                    user,
-                                    StateName,
-                                    UserName,
-                                })
-                            }
-                            style={COMMON.ButtonRect36}
-                            containerStyle={COMMON.Button35}
-                            text="Edit"
-                            textStyle={COMMON.TextsButton37}
-                            gradient={{
-                                colors: [
-                                    COLORS.Color323,
-                                    COLORS.Color148,
-                                    COLORS.Color912,
-                                    COLORS.Color674,
-                                    COLORS.Color455,
-                                    COLORS.Color240,
-                                ],
-                                start: {
-                                    x: -0.15500132739543915,
-                                    y: 0.6157848834991455,
+    const onCLick = (i) => {
+        setActive(i);
+        scrollViewRef.current.scrollTo({ x: i * width });
+    };
+
+    return (
+        <SafeAreaView style={styles.profileContainer}>
+            <SectionTop01 title="Profile" noIcon rightView />
+            <View style={styles.container}>
+                <View style={{ padding: 5, paddingTop: 0 }}>
+                    <ButtonContainer
+                        active={active}
+                        buttons={PAGES}
+                        onClick={onCLick}
+                        scrollX={scrollX}
+                    />
+                </View>
+                <View style={{ flex: 1 }}>
+                    <ScrollView
+                        horizontal
+                        pagingEnabled
+                        ref={scrollViewRef}
+                        scrollEventThrottle={10}
+                        decelerationRate="fast"
+                        showsHorizontalScrollIndicator={false}
+                        onScroll={Animated.event(
+                            [
+                                {
+                                    nativeEvent: {
+                                        contentOffset: { x: scrollX },
+                                    },
                                 },
-                                end: {
-                                    x: 1.014054298400879,
-                                    y: 0.17686034739017487,
-                                },
-                            }}
-                        />
-                    </View>
-                </ScrollView>
-            </SafeAreaView>
-        );
-    },
-    {
-        scrollView: false,
-        paddingBottom: false,
-        paddingTop: false,
-    },
+                            ],
+                            { useNativeDriver: false },
+                        )}>
+                        <View style={[styles.card]}>
+                            <UserProfile />
+                        </View>
+                        <View style={[styles.card]}>
+                            <Question />
+                        </View>
+                    </ScrollView>
+                </View>
+            </View>
+            {isLoading && <Loading />}
+        </SafeAreaView>
+    );
+};
+
+const TabIcon = ({ active, index }) => (
+    <>
+        {index == 0 ? (
+            <MaterialCommunityIcons
+                size={scale(24)}
+                name="account-outline"
+                style={{ marginRight: 8 }}
+                color={active == 0 ? COLORS.white : COLORS.Color267}
+            />
+        ) : (
+            <FontAwesome
+                size={scale(24)}
+                name="question"
+                style={{ marginRight: 8 }}
+                color={active == 1 ? COLORS.white : COLORS.Color267}
+            />
+        )}
+    </>
 );
+
+function ButtonContainer({ buttons, onClick, scrollX, active }) {
+    const [btnContainerWidth, setWidth] = useState(0);
+    const btnWidth = btnContainerWidth / buttons.length;
+
+    const translateX = scrollX.interpolate({
+        inputRange: [0, width],
+        outputRange: [0, btnWidth],
+    });
+
+    const translateXOpposit = scrollX.interpolate({
+        inputRange: [0, width],
+        outputRange: [0, -btnWidth],
+    });
+
+    return (
+        <View
+            style={styles.btnContainer}
+            onLayout={(e) => setWidth(e.nativeEvent.layout.width)}>
+            {buttons.map((btn, i) => (
+                <TouchableOpacity
+                    key={btn}
+                    style={styles.btn}
+                    onPress={() => onClick(i)}>
+                    <TabIcon index={i} active={active} />
+                    <Text style={styles.btnTextDeActive}>{btn}</Text>
+                </TouchableOpacity>
+            ))}
+            <Animated.View
+                style={[
+                    styles.animatedBtnContainer,
+                    { width: btnWidth, transform: [{ translateX }] },
+                ]}>
+                {buttons.map((btn, i) => (
+                    <Animated.View
+                        key={btn}
+                        style={[
+                            styles.animatedBtn,
+                            {
+                                width: btnWidth,
+                                transform: [{ translateX: translateXOpposit }],
+                            },
+                        ]}>
+                        <LinearGradient
+                            colors={[
+                                COLORS.Color424,
+                                COLORS.Color425,
+                                COLORS.Color426,
+                                COLORS.Color427,
+                                COLORS.Color428,
+                            ]}
+                            start={{
+                                x: -0.15500132739543915,
+                                y: 0.6157848834991455,
+                            }}
+                            end={{
+                                x: 1.014054298400879,
+                                y: 0.17686034739017487,
+                            }}
+                            style={{
+                                height: '100%',
+                                borderRadius: 24,
+                                flexDirection: 'row',
+                                width: btnWidth - 24,
+                                alignItems: 'center',
+                                paddingHorizontal: 10,
+                                justifyContent: 'center',
+                            }}>
+                            <TabIcon index={i} active={active} />
+                            <Text style={styles.btnTextActive}>{btn}</Text>
+                        </LinearGradient>
+                    </Animated.View>
+                ))}
+            </Animated.View>
+        </View>
+    );
+}
+
 const styles = StyleSheet.create({
-    Profile4: {
-        backgroundColor: COLORS.Color596,
+    profileContainer: {
+        flex: 1,
         height: '100%',
+        backgroundColor: COLORS.Color596,
     },
-    emptyImage: {
-        backgroundColor: COLORS.Color321,
-        justifyContent: 'center',
-        borderRadius: 1000,
+    container: {
+        flex: 1,
+        paddingVertical: 5,
     },
-    persent: {
-        color: '#84CC17',
+    btnContainer: {
+        height: 70,
+        width: '85%',
+        borderRadius: 35,
+        overflow: 'hidden',
         alignSelf: 'center',
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: verticalScale(20),
+        backgroundColor: COLORS.backMainIcon,
+    },
+    btn: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    animatedBtnContainer: {
+        height: 40,
+        flexDirection: 'row',
+        position: 'absolute',
+        overflow: 'hidden',
+    },
+    animatedBtn: {
+        height: 40,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    btnTextDeActive: {
         fontFamily: 'Muli',
-        marginTop: '-5%',
-        marginBottom: '5%',
+        fontSize: scale(17),
+    },
+    btnTextActive: {
+        color: '#fff',
+        fontFamily: 'Muli',
+        fontSize: scale(17),
+    },
+    card: {
+        width: width,
+        height: '100%',
     },
 });
 

@@ -1,23 +1,16 @@
 import React from 'react';
-import { useRef } from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
 import useTheme from 'hooks/useTheme';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { COLORS } from 'constants/common';
-import { verticalScale, scale } from 'utils';
-import { MStatusBar, MButton, MText } from 'components/common';
+import { scale, verticalScale } from 'utils';
 import { navigate } from 'navigation/methods';
+import { StyleSheet, View } from 'react-native';
+import { IconButton, MText } from 'components/common';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const SectionItemQuestion = (props) => {
-    const { style, title, answer, code, answerAmount } = props;
-    const {
-        LAYOUT,
-        GUTTERS,
-        TYPOGRAPHY,
-        IMAGES,
-        COMMON,
-        CONSTANTS,
-    } = useTheme();
+    const { style, title, answer, code } = props;
+    const { COMMON } = useTheme();
+
     return (
         <View {...props} style={[styles.SectionItem, style]}>
             <View style={[COMMON.RowItem]}>
@@ -26,21 +19,16 @@ const SectionItemQuestion = (props) => {
                     <MText textStyle={COMMON.TxtSectionItem6}>{answer} </MText>
                 </View>
                 <View style={{ width: '10%', justifyContent: 'flex-end' }}>
-                    <MButton
+                    <IconButton
                         onPress={() =>
                             navigate('ProfileQuestion5', {
                                 code: code,
                                 answer: answer,
                             })
                         }
-                        style={COMMON.ButtonRect8}
-                        color={COLORS.white}
-                        iconLeft={{
-                            name: 'edit',
-                            color: COLORS.Color888,
-                            style: { paddingVertical: scale(5) },
-                            Component: MaterialCommunityIcons,
-                        }}
+                        iconName="edit"
+                        iconColor={COLORS.Color888}
+                        iconComponent={MaterialCommunityIcons}
                     />
                 </View>
             </View>
@@ -59,7 +47,6 @@ const styles = StyleSheet.create({
         shadowRadius: 29,
         elevation: 0.5,
         width: '100%',
-        // height: verticalScale(93.5),
         borderTopLeftRadius: 21,
         borderTopRightRadius: 19,
         borderBottomRightRadius: 21,

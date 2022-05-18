@@ -249,14 +249,15 @@ const EditProfile = createScreen(
                                 }}
                                 style={{
                                     container: {
-                                        elevation: 1,
+                                        width: '100%',
+                                        borderWidth: 1,
+                                        borderRadius: 12,
+                                        borderColor: '#eaeaea',
                                         backgroundColor: COLORS.white,
-                                        borderRadius: 8,
-                                        shadowColor: 'rgba(140,140,140,0.16)',
-                                        shadowOpacity: 0.5,
-                                        shadowOffset: { width: 0, height: 0 },
                                     },
-
+                                    iconContainer: {
+                                        paddingHorizontal: 10,
+                                    },
                                     inputAndroid: COMMON.TextsDropDown6,
                                     inputIOS: COMMON.TextsDropDown6,
                                     inputAndroidContainer: COMMON.DropDownRect5,
@@ -305,14 +306,15 @@ const EditProfile = createScreen(
                                 }}
                                 style={{
                                     container: {
-                                        elevation: 1,
+                                        width: '100%',
+                                        borderWidth: 1,
+                                        borderRadius: 12,
+                                        borderColor: '#eaeaea',
                                         backgroundColor: COLORS.white,
-                                        borderRadius: 8,
-                                        shadowColor: 'rgba(140,140,140,0.16)',
-                                        shadowOpacity: 0.5,
-                                        shadowOffset: { width: 0, height: 0 },
                                     },
-
+                                    iconContainer: {
+                                        paddingHorizontal: 10,
+                                    },
                                     inputAndroid: COMMON.TextsDropDown6,
                                     inputIOS: COMMON.TextsDropDown6,
                                     inputAndroidContainer: COMMON.DropDownRect5,
@@ -323,7 +325,7 @@ const EditProfile = createScreen(
                         <MText textStyle={COMMON.TxtSectionSignIn271}>
                             Education Level{' '}
                         </MText>
-                        {console.log('....', UserInfo?.educationLevel)}
+                        {/* {console.log('....', UserInfo?.educationLevel)} */}
                         <MView style={COMMON.DropDown10}>
                             <MDropDown
                                 mb={verticalScale(24)}
@@ -343,14 +345,15 @@ const EditProfile = createScreen(
                                 }}
                                 style={{
                                     container: {
-                                        elevation: 1,
+                                        width: '100%',
+                                        borderWidth: 1,
+                                        borderRadius: 12,
+                                        borderColor: '#eaeaea',
                                         backgroundColor: COLORS.white,
-                                        borderRadius: 8,
-                                        shadowColor: 'rgba(140,140,140,0.16)',
-                                        shadowOpacity: 0.5,
-                                        shadowOffset: { width: 0, height: 0 },
                                     },
-
+                                    iconContainer: {
+                                        paddingHorizontal: 10,
+                                    },
                                     inputAndroid: COMMON.TextsDropDown6,
                                     inputIOS: COMMON.TextsDropDown6,
                                     inputAndroidContainer: COMMON.DropDownRect5,

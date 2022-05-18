@@ -72,19 +72,13 @@ const intro6 = createScreen(
                 <MImage
                     imageSource={IMAGES.image7436}
                     style={COMMON.imagelogo0}
-                    customWidth={'100%'}
-                    customHeight={scale(52)}
                 />
-                {/* {page != 0 && ( */}
                 <MImage
                     imageSource={
                         page == 2 ? IMAGES.imageBack2 : IMAGES.imageBack1
                     }
                     style={COMMON.imagevector2}
-                    customWidth={'90%'}
-                    customHeight={scale(400)}
                 />
-                {/* )} */}
                 <PagerView
                     style={{
                         flex: 1,

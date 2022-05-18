@@ -2,10 +2,10 @@ import useTheme from 'hooks/useTheme';
 import { COLORS } from 'constants/common';
 import { navigate } from 'navigation/methods';
 import { StyleSheet, View } from 'react-native';
+import { MImage, MText } from 'components/common';
 import React, { useEffect, useState } from 'react';
 import { IconButton } from 'components/common/IconButton';
 import { convertMiles, scale, toPascalCase } from 'utils';
-import { MButton, MImage, MText } from 'components/common';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
     useLikeCareer,
@@ -35,7 +35,7 @@ const Sectionhome = (props) => {
                 imageSource={{ uri: data?.career?.imageAddress }}
                 style={COMMON.image68}
             />
-            <View style={{ paddingHorizontal: 14 }}>
+            <View style={{ paddingHorizontal: 24 }}>
                 <MText numberOfLines={2} textStyle={[COMMON.TxtSectionhome70]}>
                     {data?.career?.title}
                 </MText>
@@ -170,7 +170,7 @@ const Sectionhome = (props) => {
 
 const styles = StyleSheet.create({
     Sectionhome: {
-        paddingHorizontal: 10,
+        // paddingHorizontal: 10,
         backgroundColor: COLORS.white,
         shadowColor: 'rgba(140,140,140,0.18)',
         shadowOffset: { width: 0, height: 15 },
