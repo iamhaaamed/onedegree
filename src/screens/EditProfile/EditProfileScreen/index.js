@@ -36,15 +36,15 @@ const EditProfile = createScreen(
         console.log('..', route?.params?.StateName);
         const queryClient = useQueryClient();
         const setUserName = authStore((state) => state.setUserName);
-        const userName = route?.params?.UserName.split(' ');
+        const userName = route?.params?.UserName?.split(' ') || ['', ''];
 
         const Info = route?.params;
         const [UserImage, setUserImage] = useState(Info?.user?.imageAddress);
         const [IsLoading, setIsLoading] = useState(false);
 
         const [UserInfo, setUserInfo] = useState({
-            firstName: userName[0],
-            lastName: userName[1],
+            firstName: userName[0] || '',
+            lastName: userName[1] || '',
             location: route?.params?.StateName,
             age: Info?.user?.age,
             genders: Info?.user?.genders,
