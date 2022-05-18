@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { StyleSheet, View, ScrollView, FlatList } from 'react-native';
 import useTheme from 'hooks/useTheme';
+import { authStore } from '../../../store';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
     SectionTop01,
@@ -28,6 +29,7 @@ const Question = createScreen(
             CONSTANTS,
         } = useTheme();
         const [DATA, setDATA] = useState([]);
+        const { CityName } = authStore((state) => state);
         const { isLoading, data } = useGetProfile();
         useEffect(() => {
             setDATA([
@@ -43,7 +45,7 @@ const Question = createScreen(
                 },
                 {
                     title: 'Where Do You Currently Live',
-                    answer: data?.user_login?.result?.city,
+                    answer: data?.user_login?.result?.city || CityName,
                     code: 3,
                 },
                 // {

@@ -24,11 +24,13 @@ const ProfileScreen = createScreen(
         const { isLoading, data } = useGetProfile();
         const [user, setUser] = useState();
         const [StateName, setStateName] = useState('');
+
         const [isLoading2, setIsLoading2] = useState(false);
         const [points, setPoints] = useState(8);
         const MAX_POINTS = 13;
 
         const { UserName } = authStore((state) => state);
+        const setCityName = authStore((state) => state.setCityName);
         useEffect(() => {
             setUser(data?.user_login?.result);
             setIsLoading2(true);
@@ -51,6 +53,7 @@ const ProfileScreen = createScreen(
                         console.log('///////////', response?.data?.statename);
                         if (response?.data) {
                             setStateName(response?.data?.statename);
+                            setCityName(response?.data?.statename);
                         }
                     })
                     .catch(function (error) {

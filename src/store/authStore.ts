@@ -11,6 +11,8 @@ export type AuthState = {
     Email: string;
     verify: boolean;
     Password: string;
+    CityName: string;
+    setCityName: (CityName: string) => void;
     setEmail: (Email: string) => void;
     setPassword: (Password: string) => void;
     setUserName: (UserName: string) => void;
@@ -37,6 +39,8 @@ export const authStore = create<AuthState>(
             Email: '',
             Password: '',
             verify: false,
+            CityName: '',
+            setCityName: (CityName: string) => set({ CityName }),
             setPassword: (Password: string) => set({ Password }),
             setEmail: (Email: string) => set({ Email }),
             setUserName: (UserName: string) => set({ UserName }),
