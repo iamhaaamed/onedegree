@@ -18,7 +18,7 @@ const useGetCareers = ({
     options?: any;
 }) => {
     const res = useInfiniteQuery(
-        ['saveCareers', order, where],
+        ['searchCareers', order, where],
         async ({ pageParam = 0 }) => {
             return graphQLClient.request(GET_CAREERS, {
                 skip: pageParam * PAGE_SIZE,
@@ -67,8 +67,6 @@ const useLikeCareer = () => {
                 if (data.career_like?.status === 'SUCCESS') {
                     queryClient.invalidateQueries('saveCareers');
                     queryClient.invalidateQueries('LikeCareers');
-                    queryClient.invalidateQueries('searchCareers');
-                    queryClient.invalidateQueries('getCareers');
                 }
             },
         },
@@ -87,8 +85,6 @@ const useUnlikeCareer = () => {
                 if (data.career_unlike?.status === 'SUCCESS') {
                     queryClient.invalidateQueries('saveCareers');
                     queryClient.invalidateQueries('LikeCareers');
-                    queryClient.invalidateQueries('searchCareers');
-                    queryClient.invalidateQueries('getCareers');
                 }
             },
         },

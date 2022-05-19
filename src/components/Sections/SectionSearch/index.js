@@ -11,17 +11,16 @@ import {
     useLikeCareer,
     useUnlikeCareer,
     useGetLikeCareers,
-} from 'hooks/careers';
+} from 'hooks/search';
 
 const Sectionhome = (props) => {
     const { style, data } = props;
     const { COMMON } = useTheme();
     const [Like, setLike] = useState(false);
-    console.log('dddd', data);
     const { data: LikeCareers } = useGetLikeCareers({
         careerId: data?.career?.id,
     });
-
+    console.log('...', LikeCareers);
     useEffect(() => {
         if (LikeCareers?.career_getUserLikeCareer?.result) setLike(true);
     }, [LikeCareers]);
@@ -69,7 +68,7 @@ const Sectionhome = (props) => {
                     }}>
                     <MButton
                         onPress={() => {
-                            console.log('3333');
+                            console.log('3333', Like);
                             if (Like)
                                 UnLikeMutate(data?.career?.id, {
                                     onSuccess: (data) => {
