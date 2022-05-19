@@ -2202,7 +2202,7 @@ export default function ({ COLORS }) {
             paddingHorizontal: scale(16),
             fontSize: verticalScale(16),
             fontFamily: 'Muli',
-            color: COLORS.Color209,
+            color: '#707070',
             lineHeight: verticalScale(25),
         },
         InputRect23: {
