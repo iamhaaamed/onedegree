@@ -7,7 +7,12 @@ import { useDebounce } from 'hooks/useDebounce';
 import React, { useRef, useState } from 'react';
 import { createScreen } from 'components/elements';
 import ActionSheet from 'react-native-actions-sheet';
-import { Container, SearchFilter, SectionTop01 } from 'components/Sections';
+import {
+    Container,
+    SearchFilter,
+    SectionTop01,
+    SectionSearch,
+} from 'components/Sections';
 import { MButton, MImage, MInput, MLoading, MText } from 'components/common';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
@@ -17,6 +22,11 @@ import {
     ActivityIndicator,
     TouchableOpacity,
 } from 'react-native';
+import {
+    useLikeCareer,
+    useUnlikeCareer,
+    useGetLikeCareers,
+} from 'hooks/careers';
 
 const Search = createScreen(
     () => {
@@ -35,6 +45,8 @@ const Search = createScreen(
 
         // ? debouncing search term with delay
         const debouncedSearchTerm = useDebounce(searchTerm, 500);
+        const { mutate: LikeMutate } = useLikeCareer();
+        const { mutate: UnLikeMutate } = useUnlikeCareer();
 
         const {
             isLoading,
@@ -44,10 +56,12 @@ const Search = createScreen(
             isRefetching,
             refetch,
         } = useGetCareers({
+            where: { career: { isActive: { eq: true } } },
             ...(debouncedSearchTerm.length && {
                 where: {
                     career: {
                         title: { contains: debouncedSearchTerm },
+                        isActive: { eq: true },
                     },
                 },
             }),
@@ -58,7 +72,9 @@ const Search = createScreen(
                 <ActivityIndicator size={scale(50)} color={COLORS.Color323} />
             ) : null;
         };
-
+        const renderItem = ({ item }) => {
+            return item ? <SectionSearch data={item} /> : null;
+        };
         return (
             <Container style={styles.Search}>
                 <SectionTop01
@@ -115,81 +131,7 @@ const Search = createScreen(
                         showsVerticalScrollIndicator={false}
                         contentContainerStyle={{ paddingBottom: 85 }}
                         renderItem={({ item, index }) =>
-                            item ? (
-                                <TouchableOpacity
-                                    style={COMMON.SectionPaddingSearch12}
-                                    activeOpacity={1}
-                                    onPress={() =>
-                                        navigate('MoreInfo', {
-                                            data: item,
-                                            Like: item?.isLiked,
-                                        })
-                                    }>
-                                    <View
-                                        style={[
-                                            COMMON.RowItem,
-                                            COMMON.SectionEvent,
-                                        ]}>
-                                        <View style={{ width: '20%' }}>
-                                            <MImage
-                                                style={COMMON.image14}
-                                                imageSource={{
-                                                    uri:
-                                                        item?.career
-                                                            ?.imageAddress,
-                                                }}
-                                            />
-                                        </View>
-                                        <View
-                                            style={{
-                                                width: '58%',
-                                                marginLeft: scale(10),
-                                            }}>
-                                            <MText
-                                                numberOfLines={1}
-                                                textStyle={COMMON.TxtSearch15}>
-                                                {item?.career?.title}
-                                            </MText>
-                                            <MText
-                                                textStyle={COMMON.TxtSearch16}>
-                                                Possible Yearly Income{' '}
-                                            </MText>
-                                        </View>
-                                        <View
-                                            style={{
-                                                alignItems: 'flex-end',
-                                                marginRight: scale(11),
-                                                // backgroundColor: 'red',
-                                                // width: '22%',
-                                            }}>
-                                            <MButton
-                                                onPress={() => {}}
-                                                color={COLORS.white}
-                                                style={{
-                                                    alignSelf: 'flex-end',
-                                                }}
-                                                iconLeft={{
-                                                    size: scale(25),
-                                                    name: item?.isLiked
-                                                        ? 'heart'
-                                                        : 'heart-outline',
-                                                    color: COLORS.Color508,
-
-                                                    Component: MaterialCommunityIcons,
-                                                }}
-                                            />
-                                            <MText
-                                                textStyle={COMMON.TxtSearch17}>
-                                                $
-                                                {
-                                                    item?.career
-                                                        ?.possibleYearlyIncome
-                                                }
-                                            </MText>
-                                        </View>
-                                    </View>
-                                </TouchableOpacity>
-                            ) : null
+                            renderItem({ item, index })
                         }
                         keyExtractor={(item, index) =>
                             item?.id ? item?.id?.toString() : index.toString()
