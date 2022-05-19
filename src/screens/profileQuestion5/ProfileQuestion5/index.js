@@ -76,12 +76,14 @@ const ProfileQuestion5 = createScreen(
                         ),
                         isNotificationEnabled:
                             data?.user_login?.result?.isNotificationEnabled,
-                        // imageAddress: UserImage,
+                        imageAddress: data?.user_login?.result?.imageAddress,
                         age: parseInt(data?.user_login?.result?.age),
                         genders: data?.user_login?.result?.genders,
                         ethnicity: data?.user_login?.result?.ethnicity,
                         educationLevel:
                             data?.user_login?.result?.educationLevel,
+                        firstName: data?.user_login?.result?.firstName,
+                        lastName: data?.user_login?.result?.lastName,
                         howFarAreYouWillingToTravelToGetCertified:
                             data?.user_login?.result
                                 ?.howFarAreYouWillingToTravelToGetCertified,
@@ -118,7 +120,7 @@ const ProfileQuestion5 = createScreen(
                         zipCode: data?.user_login?.result?.zipCode,
                         isNotificationEnabled:
                             data?.user_login?.result?.isNotificationEnabled,
-                        // imageAddress: UserImage,
+                        imageAddress: data?.user_login?.result?.imageAddress,
                         age: parseInt(data?.user_login?.result?.age),
                         genders: data?.user_login?.result?.genders,
                         ethnicity: data?.user_login?.result?.ethnicity,
@@ -127,6 +129,8 @@ const ProfileQuestion5 = createScreen(
                         howFarAreYouWillingToTravelToGetCertified:
                             data?.user_login?.result
                                 ?.howFarAreYouWillingToTravelToGetCertified,
+                        firstName: data?.user_login?.result?.firstName,
+                        lastName: data?.user_login?.result?.lastName,
                         whereDidYouHearAboutOnedegreeCareers:
                             data?.user_login?.result
                                 ?.whereDidYouHearAboutOnedegreeCareers,
@@ -185,12 +189,18 @@ const ProfileQuestion5 = createScreen(
                                         isNotificationEnabled:
                                             data?.user_login?.result
                                                 ?.isNotificationEnabled,
-                                        // imageAddress: UserImage,
+                                        imageAddress:
+                                            data?.user_login?.result
+                                                ?.imageAddress,
                                         age: parseInt(
                                             data?.user_login?.result?.age,
                                         ),
                                         genders:
                                             data?.user_login?.result?.genders,
+                                        firstName:
+                                            data?.user_login?.result?.firstName,
+                                        lastName:
+                                            data?.user_login?.result?.lastName,
                                         ethnicity:
                                             data?.user_login?.result?.ethnicity,
                                         educationLevel:
@@ -253,9 +263,11 @@ const ProfileQuestion5 = createScreen(
                         ),
                         city: data?.user_login?.result?.city,
                         zipCode: data?.user_login?.result?.zipCode,
+                        firstName: data?.user_login?.result?.firstName,
+                        lastName: data?.user_login?.result?.lastName,
                         isNotificationEnabled:
                             data?.user_login?.result?.isNotificationEnabled,
-                        // imageAddress: UserImage,
+                        imageAddress: data?.user_login?.result?.imageAddress,
                         age: parseInt(data?.user_login?.result?.age),
                         genders: data?.user_login?.result?.genders,
                         ethnicity: data?.user_login?.result?.ethnicity,
@@ -304,7 +316,9 @@ const ProfileQuestion5 = createScreen(
                         ),
                         isNotificationEnabled:
                             data?.user_login?.result?.isNotificationEnabled,
-                        // imageAddress: UserImage,
+                        imageAddress: data?.user_login?.result?.imageAddress,
+                        firstName: data?.user_login?.result?.firstName,
+                        lastName: data?.user_login?.result?.lastName,
                         age: parseInt(data?.user_login?.result?.age),
                         genders: data?.user_login?.result?.genders,
                         ethnicity: data?.user_login?.result?.ethnicity,
