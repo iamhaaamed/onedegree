@@ -118,9 +118,8 @@ const EditProfile = createScreen(
                     color={COLORS.Color323}
                     isLoading={IsLoading || isLoading}
                 />
+                <SectionTop01 title="Profile" rightView />
                 <ScrollView>
-                    <SectionTop01 title="Profile" rightView />
-
                     <View style={COMMON.SectionPaddingProfile421}>
                         <MImagePicker
                             getImage={(image) => setUserImage(image)}
