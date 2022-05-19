@@ -54,7 +54,7 @@ const question6 = createScreen(
                 {/* </View> */}
                 <SectionRowCenter
                     style={{
-                        marginTop: '40%',
+                        marginTop: '20%',
                     }}
                     backPress={() => goBack()}
                     nextPress={async () => {
@@ -81,7 +81,7 @@ const question6 = createScreen(
                                                 zipCode: zip,
                                                 industry:
                                                     route?.params?.Answers,
-                                                currentIncome: 10,
+                                                currentIncome: 0,
                                                 isNotificationEnabled: true,
                                                 age: 1,
                                                 genders: 'MALE',
@@ -92,10 +92,10 @@ const question6 = createScreen(
                                                     'REMOTE_ONLY',
                                                 whereDidYouHearAboutOnedegreeCareers:
                                                     'CRAIGSLIST',
-                                                amount: parseFloat(
-                                                    route?.params?.userInput
-                                                        ?.amount,
-                                                ),
+                                                // amount: parseFloat(
+                                                //     route?.params?.userInput
+                                                //         ?.amount,
+                                                // ),
                                                 hourlyAmount: parseFloat(
                                                     route?.params?.userInput
                                                         ?.hourlyAmount ||

@@ -69,7 +69,7 @@ const Programs = createScreen(
                         { marginTop: scale(10) },
                     ]}>
                     <View style={[COMMON.RowItem]}>
-                        <View style={{ width: '80%' }}>
+                        <View style={{ width: '83%' }}>
                             <MInput
                                 onChangeText={(text) => setSearchTerm(text)}
                                 // style={COMMON.InputRect23}
@@ -91,12 +91,12 @@ const Programs = createScreen(
                                 onPress={() => {
                                     showActionSheet();
                                 }}
-                                style={[COMMON.filterBtn]}
+                                style={COMMON.filterBtn}
+                                containerStyle={COMMON.Button10}
                                 color={COLORS.white}
                                 iconRight={{
                                     name: 'filter',
                                     color: COLORS.Color424,
-                                    size: scale(25),
                                     Component: MaterialCommunityIcons,
                                 }}
                             />
