@@ -5,12 +5,12 @@ import auth from '@react-native-firebase/auth';
 import AppNavigator from 'navigation/AppNavigator';
 import { enableScreens } from 'react-native-screens';
 import graphQLClient from '../src/graphql/graphQLClient';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useCallback, useEffect, useState } from 'react';
 import FlashMessage, { showMessage } from 'react-native-flash-message';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { QueryCache, QueryClient, QueryClientProvider } from 'react-query';
-import { ProfileQuestion5 } from 'screens';
-import { SafeAreaView } from 'react-native-safe-area-context';
+
 let queryClient: QueryClient;
 
 LogBox.ignoreAllLogs(true);
